@@ -12,11 +12,11 @@ import {
 
 const Routes = () => {
     return useRoutes([
-        { path: "/sign-in", element: <Dashboard />, },
+        // { path: "/sign-in", element: <Dashboard />, },
         {
             path: "/", element: <MainLayout />,
             children: [
-                { path: "dashboard", element: <Dashboard /> },
+                { path: "/dashboard", element: <Dashboard /> },
                 { path: "/products", element: <Products /> },
                 { path: "/catagories", element: <Catagories /> },
                 { path: "/customers", element: <Customers /> },
