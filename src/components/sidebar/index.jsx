@@ -17,11 +17,11 @@ function Sidebar({ openSidebarToggle, OpenSidebar }) {
             <ul className='sidebar-list'>
                 {sidebarTabs.map((tab, index) => {
                     return (
-                        <li key={index} className='sidebar-list-item'>
-                            <Link to={tab.href}>
+                        <Link to={tab.href} className='sidebar-list-links'>
+                            <li key={index} className='sidebar-list-item'>
                                 {tab.icons} {tab.name}
-                            </Link>
-                        </li>
+                            </li>
+                        </Link>
                     )
                 })}
             </ul>

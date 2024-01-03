@@ -51,6 +51,11 @@ body {
 .menu-icon {
   display: none;
 }
+
+.header-right{
+  display: flex;
+  column-gap: 20px;
+}
 /* End Header  */
 
 /* Sidebar  */
@@ -102,14 +107,22 @@ body {
 }
 
 .sidebar-responsive {
-  display: inline !important;
+  /* display: inline !important;
   position: absolute;
+  z-index: 12 !important; */
+  position: absolute !important;
+  z-index: 12 !important;
+  transform: translateX(0px) !important;
   /*
     we want the z-index of the sidebar higher so that
     the charts are not showing over the sidebar 
     on small screens
   */
-  z-index: 12 !important;
+}
+
+.sidebar-list-links{
+  color: #9e9ea4 !important;
+  text-decoration: none;
 }
 
 /* End Sidebar  */
@@ -192,11 +205,15 @@ body {
   }
 
   #sidebar {
-    display: none;
+    /* display: block !important; */
+    position: absolute;
+    z-index: 0;
+    transform: translateX(-240px);
   }
 
   .menu-icon {
     display: inline;
+    cursor: pointer;
   }
 
   .sidebar-title > span {
