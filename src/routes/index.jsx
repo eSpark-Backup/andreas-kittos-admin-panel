@@ -7,7 +7,8 @@ import {
     Customers,
     Inventory,
     Reports,
-    Settings
+    Settings,
+    SignIn
 } from '../pages';
 
 const Routes = () => {
@@ -16,6 +17,7 @@ const Routes = () => {
         {
             path: "/", element: <MainLayout />,
             children: [
+               
                 { path: "/dashboard", element: <Dashboard /> },
                 { path: "/products", element: <Products /> },
                 { path: "/catagories", element: <Catagories /> },
@@ -26,6 +28,7 @@ const Routes = () => {
             ]
         },
         { path: "404", element: <div>not found</div> },
+        { path: "/sign-in", element: <SignIn /> },
         {
             path: "*",
             element: <Navigate to="/404" />,
