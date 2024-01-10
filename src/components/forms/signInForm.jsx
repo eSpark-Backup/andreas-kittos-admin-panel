@@ -1,14 +1,62 @@
-import { Box, Typography } from '@mui/material'
-import React from 'react'
+import { Box, Button, FormControl, Grid, Input, InputLabel, Stack, TextField, Typography } from '@mui/material'
+import React, { useState } from 'react'
+import { LoginInputs } from '../../constant'
+// import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
+import VisibilityOffOutlinedIcon from '@mui/icons-material/VisibilityOffOutlined';
+import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
 
 const SignInForm = () => {
+  const [showPass, setShowPass] = useState(false)
   return (
-    <Box 
-    sx={{
-      padding: '2rem 3.5rem',
-    }}
+    <Box
+      sx={{
+        padding: { xs: "2rem 1.5rem", md: "2rem 3.5rem" },
+      }}
     >
-      <Typography>SignIn</Typography>
+      <Box sx={{ display: "flex", flexDirection: "column", rowGap: "30px" }}>
+        <Box>
+          <Typography sx={{ color: "#1D2634", fontSize: "30px", fontWeight: "600" }}>Sign In</Typography>
+          <Box sx={{ height: "4px", width: "65px", backgroundColor: "#1D2634", borderRadius: "5px" }}></Box>
+        </Box>
+        <Box>
+          <Typography sx={{ color: "#333333", fontSize: "16px", fontWeight: "500" }}>Please enter credentials to login!</Typography>
+        </Box>
+        <form>
+          <Grid container gap={2}>
+            <Grid item xs={12}>
+              <Stack direction={"column"} gap={1}>
+                <InputLabel sx={{ color: "#424755", fontSize: "14px" }}>Email</InputLabel>
+                <TextField
+                  name='email'
+                  id="filled-hidden-label-normal"
+                  placeholder="Enter email"
+                  fullWidth
+                  type='email'
+                />
+              </Stack>
+            </Grid>
+            <Grid item xs={12}>
+              <Stack direction={"column"} gap={1}>
+                <InputLabel sx={{ color: "#424755", fontSize: "14px" }}>Password</InputLabel>
+                <TextField
+                  name='password'
+                  id="filled-hidden-label-normal"
+                  placeholder="Enter email"
+                  fullWidth
+                  InputProps={{
+                    endAdornment: showPass ? <VisibilityOffOutlinedIcon sx={{ cursor: "pointer", color: "#9E9EA4" }} onClick={() => setShowPass(!showPass)} /> : <VisibilityOutlinedIcon sx={{ cursor: "pointer", color: "#9E9EA4" }} onClick={() => setShowPass(!showPass)} />
+                  }}
+                  type={showPass ? "text" : "password"}
+                />
+              </Stack>
+            </Grid>
+          </Grid>
+          <Box sx={{ marginTop: "60px" }}>
+            <Button sx={{ width: "100%", height: "40px", fontWeight: "500", fontSize: "18px", backgroundColor: "#263043", borderRadius: "5px", color: "white", ":hover": { backgroundColor: "#263043" } }}>
+              Sign in</Button>
+          </Box>
+        </form>
+      </Box>
     </Box>
   )
 }

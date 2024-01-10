@@ -88,23 +88,35 @@ export const chartData = [
 
 export const cardsData = [
     {
-      title: "PRODUCTS",
-      icon: <BsFillArchiveFill className='card_icon' />,
-      value: 300
+        title: "PRODUCTS",
+        icon: <BsFillArchiveFill className='card_icon' />,
+        value: 300
     },
     {
-      title: "CATEGORIES",
-      icon: <BsFillGrid3X3GapFill className='card_icon' />,
-      value: 12
+        title: "CATEGORIES",
+        icon: <BsFillGrid3X3GapFill className='card_icon' />,
+        value: 12
     },
     {
-      title: "CUSTOMERS",
-      icon: <BsFillGrid3X3GapFill className='card_icon' />,
-      value: 33
+        title: "CUSTOMERS",
+        icon: <BsFillGrid3X3GapFill className='card_icon' />,
+        value: 33
     },
     {
-      title: "ALERTS",
-      icon: <BsFillBellFill className='card_icon' />,
-      value: 42
+        title: "ALERTS",
+        icon: <BsFillBellFill className='card_icon' />,
+        value: 42
     },
-  ]
+]
+
+export const LoginInputs = [
+    {
+        label: "Email",
+        placeholder: "Enter email",
+        type: "email"
+    }, {
+        label: "Password",
+        placeholder: "Enter password",
+        type:"password"
+    }
+]

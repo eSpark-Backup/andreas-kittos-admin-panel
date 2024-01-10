@@ -19,9 +19,9 @@ const SignIn = () => {
           backgroundImage: { xs: `url(${SignInBgSm})`, sm: `url(${SignInBg})`},
           backgroundSize: 'cover',
           backgroundRepeat: 'no-repeat',
-          backgroundPosition: 'center',
-          minHeight: { xs: '50vh', md: '80vh'},
-          display: { xs:"flex", sm: 'none', md: 'flex'}, 
+          backgroundPosition: 'center',          
+          minHeight: { xs: '55vh',sm:'65vh', md: '80vh'},
+          display: { xs:"flex", sm: 'flex', md: 'flex'}, 
           flexDirection: 'column',
           justifyContent: 'center',
         }}>
@@ -31,7 +31,7 @@ const SignIn = () => {
         <Box sx={{
           width: { xs: '100%', lg: '45%'},
           backgroundColor: 'white',
-          height: { xs: '80vh', sm:'100vh', md: '80vh'},
+          minHeight: { xs: '65vh', md: '80vh'},
         }}>
           <SignInForm/>
         </Box>
