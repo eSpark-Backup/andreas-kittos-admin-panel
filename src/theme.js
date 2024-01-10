@@ -249,9 +249,9 @@ export const theme = createTheme({
             contrastText: "#FFFFFF",
         },
         text: {
-            primary: "#1D3B6A",
-            secondary: "#687588",
-            disabled: "#899DB7",
+            primary: "#9E9EA4",
+            secondary: "#9E9EA4",
+            disabled: "#9E9EA4",
         },
         border:{
             main:"#424755"

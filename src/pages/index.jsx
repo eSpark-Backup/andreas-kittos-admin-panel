@@ -15,5 +15,5 @@ export {
     Inventory,
     Reports,
     Settings,
-    SignIn
+    SignIn,
 }
