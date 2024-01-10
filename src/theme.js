@@ -1,6 +1,5 @@
 import { createTheme } from "@mui/material";
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-
 export const theme = createTheme({
     breakpoints: {
         values: {
@@ -26,7 +25,6 @@ export const theme = createTheme({
                     '&.Mui-selected': {
                         color: '#1D3B6A',
                         fontWeight: "bolder",
-
                     },
                 },
             },
@@ -213,7 +211,7 @@ export const theme = createTheme({
             default: "#FAFAFA",
             paper: "#FFFFFF",
         },
-        divider: "#f1f2f4",
+        divider: "#F1F2F4",
         primary: {
             main: "#1D3B6A",
             light: "#1D3B6A",
@@ -227,27 +225,27 @@ export const theme = createTheme({
             contrastText: "#FFFFFF",
         },
         success: {
-            main: "#0caf60",
-            light: "#24b770",
-            dark: "#0b9e56",
+            main: "#0CAF60",
+            light: "#24B770",
+            dark: "#0B9E56",
             contrastText: "#FFFFFF",
         },
         info: {
-            main: "#2f78ee",
-            light: "#4486f0",
-            dark: "#2a6cd6",
+            main: "#2F78EE",
+            light: "#4486F0",
+            dark: "#2A6CD6",
             contrastText: "#FFFFFF",
         },
         warning: {
-            main: "#ffde65",
-            light: "#ffe174",
-            dark: "#e6c85b",
+            main: "#FFDE65",
+            light: "#FFE174",
+            dark: "#E6C85B",
             contrastText: "#AA8500",
         },
         error: {
-            main: "#e03137",
-            light: "#e3464b",
-            dark: "#ca2c32",
+            main: "#E03137",
+            light: "#E3464B",
+            dark: "#CA2C32",
             contrastText: "#FFFFFF",
         },
         text: {
@@ -292,7 +290,7 @@ export const theme = createTheme({
         },
         fontFamily: `"Montserrat", "sans-serif"`,
         // fontFamily: `"Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica,
-        // 	 Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji"`,
+        //   Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji"`,
         body1: {
             fontSize: "1rem",
             fontWeight: 400,

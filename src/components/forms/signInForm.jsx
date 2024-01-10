@@ -4,9 +4,25 @@ import { LoginInputs } from '../../constant'
 // import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 import VisibilityOffOutlinedIcon from '@mui/icons-material/VisibilityOffOutlined';
 import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
+import { useFormik } from 'formik';
+import { signinSchema } from '../../schema';
+import { useNavigate } from 'react-router-dom';
+import CustomButton from '../buttons/customButton';
 
 const SignInForm = () => {
   const [showPass, setShowPass] = useState(false)
+  const navigate = useNavigate()
+  const initialValues = {
+    email: "",
+    password: ""
+  }
+  const { values, errors, handleBlur, handleChange, handleSubmit, touched } = useFormik({
+    initialValues: initialValues,
+    validationSchema: signinSchema,
+    onSubmit: () => {
+      navigate("/dashboard")
+    }
+  })
   return (
     <Box
       sx={{
@@ -21,7 +37,7 @@ const SignInForm = () => {
         <Box>
           <Typography sx={{ color: "#333333", fontSize: "16px", fontWeight: "500" }}>Please enter credentials to login!</Typography>
         </Box>
-        <form>
+        <form onSubmit={handleSubmit}>
           <Grid container gap={2}>
             <Grid item xs={12}>
               <Stack direction={"column"} gap={1}>
@@ -32,6 +48,11 @@ const SignInForm = () => {
                   placeholder="Enter email"
                   fullWidth
                   type='email'
+                  value={values.email}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  error={touched.email && errors.email ? true : false}
+                  helperText={touched.email && errors.email ? errors.email : null}
                 />
               </Stack>
             </Grid>
@@ -41,19 +62,25 @@ const SignInForm = () => {
                 <TextField
                   name='password'
                   id="filled-hidden-label-normal"
-                  placeholder="Enter email"
+                  placeholder="Enter password"
                   fullWidth
                   InputProps={{
                     endAdornment: showPass ? <VisibilityOffOutlinedIcon sx={{ cursor: "pointer", color: "#9E9EA4" }} onClick={() => setShowPass(!showPass)} /> : <VisibilityOutlinedIcon sx={{ cursor: "pointer", color: "#9E9EA4" }} onClick={() => setShowPass(!showPass)} />
                   }}
                   type={showPass ? "text" : "password"}
+                  value={values.password}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  error={touched.password && errors.password ? true : false}
+                  helperText={touched.password && errors.password ? errors.password : null}
                 />
               </Stack>
             </Grid>
           </Grid>
           <Box sx={{ marginTop: "60px" }}>
-            <Button sx={{ width: "100%", height: "40px", fontWeight: "500", fontSize: "18px", backgroundColor: "#263043", borderRadius: "5px", color: "white", ":hover": { backgroundColor: "#263043" } }}>
-              Sign in</Button>
+            {/* <Button type='submit' sx={{ width: "100%", height: "40px", fontWeight: "500", fontSize: "18px", backgroundColor: "#263043", borderRadius: "5px", color: "white", ":hover": { backgroundColor: "#263043" } }}>
+              Sign in</Button> */}
+            <CustomButton sx={{ width: "100%", fontWeight: "500", fontSize: "18px", backgroundColor: "#263043", borderRadius: "5px", color: "white", ":hover": { backgroundColor: "#263043", boxShadow:"none" } }}>Sign in</CustomButton>
           </Box>
         </form>
       </Box>

@@ -20,7 +20,7 @@ const SignIn = () => {
           backgroundSize: 'cover',
           backgroundRepeat: 'no-repeat',
           backgroundPosition: 'center',          
-          minHeight: { xs: '55vh',sm:'65vh', md: '80vh'},
+          minHeight: { xs: '50vh',sm:'70vh', md: '80vh'},
           display: { xs:"flex", sm: 'flex', md: 'flex'}, 
           flexDirection: 'column',
           justifyContent: 'center',
@@ -31,7 +31,7 @@ const SignIn = () => {
         <Box sx={{
           width: { xs: '100%', lg: '45%'},
           backgroundColor: 'white',
-          minHeight: { xs: '65vh', md: '80vh'},
+          minHeight: { xs: '75vh',sm:'70vh', md: '80vh'},
         }}>
           <SignInForm/>
         </Box>
