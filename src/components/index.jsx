@@ -6,6 +6,8 @@ import SignInForm from "./forms/signInForm";
 import PageHeader from "./common/pageHeader";
 import CustomButton from "./buttons/customButton";
 import ReportCard from "./cards/reportCard";
+import informationForm from "./forms/InformationForm";
+import TabButton from "./buttons/tabButton";
 
 export {
     Header,
@@ -16,5 +18,7 @@ export {
     PageHeader,
     CustomButton,
     ReportCard,
+    informationForm,
+    TabButton,
     
 }
