@@ -5,15 +5,13 @@ function Header({ OpenSidebar }) {
   return (
     <header className='header'>
       <div className='menu-icon'>
-        <BsJustify className='icon' onClick={OpenSidebar} />
+        <BsJustify className='icon header-icon' onClick={OpenSidebar} />
       </div>
       <div className='header-left'>
-        <BsSearch className='icon' />
+        {/* <BsSearch className='icon header-icon' /> */}
       </div>
       <div className='header-right'>
-        <BsFillBellFill className='icon' />
-        <BsFillEnvelopeFill className='icon' />
-        <BsPersonCircle className='icon' />
+        <BsPersonCircle className='icon header-icon' />
       </div>
     </header>
   )

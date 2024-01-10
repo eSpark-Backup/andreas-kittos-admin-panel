@@ -1,13 +1,11 @@
 import { cardsData, chartData } from '../../constant';
-import { BarChart, LineChart } from '../../components';
+import { BarChart, LineChart, PageHeader } from '../../components';
 
 const Dashboard = () => {
   return (
     <main className='main-container'>
-      <div className='main-title'>
-        <h3>DASHBOARD</h3>
-      </div>
-
+      <PageHeader title="Dashboard" />
+ 
       <div className='main-cards'>
         {cardsData.map((card, index) => {
           return (
@@ -16,7 +14,7 @@ const Dashboard = () => {
                 <h3>{card.title}</h3>
                 {card.icon}
               </div>
-              <h1>{card.value}</h1>
+              <h1 className='card-value'>{card.value}</h1>
             </div>
           )
         })}
