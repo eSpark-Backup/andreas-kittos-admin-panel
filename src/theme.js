@@ -213,9 +213,9 @@ export const theme = createTheme({
         },
         divider: "#F1F2F4",
         primary: {
-            main: "#1D3B6A",
-            light: "#1D3B6A",
-            dark: "#1D3B6A",
+            main: "#263043",
+            light: "#263043",
+            dark: "#263043",
             contrastText: "#FFFFFF",
         },
         secondary: {
@@ -253,6 +253,9 @@ export const theme = createTheme({
             secondary: "#687588",
             disabled: "#899DB7",
         },
+        border:{
+            main:"#424755"
+        }
     },
     shape: {
         // borderRadius: 8,
@@ -288,7 +291,7 @@ export const theme = createTheme({
         button: {
             fontWeight: 700,
         },
-        fontFamily: `"Montserrat", "sans-serif"`,
+        fontFamily: `"Inter", "sans-serif"`,
         // fontFamily: `"Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica,
         //   Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji"`,
         body1: {

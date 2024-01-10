@@ -41,7 +41,7 @@ const SignInForm = () => {
           <Grid container gap={2}>
             <Grid item xs={12}>
               <Stack direction={"column"} gap={1}>
-                <InputLabel sx={{ color: "#424755", fontSize: "14px" }}>Email</InputLabel>
+                <InputLabel sx={{ color: "#424755", fontSize: "14px", fontWeight:"500" }}>Email</InputLabel>
                 <TextField
                   name='email'
                   id="filled-hidden-label-normal"
@@ -58,7 +58,7 @@ const SignInForm = () => {
             </Grid>
             <Grid item xs={12}>
               <Stack direction={"column"} gap={1}>
-                <InputLabel sx={{ color: "#424755", fontSize: "14px" }}>Password</InputLabel>
+                <InputLabel sx={{ color: "#424755", fontSize: "14px", fontWeight:"500" }}>Password</InputLabel>
                 <TextField
                   name='password'
                   id="filled-hidden-label-normal"
@@ -77,10 +77,10 @@ const SignInForm = () => {
               </Stack>
             </Grid>
           </Grid>
-          <Box sx={{ marginTop: "60px" }}>
+          <Box sx={{ marginTop: "70px" }}>
             {/* <Button type='submit' sx={{ width: "100%", height: "40px", fontWeight: "500", fontSize: "18px", backgroundColor: "#263043", borderRadius: "5px", color: "white", ":hover": { backgroundColor: "#263043" } }}>
               Sign in</Button> */}
-            <CustomButton sx={{ width: "100%", fontWeight: "500", fontSize: "18px", backgroundColor: "#263043", borderRadius: "5px", color: "white", ":hover": { backgroundColor: "#263043", boxShadow:"none" } }}>Sign in</CustomButton>
+            <CustomButton type={"submit"} sx={{ width: "100%", fontWeight: "500", fontSize: "18px", borderRadius: "5px", color: "white"}}>Sign in</CustomButton>
           </Box>
         </form>
       </Box>
