@@ -1,9 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap');
 body {
   margin: 0;
   padding: 0;
   background-color: #1d2634;
-  color: #9e9ea4;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Inter', sans-serif;
 }
 
 .icon {
@@ -18,6 +18,10 @@ body {
 }
 .icon, .icon_header {
   margin-right: 5px;
+}
+
+.header-icon {
+  color: #9e9ea4;
 }
 
 .close_icon {
@@ -51,6 +55,11 @@ body {
 .menu-icon {
   display: none;
 }
+
+.header-right{
+  display: flex;
+  column-gap: 20px;
+}
 /* End Header  */
 
 /* Sidebar  */
@@ -79,6 +88,10 @@ body {
   margin-top: 15px;
   font-size: 20px;
   font-weight: 700;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
 }
 
 .sidebar-list {
@@ -102,14 +115,22 @@ body {
 }
 
 .sidebar-responsive {
-  display: inline !important;
+  /* display: inline !important;
   position: absolute;
+  z-index: 12 !important; */
+  position: absolute !important;
+  z-index: 12 !important;
+  transform: translateX(0px) !important;
   /*
     we want the z-index of the sidebar higher so that
     the charts are not showing over the sidebar 
     on small screens
   */
-  z-index: 12 !important;
+}
+
+.sidebar-list-links{
+  color: #9e9ea4 !important;
+  text-decoration: none;
 }
 
 /* End Sidebar  */
@@ -120,12 +141,13 @@ body {
   grid-area: main;
   overflow-y: auto;
   padding: 20px 20px;
-  color: rgba(255, 255, 255, 0.95);
 }
 
 .main-title {
   display: flex;
   justify-content: space-between;
+  text-transform: uppercase;
+  color: #ffffff;
 }
 
 .main-cards {
@@ -163,6 +185,11 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  color: #ffffff;
+}
+
+.card-value {
+  color: #ffffff;
 }
 
 .card-inner > .card_icon {
@@ -192,11 +219,15 @@ body {
   }
 
   #sidebar {
-    display: none;
+    /* display: block !important; */
+    position: absolute;
+    z-index: 0;
+    transform: translateX(-240px);
   }
 
   .menu-icon {
     display: inline;
+    cursor: pointer;
   }
 
   .sidebar-title > span {
@@ -224,4 +255,32 @@ body {
   .hedaer-left {
     display: none;
   }
+}
+
+
+.MuiTableRow-root td:first-child {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.MuiTableRow-root td:last-child {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.MuiPagination-ul .Mui-selected {
+  background-color: #1D2634 !important;
+  color: #ffffff;
+  border: 1px solid #ffffff;
+}
+
+.MuiPagination-ul .Mui-disabled {
+  background-color: #919EAB !important;
+  color: #ffffff;
+  border: 1px solid #919EAB;
+}
+
+.MuiPaginationItem-ellipsis {
+  height: 32px !important;
+  border-radius: 4px !important;
 }
