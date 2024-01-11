@@ -11,7 +11,6 @@ import {
     TableContainer,
     TableHead,
     TableRow,
-    Typography,
 } from "@mui/material";
 import { getValue } from '../../pages/utils/helpers';
 import { eye, edit, trash } from "../../assets";
