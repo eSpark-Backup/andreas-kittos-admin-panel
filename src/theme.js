@@ -147,10 +147,18 @@ export const theme = createTheme({
                 },
             },
         },
+        MuiTable:{
+            styleOverrides:{
+                root:{
+                    borderCollapse:"separate",
+                    borderSpacing:"0 20px"
+                }
+            }
+        },
         MuiTableHead: {
             styleOverrides: {
                 root: {
-                    backgroundColor: "#7C7F84",
+                    backgroundColor: "#424755",
                     ".MuiTableCell-root": {
                         color: "#FFFFFF",
                     },
@@ -171,8 +179,13 @@ export const theme = createTheme({
             styleOverrides: {
                 root: {
                     "& .MuiTableCell-root": {
-                        color: "#111827",
+                        color: "white",
                         fontSize: "12px",
+                        border:"none"
+
+                    },
+                    "& .MuiTableRow-root": {
+                        backgroundColor: "#424755",
                     },
                 },
             },

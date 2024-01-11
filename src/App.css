@@ -256,3 +256,20 @@ body {
     display: none;
   }
 }
+
+
+.MuiTableRow-root td:first-child {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.MuiTableRow-root td:last-child {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.css-s5uez-MuiButtonBase-root-MuiPaginationItem-root.Mui-selected {
+background-color:  #1D2634 !important;
+color: #ffffff;
+border: 1px solid #ffffff;
+}

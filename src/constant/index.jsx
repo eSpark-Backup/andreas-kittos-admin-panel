@@ -30,6 +30,11 @@ export const sidebarTabs = [
         icons: <BsListCheck className='icon' />
     },
     {
+        name: "Orders",
+        href: "/orders",
+        icons: <BsListCheck className='icon' />
+    },
+    {
         name: "Reports",
         href: "/reports",
         icons: <BsMenuButtonWideFill className='icon' />
@@ -120,3 +125,17 @@ export const LoginInputs = [
         type:"password"
     }
 ]
+
+
+export const ordersTableData = [
+    {
+      id: 1,
+      order: "123456",
+      prdDate: "2021-10-12",
+      name: "John Doe",
+      qty: 1,
+      coupon: "123456",
+      status: "Active",
+      total: "$100",
+    },
+  ]

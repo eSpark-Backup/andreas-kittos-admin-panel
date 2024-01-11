@@ -8,6 +8,7 @@ import CustomButton from "./buttons/customButton";
 import ReportCard from "./cards/reportCard";
 import informationForm from "./forms/InformationForm";
 import TabButton from "./buttons/tabButton";
+import Table from "./tables/table";
 
 export {
     Header,
@@ -20,5 +21,6 @@ export {
     ReportCard,
     informationForm,
     TabButton,
+    Table,
     
 }
