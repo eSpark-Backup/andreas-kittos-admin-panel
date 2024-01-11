@@ -15,6 +15,7 @@ import SearchIcon from '@mui/icons-material/Search';
 const Orders = () => {
   const [value, setValue] = React.useState(0);
   const [data, setData] = useState([])
+  const [search, setSearch] = useState("")
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -33,6 +34,10 @@ const Orders = () => {
       7: "Failed"
     };
 
+    if (search.length !== 0) {
+      filteredData = filteredData.filter((item) => item.name.includes(search) || item.order.includes(search))
+    }
+
     const statusToFilter = statusMap[value];
 
     if (statusToFilter) {
@@ -40,7 +45,7 @@ const Orders = () => {
     } else {
     }
     setData(filteredData);
-  }, [value]);
+  }, [value, search]);
 
 
 
@@ -64,13 +69,13 @@ const Orders = () => {
       </Box>
       <Grid container rowGap={2} sx={{ display: "flex", justifyContent: "space-between", marginTop: "40px" }}>
         <Grid item xs={12} lg={4}>
-          <TextField placeholder='Search by order number or name' sx={{ width: "100%" }} InputProps={{ startAdornment: <SearchIcon sx={{ color: "#9E9EA4", height: "20px", width: "20px" }} /> }} />
+          <TextField placeholder='Search by order number or name' sx={{ width: "100%" }} InputProps={{ startAdornment: <SearchIcon sx={{ color: "#9E9EA4", height: "20px", width: "20px" }} /> }} onChange={(e) => setSearch(e.target.value)} />
         </Grid>
         <Grid item xs={12} lg={4} md={7}>
           <Box>
             <LocalizationProvider dateAdapter={AdapterDayjs}>
               <Stack direction={"row"} gap={2}>
-                <DatePicker label="Search from" sx={{ width: "50%" }}  />
+                <DatePicker label="Search from" sx={{ width: "50%" }} />
                 <DatePicker label="Search to" sx={{ width: "50%" }} />
               </Stack>
             </LocalizationProvider>
