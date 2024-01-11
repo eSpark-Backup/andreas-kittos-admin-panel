@@ -117,6 +117,29 @@ export const LoginInputs = [
     }, {
         label: "Password",
         placeholder: "Enter password",
-        type:"password"
+        type: "password"
     }
+]
+
+export const personalInfoInutsData = [
+    {
+        label: "First name:",
+        placeholder: "John",
+    },
+    {
+        label: "Last name:",
+        placeholder: "Doe",
+    },
+    {
+        label: "Full name:",
+        placeholder: "John Doe",
+    },
+    {
+        label: "Email:",
+        placeholder: "Johndoe123@gmail.com",
+    },
+    {
+        label: "Phone:",
+        placeholder: "0123456789",
+    },
 ]

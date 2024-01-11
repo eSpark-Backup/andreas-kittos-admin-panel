@@ -1,53 +1,30 @@
 import { Box, Grid, InputLabel, Stack, TextField } from '@mui/material'
 import React from 'react'
 import PageHeader from '../common/pageHeader'
+import { personalInfoInutsData } from '../../constant'
 
 const InformationForm = () => {
-
-    const formData = [
-        { label: 'First Name', value: 'Jhon', name: 'text', type: 'text' },
-        { label: 'Last Name', value: 'Doe', name: 'text', type: 'text' },
-        { label: 'Full Name', value: 'John Doe', name: 'text', type: 'text' },
-        { label: 'Email', value: 'johndoe123@gmail.com', name: 'email', type: 'email' },
-        { label: 'Phone', value: '0123456789', name: 'phone', type: 'tel' },
-    ];
-
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        // Your form submission logic here
-    };
 
 
 
     return (
-        <Box>
+        <Box sx={{ width: "100%" }}>
             <PageHeader title="Information" />
-
-            <br />
-
-            <Box>
-                <form onSubmit={handleSubmit}>
-                    <Grid container gap={{ xs: 2, md: 3, lg: 5 }}>
-                        {formData.map((field, index) => (
-                            <Grid item xs={12} lg={5.5} key={index}>
-                                <Stack direction="column" gap={1}>
-                                    <InputLabel sx={{ color: '#ffffff', fontSize: '14px', fontWeight: '500' }}>
-                                        {field.label}:
-                                    </InputLabel>
-                                    <TextField
-                                        disabled
-                                        name={field.name}
-                                        id={`filled-hidden-label-${index}`}
-                                        value={field.value}
-                                        fullWidth
-                                        type={field.type}
-                                    />
-                                </Stack>
-                            </Grid>
-                        ))}
+            <Grid container columnGap={12} rowGap={3} sx={{ marginTop: "20px" }}>
+                {personalInfoInutsData.map((eachItem,index) => (
+                    <Grid item md={5.5} key={index}>
+                        <Stack direction={"column"} gap={1}>
+                            <InputLabel sx={{ color: "#FFFFFF", fontSize: "14px", fontWeight: "500" }}>{eachItem.label}</InputLabel>
+                            <TextField
+                                id="filled-hidden-label-normal"
+                                value={eachItem.placeholder}
+                                fullWidth
+                                disabled
+                            />
+                        </Stack>
                     </Grid>
-                </form>
-            </Box>
+                ))}
+            </Grid>
         </Box>
     )
 }
