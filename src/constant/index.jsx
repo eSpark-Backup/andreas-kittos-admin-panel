@@ -255,3 +255,102 @@ export const personalInfoInutsData = [
         placeholder: "0123456789",
     },
 ]
+
+export const customerTabs = [
+    "All", "Active", "InActive"
+]
+
+
+export const customerTableData = [
+    {
+        id: 1,
+        customerName: "Carlo James",
+        joinDate: "September 23,2023",
+        totalOrders: 21,
+        earnings: "$100",
+        status: "Active",
+
+    },
+    {
+        id: 2,
+        customerName: "Ansolo Lazinatov",
+        joinDate: "September 23,2023",
+        totalOrders: 12,
+        earnings: "$100",
+        status: "InActive",
+
+    },
+    {
+        id: 3,
+        customerName: "Shatinon Mekalan",
+        joinDate: "September 23,2023",
+        totalOrders: 65,
+        earnings: "$100",
+        status: "Active",
+
+    },
+    {
+        id: 4,
+        customerName: "Jimmy Neutron",
+        joinDate: "September 23,2023",
+        totalOrders: 12,
+        earnings: "$100",
+        status: "InActive",
+
+    },
+    {
+        id: 5,
+        customerName: "John Doe",
+        joinDate: "September 23,2023",
+        totalOrders: 22,
+        earnings: "$100",
+        status: "Active",
+
+    },
+    {
+        id: 6,
+        customerName: "John Doe",
+        joinDate: "September 23,2023",
+        totalOrders: 23,
+        earnings: "$100",
+        status: "InActive",
+
+    },
+    {
+        id: 7,
+        customerName: "John Doe",
+        joinDate: "September 23,2023",
+        totalOrders: 30,
+        earnings: "$100",
+        status: "Active",
+
+    },
+    {
+        id: 8,
+        customerName: "John Doe",
+        joinDate: "September 23,2023",
+        totalOrders: 50,
+        earnings: "$100",
+        status: "InActive",
+
+    },
+    {
+        id: 9,
+        customerName: "John Doe",
+        joinDate: "September 23,2023",
+        totalOrders: 4,
+        earnings: "$100",
+        status: "Active",
+
+    },
+    {
+        id: 10,
+        customerName: "Carlo James",
+        joinDate: "September 23,2023",
+        totalOrders: 2,
+        earnings: "$200",
+        status: "Active",
+
+    },
+    
+]

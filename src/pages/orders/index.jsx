@@ -1,19 +1,17 @@
 import React, { useEffect, useState } from 'react'
-import { PageHeader, Table } from '../../components'
+import { PageHeader, SearchInput, Table } from '../../components'
 import { Box, Grid, Stack } from '@mui/material'
 import { columns } from '../../columns/orders'
 import { ordersTableData, ordersTabs } from '../../constant'
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
-import { TextField } from "@mui/material"
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import SearchIcon from '@mui/icons-material/Search';
 
 
 const Orders = () => {
-  const [value, setValue] = React.useState(0);
+  const [value, setValue] = useState(0);
   const [data, setData] = useState([])
   const [search, setSearch] = useState("")
 
@@ -34,9 +32,6 @@ const Orders = () => {
       7: "Failed"
     };
 
-    if (search.length !== 0) {
-      filteredData = filteredData.filter((item) => item.name.includes(search) || item.order.includes(search))
-    }
 
     const statusToFilter = statusMap[value];
 
@@ -45,10 +40,7 @@ const Orders = () => {
     } else {
     }
     setData(filteredData);
-  }, [value, search]);
-
-
-
+  }, [value]);
 
 
   return (
@@ -69,7 +61,7 @@ const Orders = () => {
       </Box>
       <Grid container rowGap={2} sx={{ display: "flex", justifyContent: "space-between", marginTop: "40px" }}>
         <Grid item xs={12} lg={4}>
-          <TextField placeholder='Search by order number or name' sx={{ width: "100%" }} InputProps={{ startAdornment: <SearchIcon sx={{ color: "#9E9EA4", height: "20px", width: "20px" }} /> }} onChange={(e) => setSearch(e.target.value)} />
+        <SearchInput setSearch={setSearch} placeholder="Search by Order Name Or ID" /> 
         </Grid>
         <Grid item xs={12} lg={4} md={7}>
           <Box>
