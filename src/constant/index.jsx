@@ -122,20 +122,104 @@ export const LoginInputs = [
     }, {
         label: "Password",
         placeholder: "Enter password",
-        type:"password"
+        type: "password"
     }
 ]
 
 
 export const ordersTableData = [
     {
-      id: 1,
-      order: "123456",
-      prdDate: "2021-10-12",
-      name: "John Doe",
-      qty: 1,
-      coupon: "123456",
-      status: "Active",
-      total: "$100",
+        id: 1,
+        order: "123456",
+        prdDate: "September 23,2023",
+        name: "Carlo James",
+        qty: 2,
+        coupon: "Java-10%",
+        status: "Pending",
+        total: "$100",
     },
-  ]
+    {
+        id: 2,
+        order: "123456",
+        prdDate: "September 23,2023",
+        name: "Carlo James",
+        qty: 2,
+        coupon: "Java-10%",
+        status: "Processing",
+        total: "$100",
+    },
+    {
+        id: 3,
+        order: "123456",
+        prdDate: "September 23,2023",
+        name: "Carlo James",
+        qty: 2,
+        coupon: "Java-10%",
+        status: "Completed",
+        total: "$100",
+    },
+    {
+        id: 4,
+        order: "123456",
+        prdDate: "September 23,2023",
+        name: "Carlo James",
+        qty: 2,
+        coupon: "Java-10%",
+        status: "Cancelled",
+        total: "$100",
+    },
+    {
+        id: 5,
+        order: "123456",
+        prdDate: "September 23,2023",
+        name: "Carlo James",
+        qty: 2,
+        coupon: "Java-10%",
+        status: "Rejected",
+        total: "$100",
+    },
+    {
+        id: 6,
+        order: "123456",
+        prdDate: "September 23,2023",
+        name: "Carlo James",
+        qty: 2,
+        coupon: "Java-10%",
+        status: "Failed",
+        total: "$100",
+    },
+    {
+        id: 7,
+        order: "123456",
+        prdDate: "September 23,2023",
+        name: "Carlo James",
+        qty: 2,
+        coupon: "Java-10%",
+        status: "On-hold",
+        total: "$100",
+    },
+    {
+        id: 8,
+        order: "123456",
+        prdDate: "September 23,2023",
+        name: "Carlo James",
+        qty: 2,
+        coupon: "Java-10%",
+        status: "Pending",
+        total: "$100",
+    },
+    {
+        id: 9,
+        order: "123456",
+        prdDate: "September 23,2023",
+        name: "Carlo James",
+        qty: 2,
+        coupon: "Java-10%",
+        status: "Refunded",
+        total: "$100",
+    },
+]
+
+export const ordersTabs = [
+    "All", "Pending", "Processing", "On-hold", "Completed", "Cancelled", "Refunded", "Failed"
+]

@@ -35,7 +35,6 @@ const DynamicTable = ({
         column,
         item
     ) => {
-        console.log(column, "column")
         const cell = column.component
             ? column.component(item)
             : getValue(item, column.key);

@@ -14,7 +14,7 @@ export const theme = createTheme({
         MuiTabs: {
             styleOverrides: {
                 indicator: {
-                    backgroundColor: '#51C9F4',
+                    backgroundColor: '#FFFFFF',
                 },
             },
         },
@@ -23,7 +23,7 @@ export const theme = createTheme({
                 root: {
                     color: '#7C7F84',
                     '&.Mui-selected': {
-                        color: '#1D3B6A',
+                        color: '#FFFFFF',
                         fontWeight: "bolder",
                     },
                 },
