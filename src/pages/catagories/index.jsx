@@ -4,7 +4,7 @@ import SearchIcon from '@mui/icons-material/Search';
 const Catagories = () => {
     return (
         <main className='main-container'>
-            <Box>
+            {/* <Box>
                 <Typography sx={{ color: "#FFFFFF", fontSize: "20px", fontWeight: "700" }}>CATEGORIES</Typography>
                 <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
                     <TextField
@@ -35,7 +35,7 @@ const Catagories = () => {
                     <Grid item xs={12} md={8} sx={{ border: "1px solid #424755", padding: "30px 10px 0px 10px", borderRadius:"10px" }}>
                     </Grid>
                 </Grid>
-            </Box>
+            </Box> */}
         </main>
     )
 }
