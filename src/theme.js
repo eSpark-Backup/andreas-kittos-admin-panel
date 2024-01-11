@@ -205,7 +205,7 @@ export const theme = createTheme({
         MuiPaginationItem: {
             styleOverrides: {
                 root: {
-                    border: "1px solid #1D3B6A",
+                    border: "1px solid #424755"
                 }
             }
         }

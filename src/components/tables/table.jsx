@@ -1,6 +1,7 @@
 import React from 'react';
 import {
     Box,
+    Button,
     LinearProgress,
     Table as MUITable,
     Pagination,
@@ -13,8 +14,12 @@ import {
     Typography,
 } from "@mui/material";
 import { getValue } from '../../pages/utils/helpers';
+import { eye, edit, trash } from "../../assets";
 
 const DynamicTable = ({
+    handleView,
+    handleEdit,
+    handleDelete,
     data,
     columns,
     isLoading,
@@ -34,7 +39,60 @@ const DynamicTable = ({
         const cell = column.component
             ? column.component(item)
             : getValue(item, column.key);
-            return cell;
+        return column.key[0] === "action" ? (
+            <Stack
+                direction="row"
+                justifyContent={"center"}
+                justifyItems="center"
+                alignItems="center"
+                spacing={1}
+            >
+                {column.component ? (
+                    cell
+                ) : (
+                    <>
+                        {!column.hideView && (
+                            <Button
+                                variant="contained"
+                                sx={{ minWidth: "initial", p: 1, background: "#263043 !important", borderRadius: "50%" }}
+                                onClick={(e) => {
+                                    e.stopPropagation();
+                                    handleView?.(item);
+                                }}
+                            >
+                                <img src={eye} alt="" width="16px" />
+                            </Button>
+                        )}
+                        {!column.hideEdit && (
+                            <Button
+                                variant="contained"
+                                sx={{ minWidth: "initial", p: 1, background: "#263043 !important", borderRadius: "50%" }}
+                                onClick={(e) => {
+                                    e.stopPropagation();
+                                    handleEdit?.()
+                                }}
+                            >
+                                <img src={edit} alt="" width="16px" />
+                            </Button>
+                        )}
+                        {!column.hideDelete && (
+                            <Button
+                                variant="contained"
+                                sx={{ minWidth: "initial", p: 1, background: "#263043 !important", borderRadius: "50%" }}
+                                onClick={(e) => {
+                                    e.stopPropagation();
+                                    handleDelete?.(item);
+                                }}
+                            >
+                                <img src={trash} alt="" width="16px" />
+                            </Button>
+                        )}
+                    </>
+                )}
+            </Stack>
+        ) : (
+            cell
+        );
     };
 
     return (
@@ -59,7 +117,7 @@ const DynamicTable = ({
                                             justifyContent={
                                                 column.key[0] === "action"
                                                     ? "flex-end"
-                                                    : "space-between"
+                                                    : "center"
                                             }
                                         >
                                             <Stack direction="row" alignItems={"center"}>
@@ -77,7 +135,7 @@ const DynamicTable = ({
 
                                         key={item.id}>
                                         {extendedColumns?.map((column) => (
-                                            <TableCell key={column.key.join(".")}>
+                                            <TableCell sx={{ textAlign: "center" }} key={column.key.join(".")}>
                                                 {generateCell(column, item)}
                                             </TableCell>
                                         ))}
