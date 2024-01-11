@@ -6,6 +6,7 @@ import Inventory from "./inventory";
 import Reports from "./reports";
 import Settings from "./settings";
 import SignIn from "./signIn";
+import Orders from "./orders";
 
 export {
     Dashboard,
@@ -16,4 +17,5 @@ export {
     Reports,
     Settings,
     SignIn,
+    Orders,
 }

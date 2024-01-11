@@ -256,3 +256,31 @@ body {
     display: none;
   }
 }
+
+
+.MuiTableRow-root td:first-child {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.MuiTableRow-root td:last-child {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.MuiPagination-ul .Mui-selected {
+  background-color: #1D2634 !important;
+  color: #ffffff;
+  border: 1px solid #ffffff;
+}
+
+.MuiPagination-ul .Mui-disabled {
+  background-color: #919EAB !important;
+  color: #ffffff;
+  border: 1px solid #919EAB;
+}
+
+.MuiPaginationItem-ellipsis {
+  height: 32px !important;
+  border-radius: 4px !important;
+}

@@ -8,7 +8,8 @@ import {
     Inventory,
     Reports,
     Settings,
-    SignIn
+    SignIn,
+    Orders
 } from '../pages';
 
 const Routes = () => {
@@ -23,6 +24,7 @@ const Routes = () => {
                 { path: "/catagories", element: <Catagories /> },
                 { path: "/customers", element: <Customers /> },
                 { path: "/inventory", element: <Inventory /> },
+                { path: "/orders", element: <Orders /> },
                 { path: "/reports", element: <Reports /> },
                 { path: "/settings", element: <Settings /> },
             ]

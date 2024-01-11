@@ -14,7 +14,7 @@ export const theme = createTheme({
         MuiTabs: {
             styleOverrides: {
                 indicator: {
-                    backgroundColor: '#51C9F4',
+                    backgroundColor: '#FFFFFF',
                 },
             },
         },
@@ -23,7 +23,7 @@ export const theme = createTheme({
                 root: {
                     color: '#7C7F84',
                     '&.Mui-selected': {
-                        color: '#1D3B6A',
+                        color: '#FFFFFF',
                         fontWeight: "bolder",
                     },
                 },
@@ -147,10 +147,18 @@ export const theme = createTheme({
                 },
             },
         },
+        MuiTable:{
+            styleOverrides:{
+                root:{
+                    borderCollapse:"separate",
+                    borderSpacing:"0 20px"
+                }
+            }
+        },
         MuiTableHead: {
             styleOverrides: {
                 root: {
-                    backgroundColor: "#7C7F84",
+                    backgroundColor: "#424755",
                     ".MuiTableCell-root": {
                         color: "#FFFFFF",
                     },
@@ -171,8 +179,13 @@ export const theme = createTheme({
             styleOverrides: {
                 root: {
                     "& .MuiTableCell-root": {
-                        color: "#111827",
+                        color: "white",
                         fontSize: "12px",
+                        border:"none"
+
+                    },
+                    "& .MuiTableRow-root": {
+                        backgroundColor: "#424755",
                     },
                 },
             },
@@ -192,7 +205,7 @@ export const theme = createTheme({
         MuiPaginationItem: {
             styleOverrides: {
                 root: {
-                    border: "1px solid #1D3B6A",
+                    border: "1px solid #424755"
                 }
             }
         }
