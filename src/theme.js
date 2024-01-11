@@ -137,13 +137,13 @@ export const theme = createTheme({
                 root: {
                     fontSize: "14px",
                     fontWeight: 500,
-                    color: "#111827",
+                    color: "#FFFFFF",
                     lineHeight: "160%",
                     paddingLeft: "6px",
                 },
                 notchedOutline: {
-                    borderColor: "#E9EAEC",
-                    borderRadius: "10px",
+                    borderColor: "#424755",
+                    borderRadius: "5px",
                 },
             },
         },
@@ -218,7 +218,7 @@ export const theme = createTheme({
             hover: "rgba(55, 65, 81, 0.04)",
             selected: "#34A6B1",
             disabledBackground: "#F1F2F4",
-            disabled: "rgba(55, 65, 81, 0.26)",
+            disabled: "#424755",
         },
         background: {
             default: "#FAFAFA",

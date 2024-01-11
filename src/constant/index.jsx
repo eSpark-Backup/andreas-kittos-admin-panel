@@ -218,8 +218,40 @@ export const ordersTableData = [
         status: "Refunded",
         total: "$100",
     },
+    {
+        id: 10,
+        order: "123456",
+        prdDate: "September 23,2023",
+        name: "Carlo James",
+        qty: 2,
+        coupon: "Java-10%",
+        status: "Refunded",
+        total: "$100",
+    },
 ]
 
 export const ordersTabs = [
     "All", "Pending", "Processing", "On-hold", "Completed", "Cancelled", "Refunded", "Failed"
+]
+export const personalInfoInutsData = [
+    {
+        label: "First name:",
+        placeholder: "John",
+    },
+    {
+        label: "Last name:",
+        placeholder: "Doe",
+    },
+    {
+        label: "Full name:",
+        placeholder: "John Doe",
+    },
+    {
+        label: "Email:",
+        placeholder: "Johndoe123@gmail.com",
+    },
+    {
+        label: "Phone:",
+        placeholder: "0123456789",
+    },
 ]
