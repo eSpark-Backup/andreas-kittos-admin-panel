@@ -9,7 +9,7 @@ import ReportCard from "./cards/reportCard";
 import informationForm from "./forms/InformationForm";
 import TabButton from "./buttons/tabButton";
 import Table from "./tables/table";
-import SearchInput from "./inputs/SearchInput";
+import SearchInput from "./inputs/searchInput"
 
 export {
     Header,
