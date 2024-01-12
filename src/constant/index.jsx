@@ -352,5 +352,108 @@ export const customerTableData = [
         status: "Active",
 
     },
-    
+
+]
+
+export const userData = [
+    {
+        title: "Name",
+        description: "John Doe"
+    },
+    {
+        title: "Email",
+        description: "Johndoe@gmail.com"
+    },
+    {
+        title: "Phone",
+        description: "123456789"
+    },
+    {
+        title: "Joined Date",
+        description: "25-03-2023"
+    },
+]
+
+export const customerDetailsTableData = [
+    {
+        id: 1,
+        order: "123456",
+        prdDate: "September 23,2023",
+        qty: 2,
+        coupon: "Java-10%",
+        status: "Completed",
+        total: "$100",
+    },
+    {
+        id: 2,
+        order: "123456",
+        prdDate: "September 23,2023",
+        qty: 2,
+        coupon: "Java-10%",
+        status: "Completed",
+        total: "$100",
+    },
+    {
+        id: 3,
+        order: "123456",
+        prdDate: "September 23,2023",
+        qty: 2,
+        coupon: "Java-10%",
+        status: "Pending",
+        total: "$100",
+    },
+    {
+        id: 4,
+        order: "123456",
+        prdDate: "September 23,2023",
+        qty: 2,
+        coupon: "Java-10%",
+        status: "On-hold",
+        total: "$100",
+    },
+    {
+        id: 5,
+        order: "123456",
+        prdDate: "September 23,2023",
+        qty: 2,
+        coupon: "Java-10%",
+        status: "Failed",
+        total: "$100",
+    },
+    {
+        id: 6,
+        order: "123456",
+        prdDate: "September 23,2023",
+        qty: 2,
+        coupon: "Java-10%",
+        status: "Pending",
+        total: "$100",
+    },
+    {
+        id: 7,
+        order: "123456",
+        prdDate: "September 23,2023",
+        qty: 2,
+        coupon: "Java-10%",
+        status: "Refunded",
+        total: "$100",
+    },
+    {
+        id: 8,
+        order: "123456",
+        prdDate: "September 23,2023",
+        qty: 2,
+        coupon: "Java-10%",
+        status: "Cancelled",
+        total: "$100",
+    },
+    {
+        id: 9,
+        order: "123456",
+        prdDate: "September 23,2023",
+        qty: 2,
+        coupon: "Java-10%",
+        status: "Processing",
+        total: "$100",
+    },
 ]
