@@ -1,5 +1,6 @@
-import SignInBg from './images/signin-bg.svg';
+
 import SignInBgSm from './images/signInbg-sm.svg';
+import SignInBg from './images/signIn-bg.svg'
 import reportImg from './images/report-img.svg';
 
 //icons
