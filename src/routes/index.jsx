@@ -2,38 +2,35 @@ import { Navigate, useRoutes } from 'react-router-dom';
 import MainLayout from '../layout'
 import {
     Dashboard,
-    Products,
     Catagories,
     Customers,
-    Inventory,
     Reports,
     Settings,
     SignIn,
-    Orders
+    Orders,
+    NotFound
 } from '../pages';
 import CustomerDetails from '../pages/customerDetails';
 import AddProduct from '../pages/addProduct';
 
 const Routes = () => {
     return useRoutes([
-        // { path: "/sign-in", element: <Dashboard />, },
         {
             path: "/", element: <MainLayout />,
             children: [
-               
+
                 { path: "/dashboard", element: <Dashboard /> },
-                { path: "/products", element: <Products /> },
+                { path: "/", element: <Dashboard /> },
                 { path: "/catagories", element: <Catagories /> },
                 { path: "/customers", element: <Customers /> },
                 { path: "/customer/:id", element: <CustomerDetails /> },
-                { path: "/inventory", element: <Inventory /> },
                 { path: "/orders", element: <Orders /> },
                 { path: "/reports", element: <Reports /> },
                 { path: "/settings", element: <Settings /> },
                 { path: "/addProduct", element: <AddProduct /> },
             ]
         },
-        { path: "404", element: <div>not found</div> },
+        { path: "404", element: <NotFound/> },
         { path: "/sign-in", element: <SignIn /> },
         {
             path: "*",

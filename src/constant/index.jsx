@@ -10,11 +10,6 @@ export const sidebarTabs = [
         icons: <BsGrid1X2Fill className='icon' />
     },
     {
-        name: "Products",
-        href: "/products",
-        icons: <BsFillArchiveFill className='icon' />
-    },
-    {
         name: "Categories",
         href: "/catagories",
         icons: <BsFillGrid3X3GapFill className='icon' />
@@ -23,11 +18,6 @@ export const sidebarTabs = [
         name: "Customers",
         href: "/customers",
         icons: <BsPeopleFill className='icon' />
-    },
-    {
-        name: "Inventory",
-        href: "/inventory",
-        icons: <BsListCheck className='icon' />
     },
     {
         name: "Orders",
@@ -463,4 +453,132 @@ export const addProductData = [
         label:"Product name:",
         placeholder:"Enter here..."
     }
+
+]
+export const columns = () => {
+    return [
+        { name: "Product Name", key: "productName" },
+        { name: "Category", key: "category" },
+        { name: "Total Orders", key: "totalOrders" },
+        { name: "Price", key: "price" },
+        { name: "", key: "action",
+         
+      },
+    ];
+};
+
+export const catagoriesTableData = [
+    {
+        id: 1,
+        productName: "Belt Combination / Leather...",
+        category: "Laundry",
+        totalOrders: 21,
+        price: "$100",
+    },
+    {
+        id: 2,
+        productName: "Belt textile",
+        category: "Ironing",
+        totalOrders: 21,
+        price: "$100",
+    },
+    {
+        id: 3,
+        productName: "Corset",
+        category: "Laundry",
+        totalOrders: 21,
+        price: "$100",
+    },
+    {
+        id: 4,
+        productName: "Gloves leather / suede",
+        category: "Ironing",
+        totalOrders: 21,
+        price: "$100",
+    },
+    {
+        id: 5,
+        productName: "Gloves mix material textile...",
+        category: "Laundry",
+        totalOrders: 21,
+        price: "$100",
+    },
+    {
+        id: 6,
+        productName: "T-Shirt",
+        category: "Ironing",
+        totalOrders: 21,
+        price: "$100",
+    },
+    {
+        id: 7,
+        productName: "T-Shirt",
+        category: "Laundry",
+        totalOrders: 21,
+        price: "$100",
+    },
+    {
+        id: 8,
+        productName: "T-Shirt",
+        category: "Ironing",
+        totalOrders: 21,
+        price: "$100",
+    },
+    {
+        id: 9,
+        productName: "T-Shirt",
+        category: "Laundry",
+        totalOrders: 21,
+        price: "$100",
+    },
+    {
+        id: 10,
+        productName: "T-Shirt",
+        category: "Ironing",
+        totalOrders: 21,
+        price: "$100",
+    },
+    {
+        id: 11,
+        productName: "T-Shirt",
+        category: "Dry cleaning",
+        totalOrders: 21,
+        price: "$100",
+    },
+    {
+        id: 12,
+        productName: "T-Shirt",
+        category: "Dry cleaning",
+        totalOrders: 21,
+        price: "$100",
+    },
+    {
+        id: 13,
+        productName: "T-Shirt",
+        category: "Dry cleaning",
+        totalOrders: 21,
+        price: "$100",
+    },
+    {
+        id: 14,
+        productName: "T-Shirt",
+        category: "Dry cleaning",
+        totalOrders: 21,
+        price: "$100",
+    },
+    {
+        id: 15,
+        productName: "T-Shirt",
+        category: "Dry cleaning",
+        totalOrders: 21,
+        price: "$100",
+    },
+    {
+        id: 16,
+        productName: "T-Shirt",
+        category: "Dry cleaning",
+        totalOrders: 21,
+        price: "$100",
+    },
+
 ]
