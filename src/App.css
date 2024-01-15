@@ -302,3 +302,28 @@ body {
 }
 
 /* Handle on hover */
+
+textarea{
+  resize: none;
+}
+textarea:placeholder-shown{
+  color: #899DB7;
+  font-family: 'Inter', sans-serif;
+}
+
+.tags-input{
+  height: 90px;
+}
+.rti--container, .rti--input {
+  background: transparent !important;
+  color: white !important;
+}
+.rti--container{
+  border: 1px solid #424755 !important;
+  min-height: 90px;
+  align-items: flex-start !important;
+}
+.rti--tag{
+  color: #FFFFFF !important;
+  background-color: #9E9EA4 !important;
+}

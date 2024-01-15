@@ -457,3 +457,10 @@ export const customerDetailsTableData = [
         total: "$100",
     },
 ]
+
+export const addProductData = [
+    {
+        label:"Product name:",
+        placeholder:"Enter here..."
+    }
+]
