@@ -1,8 +1,7 @@
-import { Box, Button, Grid, IconButton, InputBase, InputLabel, MenuItem, Paper, Select, Stack, TextField, TextareaAutosize, Typography } from '@mui/material'
+import { Box, Button, Grid, IconButton, InputBase, InputLabel, Paper, Stack, TextField, Typography } from '@mui/material'
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Back from "../../assets/icons/Back.svg"
-import Up from "../../assets/icons/Up.svg"
 import Euro from "../../assets/icons/euro.svg"
 import Upload from "../../assets/images/Upload.svg"
 import { TagsInput } from 'react-tag-input-component'
@@ -10,9 +9,6 @@ import { CustomButton } from '../../components'
 import styled from '@emotion/styled'
 import Autocomplete from '@mui/material/Autocomplete';
 import Checkbox from '@mui/material/Checkbox';
-import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
-import CheckBoxIcon from '@mui/icons-material/CheckBox';
-import CheckIcon from '@mui/icons-material/Check';
 import checked from "../../assets/icons/checked.svg"
 import notChecked from "../../assets/icons/notChecked.svg"
 
@@ -35,9 +31,6 @@ const AddProduct = () => {
     const handleFileChange = (event) => {
         const file = event.target.files[0];
     };
-
-    const icon = <CheckBoxOutlineBlankIcon fontSize="small" />;
-    const checkedIcon = <CheckBoxIcon fontSize="small" />;
 
     return (
         <main className='main-container'>
@@ -65,7 +58,7 @@ const AddProduct = () => {
                                 <Autocomplete
                                     multiple
                                     id="checkboxes-tags-demo"
-                                    options={top100Films}
+                                    options={categoryOptions}
                                     disableCloseOnSelect
                                     getOptionLabel={(option) => option.title}
                                     PaperComponent={({ children }) => (
@@ -87,22 +80,6 @@ const AddProduct = () => {
                                         <TextField {...params} />
                                     )}
                                 />
-                                {/* <Select
-                                    labelId="demo-select-small-label"
-                                    id="demo-select-small"
-                                    label="Age"
-                                    IconComponent={() => (
-                                        <img
-                                            src={Up}
-                                            alt="Dropdown Icon"
-                                            style={{ marginRight: "12px", height: "15px", width: "15px", cursor: "pointer" }}
-                                        />
-                                    )}
-                                >
-                                    <MenuItem value={10}>Ten</MenuItem>
-                                    <MenuItem value={20}>Twenty</MenuItem>
-                                    <MenuItem value={30}>Thirty</MenuItem>
-                                </Select> */}
                             </Stack>
                             <Stack direction={"column"} gap={1}>
                                 <>
@@ -131,7 +108,6 @@ const AddProduct = () => {
                                     placeHolder="Enter here..."
                                     classNames={"tags-input"}
                                     beforeAddValidate={(tag) => {
-                                        // Custom validation logic
                                         if (tag.trim().startsWith("#")) {
                                             return true;
                                         } else {
@@ -161,7 +137,7 @@ const AddProduct = () => {
     )
 }
 
-const top100Films = [
+const categoryOptions = [
     { title: 'Laundry' },
     { title: 'Ironing' },
     { title: 'Dry Cleaning' },
