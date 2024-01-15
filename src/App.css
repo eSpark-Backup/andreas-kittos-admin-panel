@@ -327,3 +327,14 @@ textarea:placeholder-shown{
   color: #FFFFFF !important;
   background-color: #9E9EA4 !important;
 }
+
+
+.css-1h51icj-MuiAutocomplete-root .MuiAutocomplete-tag{
+  background: transparent !important;
+}
+.css-1vefbgs-MuiButtonBase-root-MuiChip-root .MuiChip-deleteIcon{
+  display: none;
+}
+.css-9f4dnw-MuiButtonBase-root-MuiIconButton-root-MuiAutocomplete-clearIndicator{
+  display: none !important;
+}

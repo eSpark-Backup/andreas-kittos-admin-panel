@@ -8,6 +8,13 @@ import Upload from "../../assets/images/Upload.svg"
 import { TagsInput } from 'react-tag-input-component'
 import { CustomButton } from '../../components'
 import styled from '@emotion/styled'
+import Autocomplete from '@mui/material/Autocomplete';
+import Checkbox from '@mui/material/Checkbox';
+import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
+import CheckBoxIcon from '@mui/icons-material/CheckBox';
+import CheckIcon from '@mui/icons-material/Check';
+import checked from "../../assets/icons/checked.svg"
+import notChecked from "../../assets/icons/notChecked.svg"
 
 
 const AddProduct = () => {
@@ -27,14 +34,16 @@ const AddProduct = () => {
 
     const handleFileChange = (event) => {
         const file = event.target.files[0];
-        console.log(file)
-      };
+    };
+
+    const icon = <CheckBoxOutlineBlankIcon fontSize="small" />;
+    const checkedIcon = <CheckBoxIcon fontSize="small" />;
 
     return (
         <main className='main-container'>
             <Typography sx={{ color: "white", cursor: "pointer", width: "fit-content" }}><img src={Back} alt='Back' /> Back</Typography>
-            <Box sx={{ display: "flex", justifyContent: {xs:"", md:"center"}, alignItems: {xs:"", md:"center"}, marginTop: "20px"}}>
-                <Box sx={{ width: {xs:"100%", md:"100%", lg:"65%", xl:"55%"}, border: "1px solid #424755", height: "100%", borderRadius: "10px", py: "20px", px: {xs:"5px", md:"10px", lg:"30px"} }}>
+            <Box sx={{ display: "flex", justifyContent: { xs: "", md: "center" }, alignItems: { xs: "", md: "center" }, marginTop: "20px" }}>
+                <Box sx={{ width: { xs: "100%", md: "100%", lg: "65%", xl: "55%" }, border: "1px solid #424755", height: "100%", borderRadius: "10px", py: "20px", px: { xs: "5px", md: "10px", lg: "30px" } }}>
                     <Typography sx={{ color: "#FFFFFF", fontWeight: "700" }}>ADD PRODUCT</Typography>
                     <Grid container sx={{ marginTop: "30px" }} columnSpacing={10}>
                         <Grid item xs={12} md={6} xl={6.5} sx={{ display: "flex", flexDirection: "column", rowGap: "30px" }}>
@@ -53,7 +62,32 @@ const AddProduct = () => {
                             </Stack>
                             <Stack direction={"column"} gap={1}>
                                 <InputLabel sx={{ color: "#FFFFFF", fontSize: "14px", fontWeight: "500" }}>Select category:</InputLabel>
-                                <Select
+                                <Autocomplete
+                                    multiple
+                                    id="checkboxes-tags-demo"
+                                    options={top100Films}
+                                    disableCloseOnSelect
+                                    getOptionLabel={(option) => option.title}
+                                    PaperComponent={({ children }) => (
+                                        <Paper style={{ background: 'rgb(29, 38, 52)' }}>{children}</Paper>
+                                    )}
+                                    renderOption={(props, option, { selected }) => (
+                                        <li {...props}>
+                                            <Checkbox
+                                                style={{ marginRight: 8 }}
+                                                checked={selected}
+                                                icon={<img src={notChecked} alt='Checked'/>}
+                                                checkedIcon={<img src={checked} alt='Box'/>}
+                                            />
+                                            {option.title}
+
+                                        </li>
+                                    )}
+                                    renderInput={(params) => (
+                                        <TextField {...params} />
+                                    )}
+                                />
+                                {/* <Select
                                     labelId="demo-select-small-label"
                                     id="demo-select-small"
                                     label="Age"
@@ -68,7 +102,7 @@ const AddProduct = () => {
                                     <MenuItem value={10}>Ten</MenuItem>
                                     <MenuItem value={20}>Twenty</MenuItem>
                                     <MenuItem value={30}>Thirty</MenuItem>
-                                </Select>
+                                </Select> */}
                             </Stack>
                             <Stack direction={"column"} gap={1}>
                                 <>
@@ -108,11 +142,11 @@ const AddProduct = () => {
                             </Stack>
 
                         </Grid>
-                        <Grid item xs={12} md={6} xl={5.5} sx={{marginTop:{xs:"10px", lg:"0px"}}}>
+                        <Grid item xs={12} md={6} xl={5.5} sx={{ marginTop: { xs: "10px", lg: "0px" } }}>
                             <Box sx={{ width: { xs: "100%", md: "100%", xl: "80%" }, height: "300px", border: "1px solid #424755", borderRadius: "5px", display: "flex", justifyContent: 'center', alignItems: "center" }}>
                                 <img src={Upload} alt="Upload Icon" />
                             </Box>
-                            <Button component="label" variant="contained" sx={{ marginTop: "10px", width: {xs:"100%", xl:"82%"} }}>
+                            <Button component="label" variant="contained" sx={{ marginTop: "10px", width: { xs: "100%", xl: "82%" } }}>
                                 Upload file
                                 <VisuallyHiddenInput type="file" onChange={handleFileChange} />
                             </Button>
@@ -126,5 +160,11 @@ const AddProduct = () => {
         </main>
     )
 }
+
+const top100Films = [
+    { title: 'Laundry' },
+    { title: 'Ironing' },
+    { title: 'Dry Cleaning' },
+];
 
 export default AddProduct
