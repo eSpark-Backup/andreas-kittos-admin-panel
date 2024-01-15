@@ -11,6 +11,7 @@ import {
     SignIn,
     Orders
 } from '../pages';
+import CustomerDetails from '../pages/customerDetails';
 
 const Routes = () => {
     return useRoutes([
@@ -23,6 +24,7 @@ const Routes = () => {
                 { path: "/products", element: <Products /> },
                 { path: "/catagories", element: <Catagories /> },
                 { path: "/customers", element: <Customers /> },
+                { path: "/customer/:id", element: <CustomerDetails /> },
                 { path: "/inventory", element: <Inventory /> },
                 { path: "/orders", element: <Orders /> },
                 { path: "/reports", element: <Reports /> },

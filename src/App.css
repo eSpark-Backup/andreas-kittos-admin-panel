@@ -284,3 +284,21 @@ body {
   height: 32px !important;
   border-radius: 4px !important;
 }
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background:  #263043; 
+  border-radius: 10px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #424755; 
+  border-radius: 10px;
+}
+
+/* Handle on hover */
