@@ -1,9 +1,9 @@
 import { Box, Button, Grid, IconButton, InputBase, InputLabel, MenuItem, Paper, Select, Stack, TextField, TextareaAutosize, Typography } from '@mui/material'
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import Back from "../../assets/icons/Back.png"
-import Up from "../../assets/icons/Up.png"
-import Euro from "../../assets/icons/euro.png"
+import Back from "../../assets/icons/Back.svg"
+import Up from "../../assets/icons/Up.svg"
+import Euro from "../../assets/icons/euro.svg"
 import Upload from "../../assets/images/Upload.svg"
 import { TagsInput } from 'react-tag-input-component'
 import { CustomButton } from '../../components'
