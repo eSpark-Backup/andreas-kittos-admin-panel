@@ -11,6 +11,7 @@ import {
     NotFound
 } from '../pages';
 import CustomerDetails from '../pages/customerDetails';
+import AddProduct from '../pages/addProduct';
 
 const Routes = () => {
     return useRoutes([
@@ -26,6 +27,7 @@ const Routes = () => {
                 { path: "/orders", element: <Orders /> },
                 { path: "/reports", element: <Reports /> },
                 { path: "/settings", element: <Settings /> },
+                { path: "/addProduct", element: <AddProduct /> },
             ]
         },
         { path: "404", element: <NotFound/> },

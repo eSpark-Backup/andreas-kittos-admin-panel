@@ -5,7 +5,7 @@ import { Box, Grid, Stack, Typography } from '@mui/material';
 import user from "../../assets/images/User.svg"
 import { userData } from '../../constant';
 import CustomerOrders from '../../components/customerOrders/CustomerOrders';
-import Back from "../../assets/icons/Back.png"
+import Back from "../../assets/icons/Back.svg"
 
 const CustomerDetails = () => {
     const { id } = useParams();

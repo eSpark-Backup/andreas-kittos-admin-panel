@@ -448,8 +448,13 @@ export const customerDetailsTableData = [
     },
 ]
 
+export const addProductData = [
+    {
+        label:"Product name:",
+        placeholder:"Enter here..."
+    }
 
-
+]
 export const columns = () => {
     return [
         { name: "Product Name", key: "productName" },
