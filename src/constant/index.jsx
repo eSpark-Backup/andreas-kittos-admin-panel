@@ -1,6 +1,6 @@
 import {
     BsGrid1X2Fill, BsFillArchiveFill, BsFillGrid3X3GapFill, BsPeopleFill,
-    BsListCheck, BsMenuButtonWideFill, BsFillGearFill, BsFillBellFill
+    BsListCheck, BsMenuButtonWideFill, BsFillGearFill, BsFillBellFill, BsCartPlus
 } from 'react-icons/bs'
 
 export const sidebarTabs = [
@@ -22,7 +22,7 @@ export const sidebarTabs = [
     {
         name: "Orders",
         href: "/orders",
-        icons: <BsListCheck className='icon' />
+        icons: <BsCartPlus className='icon' />
     },
     {
         name: "Reports",

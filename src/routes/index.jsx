@@ -12,6 +12,7 @@ import {
 } from '../pages';
 import CustomerDetails from '../pages/customerDetails';
 import AddProduct from '../pages/addProduct';
+import ProductDetails from '../pages/productDetails';
 
 const Routes = () => {
     return useRoutes([
@@ -28,6 +29,7 @@ const Routes = () => {
                 { path: "/reports", element: <Reports /> },
                 { path: "/settings", element: <Settings /> },
                 { path: "/addProduct", element: <AddProduct /> },
+                { path: "/productDetails/:id/:status", element: <ProductDetails /> },
             ]
         },
         { path: "404", element: <NotFound/> },
