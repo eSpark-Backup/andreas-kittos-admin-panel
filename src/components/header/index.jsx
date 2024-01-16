@@ -1,4 +1,3 @@
-import { BsPersonCircle } from 'react-icons/bs'
 import { GiHamburgerMenu } from 'react-icons/gi'
 import { BsPersonCircle }
   from 'react-icons/bs'

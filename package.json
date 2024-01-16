@@ -24,11 +24,8 @@
     "react-icons": "^4.12.0",
     "react-redux": "^9.0.4",
     "react-router-dom": "^6.14.0",
-<<<<<<< HEAD
     "react-toastify": "^10.0.1",
-=======
     "react-tag-input-component": "^2.0.2",
->>>>>>> 97a24569b52d0e51fbbe560e26d1b2b15f120797
     "recharts": "^2.10.3",
     "yup": "^1.3.3"
   },
