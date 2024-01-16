@@ -59,6 +59,47 @@ body {
 .header-right{
   display: flex;
   column-gap: 20px;
+  position: relative;
+}
+
+.head-dropdown{
+  top: 28px;
+  width: 200px;
+  background-color: #263043;
+  position: absolute;
+  right: 10px;
+  border-radius: 5px;
+  padding: 15px 0px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 9px;
+}
+.dropdown-top{
+  display: flex;
+  column-gap: 6px;
+  justify-content: center;
+  align-items: center;
+}
+.dropdown-top img{
+  width: 30px;
+  height: 30px;
+}
+.head-dropdown button{
+  background-color: #FFFFFF;
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  margin: 0px auto;
+  color: #FF0000;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  column-gap: 5px;
+}
+.head-dropdown a{
+  text-decoration: none;
 }
 /* End Header  */
 
@@ -299,4 +340,44 @@ body {
 
 .decoration-none {
   text-decoration: none;
+/* Handle on hover */
+}
+
+textarea{
+  resize: none;
+  color: white;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+}
+textarea:placeholder-shown{
+  color: #899DB7;
+  font-family: 'Inter', sans-serif;
+}
+
+.tags-input{
+  height: 90px;
+}
+.rti--container, .rti--input {
+  background: transparent !important;
+  color: white !important;
+}
+.rti--container{
+  border: 1px solid #424755 !important;
+  min-height: 90px;
+  align-items: flex-start !important;
+}
+.rti--tag{
+  color: #FFFFFF !important;
+  background-color: #9E9EA4 !important;
+}
+
+
+.css-1h51icj-MuiAutocomplete-root .MuiAutocomplete-tag{
+  background: transparent !important;
+}
+.css-1vefbgs-MuiButtonBase-root-MuiChip-root .MuiChip-deleteIcon{
+  display: none;
+}
+.css-9f4dnw-MuiButtonBase-root-MuiIconButton-root-MuiAutocomplete-clearIndicator{
+  display: none !important;
 }

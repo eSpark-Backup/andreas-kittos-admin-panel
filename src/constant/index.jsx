@@ -1,6 +1,6 @@
 import {
     BsGrid1X2Fill, BsFillArchiveFill, BsFillGrid3X3GapFill, BsPeopleFill,
-    BsListCheck, BsMenuButtonWideFill, BsFillGearFill, BsFillBellFill
+    BsListCheck, BsMenuButtonWideFill, BsFillGearFill, BsFillBellFill, BsCartPlus
 } from 'react-icons/bs'
 import { reportImg } from '../assets';
 
@@ -23,7 +23,7 @@ export const sidebarTabs = [
     {
         name: "Orders",
         href: "/orders",
-        icons: <BsListCheck className='icon' />
+        icons: <BsCartPlus className='icon' />
     },
     {
         name: "Reports",
@@ -449,8 +449,13 @@ export const customerDetailsTableData = [
     },
 ]
 
+export const addProductData = [
+    {
+        label:"Product name:",
+        placeholder:"Enter here..."
+    }
 
-
+]
 export const columns = () => {
     return [
         { name: "Product Name", key: "productName" },
