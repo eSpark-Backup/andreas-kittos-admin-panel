@@ -76,14 +76,14 @@ const Catagories = () => {
                                         isLoading={false}
                                         total={data.length}
                                         handleDelete={handleDelete}
-                                        handleEdit={(item) => navigate(`/productDetails/${item.id}/edit`)}
-                                        handleView={(item) => navigate(`/productDetails/${item.id}/view`)}
+                                        handleEdit={(item) => navigate(`/product-details/${item.id}/edit`)}
+                                        handleView={(item) => navigate(`/product-details/${item.id}/view`)}
                                     />
                                 </Box>
                             </Box>
 
                             <Box>
-                                <Link to={"/addProduct"}>
+                                <Link to={"/add-Product"}>
                                     <CustomButton sx={{ width: "100%", margin: "10px 0px" }}> Add New Product</CustomButton>
                                 </Link>
                             </Box>

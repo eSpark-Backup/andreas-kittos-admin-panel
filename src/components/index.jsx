@@ -13,6 +13,8 @@ import SearchInput from "./inputs/searchInput"
 import ConfirmationModal from "./modals/confirmation-modal";
 import MenuTab from "./common/menuTab";
 import CustomInput from "./inputs/customInput";
+import BackBtn from "./buttons/backBtn";
+import ChartLabel from "./common/chartLabel";
 
 export {
     Header,
@@ -30,5 +32,7 @@ export {
     ConfirmationModal,
     MenuTab,
     CustomInput,
+    BackBtn,
+    ChartLabel,
     
 }

@@ -8,11 +8,12 @@ import {
     Settings,
     SignIn,
     Orders,
-    NotFound
+    NotFound,
 } from '../pages';
 import CustomerDetails from '../pages/customerDetails';
 import AddProduct from '../pages/addProduct';
 import ProductDetails from '../pages/productDetails';
+import OrderDetails from '../pages/order-detail';
 
 const Routes = () => {
     return useRoutes([
@@ -27,8 +28,9 @@ const Routes = () => {
                 { path: "/orders", element: <Orders /> },
                 { path: "/reports", element: <Reports /> },
                 { path: "/settings", element: <Settings /> },
-                { path: "/addProduct", element: <AddProduct /> },
-                { path: "/productDetails/:id/:status", element: <ProductDetails /> },
+                { path: "/add-Product", element: <AddProduct /> },
+                { path: "/product-details/:id/:status", element: <ProductDetails /> },
+                { path: "/order-details/:id", element: <OrderDetails /> },
             ]
         },
         { path: "404", element: <NotFound/> },

@@ -5,7 +5,7 @@ import Back from "../../assets/icons/Back.svg"
 import Euro from "../../assets/icons/euro.svg"
 import Upload from "../../assets/images/Upload.svg"
 import { TagsInput } from 'react-tag-input-component'
-import { CustomButton } from '../../components'
+import { BackBtn, CustomButton } from '../../components'
 import styled from '@emotion/styled'
 import Autocomplete from '@mui/material/Autocomplete';
 import Checkbox from '@mui/material/Checkbox';
@@ -35,7 +35,7 @@ const AddProduct = () => {
 
     return (
         <main className='main-container'>
-            <Typography onClick={()=>navigate(-1)} sx={{ color: "white", cursor: "pointer", width: "fit-content" }}><img src={Back} alt='Back' /> Back</Typography>
+             <BackBtn />
             <Box sx={{ display: "flex", justifyContent: { xs: "", md: "center" }, alignItems: { xs: "", md: "center" }, marginTop: "20px" }}>
                 <Box sx={{ width: { xs: "100%", md: "100%", lg: "65%", xl: "55%" }, border: "1px solid #424755", height: "100%", borderRadius: "10px", py: "20px", px: { xs: "5px", md: "10px", lg: "30px" } }}>
                     <Typography sx={{ color: "#FFFFFF", fontWeight: "700" }}>ADD PRODUCT</Typography>

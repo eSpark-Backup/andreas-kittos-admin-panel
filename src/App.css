@@ -234,11 +234,10 @@ body {
 }
 
 .charts {
-  display: grid;
-  /* grid-template-columns: 1fr 1fr; */
-  gap: 20px;
-  margin-top: 60px;
+  /* display: flex; */
   height: 500px;
+  /* grid-template-columns: 1fr 1fr; */
+  margin-top: 60px;
 } 
 
 /* End Main  */

@@ -47,57 +47,57 @@ export const chartData = [
     {
         name: 'Feb',
         revenue: 20000,
-        orders: 6000,
+        orders: 4500,
     },
     {
         name: 'Mar',
         revenue: 30000,
-        orders: 9000,
+        orders: 11000,
     },
     {
         name: 'Apr',
         revenue: 40000,
-        orders: 12000,
+        orders: 13500,
     },
     {
         name: 'May',
         revenue: 50000,
-        orders: 15000,
+        orders: 16000,
     },
     {
         name: 'Jun',
         revenue: 60000,
-        orders: 18000,
+        orders: 17000,
     },
     {
         name: 'Jul',
         revenue: 70000,
-        orders: 21000,
+        orders: 19600,
     },
     {
         name: 'Aug',
         revenue: 80000,
-        orders: 24000,
+        orders: 22050,
     },
     {
         name: 'Sep',
         revenue: 90000,
-        orders: 27000,
+        orders: 26300,
     },
     {
         name: 'Oct',
         revenue: 100000,
-        orders: 30000,
+        orders: 29800,
     },
     {
         name: 'Nov',
         revenue: 110000,
-        orders: 33000,
+        orders: 30060,
     },
     {
         name: 'Dec',
         revenue: 120000,
-        orders: 36000,
+        orders: 32000,
     },
  
 ];
