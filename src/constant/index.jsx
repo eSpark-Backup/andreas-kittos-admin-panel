@@ -2,6 +2,7 @@ import {
     BsGrid1X2Fill, BsFillArchiveFill, BsFillGrid3X3GapFill, BsPeopleFill,
     BsListCheck, BsMenuButtonWideFill, BsFillGearFill, BsFillBellFill
 } from 'react-icons/bs'
+import { reportImg } from '../assets';
 
 export const sidebarTabs = [
     {
@@ -30,7 +31,7 @@ export const sidebarTabs = [
         icons: <BsMenuButtonWideFill className='icon' />
     },
     {
-        name: "Setting",
+        name: "Settings",
         href: "/settings",
         icons: <BsFillGearFill className='icon' />
     },
@@ -576,4 +577,59 @@ export const catagoriesTableData = [
         price: "$100",
     },
 
+]
+
+export  const cateogoryTabs = [
+    { title: 'Laundry', id: 1 },
+    { title: 'Ironing', id: 2 },
+    { title: 'Dry Cleaning', id: 3 },
+
+];
+
+export const reportData = [
+    {
+      img: reportImg,
+      title: "Sales reports",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor",
+      btnText: "Download",
+    },
+    {
+      img: reportImg,
+      title: "Order Reports",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor",
+      btnText: "Download",
+    },
+    {
+      img: reportImg,
+      title: "Inventory management reports",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor",
+      btnText: "Download",
+    },
+  ];
+
+  export const SettingsTabs = [
+    { title: 'Personal info', id: 1 },
+    { title: 'Change password', id: 2 },
+];
+
+
+export const settingsPasswordFields = [
+    {
+        id: 1,
+        label: "Current password:",
+        placeholder: "John",
+        type: "password"
+    },
+    {
+        id: 2,
+        label: "New password:",
+        placeholder: "John",
+        type: "password"
+    },
+    {
+        id: 3,
+        label: "Confirm password:",
+        placeholder: "John",
+        type: "password"
+    },
 ]

@@ -10,6 +10,9 @@ import informationForm from "./forms/InformationForm";
 import TabButton from "./buttons/tabButton";
 import Table from "./tables/table";
 import SearchInput from "./inputs/searchInput"
+import ConfirmationModal from "./modals/confirmation-modal";
+import MenuTab from "./common/menuTab";
+import CustomInput from "./inputs/customInput";
 
 export {
     Header,
@@ -24,5 +27,8 @@ export {
     TabButton,
     Table,
     SearchInput,
+    ConfirmationModal,
+    MenuTab,
+    CustomInput,
     
 }

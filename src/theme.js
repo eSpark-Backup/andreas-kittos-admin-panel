@@ -208,7 +208,17 @@ export const theme = createTheme({
                     border: "1px solid #424755"
                 }
             }
-        }
+        },
+        MuiModal: {
+            styleOverrides: {
+                root: {
+                    "& .MuiBackdrop-root": {
+                        backgroundColor: "rgba(0, 0, 0, 0.5)",
+                        border: "none",
+                    },
+                },
+            },
+        },
     },
 
     palette: {

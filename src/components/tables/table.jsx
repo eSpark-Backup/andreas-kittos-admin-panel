@@ -67,7 +67,7 @@ const DynamicTable = ({
                                 sx={{ minWidth: "initial", p: 1, background: "#263043 !important", borderRadius: "50%" }}
                                 onClick={(e) => {
                                     e.stopPropagation();
-                                    handleEdit?.()
+                                    handleEdit?.(item)
                                 }}
                             >
                                 <img src={edit} alt="" width="16px" />

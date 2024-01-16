@@ -7,6 +7,7 @@ import reportImg from './images/report-img.svg';
 import eye from "./icons/eye.png";
 import edit from "./icons/edit.png";
 import trash from "./icons/trash.png";
+import warning from "./icons/warning.svg";
 
 export {
     SignInBg,
@@ -15,4 +16,5 @@ export {
     eye,
     edit,
     trash,
+    warning
 }

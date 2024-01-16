@@ -17,9 +17,8 @@ const Routes = () => {
         {
             path: "/", element: <MainLayout />,
             children: [
-
-                { path: "/dashboard", element: <Dashboard /> },
                 { path: "/", element: <Dashboard /> },
+                { path: "/dashboard", element: <Dashboard /> },
                 { path: "/catagories", element: <Catagories /> },
                 { path: "/customers", element: <Customers /> },
                 { path: "/customer/:id", element: <CustomerDetails /> },
