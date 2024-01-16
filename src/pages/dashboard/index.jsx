@@ -1,11 +1,12 @@
 import { cardsData, chartData } from '../../constant';
-import { BarChart, LineChart, PageHeader } from '../../components';
+import { BarChart, PageHeader } from '../../components';
+import { Box, Typography } from '@mui/material';
 
 const Dashboard = () => {
   return (
     <main className='main-container'>
       <PageHeader title="Dashboard" />
- 
+
       <div className='main-cards'>
         {cardsData.map((card, index) => {
           return (
@@ -20,10 +21,14 @@ const Dashboard = () => {
         })}
       </div>
 
-      <div className='charts'>
-        <BarChart data={chartData} />
-        <LineChart data={chartData} />
-      </div>
+
+      <Box sx={{ border: { md: "1px solid #424755" }, borderRadius:"10px" , p:2 }}>
+         <Typography variant="h6" sx={{ color: "#fff", fontSize:"25px", textAlign:"center"  }}>Revenue and Orders</Typography>
+       
+        <div className='charts'>
+          <BarChart data={chartData} />
+        </div>
+      </Box>
     </main>
   )
 }

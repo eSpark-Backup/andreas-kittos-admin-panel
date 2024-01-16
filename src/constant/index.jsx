@@ -2,6 +2,7 @@ import {
     BsGrid1X2Fill, BsFillArchiveFill, BsFillGrid3X3GapFill, BsPeopleFill,
     BsListCheck, BsMenuButtonWideFill, BsFillGearFill, BsFillBellFill, BsCartPlus
 } from 'react-icons/bs'
+import { FaUserGroup } from "react-icons/fa6";
 import { reportImg } from '../assets';
 
 export const sidebarTabs = [
@@ -39,69 +40,89 @@ export const sidebarTabs = [
 
 export const chartData = [
     {
-        name: 'Page A',
-        uv: 4000,
-        pv: 2400,
-        amt: 2400,
+        name: 'Jan',
+        revenue: 10000,
+        orders: 3000,
     },
     {
-        name: 'Page B',
-        uv: 3000,
-        pv: 1398,
-        amt: 2210,
+        name: 'Feb',
+        revenue: 20000,
+        orders: 6000,
     },
     {
-        name: 'Page C',
-        uv: 2000,
-        pv: 9800,
-        amt: 2290,
+        name: 'Mar',
+        revenue: 30000,
+        orders: 9000,
     },
     {
-        name: 'Page D',
-        uv: 2780,
-        pv: 3908,
-        amt: 2000,
+        name: 'Apr',
+        revenue: 40000,
+        orders: 12000,
     },
     {
-        name: 'Page E',
-        uv: 1890,
-        pv: 4800,
-        amt: 2181,
+        name: 'May',
+        revenue: 50000,
+        orders: 15000,
     },
     {
-        name: 'Page F',
-        uv: 2390,
-        pv: 3800,
-        amt: 2500,
+        name: 'Jun',
+        revenue: 60000,
+        orders: 18000,
     },
     {
-        name: 'Page G',
-        uv: 3490,
-        pv: 4300,
-        amt: 2100,
+        name: 'Jul',
+        revenue: 70000,
+        orders: 21000,
     },
+    {
+        name: 'Aug',
+        revenue: 80000,
+        orders: 24000,
+    },
+    {
+        name: 'Sep',
+        revenue: 90000,
+        orders: 27000,
+    },
+    {
+        name: 'Oct',
+        revenue: 100000,
+        orders: 30000,
+    },
+    {
+        name: 'Nov',
+        revenue: 110000,
+        orders: 33000,
+    },
+    {
+        name: 'Dec',
+        revenue: 120000,
+        orders: 36000,
+    },
+ 
 ];
 
 export const cardsData = [
+
     {
         title: "PRODUCTS",
-        icon: <BsFillArchiveFill className='card_icon' />,
-        value: 300
+        icon: <BsFillBellFill className='card_icon' />,
+        value: 160
     },
     {
         title: "CATEGORIES",
         icon: <BsFillGrid3X3GapFill className='card_icon' />,
-        value: 12
+        value: 3
     },
     {
         title: "CUSTOMERS",
-        icon: <BsFillGrid3X3GapFill className='card_icon' />,
+        icon: <FaUserGroup className='card_icon' />,
         value: 33
     },
     {
-        title: "ALERTS",
-        icon: <BsFillBellFill className='card_icon' />,
-        value: 42
+        title: "ORDERS",
+        icon: <BsFillArchiveFill className='card_icon' />,
+        value: 300
     },
 ]
 

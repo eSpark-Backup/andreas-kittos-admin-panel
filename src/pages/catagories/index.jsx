@@ -4,7 +4,7 @@ import { ConfirmationModal, CustomButton, MenuTab, PageHeader, SearchInput, Tabl
 import { columns } from "../../columns/categories";
 import { catagoriesTableData, cateogoryTabs } from "../../constant";
 import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Catagories = () => {
 
@@ -66,8 +66,8 @@ const Catagories = () => {
                                 ))}
                             </Box>
                         </Grid>
-                        <Grid item xs={12} lg={8.5} sx={{ border: "1px solid #424755", padding: "30px 10px 0px 10px", borderRadius: "10px" }}>
 
+                        <Grid item xs={12} lg={8.5} sx={{ border: "1px solid #424755", padding: "30px 10px 0px 10px", borderRadius: "10px" }}>
                             <Box>
                                 <Box sx={{ maxHeight: { xs: "75%", md: "100%" }, overflowY: "scroll", marginTop: "15px" }}>
                                     <Table
@@ -76,14 +76,16 @@ const Catagories = () => {
                                         isLoading={false}
                                         total={data.length}
                                         handleDelete={handleDelete}
-                                        handleEdit={(item) => navigate(`/productDetails${item.id}/edit`)}
-                                        handleView={(item) => navigate(`/productDetails${item.id}/view`)}
+                                        handleEdit={(item) => navigate(`/productDetails/${item.id}/edit`)}
+                                        handleView={(item) => navigate(`/productDetails/${item.id}/view`)}
                                     />
                                 </Box>
                             </Box>
 
                             <Box>
-                                <CustomButton sx={{ width: "100%", margin: "10px 0px" }}> Add New Product</CustomButton>
+                                <Link to={"/addProduct"}>
+                                    <CustomButton sx={{ width: "100%", margin: "10px 0px" }}> Add New Product</CustomButton>
+                                </Link>
                             </Box>
 
 

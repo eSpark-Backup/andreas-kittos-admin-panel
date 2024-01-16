@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { PageHeader, SearchInput, Table } from '../../components'
-import { Box, Grid, Stack } from '@mui/material'
+import { Box, Grid } from '@mui/material'
 import { columns } from '../../columns/customers'
 import { customerTabs, customerTableData } from '../../constant'
 import Tabs from '@mui/material/Tabs';
@@ -52,7 +52,7 @@ const Customers = () => {
             </Box>
             <Grid container rowGap={2} sx={{ display: "flex", justifyContent: "space-between", marginTop: "40px" }}>
                 <Grid item xs={12} lg={4}>
-                   <SearchInput setSearch={setSearch} placeholder="Search by Customer Name" /> 
+                   <SearchInput setSearch={setSearch}  placeholder="Search by Customer Name" /> 
                 </Grid>
             </Grid>
             <Box>

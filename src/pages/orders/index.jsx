@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { PageHeader, SearchInput, Table } from '../../components'
+import { CustomButton, PageHeader, SearchInput, Table } from '../../components'
 import { Box, Grid, Stack } from '@mui/material'
 import { columns } from '../../columns/orders'
 import { ordersTableData, ordersTabs } from '../../constant'
@@ -45,7 +45,13 @@ const Orders = () => {
 
   return (
     <main className='main-container'>
+      <Box sx={{display:"flex", justifyContent:"space-between", alignItems:"center"}}>
       <PageHeader title="Orders" />
+        
+        <Box>
+       <CustomButton sx={{width:"270px"}} >Download Report</CustomButton>
+        </Box>
+      </Box>
       <Box>
         <Tabs
           value={value}

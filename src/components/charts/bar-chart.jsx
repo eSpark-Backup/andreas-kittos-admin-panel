@@ -1,4 +1,4 @@
-import { Bar, BarChart as ReactBarChart, CartesianGrid, Legend, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
+import { Bar, BarChart as ReactBarChart, CartesianGrid, Legend, ResponsiveContainer, Tooltip, XAxis, YAxis, Label } from 'recharts';
 
 const BarChart = ({ data }) => {
     return (
@@ -7,21 +7,18 @@ const BarChart = ({ data }) => {
                 width={500}
                 height={300}
                 data={data}
-                margin={{
-                    top: 5,
-                    right: 30,
-                    left: 20,
-                    bottom: 5,
-                }}
             >
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis dataKey="name" />
                 <YAxis />
                 <Tooltip />
-                <Legend />
-                <Bar dataKey="pv" fill="#8884d8" />
-                <Bar dataKey="uv" fill="#82ca9d" />
+                <Legend verticalAlign="top" align='right' height={36} />
+                <Bar barSize={20} dataKey="revenue" fill="#8884d8" />
+                <Bar barSize={20} dataKey="orders" fill="#82ca9d" />
             </ReactBarChart>
+
+
+
         </ResponsiveContainer>
     )
 }
