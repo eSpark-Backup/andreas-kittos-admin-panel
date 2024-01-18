@@ -2,6 +2,7 @@
 import SignInBgSm from './images/signInbg-sm.svg';
 import SignInBg from './images/signIn-bg.svg'
 import reportImg from './images/report-img.svg';
+import suitImg from './images/suit-img.svg';
 
 //icons
 import warning from "./icons/warning.svg";
@@ -16,5 +17,6 @@ export {
     eye,
     edit,
     trash,
-    warning
+    warning,
+    suitImg
 }

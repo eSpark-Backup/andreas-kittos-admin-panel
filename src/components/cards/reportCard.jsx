@@ -1,4 +1,4 @@
-import { Typography } from '@mui/material'
+import { Card, Typography } from '@mui/material'
 import { Box } from '@mui/system'
 import React from 'react'
 import CustomButton from '../buttons/customButton'
@@ -11,19 +11,14 @@ const ReportCard = ({
     onClick,
 }) => {
     return (
-        <Box
-            sx={{
-                border: '1px solid #424755',
-                width: { xs: '100%', md: '100%', lg: '35%', xl: '40%' },
-                padding: '40px',
-                borderRadius: '10px',
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '12px',
-                marginBottom: '20px',
-        
-            }}
-        >
+        <Card sx={{
+            width: { xs: '100%', md: '100%', lg: '35%', xl: '40%' },
+            padding: '30px',
+            rowGap: '12px',
+            marginBottom: '20px',
+
+        }}>
+
             <Box>
                 <img src={img} alt="Reports" />
             </Box>
@@ -34,7 +29,7 @@ const ReportCard = ({
                         color: '#fff',
                     }}
                     variant="h6"  >
-                   {title}
+                    {title}
                 </Typography>
             </Box>
 
@@ -50,10 +45,11 @@ const ReportCard = ({
 
             <Box>
                 <CustomButton onClick={onClick} sx={{ width: '150px' }} variant="outlined" color="primary" >
-                   {btnText}
+                    {btnText}
                 </CustomButton>
             </Box>
-        </Box>
+
+        </Card>
     )
 }
 

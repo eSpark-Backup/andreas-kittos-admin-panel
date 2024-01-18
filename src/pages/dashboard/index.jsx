@@ -1,6 +1,6 @@
 import { cardsData, chartData } from '../../constant';
 import { BarChart, ChartLabel, PageHeader } from '../../components';
-import { Box, Typography } from '@mui/material';
+import { Box, Card, Typography } from '@mui/material';
 
 const Dashboard = () => {
   return (
@@ -22,7 +22,7 @@ const Dashboard = () => {
       </div>
 
 
-      <Box sx={{ border: { md: "1px solid #424755" }, borderRadius: "10px", p: 2 }}>
+      <Card>
         <Typography variant="h6" sx={{ color: "#fff", fontSize: "25px", textAlign: "center" }}>Revenue and Orders</Typography>
 
 
@@ -44,7 +44,7 @@ const Dashboard = () => {
 
 
 
-      </Box>
+      </Card>
     </main>
   )
 }

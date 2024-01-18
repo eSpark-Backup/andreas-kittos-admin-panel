@@ -1,7 +1,5 @@
 import { Box, Button, Grid, IconButton, InputBase, InputLabel, Paper, Stack, TextField, Typography } from '@mui/material'
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import Back from "../../assets/icons/Back.svg"
 import Euro from "../../assets/icons/euro.svg"
 import Upload from "../../assets/images/Upload.svg"
 import { TagsInput } from 'react-tag-input-component'
@@ -15,7 +13,6 @@ import notChecked from "../../assets/icons/notChecked.svg"
 
 const AddProduct = () => {
     const [selected, setSelected] = useState([]);
-    const navigate = useNavigate()
 
     const VisuallyHiddenInput = styled('input')({
         clip: 'rect(0 0 0 0)',
@@ -36,7 +33,7 @@ const AddProduct = () => {
     return (
         <main className='main-container'>
              <BackBtn />
-            <Box sx={{ display: "flex", justifyContent: { xs: "", md: "center" }, alignItems: { xs: "", md: "center" }, marginTop: "20px" }}>
+            <Box sx={{ display: "flex", justifyContent: { xs: "", md: "center" }, alignItems: { md: "center" }, marginTop: "20px" }}>
                 <Box sx={{ width: { xs: "100%", md: "100%", lg: "65%", xl: "55%" }, border: "1px solid #424755", height: "100%", borderRadius: "10px", py: "20px", px: { xs: "5px", md: "10px", lg: "30px" } }}>
                     <Typography sx={{ color: "#FFFFFF", fontWeight: "700" }}>ADD PRODUCT</Typography>
                     <Grid container sx={{ marginTop: "30px" }} columnSpacing={10}>

@@ -41,7 +41,7 @@ const SignInForm = () => {
           <Grid container gap={2}>
             <Grid item xs={12}>
               <Stack direction={"column"} gap={1}>
-                <InputLabel sx={{ color: "#424755", fontSize: "14px", fontWeight:"500" }}>Email</InputLabel>
+                <InputLabel sx={{ color: "#424755", fontSize: "14px", fontWeight: "500" }}>Email</InputLabel>
                 <TextField
                   name='email'
                   id="filled-hidden-label-normal"
@@ -53,19 +53,23 @@ const SignInForm = () => {
                   onBlur={handleBlur}
                   error={touched.email && errors.email ? true : false}
                   helperText={touched.email && errors.email ? errors.email : null}
+                  InputProps={{
+                    style: { color: 'black' } // Change the color to your desired color
+                  }}
                 />
               </Stack>
             </Grid>
             <Grid item xs={12}>
               <Stack direction={"column"} gap={1}>
-                <InputLabel sx={{ color: "#424755", fontSize: "14px", fontWeight:"500" }}>Password</InputLabel>
+                <InputLabel sx={{ color: "#424755", fontSize: "14px", fontWeight: "500" }}>Password</InputLabel>
                 <TextField
                   name='password'
                   id="filled-hidden-label-normal"
                   placeholder="Enter password"
                   fullWidth
                   InputProps={{
-                    endAdornment: showPass ? <VisibilityOffOutlinedIcon sx={{ cursor: "pointer", color: "#9E9EA4" }} onClick={() => setShowPass(!showPass)} /> : <VisibilityOutlinedIcon sx={{ cursor: "pointer", color: "#9E9EA4" }} onClick={() => setShowPass(!showPass)} />
+                    style: { color: 'black' },
+                    endAdornment: !showPass ? <VisibilityOffOutlinedIcon sx={{ cursor: "pointer", color: "#9E9EA4" }} onClick={() => setShowPass(!showPass)} /> : <VisibilityOutlinedIcon sx={{ cursor: "pointer", color: "#9E9EA4" }} onClick={() => setShowPass(!showPass)} />
                   }}
                   type={showPass ? "text" : "password"}
                   value={values.password}
@@ -80,7 +84,7 @@ const SignInForm = () => {
           <Box sx={{ marginTop: "70px" }}>
             {/* <Button type='submit' sx={{ width: "100%", height: "40px", fontWeight: "500", fontSize: "18px", backgroundColor: "#263043", borderRadius: "5px", color: "white", ":hover": { backgroundColor: "#263043" } }}>
               Sign in</Button> */}
-            <CustomButton type={"submit"} sx={{ width: "100%", fontWeight: "500", fontSize: "18px", borderRadius: "5px", color: "white"}}>Sign in</CustomButton>
+            <CustomButton type={"submit"} sx={{ width: "100%", fontWeight: "500", fontSize: "18px", borderRadius: "5px", color: "white" }}>Sign in</CustomButton>
           </Box>
         </form>
       </Box>

@@ -71,6 +71,18 @@ export const theme = createTheme({
                 disableRipple: false,
             },
         },
+        MuiCard: {
+            styleOverrides: {
+                root: {
+                    borderRadius: "10px",
+                    backgroundColor: "transparent",
+                    border: "1px solid #424755",
+                    padding: 10,
+                    display: "flex",
+                    flexDirection: "column",
+                },
+            },
+        },
         MuiCardContent: {
             styleOverrides: {
                 root: {
@@ -216,6 +228,13 @@ export const theme = createTheme({
                         backgroundColor: "rgba(0, 0, 0, 0.5)",
                         border: "none",
                     },
+                },
+            },
+        },
+        MuiCheckbox: {
+            styleOverrides: {
+                root: {
+                    color: "#424755",
                 },
             },
         },

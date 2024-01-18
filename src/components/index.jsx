@@ -15,6 +15,9 @@ import MenuTab from "./common/menuTab";
 import CustomInput from "./inputs/customInput";
 import BackBtn from "./buttons/backBtn";
 import ChartLabel from "./common/chartLabel";
+import OrderDetailItem from "./common/orderDetailItem";
+import OrderCard from "./cards/orderCard";
+import OrderItemCard from "./cards/orderItemCard";
 
 export {
     Header,
@@ -34,5 +37,7 @@ export {
     CustomInput,
     BackBtn,
     ChartLabel,
-    
+    OrderDetailItem,
+    OrderCard,
+    OrderItemCard,
 }
