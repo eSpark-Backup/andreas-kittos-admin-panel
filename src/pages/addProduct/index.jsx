@@ -13,6 +13,7 @@ import notChecked from "../../assets/icons/notChecked.svg"
 
 const AddProduct = () => {
     const [selected, setSelected] = useState([]);
+    const [selectedCategories, setSelectedCategories] = useState([]);
 
     const VisuallyHiddenInput = styled('input')({
         clip: 'rect(0 0 0 0)',
@@ -30,12 +31,42 @@ const AddProduct = () => {
         const file = event.target.files[0];
     };
 
+
+    const handleCategoryChange = (event, newValue) => {
+        setSelectedCategories(newValue);
+    }
+
+    const [productData, setProductData] = useState({
+        productName: "",
+        description: "",
+        price: ""
+    })
+    const HandleInputsChange = (e) => {
+        const { name, value } = e.target
+        setProductData((prevData) => ({
+            ...prevData,
+            [name]: value
+        }))
+    }
+
+    const HandleSubmit = () => {
+        const productObject = {
+            productName: productData.productName,
+            description: productData.description,
+            price: productData.price,
+            selectedCategories: selectedCategories,
+            tags: selected,
+        };
+        console.log(productObject)
+
+    }
+
     return (
         <main className='main-container'>
-             <BackBtn />
+            <BackBtn />
             <Box sx={{ display: "flex", justifyContent: { xs: "", md: "center" }, alignItems: { md: "center" }, marginTop: "20px" }}>
                 <Box sx={{ width: { xs: "100%", md: "100%", lg: "65%", xl: "55%" }, border: "1px solid #424755", height: "100%", borderRadius: "10px", py: "20px", px: { xs: "5px", md: "10px", lg: "30px" } }}>
-                    <Typography sx={{ color: "#FFFFFF", fontWeight: "700", fontSize:"20px" }}>ADD PRODUCT</Typography>
+                    <Typography sx={{ color: "#FFFFFF", fontWeight: "700", fontSize: "20px" }}>ADD PRODUCT</Typography>
                     <Grid container sx={{ marginTop: "30px" }} columnSpacing={10}>
                         <Grid item xs={12} md={6} xl={6.5} sx={{ display: "flex", flexDirection: "column", rowGap: "30px" }}>
 
@@ -45,11 +76,15 @@ const AddProduct = () => {
                                     id="filled-hidden-label-normal"
                                     placeholder="Enter here..."
                                     fullWidth
+                                    name='productName'
+                                    onChange={HandleInputsChange}
                                 />
                             </Stack>
                             <Stack direction={"column"} gap={1.7}>
                                 <InputLabel sx={{ color: "#FFFFFF", fontSize: "16px", fontWeight: "500" }}>Description:</InputLabel>
-                                <textarea name="" id="" cols="30" rows="4" style={{ background: "transparent", border: "1px solid #424755", borderRadius: "5px", padding: "10px 10px 10px 10px" }} placeholder='Enter here...'></textarea>
+                                <textarea
+                                    onChange={HandleInputsChange}
+                                    name="description" id="" cols="30" rows="4" style={{ background: "transparent", border: "1px solid #424755", borderRadius: "5px", padding: "10px 10px 10px 10px" }} placeholder='Enter here...'></textarea>
                             </Stack>
                             <Stack direction={"column"} gap={1.7}>
                                 <InputLabel sx={{ color: "#FFFFFF", fontSize: "16px", fontWeight: "500" }}>Select category:</InputLabel>
@@ -57,18 +92,19 @@ const AddProduct = () => {
                                     multiple
                                     id="checkboxes-tags-demo"
                                     options={categoryOptions}
+                                    onChange={handleCategoryChange}
                                     disableCloseOnSelect
                                     getOptionLabel={(option) => option.title}
                                     PaperComponent={({ children }) => (
-                                        <Paper  style={{ background: 'rgb(29, 38, 52)' }}>{children}</Paper>
+                                        <Paper style={{ background: 'rgb(29, 38, 52)' }}>{children}</Paper>
                                     )}
                                     renderOption={(props, option, { selected }) => (
                                         <li {...props}>
                                             <Checkbox
                                                 style={{ marginRight: 8 }}
                                                 checked={selected}
-                                                icon={<img src={notChecked} alt='Checked'/>}
-                                                checkedIcon={<img src={checked} alt='Box'/>}
+                                                icon={<img src={notChecked} alt='Checked' />}
+                                                checkedIcon={<img src={checked} alt='Box' />}
                                             />
                                             {option.title}
 
@@ -90,6 +126,8 @@ const AddProduct = () => {
                                         <InputBase
                                             sx={{ ml: 1, flex: 1, py: "5px", pl: "5px" }}
                                             placeholder="Enter here..."
+                                            name='price'
+                                            onChange={HandleInputsChange}
                                         />
                                         <IconButton color="primary" sx={{ borderLeft: "1px solid #424755", borderRadius: "0px 5px 5px 0px", backgroundColor: "#263043", height: "100%", ":hover": { backgroundColor: "#263043" }, width: "50px" }} aria-label="directions">
                                             <img src={Euro} alt='Euro' />
@@ -126,7 +164,7 @@ const AddProduct = () => {
                             </Button>
                         </Grid>
                     </Grid>
-                    <CustomButton sx={{ width: '100%', marginTop: "20px" }} variant="outlined" color="primary" >
+                    <CustomButton sx={{ width: '100%', marginTop: "20px" }} variant="outlined" color="primary" onClick={HandleSubmit}>
                         Add Product Now
                     </CustomButton>
                 </Box>

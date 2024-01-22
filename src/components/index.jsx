@@ -11,6 +11,7 @@ import TabButton from "./buttons/tabButton";
 import Table from "./tables/table";
 import SearchInput from "./inputs/searchInput"
 import ConfirmationModal from "./modals/confirmation-modal";
+import ViewModal from "./modals/viewModal";
 import MenuTab from "./common/menuTab";
 import CustomInput from "./inputs/customInput";
 import BackBtn from "./buttons/backBtn";
@@ -18,6 +19,7 @@ import ChartLabel from "./common/chartLabel";
 import OrderDetailItem from "./common/orderDetailItem";
 import OrderCard from "./cards/orderCard";
 import OrderItemCard from "./cards/orderItemCard";
+
 
 export {
     Header,
@@ -40,4 +42,5 @@ export {
     OrderDetailItem,
     OrderCard,
     OrderItemCard,
+    ViewModal
 }

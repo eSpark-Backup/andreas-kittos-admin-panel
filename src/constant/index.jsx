@@ -661,3 +661,23 @@ export const settingsPasswordFields = [
         type: "password"
     },
 ]
+
+
+export const ODTableData = [
+    {
+        id: 1,
+        items:"2 Piece Suit - Iron",
+        quantity:2,
+        category:"Laundry",
+        price:"€7.00"
+    },
+    {
+        id: 2,
+        items:"2 Piece Suit - Iron",
+        quantity:2,
+        category:"Laundry",
+        price:"€7.00"
+    },
+    
+
+]

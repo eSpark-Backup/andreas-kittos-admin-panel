@@ -1,25 +1,32 @@
 import React, { useState } from 'react'
 import BackBtn from '../../components/buttons/backBtn'
-import { Box, Checkbox, Grid, Paper, Typography } from '@mui/material'
-import { OrderCard, OrderDetailItem, OrderItemCard, PageHeader } from '../../components'
+import { Box, Checkbox, Grid, Paper, Typography, Modal,Button,TextField  } from '@mui/material'
+import { ConfirmationModal, OrderCard, OrderDetailItem, OrderItemCard, PageHeader, Table, ViewModal } from '../../components'
 import { suitImg } from '../../assets';
+import { ODTableData } from '../../constant';
+import { columns } from '../../columns/orderDetailsCols';
+import StatusModal from '../../components/modals/StatusModal';
 
 
 const CheckboxWithLabel = ({ label, isChecked, onChange }) => (
   <Box display="flex" alignItems="center">
     <Checkbox checked={isChecked} onChange={onChange} />
-    <Typography sx={{ color: '#9E9EA4' }}>{label}</Typography>
+    <Typography sx={{ color: '#9E9EA4', fontSize: "12px" }}>{label}</Typography>
   </Box>
 );
 
 
 const OrderDetails = () => {
+  const [enabledIndex, setEnabledIndex] = useState(0);
+  const [openModal, setOpenModal] = useState(false);
+  const [modalInput, setModalInput] = useState('');
+
   const [checkboxData, setCheckboxData] = useState(
     [
-      { label: 'Scheduled', isChecked: false },
-      { label: 'Pickup up', isChecked: false },
-      { label: 'Washing', isChecked: false },
-      { label: 'Delivered', isChecked: false },
+      { label: 'Scheduled', isChecked: false, value:"23/2023" },
+      { label: 'Pickup up', isChecked: false, value:"23/2023" },
+      { label: 'Washing', isChecked: false, value:"23/2023" },
+      { label: 'Delivered', isChecked: false, value:"23/2023"  },
     ]
   );
 
@@ -48,19 +55,30 @@ const OrderDetails = () => {
 
 
   const handleCheckboxChange = (index) => {
-    setCheckboxData((prevCheckboxData) => {
-      const updatedData = [...prevCheckboxData];
-      updatedData[index].isChecked = !updatedData[index].isChecked;
-      return updatedData;
-    });
+    if (index === enabledIndex) {
+      setOpenModal(true);
+    }
   };
 
+  const handleModalClose = () => {
+    setOpenModal(false);
+
+    // Update isChecked property for the checked checkbox
+    setCheckboxData((prevCheckboxData) => {
+      const updatedData = [...prevCheckboxData];
+      updatedData[enabledIndex].isChecked = true;
+      return updatedData;
+    });
+
+    // Enable the next checkbox
+    setEnabledIndex((prevIndex) => prevIndex + 1);
+  };
   return (
     <main className='main-container'>
       <BackBtn />
 
       <Box sx={{ display: "flex", justifyContent: { xs: "", md: "center" }, alignItems: { xs: "", md: "center" }, marginTop: "20px" }}>
-        <Box sx={{ width: { xs: "100%", md: "100%", lg: "90%", xl: "70%" }, border: "1px solid #424755", height: "100%", borderRadius: "10px", py: "20px", px: { xs: "20px", lg: "30px" } }}>
+        <Box sx={{ width: { xs: "100%", md: "100%", lg: "90%", xl: "70%" }, border: "1px solid #424755", height: "100%", borderRadius: "10px", py: "20px", px: { xs: "4px", lg: "30px" } }}>
           <PageHeader title="Order Details" />
 
           <Box sx={{
@@ -99,12 +117,13 @@ const OrderDetails = () => {
                           <CheckboxWithLabel
                             label={item.label}
                             isChecked={item.isChecked}
+                            disabled={index !== enabledIndex}
                             onChange={() => handleCheckboxChange(index)}
                           />
                         </Grid>
                         <Grid alignItems="center" container item xs={6} lg={3}>
                           <Box display="flex" alignItems="center">
-                            <Typography sx={{ color: "#E0E0E0" }}>-</Typography>
+                            <Typography sx={{ color: "#E0E0E0" }}>{item.isChecked ? item.value : "-"}</Typography>
                           </Box>
                         </Grid>
                       </React.Fragment>
@@ -136,55 +155,41 @@ const OrderDetails = () => {
 
           </Box>
 
-          <Box  
-          
-          >
-            <OrderItemCard>
+          {/* <Box sx={{border:"1px solid white", borderRadius:"6px"}}> */}
+          <Table
+            data={ODTableData}
+            columns={columns()}
+            isLoading={false}
+            total={ODTableData.length}
+          />
+          {/* </Box> */}
+          <StatusModal open={openModal} heading={"Update Status"} label={"Reason: (optional)"} placeholder={"Enter here..."} cancelBtnText={"Cancel"} acceptBtnText={"Set"} onClose={handleModalClose}/>
 
+          {/* <Modal open={openModal} onClose={handleModalClose}>
+            <Box
+              sx={{
+                position: 'absolute',
+                top: '50%',
+                left: '50%',
+                transform: 'translate(-50%, -50%)',
+                width: 400,
+                bgcolor: '#1D2634',
+                // boxShadow: 24,
+                p: 4,
+              }}
+            >
+              <TextField
+                label="Modal Input"
+                value={modalInput}
+                onChange={(e) => setModalInput(e.target.value)}
+              />
+              <Button onClick={handleModalClose}>OK</Button>
+            </Box>
+          </Modal> */}
 
-
-              <Box >
-                <Grid container p={"0px 30px"} rowGap={2}>
-                  <Grid item xs={4} lg={4}>
-                    <Box sx={{
-                      display: "flex",
-                      alignItems: "center",
-                      gap: "10px",
-                    }}>
-                      <Box>
-                        <Paper
-                          sx={{
-                            width: "40px",
-                            height: "40px",
-                            borderRadius: "50%",
-                            backgroundColor: "#263043",
-                            display: "flex",
-                            alignItems: "center",
-                            justifyContent: "center",
-                          }}
-                        >
-                          {/* Your image goes here */}
-                          <img src={suitImg} alt="Suit Iron" style={{ width: "80%", height: "80%", borderRadius: "50%" }} />
-                        </Paper>
-                      </Box>
-                      <Typography sx={{ color: '#FFFFFF' }}>{"2 Piece Suit - Iron"}</Typography>
-                    </Box>
-                  </Grid>
-                  <Grid item xs={3} lg={3}>
-                    <Typography sx={{ color: '#FFFFFF' }}>{"2"}</Typography>
-                  </Grid>
-                  <Grid item xs={3} lg={3}>
-                    <Typography sx={{ color: '#FFFFFF' }}>{"Laundry"}</Typography>
-                  </Grid>
-                  <Grid item xs={2} lg={2}>
-                    <Typography sx={{ color: '#FFFFFF' }}>{"€7.00"}</Typography>
-                  </Grid>
-                </Grid>
-              </Box>
-            </OrderItemCard>
-          </Box>
         </Box>
       </Box>
+      <ViewModal/>
     </main >
   )
 }
