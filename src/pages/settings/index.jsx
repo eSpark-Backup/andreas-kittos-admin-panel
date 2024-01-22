@@ -14,7 +14,7 @@ const Settings = () => {
         <main className='main-container'>
             <PageHeader title="Settings" />
             <Grid container sx={{ minHeight: currentTab === 1 ? "75vh" : { xs: "55vh", md: "75vh" }, borderRadius: "10px", border: { xs: "1px solid #424755", md: "none", padding: "6px 10px" } }}>
-                <Grid item xs={12} md={3} sx={{ border: { md: "1px solid #424755" }, borderTopLeftRadius: "10px", borderBottomLeftRadius: "10px", padding: { xs: "10px 10px 0px 10px", md: "10px 10px 0px 10px" } }}>
+                <Grid item xs={12} md={3} sx={{ border: { md: "1px solid #424755" }, borderTopLeftRadius: "10px", borderBottomLeftRadius: "10px", padding: { xs: "10px 10px 10px 10px", md: "10px 10px 0px 10px" } }}>
 
                     <Box sx={{ width: "100%", display: "flex", flexDirection: { xs: "row", md: "column" }, rowGap: "20px", columnGap: "10px" }}>
                         {SettingsTabs.map((item, index) => (

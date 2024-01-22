@@ -3,7 +3,7 @@ import React from 'react'
 import { warning } from '../../assets'
 import CustomButton from '../buttons/customButton'
 
-const ConfirmationModal = ({ open, onClose, sx, description, descriptionTwo, onConfirm }) => {
+const ConfirmationModal = ({ open, onClose, sx, description, descriptionTwo, onConfirm, acceptBtnText, cancelBtnText }) => {
     return (
         <Modal
             open={open}
@@ -78,8 +78,8 @@ const ConfirmationModal = ({ open, onClose, sx, description, descriptionTwo, onC
                             marginTop: '20px'
                         }}
                     >
-                        <CustomButton onClick={onClose} sx={{ width: "48%" }}> Cancel</CustomButton>
-                        <CustomButton onClick={onConfirm} sx={{ width: "48%" }}> Delete</CustomButton>
+                        <CustomButton onClick={onClose} sx={{ width: "48%" }}> {cancelBtnText}</CustomButton>
+                        <CustomButton onClick={onConfirm} sx={{ width: "48%" }}> {acceptBtnText}</CustomButton>
                     </Box>
                 </Box>
             </Box>

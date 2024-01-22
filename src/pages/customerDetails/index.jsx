@@ -1,20 +1,25 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
-import { CustomButton, PageHeader } from '../../components';
+import { BackBtn, ConfirmationModal, CustomButton, PageHeader } from '../../components';
 import { Box, Grid, Stack, Typography } from '@mui/material';
 import user from "../../assets/images/User.svg"
 import { userData } from '../../constant';
 import CustomerOrders from '../../components/customerOrders/CustomerOrders';
 import Back from "../../assets/icons/Back.svg"
 
+
 const CustomerDetails = () => {
     const { id } = useParams();
+    const [openModal, setOpenModal] = useState(false)
     const navigate = useNavigate()
+    const onConfirm = () => {
+        setOpenModal(false)
+    }
     return (
         <main className='main-container'>
-            <Typography onClick={() => navigate(-1)} sx={{ color: "white", cursor: "pointer", width:"fit-content" }}><img src={Back} alt='Back' style={{ paddingTop: "5px" }} /> Back</Typography>
-            <PageHeader title={"CUSTOMER DETAILS"} />
-            <Grid container gap={3}>
+            <BackBtn/>
+            <PageHeader title={"CUSTOMER DETAILS"} sx={{marginTop:"10px"}} />
+            <Grid container gap={3} sx={{ marginTop: "15px" }}>
                 <Grid item xs={12} md={5} lg={3}>
                     <Box sx={{ display: "flex", flexDirection: "column", padding: "30px 0px", justifyContent: "center", alignItems: "center", rowGap: "15px", border: "1px solid #424755", borderRadius: "10px" }}>
                         <Typography sx={{ color: "#FFFFFF", fontSize: "20px", fontWeight: "700" }}>Customer Profile</Typography>
@@ -38,18 +43,26 @@ const CustomerDetails = () => {
                             </Box>
                         </Stack>
                     </Box>
-                    <CustomButton variant="outlined" color="primary" sx={{ marginTop: "30px", width: "100%" }}>
+                    <CustomButton variant="outlined" color="primary" sx={{ marginTop: "30px", width: "100%" }} onClick={()=>setOpenModal(true)}>
                         Deactivate Customer
                     </CustomButton>
                 </Grid>
 
                 <Grid item xs={12} md={12} lg={8.5} sx={{ border: "1px solid #424755", borderRadius: "10px", maxHeight: "79vh", padding: "5px 15px" }}>
                     <div className='main-title'>
-                        <h3>Orders (50)</h3>
+                        <Typography sx={{ color: "white", fontSize: "20px", fontWeight: "700", margin: "10px" }}>Orders <span style={{ fontWeight: "500" }}>(50)</span></Typography>
                     </div>
                     <CustomerOrders />
                 </Grid>
             </Grid>
+            <ConfirmationModal
+                open={openModal}
+                onClose={() => setOpenModal(false)}
+                description={`Are you sure you want to Deactivate this customer?`}
+                onConfirm={onConfirm}
+                acceptBtnText={"Deactivate"}
+                cancelBtnText={"Cancel"}
+            />
         </main>
     )
 }

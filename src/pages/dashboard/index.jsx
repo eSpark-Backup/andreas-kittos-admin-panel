@@ -12,9 +12,10 @@ const Dashboard = () => {
           return (
             <div key={index} className='card'>
               <div className='card-inner'>
-                <h3>{card.title}</h3>
+                <Typography sx={{ fontSize: "16px", color: "#FFFFFF", fontWeight: "600" }}>{card.title}</Typography>
                 {card.icon}
               </div>
+              {card.description && <Typography sx={{color:"white", fontSize:"14px", marginTop:"10px"}}>{card.description} <span style={{fontWeight:"600"}}>{card.descriptionVal}</span></Typography>}
               <h1 className='card-value'>{card.value}</h1>
             </div>
           )
@@ -23,7 +24,7 @@ const Dashboard = () => {
 
 
       <Card>
-        <Typography variant="h6" sx={{ color: "#fff", fontSize: "25px", textAlign: "center" }}>Revenue and Orders</Typography>
+        <Typography variant="h6" sx={{ color: "#fff", fontSize: "25px", textAlign: "center", fontWeight:"500" }}>Revenue and Orders</Typography>
 
 
 

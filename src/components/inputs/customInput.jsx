@@ -20,7 +20,7 @@ const CustomInput = ({
 
     return (
         <>
-            <InputLabel sx={{ color: "#FFFFFF", fontSize: "14px", fontWeight: "500" }}>{label}</InputLabel>
+            <InputLabel sx={{ color: "#FFFFFF", fontSize: "16px", fontWeight: "500" }}>{label}</InputLabel>
             <TextField
                 name={inputName}
                 id="filled-hidden-label-normal"

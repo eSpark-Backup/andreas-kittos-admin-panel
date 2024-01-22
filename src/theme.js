@@ -21,7 +21,7 @@ export const theme = createTheme({
         MuiTab: {
             styleOverrides: {
                 root: {
-                    color: '#7C7F84',
+                    color: '#9E9EA4',
                     '&.Mui-selected': {
                         color: '#FFFFFF',
                         fontWeight: "bolder",
@@ -143,7 +143,7 @@ export const theme = createTheme({
             styleOverrides: {
                 input: {
                     "&::placeholder": {
-                        color: "#899DB7",
+                        color: "#9E9EA4",
                     },
                 },
                 root: {

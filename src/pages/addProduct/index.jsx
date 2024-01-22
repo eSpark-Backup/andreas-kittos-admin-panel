@@ -35,24 +35,24 @@ const AddProduct = () => {
              <BackBtn />
             <Box sx={{ display: "flex", justifyContent: { xs: "", md: "center" }, alignItems: { md: "center" }, marginTop: "20px" }}>
                 <Box sx={{ width: { xs: "100%", md: "100%", lg: "65%", xl: "55%" }, border: "1px solid #424755", height: "100%", borderRadius: "10px", py: "20px", px: { xs: "5px", md: "10px", lg: "30px" } }}>
-                    <Typography sx={{ color: "#FFFFFF", fontWeight: "700" }}>ADD PRODUCT</Typography>
+                    <Typography sx={{ color: "#FFFFFF", fontWeight: "700", fontSize:"20px" }}>ADD PRODUCT</Typography>
                     <Grid container sx={{ marginTop: "30px" }} columnSpacing={10}>
                         <Grid item xs={12} md={6} xl={6.5} sx={{ display: "flex", flexDirection: "column", rowGap: "30px" }}>
 
-                            <Stack direction={"column"} gap={1}>
-                                <InputLabel sx={{ color: "#FFFFFF", fontSize: "14px", fontWeight: "500" }}>Product name:</InputLabel>
+                            <Stack direction={"column"} gap={1.7}>
+                                <InputLabel sx={{ color: "#FFFFFF", fontSize: "16px", fontWeight: "500" }}>Product name:</InputLabel>
                                 <TextField
                                     id="filled-hidden-label-normal"
                                     placeholder="Enter here..."
                                     fullWidth
                                 />
                             </Stack>
-                            <Stack direction={"column"} gap={1}>
-                                <InputLabel sx={{ color: "#FFFFFF", fontSize: "14px", fontWeight: "500" }}>Description:</InputLabel>
+                            <Stack direction={"column"} gap={1.7}>
+                                <InputLabel sx={{ color: "#FFFFFF", fontSize: "16px", fontWeight: "500" }}>Description:</InputLabel>
                                 <textarea name="" id="" cols="30" rows="4" style={{ background: "transparent", border: "1px solid #424755", borderRadius: "5px", padding: "10px 10px 10px 10px" }} placeholder='Enter here...'></textarea>
                             </Stack>
-                            <Stack direction={"column"} gap={1}>
-                                <InputLabel sx={{ color: "#FFFFFF", fontSize: "14px", fontWeight: "500" }}>Select category:</InputLabel>
+                            <Stack direction={"column"} gap={1.7}>
+                                <InputLabel sx={{ color: "#FFFFFF", fontSize: "16px", fontWeight: "500" }}>Select category:</InputLabel>
                                 <Autocomplete
                                     multiple
                                     id="checkboxes-tags-demo"
@@ -60,7 +60,7 @@ const AddProduct = () => {
                                     disableCloseOnSelect
                                     getOptionLabel={(option) => option.title}
                                     PaperComponent={({ children }) => (
-                                        <Paper style={{ background: 'rgb(29, 38, 52)' }}>{children}</Paper>
+                                        <Paper  style={{ background: 'rgb(29, 38, 52)' }}>{children}</Paper>
                                     )}
                                     renderOption={(props, option, { selected }) => (
                                         <li {...props}>
@@ -79,9 +79,9 @@ const AddProduct = () => {
                                     )}
                                 />
                             </Stack>
-                            <Stack direction={"column"} gap={1}>
+                            <Stack direction={"column"} gap={1.7}>
                                 <>
-                                    <InputLabel sx={{ color: "#FFFFFF", fontSize: "14px", fontWeight: "500" }}>Price:</InputLabel>
+                                    <InputLabel sx={{ color: "#FFFFFF", fontSize: "16px", fontWeight: "500" }}>Price:</InputLabel>
 
                                     <Paper
                                         component="form"
@@ -97,8 +97,8 @@ const AddProduct = () => {
                                     </Paper>
                                 </>
                             </Stack>
-                            <Stack direction={"column"} gap={1}>
-                                <InputLabel sx={{ color: "#FFFFFF", fontSize: "14px", fontWeight: "500" }}>Tags:</InputLabel>
+                            <Stack direction={"column"} gap={1.7}>
+                                <InputLabel sx={{ color: "#FFFFFF", fontSize: "16px", fontWeight: "500" }}>Tags:</InputLabel>
                                 <TagsInput
                                     value={selected}
                                     onChange={setSelected}

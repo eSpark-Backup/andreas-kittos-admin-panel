@@ -27,6 +27,7 @@ const ReportCard = ({
                 <Typography
                     sx={{
                         color: '#fff',
+                        fontSize:{xs:"16px",md:"20px"}
                     }}
                     variant="h6"  >
                     {title}
@@ -37,6 +38,7 @@ const ReportCard = ({
                 <Typography
                     sx={{
                         color: '#9E9EA4',
+                        fontSize:{xs:"14px",md:"16px"}
                     }}
                     variant="body2" >
                     {description}

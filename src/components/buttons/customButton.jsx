@@ -14,6 +14,7 @@ const CustomButton = ({ sx, children, variant, color, onClick, type, startIcon, 
                     border: `1px solid ${theme.palette.border.main}`
                 },
                 color: '#fff',
+                fontSize:"16px",
                 ...sx,
             }}
             startIcon={startIcon}

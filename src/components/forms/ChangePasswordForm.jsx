@@ -21,13 +21,13 @@ const ChangePasswordForm = (e) => {
 
 
     return (
-        <Box sx={{ width: "100%", display: "flex", justifyContent: "space-between", flexDirection: "column", paddingLeft: { xs: "10px", md: "20px" } }}>
+        <Box sx={{ width: "100%", display: "flex", justifyContent: "space-between", flexDirection: "column", paddingLeft: { xs: "10px", md: "20px" },marginTop: {xs:"20px", md:"0px"} }}>
             <Box>
-                <PageHeader title="Password" />
+                <PageHeader title="Password" sx={{textTransform:"capitalize"}} />
                 <Grid container >
                     {/* apply map  */}
                     <Grid item xs={12}>
-                        <Stack direction={"column"} gap={1} sx={{ marginTop: "20px" }}>
+                        <Stack direction={"column"} gap={2} sx={{ marginTop: "20px" }}>
                             {settingsPasswordFields.map((eachItem, index) => (
                                 <CustomInput key={index} onInputChange={(e) => handleInputChange(e)} inputName={eachItem.id} label={eachItem.label} placeholder={eachItem.placeholder} type={eachItem.type} sx={{ width: { xs: "100%", md: "60%", lg: "40%" } }} />
                             ))}

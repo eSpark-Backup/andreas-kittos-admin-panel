@@ -183,7 +183,7 @@ body {
 .main-title {
   display: flex;
   justify-content: space-between;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   color: #ffffff;
 }
 
@@ -198,7 +198,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  padding: 8px 15px;
+  padding: 20px 15px;
   border-radius: 5px;
 }
 
@@ -227,11 +227,13 @@ body {
 
 .card-value {
   color: #ffffff;
+  font-size: 25px;
 }
 
 .card-inner > .card_icon {
   font-size: 25px;
 }
+
 
 .charts {
   /* display: flex; */
@@ -379,4 +381,13 @@ textarea:placeholder-shown{
 }
 .css-9f4dnw-MuiButtonBase-root-MuiIconButton-root-MuiAutocomplete-clearIndicator{
   display: none !important;
+}
+
+.Toastify__toast-theme--light {
+  background-color: #424755 !important;
+  color: #ffffff !important;
+}
+
+.Toastify__toast-body {
+  padding: 10px 20px !important;
 }

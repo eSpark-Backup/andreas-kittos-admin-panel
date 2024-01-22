@@ -14,6 +14,7 @@ import {
 } from "@mui/material";
 import { getValue } from '../../pages/utils/helpers';
 import { eye, edit, trash } from "../../assets";
+import nodata from "../../assets/images/nodata.svg"
 
 const DynamicTable = ({
     handleView,
@@ -98,7 +99,7 @@ const DynamicTable = ({
 
             {data.length === 0 && !isLoading ?
                 <Stack direction="row" justifyContent="center" alignItems="center">
-                    <img src={""} width="300px" height="300px" alt="no-data" />
+                    <img src={nodata} width="300px" height="300px" alt="no-data" />
                 </Stack>
                 :
                 <TableContainer {...rest} className="table">
@@ -149,9 +150,11 @@ const DynamicTable = ({
                     )}
                 </TableContainer>
             }
-            <Stack mt={0.5} p={{ xs: 0, sm: 2 }} alignItems="center">
-                <Pagination   variant="outlined" shape="rounded" onChange={handlePageChange ? (_, page) => handlePageChange(page) : () => { }} count={(total || 1) / 10}  />
-            </Stack>
+            {data.length >= 10 ?
+                <Stack mt={0.5} p={{ xs: 0, sm: 2 }} alignItems="center">
+                    <Pagination variant="outlined" shape="rounded" onChange={handlePageChange ? (_, page) => handlePageChange(page) : () => { }} count={(total || 1) / 10} />
+                </Stack>
+                : null}
         </>
     );
 };

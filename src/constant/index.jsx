@@ -122,7 +122,9 @@ export const cardsData = [
     {
         title: "ORDERS",
         icon: <BsFillArchiveFill className='card_icon' />,
-        value: 300
+        value: 300,
+        description:"Recent Orders:",
+        descriptionVal:"120"
     },
 ]
 

@@ -52,7 +52,7 @@ const Customers = () => {
             </Box>
             <Grid container rowGap={2} sx={{ display: "flex", justifyContent: "space-between", marginTop: "40px" }}>
                 <Grid item xs={12} lg={4}>
-                   <SearchInput setSearch={setSearch}  placeholder="Search by Customer Name" /> 
+                   <SearchInput setSearch={setSearch}  placeholder="Search by order number or name" /> 
                 </Grid>
             </Grid>
             <Box>
