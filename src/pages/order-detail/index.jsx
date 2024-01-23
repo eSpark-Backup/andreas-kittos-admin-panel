@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import BackBtn from '../../components/buttons/backBtn'
-import { Box, Checkbox, Grid, Paper, Typography, Modal,Button,TextField  } from '@mui/material'
+import { Box, Checkbox, Grid, Paper, Typography, Modal, Button, TextField } from '@mui/material'
 import { ConfirmationModal, OrderCard, OrderDetailItem, OrderItemCard, PageHeader, Table, ViewModal } from '../../components'
-import { suitImg } from '../../assets';
+import { suitImg, viewEye } from '../../assets';
 import { ODTableData } from '../../constant';
 import { columns } from '../../columns/orderDetailsCols';
 import StatusModal from '../../components/modals/StatusModal';
@@ -20,13 +20,16 @@ const OrderDetails = () => {
   const [enabledIndex, setEnabledIndex] = useState(0);
   const [openModal, setOpenModal] = useState(false);
   const [modalInput, setModalInput] = useState('');
+  const [Reason, setReason] = useState('');
+  const [openViewModal, setOpenViewModal] = useState(false);
+  const [currentItem, setCurrentItem] = useState({});
 
   const [checkboxData, setCheckboxData] = useState(
     [
-      { label: 'Scheduled', isChecked: false, value:"23/2023" },
-      { label: 'Pickup up', isChecked: false, value:"23/2023" },
-      { label: 'Washing', isChecked: false, value:"23/2023" },
-      { label: 'Delivered', isChecked: false, value:"23/2023"  },
+      { label: 'Scheduled', isChecked: false, value: "12 Dec ,23", changedTo: "Washing", time: "3:00 PM", date: "23 December 2023", reason: "The order was picked up." },
+      { label: 'Pickup up', isChecked: false, value: "15 Dec ,23", changedTo: "Washing", time: "3:00 PM,", date: "23 December 2023", reason: "The order was picked up." },
+      { label: 'Washing', isChecked: false, value: "20 Dec ,23", changedTo: "Washing", time: "3:00 PM,", date: "23 December 2023", reason: "The order was picked up." },
+      { label: 'Delivered', isChecked: false, value: "21 Dec ,23", changedTo: "Washing", time: "3:00 PM,", date: "23 December 2023", reason: "The order was picked up." },
     ]
   );
 
@@ -53,6 +56,16 @@ const OrderDetails = () => {
   ];
 
 
+  const handleSaveStatus = () => {
+    setCheckboxData((prevCheckboxData) => {
+      const updatedData = [...prevCheckboxData];
+      updatedData[enabledIndex].isChecked = true;
+      return updatedData;
+    });
+
+    setEnabledIndex((prevIndex) => prevIndex + 1);
+    setOpenModal(false);
+  };
 
   const handleCheckboxChange = (index) => {
     if (index === enabledIndex) {
@@ -62,17 +75,14 @@ const OrderDetails = () => {
 
   const handleModalClose = () => {
     setOpenModal(false);
-
-    // Update isChecked property for the checked checkbox
-    setCheckboxData((prevCheckboxData) => {
-      const updatedData = [...prevCheckboxData];
-      updatedData[enabledIndex].isChecked = true;
-      return updatedData;
-    });
-
-    // Enable the next checkbox
-    setEnabledIndex((prevIndex) => prevIndex + 1);
   };
+
+  const handleViewData = (item) => {
+    setCurrentItem(item);
+    setOpenViewModal(true);
+  }
+
+
   return (
     <main className='main-container'>
       <BackBtn />
@@ -113,7 +123,7 @@ const OrderDetails = () => {
                   <Grid container rowGap={0.5}>
                     {checkboxData.map((item, index) => (
                       <React.Fragment key={index}>
-                        <Grid alignItems="center" container item xs={6} lg={9}>
+                        <Grid alignItems="center" container item xs={6} lg={8}>
                           <CheckboxWithLabel
                             label={item.label}
                             isChecked={item.isChecked}
@@ -121,9 +131,18 @@ const OrderDetails = () => {
                             onChange={() => handleCheckboxChange(index)}
                           />
                         </Grid>
-                        <Grid alignItems="center" container item xs={6} lg={3}>
+                        <Grid alignItems="center" container item xs={6} lg={4}>
                           <Box display="flex" alignItems="center">
-                            <Typography sx={{ color: "#E0E0E0" }}>{item.isChecked ? item.value : "-"}</Typography>
+                            {item.isChecked ?
+                              <Box sx={{ display: "flex" }}>
+                                <Box sx={{ marginRight: "10px" }}>
+                                  <Typography sx={{ color: "#E0E0E0", fontSize: "12px" }}>{item.value}</Typography>
+                                </Box>
+                                <Box sx={{ cursor: "pointer" }} onClick={() => handleViewData(item)} >
+                                  <img src={viewEye} alt="suit" />
+                                </Box>
+                              </Box> :
+                              "-"}
                           </Box>
                         </Grid>
                       </React.Fragment>
@@ -163,33 +182,13 @@ const OrderDetails = () => {
             total={ODTableData.length}
           />
           {/* </Box> */}
-          <StatusModal open={openModal} heading={"Update Status"} label={"Reason: (optional)"} placeholder={"Enter here..."} cancelBtnText={"Cancel"} acceptBtnText={"Set"} onClose={handleModalClose}/>
-
-          {/* <Modal open={openModal} onClose={handleModalClose}>
-            <Box
-              sx={{
-                position: 'absolute',
-                top: '50%',
-                left: '50%',
-                transform: 'translate(-50%, -50%)',
-                width: 400,
-                bgcolor: '#1D2634',
-                // boxShadow: 24,
-                p: 4,
-              }}
-            >
-              <TextField
-                label="Modal Input"
-                value={modalInput}
-                onChange={(e) => setModalInput(e.target.value)}
-              />
-              <Button onClick={handleModalClose}>OK</Button>
-            </Box>
-          </Modal> */}
 
         </Box>
       </Box>
-      <ViewModal/>
+
+      <StatusModal onConfirm={handleSaveStatus} open={openModal} heading={"Update Status"} label={"Reason: (optional)"} placeholder={"Enter here..."} cancelBtnText={"Cancel"} acceptBtnText={"Set"} onClose={handleModalClose} />
+
+      <ViewModal data={currentItem} open={openViewModal} onClose={() => setOpenViewModal(false)} />
     </main >
   )
 }

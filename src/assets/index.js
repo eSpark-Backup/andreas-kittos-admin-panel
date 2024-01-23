@@ -9,6 +9,7 @@ import warning from "./icons/warning.svg";
 import eye from "./icons/eye.svg";
 import edit from "./icons/edit.svg";
 import trash from "./icons/trash.svg";
+import viewEye from "./icons/view_eye.svg";
 
 export {
     SignInBg,
@@ -18,5 +19,6 @@ export {
     edit,
     trash,
     warning,
-    suitImg
+    suitImg,
+    viewEye
 }
