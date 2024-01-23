@@ -6,22 +6,22 @@ export const sidebarTabs = [
     {
         name: "Dashboard",
         href: "/dashboard",
-        icons: "Dashboard.svg"
+        icons: "Dashboard"
     },
     {
         name: "Categories",
         href: "/catagories",
-        icons: "Categories.svg"
+        icons: "Categories"
     },
     {
         name: "Customers",
         href: "/customers",
-        icons: "Users.svg"
+        icons: "Users"
     },
     {
         name: "Orders",
         href: "/orders",
-        icons: "Order.svg"
+        icons: "Order"
     },
     // {
     //     name: "Reports",
@@ -31,7 +31,7 @@ export const sidebarTabs = [
     {
         name: "Settings",
         href: "/settings",
-        icons: "setting.svg"
+        icons: "setting"
     },
 ]
 
