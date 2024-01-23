@@ -1,7 +1,4 @@
-import {
-    BsGrid1X2Fill, BsFillArchiveFill, BsFillGrid3X3GapFill, BsPeopleFill,
-    BsListCheck, BsMenuButtonWideFill, BsFillGearFill, BsFillBellFill, BsCartPlus
-} from 'react-icons/bs'
+import {BsFillArchiveFill, BsFillGrid3X3GapFill, BsFillBellFill} from 'react-icons/bs'
 import { FaUserGroup } from "react-icons/fa6";
 import { orderImg, reportImg } from '../assets';
 
@@ -9,22 +6,22 @@ export const sidebarTabs = [
     {
         name: "Dashboard",
         href: "/dashboard",
-        icons: <BsGrid1X2Fill className='icon' />
+        icons: "Dashboard.svg"
     },
     {
         name: "Categories",
         href: "/catagories",
-        icons: <BsFillGrid3X3GapFill className='icon' />
+        icons: "Categories.svg"
     },
     {
         name: "Customers",
         href: "/customers",
-        icons: <BsPeopleFill className='icon' />
+        icons: "Users.svg"
     },
     {
         name: "Orders",
         href: "/orders",
-        icons: <BsCartPlus className='icon' />
+        icons: "Order.svg"
     },
     // {
     //     name: "Reports",
@@ -34,7 +31,7 @@ export const sidebarTabs = [
     {
         name: "Settings",
         href: "/settings",
-        icons: <BsFillGearFill className='icon' />
+        icons: "setting.svg"
     },
 ]
 

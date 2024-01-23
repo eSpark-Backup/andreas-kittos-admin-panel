@@ -5,7 +5,7 @@ import { Box, Card, Typography } from '@mui/material';
 const Dashboard = () => {
   return (
     <main className='main-container'>
-      <Box sx={{height:"45px"}}>
+      <Box sx={{height:"55px"}}>
         <PageHeader title="Dashboard" />
       </Box>
 
@@ -36,7 +36,7 @@ const Dashboard = () => {
 
           <ChartLabel rotate={true} heading={"Total Revenue"} color="#8884D8" />
 
-          <Box sx={{ width: "80%" }}>
+          <Box sx={{ width: {xs:"100%", md:"80%"} }}>
             <BarChart data={chartData} />
           </Box>
 

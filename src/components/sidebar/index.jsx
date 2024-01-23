@@ -27,7 +27,7 @@ function Sidebar({ openSidebarToggle, OpenSidebar }) {
                     return (
                         <Link to={tab.href} className='sidebar-list-links'>
                             <li key={index} className={`sidebar-list-item ${isActive ? 'sidebar-list-item-active' : ''}`}>
-                                {tab.icons} {tab.name}
+                                <img src={`/src/assets/icons/${tab.icons}`}/> <p>{tab.name}</p>
                             </li>
                         </Link>
                     )

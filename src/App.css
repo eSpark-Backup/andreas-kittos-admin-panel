@@ -143,13 +143,20 @@ body {
 .sidebar-list {
   padding: 0;
   list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
 }
 
 .sidebar-list-item {
-  padding: 17px 20px;
-  font-size: 18px;
+  padding: 0px 20px;
+  font-size: 16px;
   cursor: pointer;
+  display: flex;
+  column-gap: 5px;
+  font-weight: 500;
 }
+
 
 
 .sidebar-list-item-active {
@@ -206,8 +213,6 @@ body {
   justify-content: space-around;
   padding: 20px 15px;
   border-radius: 5px;
-  min-height: 130px;
-  max-height: 130px;
 }
 
 .card:first-child {
@@ -227,7 +232,7 @@ body {
   /* margin-top: 6px; */
 }
 .card:nth-child(4) .card-inner{
-  margin-top: 8px;
+  margin-top: 9px;
 }
 
 .card-inner {
