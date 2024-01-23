@@ -6,11 +6,16 @@ import { suitImg, viewEye } from '../../assets';
 import { ODTableData } from '../../constant';
 import { columns } from '../../columns/orderDetailsCols';
 import StatusModal from '../../components/modals/StatusModal';
+import checked from "../../assets/icons/checkedWhite.svg"
+import notChecked from "../../assets/icons/notCheckedWhite.svg"
 
 
 const CheckboxWithLabel = ({ label, isChecked, onChange }) => (
   <Box display="flex" alignItems="center">
-    <Checkbox checked={isChecked} onChange={onChange} />
+    <Checkbox checked={isChecked} onChange={onChange}
+      icon={<img src={notChecked} alt='Checked' style={{width:"16px", height:"16px"}} />}
+      checkedIcon={<img src={checked} alt='Box' style={{width:"16px", height:"16px"}} />}
+    />
     <Typography sx={{ color: '#9E9EA4', fontSize: "12px" }}>{label}</Typography>
   </Box>
 );
