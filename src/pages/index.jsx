@@ -7,6 +7,7 @@ import Settings from "./settings";
 import SignIn from "./signIn";
 import Orders from "./orders";
 import NotFound from "./not-found";
+import OrderDetails from "./order-detail";
 
 export {
     Dashboard,
@@ -18,4 +19,5 @@ export {
     SignIn,
     Orders,
     NotFound,
+    OrderDetails,
 }

@@ -2,6 +2,8 @@ import './App.css'
 import { Provider } from 'react-redux'
 import store from "./store"
 import Routes from './routes'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
 
@@ -10,6 +12,20 @@ function App() {
       <Provider store={store}>
         <Routes />
       </Provider>
+
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={true}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        transition:Bounce
+      />
+
     </>
   )
 }

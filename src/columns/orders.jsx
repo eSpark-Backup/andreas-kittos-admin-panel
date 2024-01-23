@@ -14,7 +14,7 @@ export const columns = () => {
             return (
                 <Link 
                 style={{ color: "#49ACE1" }}
-                to={`/orders/${item?.id}`}>View</Link>
+                to={`/order-details/${item?.id}`}>View</Link>
             )
         }
       },

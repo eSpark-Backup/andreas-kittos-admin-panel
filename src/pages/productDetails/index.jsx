@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom'
 import Back from "../../assets/icons/Back.svg"
 import Euro from "../../assets/icons/euro.svg"
 import { TagsInput } from 'react-tag-input-component'
-import { CustomButton } from '../../components'
+import { BackBtn, CustomButton } from '../../components'
 import styled from '@emotion/styled'
 import Autocomplete from '@mui/material/Autocomplete';
 import Checkbox from '@mui/material/Checkbox';
@@ -39,14 +39,14 @@ const ProductDetails = () => {
 
     return (
         <main className='main-container'>
-            <Typography onClick={()=>navigate(-1)} sx={{ color: "white", cursor: "pointer", width: "fit-content" }}><img src={Back} alt='Back' /> Back</Typography>
+             <BackBtn />
             <Box sx={{ display: "flex", justifyContent: { xs: "", md: "center" }, alignItems: { xs: "", md: "center" }, marginTop: "20px" }}>
                 <Box sx={{ width: { xs: "100%", md: "100%", lg: "65%", xl: "55%" }, border: "1px solid #424755", height: "100%", borderRadius: "10px", py: "20px", px: { xs: "5px", md: "10px", lg: "30px" } }}>
-                    <Typography sx={{ color: "#FFFFFF", fontWeight: "700" }}>ADD PRODUCT</Typography>
+                    <Typography sx={{ color: "#FFFFFF", fontWeight: "700", fontSize:"20px" }}>Product</Typography>
                     <Grid container sx={{ marginTop: "30px" }} columnSpacing={10}>
                         <Grid item xs={12} md={6} xl={6.5} sx={{ display: "flex", flexDirection: "column", rowGap: "30px" }}>
-                            <Stack direction={"column"} gap={1}>
-                                <InputLabel sx={{ color: "#FFFFFF", fontSize: "14px", fontWeight: "500" }}>Product name:</InputLabel>
+                            <Stack direction={"column"} gap={1.7}>
+                                <InputLabel sx={{ color: "#FFFFFF", fontSize: "16px", fontWeight: "500" }}>Product name:</InputLabel>
                                 <TextField
                                     id="filled-hidden-label-normal"
                                     placeholder="Enter here..."
@@ -57,12 +57,12 @@ const ProductDetails = () => {
                                     }}
                                 />
                             </Stack>
-                            <Stack direction={"column"} gap={1}>
-                                <InputLabel sx={{ color: "#FFFFFF", fontSize: "14px", fontWeight: "500" }}>Description:</InputLabel>
+                            <Stack direction={"column"} gap={1.7}>
+                                <InputLabel sx={{ color: "#FFFFFF", fontSize: "16px", fontWeight: "500" }}>Description:</InputLabel>
                                 <textarea defaultValue={"Laundry-Dry-Ironing (per kilo), Laundry-Dry-Ironing (per kilo) Feather Duvet King – Cleaning"} name="" id="" cols="30" rows="4" style={{ background: "transparent", border: "1px solid #424755", borderRadius: "5px", padding: "10px 10px 10px 10px" }} placeholder='Enter here...' readOnly={params.status === "edit" ? false : true}></textarea>
                             </Stack>
-                            <Stack direction={"column"} gap={1}>
-                                <InputLabel sx={{ color: "#FFFFFF", fontSize: "14px", fontWeight: "500" }}>Select category:</InputLabel>
+                            <Stack direction={"column"} gap={1.7}>
+                                <InputLabel sx={{ color: "#FFFFFF", fontSize: "16px", fontWeight: "500" }}>Select category:</InputLabel>
                                 <Autocomplete
                                     multiple
                                     id="checkboxes-tags-demo"
@@ -92,9 +92,9 @@ const ProductDetails = () => {
                                     )}
                                 />
                             </Stack>
-                            <Stack direction={"column"} gap={1}>
+                            <Stack direction={"column"} gap={1.7}>
                                 <>
-                                    <InputLabel sx={{ color: "#FFFFFF", fontSize: "14px", fontWeight: "500" }}>Price:</InputLabel>
+                                    <InputLabel sx={{ color: "#FFFFFF", fontSize: "16px", fontWeight: "500" }}>Price:</InputLabel>
 
                                     <Paper
                                         component="form"
@@ -112,8 +112,8 @@ const ProductDetails = () => {
                                     </Paper>
                                 </>
                             </Stack>
-                            {params.status === "edit" ? <Stack direction={"column"} gap={1}>
-                                <InputLabel sx={{ color: "#FFFFFF", fontSize: "14px", fontWeight: "500" }}>Tags:</InputLabel>
+                            {params.status === "edit" ? <Stack direction={"column"} gap={1.7}>
+                                <InputLabel sx={{ color: "#FFFFFF", fontSize: "16px", fontWeight: "500" }}>Tags:</InputLabel>
                                 <TagsInput
                                     value={selected}
                                     onChange={setSelected}

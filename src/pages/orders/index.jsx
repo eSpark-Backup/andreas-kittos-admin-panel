@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { PageHeader, SearchInput, Table } from '../../components'
+import { CustomButton, PageHeader, SearchInput, Table } from '../../components'
 import { Box, Grid, Stack } from '@mui/material'
 import { columns } from '../../columns/orders'
 import { ordersTableData, ordersTabs } from '../../constant'
@@ -45,7 +45,13 @@ const Orders = () => {
 
   return (
     <main className='main-container'>
+      <Box sx={{display:"flex", justifyContent:"space-between", alignItems:"center", flexWrap:"wrap", rowGap:"5px"}}>
       <PageHeader title="Orders" />
+        
+        <Box>
+       <CustomButton sx={{width:"270px"}} >Download Report</CustomButton>
+        </Box>
+      </Box>
       <Box>
         <Tabs
           value={value}
@@ -61,7 +67,7 @@ const Orders = () => {
       </Box>
       <Grid container rowGap={2} sx={{ display: "flex", justifyContent: "space-between", marginTop: "40px" }}>
         <Grid item xs={12} lg={4}>
-        <SearchInput setSearch={setSearch} placeholder="Search by Order Name Or ID" /> 
+        <SearchInput setSearch={setSearch} placeholder="Search by order number or name" /> 
         </Grid>
         <Grid item xs={12} lg={4} md={7}>
           <Box>

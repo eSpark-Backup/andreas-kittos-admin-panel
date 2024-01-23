@@ -6,7 +6,7 @@ export const columns = () => {
         { name: "Total Orders", key: "totalOrders" },
         { name: "Price", key: "price" },
         { name: "", key: "action",
-         
+ 
       },
     ];
-};
+};  

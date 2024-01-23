@@ -2,6 +2,8 @@ import {
     BsGrid1X2Fill, BsFillArchiveFill, BsFillGrid3X3GapFill, BsPeopleFill,
     BsListCheck, BsMenuButtonWideFill, BsFillGearFill, BsFillBellFill, BsCartPlus
 } from 'react-icons/bs'
+import { FaUserGroup } from "react-icons/fa6";
+import { reportImg } from '../assets';
 
 export const sidebarTabs = [
     {
@@ -30,7 +32,7 @@ export const sidebarTabs = [
         icons: <BsMenuButtonWideFill className='icon' />
     },
     {
-        name: "Setting",
+        name: "Settings",
         href: "/settings",
         icons: <BsFillGearFill className='icon' />
     },
@@ -38,69 +40,91 @@ export const sidebarTabs = [
 
 export const chartData = [
     {
-        name: 'Page A',
-        uv: 4000,
-        pv: 2400,
-        amt: 2400,
+        name: 'Jan',
+        revenue: 10000,
+        orders: 3000,
     },
     {
-        name: 'Page B',
-        uv: 3000,
-        pv: 1398,
-        amt: 2210,
+        name: 'Feb',
+        revenue: 20000,
+        orders: 4500,
     },
     {
-        name: 'Page C',
-        uv: 2000,
-        pv: 9800,
-        amt: 2290,
+        name: 'Mar',
+        revenue: 30000,
+        orders: 11000,
     },
     {
-        name: 'Page D',
-        uv: 2780,
-        pv: 3908,
-        amt: 2000,
+        name: 'Apr',
+        revenue: 40000,
+        orders: 13500,
     },
     {
-        name: 'Page E',
-        uv: 1890,
-        pv: 4800,
-        amt: 2181,
+        name: 'May',
+        revenue: 50000,
+        orders: 16000,
     },
     {
-        name: 'Page F',
-        uv: 2390,
-        pv: 3800,
-        amt: 2500,
+        name: 'Jun',
+        revenue: 60000,
+        orders: 17000,
     },
     {
-        name: 'Page G',
-        uv: 3490,
-        pv: 4300,
-        amt: 2100,
+        name: 'Jul',
+        revenue: 70000,
+        orders: 19600,
     },
+    {
+        name: 'Aug',
+        revenue: 80000,
+        orders: 22050,
+    },
+    {
+        name: 'Sep',
+        revenue: 90000,
+        orders: 26300,
+    },
+    {
+        name: 'Oct',
+        revenue: 100000,
+        orders: 29800,
+    },
+    {
+        name: 'Nov',
+        revenue: 110000,
+        orders: 30060,
+    },
+    {
+        name: 'Dec',
+        revenue: 120000,
+        orders: 32000,
+    },
+ 
 ];
 
 export const cardsData = [
+
     {
         title: "PRODUCTS",
-        icon: <BsFillArchiveFill className='card_icon' />,
-        value: 300
+        icon: <BsFillBellFill className='card_icon' />,
+        value: 160
     },
     {
         title: "CATEGORIES",
         icon: <BsFillGrid3X3GapFill className='card_icon' />,
-        value: 12
+        value: 3
     },
     {
         title: "CUSTOMERS",
-        icon: <BsFillGrid3X3GapFill className='card_icon' />,
+        icon: <FaUserGroup className='card_icon' />,
         value: 33
     },
     {
-        title: "ALERTS",
-        icon: <BsFillBellFill className='card_icon' />,
-        value: 42
+        title: "ORDERS",
+        icon: <BsFillArchiveFill className='card_icon' />,
+        value: 300,
+        description:"Recent Orders:",
+        descriptionVal:"120"
     },
 ]
 
@@ -580,5 +604,80 @@ export const catagoriesTableData = [
         totalOrders: 21,
         price: "$100",
     },
+
+]
+
+export  const cateogoryTabs = [
+    { title: 'Laundry', id: 1 },
+    { title: 'Ironing', id: 2 },
+    { title: 'Dry Cleaning', id: 3 },
+
+];
+
+export const reportData = [
+    {
+      img: reportImg,
+      title: "Sales reports",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor",
+      btnText: "Download",
+    },
+    {
+      img: reportImg,
+      title: "Order Reports",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor",
+      btnText: "Download",
+    },
+    {
+      img: reportImg,
+      title: "Inventory management reports",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor",
+      btnText: "Download",
+    },
+  ];
+
+  export const SettingsTabs = [
+    { title: 'Personal info', id: 1 },
+    { title: 'Change password', id: 2 },
+];
+
+
+export const settingsPasswordFields = [
+    {
+        id: 1,
+        label: "Current password:",
+        placeholder: "John",
+        type: "password"
+    },
+    {
+        id: 2,
+        label: "New password:",
+        placeholder: "John",
+        type: "password"
+    },
+    {
+        id: 3,
+        label: "Confirm password:",
+        placeholder: "John",
+        type: "password"
+    },
+]
+
+
+export const ODTableData = [
+    {
+        id: 1,
+        items:"2 Piece Suit - Iron",
+        quantity:2,
+        category:"Laundry",
+        price:"€7.00"
+    },
+    {
+        id: 2,
+        items:"2 Piece Suit - Iron",
+        quantity:2,
+        category:"Laundry",
+        price:"€7.00"
+    },
+    
 
 ]

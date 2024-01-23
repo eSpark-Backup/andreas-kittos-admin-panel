@@ -21,7 +21,7 @@ export const theme = createTheme({
         MuiTab: {
             styleOverrides: {
                 root: {
-                    color: '#7C7F84',
+                    color: '#9E9EA4',
                     '&.Mui-selected': {
                         color: '#FFFFFF',
                         fontWeight: "bolder",
@@ -69,6 +69,18 @@ export const theme = createTheme({
         MuiButtonBase: {
             defaultProps: {
                 disableRipple: false,
+            },
+        },
+        MuiCard: {
+            styleOverrides: {
+                root: {
+                    borderRadius: "10px",
+                    backgroundColor: "transparent",
+                    border: "1px solid #424755",
+                    padding: 10,
+                    display: "flex",
+                    flexDirection: "column",
+                },
             },
         },
         MuiCardContent: {
@@ -131,7 +143,7 @@ export const theme = createTheme({
             styleOverrides: {
                 input: {
                     "&::placeholder": {
-                        color: "#899DB7",
+                        color: "#9E9EA4",
                     },
                 },
                 root: {
@@ -208,7 +220,24 @@ export const theme = createTheme({
                     border: "1px solid #424755"
                 }
             }
-        }
+        },
+        MuiModal: {
+            styleOverrides: {
+                root: {
+                    "& .MuiBackdrop-root": {
+                        backgroundColor: "rgba(0, 0, 0, 0.5)",
+                        border: "none",
+                    },
+                },
+            },
+        },
+        MuiCheckbox: {
+            styleOverrides: {
+                root: {
+                    color: "#424755",
+                },
+            },
+        },
     },
 
     palette: {

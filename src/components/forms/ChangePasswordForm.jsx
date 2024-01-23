@@ -1,71 +1,41 @@
-import { Box, Grid, InputLabel, Stack, TextField, Typography } from '@mui/material'
+import { Box, Grid, Stack } from '@mui/material'
 import React, { useState } from 'react'
 import PageHeader from '../common/pageHeader'
-import VisibilityOffOutlinedIcon from '@mui/icons-material/VisibilityOffOutlined';
-import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
 import CustomButton from '../buttons/customButton';
+import CustomInput from '../inputs/customInput';
+import { settingsPasswordFields } from '../../constant';
 
-const ChangePasswordForm = () => {
-    const [showPass, setShowPass] = useState(false)
-    const [showNewPass, setShowNewPass] = useState(false)
-    const [showConPass, setShowConPass] = useState(false)
+const ChangePasswordForm = (e) => {
+
+    const [form, setForm] = useState({
+        currentPass: "",
+        newPass: "",
+        confirmPass: ""
+    })
+
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setForm({ ...form, [name]: value })
+    }
+
+
 
     return (
-        <Box sx={{ width: "100%", display: "flex", justifyContent: "space-between", flexDirection: "column", paddingLeft: { xs: "10px", md: "20px" }}}>
+        <Box sx={{ width: "100%", display: "flex", justifyContent: "space-between", flexDirection: "column", paddingLeft: { xs: "10px", md: "20px" },marginTop: {xs:"20px", md:"0px"} }}>
             <Box>
-                <PageHeader title="Password" />
-                <Grid container sx={{ marginTop: "10px" }} rowGap={3}>
+                <PageHeader title="Password" sx={{textTransform:"capitalize"}} />
+                <Grid container >
+                    {/* apply map  */}
                     <Grid item xs={12}>
-                        <Stack direction={"column"} gap={1}>
-                            <InputLabel sx={{ color: "#FFFFFF", fontSize: "14px", fontWeight: "500" }}>Current password:</InputLabel>
-                            <TextField
-                                name='password'
-                                id="filled-hidden-label-normal"
-                                placeholder="John"
-                                type={showPass ? "text" : "password"}
-                                InputProps={{
-                                    endAdornment: showPass ? <VisibilityOffOutlinedIcon sx={{ cursor: "pointer", color: "#9E9EA4" }} onClick={() => setShowPass(!showPass)} /> : <VisibilityOutlinedIcon sx={{ cursor: "pointer", color: "#9E9EA4" }} onClick={() => setShowPass(!showPass)} />
-                                }}
-                                sx={{ width: { xs: "100%", md: "60%", lg: "40%" } }}
-
-                            />
-                        </Stack>
-                    </Grid>
-                    <Grid item xs={12}>
-                        <Stack direction={"column"} gap={1}>
-                            <InputLabel sx={{ color: "#FFFFFF", fontSize: "14px", fontWeight: "500" }}>New password:</InputLabel>
-                            <TextField
-                                name='password'
-                                id="filled-hidden-label-normal"
-                                placeholder="John"
-                                type={showNewPass ? "text" : "password"}
-                                InputProps={{
-                                    endAdornment: showNewPass ? <VisibilityOffOutlinedIcon sx={{ cursor: "pointer", color: "#9E9EA4" }} onClick={() => setShowNewPass(!showNewPass)} /> : <VisibilityOutlinedIcon sx={{ cursor: "pointer", color: "#9E9EA4" }} onClick={() => setShowNewPass(!showNewPass)} />
-                                }}
-                                sx={{ width: { xs: "100%", md: "60%", lg: "40%" } }}
-
-                            />
-                        </Stack>
-                    </Grid>
-                    <Grid item xs={12}>
-                        <Stack direction={"column"} gap={1}>
-                            <InputLabel sx={{ color: "#FFFFFF", fontSize: "14px", fontWeight: "500" }}>Confirm password:</InputLabel>
-                            <TextField
-                                name='password'
-                                id="filled-hidden-label-normal"
-                                placeholder="John"
-                                type={showConPass ? "text" : "password"}
-                                InputProps={{
-                                    endAdornment: showConPass ? <VisibilityOffOutlinedIcon sx={{ cursor: "pointer", color: "#9E9EA4" }} onClick={() => setShowConPass(!showConPass)} /> : <VisibilityOutlinedIcon sx={{ cursor: "pointer", color: "#9E9EA4" }} onClick={() => setShowConPass(!showConPass)} />
-                                }}
-                                sx={{ width: { xs: "100%", md: "60%", lg: "40%" } }}
-
-                            />
+                        <Stack direction={"column"} gap={2} sx={{ marginTop: "20px" }}>
+                            {settingsPasswordFields.map((eachItem, index) => (
+                                <CustomInput key={index} onInputChange={(e) => handleInputChange(e)} inputName={eachItem.id} label={eachItem.label} placeholder={eachItem.placeholder} type={eachItem.type} sx={{ width: { xs: "100%", md: "60%", lg: "40%" } }} />
+                            ))}
                         </Stack>
                     </Grid>
                 </Grid>
             </Box>
-            <Box sx={{ marginBottom: { xs: "10px", md: "0px" },marginTop: { xs: "30px", md: "0px" } }}>
+            <Box sx={{ marginBottom: { xs: "10px", md: "0px" }, marginTop: { xs: "30px", md: "0px" } }}>
                 <CustomButton sx={{ width: "100%" }}>Update</CustomButton>
             </Box>
         </Box>
