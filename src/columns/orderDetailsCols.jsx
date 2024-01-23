@@ -1,16 +1,31 @@
 
+
 export const columns = () => {
     return [
         {
-            name: "Items", key: "items", component: (item) => {
+            name: "Items", key: "items", 
+            component: (item) => {
                 return (
-                    <>
-                        <div>{item.items.name}
-                        <img src={item.items.imgName}/>
+                    <div
+                        style={{ display: "flex", alignItems: "center", gap: "10px", justifyContent: "center" }}
+                    >
+                        <div
+                            style={{
+                                borderRadius: "50%",
+                                overflow: "hidden",
+                                backgroundColor: "#263043",
+                                display: "flex",
+                                alignItems: "center",
+                                padding: "5px",
+                            }}>
+                            <img src={item?.order?.imgName} alt="" width={30} height={30} />
                         </div>
-                    </>
+                        <div>
+                            {item?.order?.name}
+                        </div>
+                    </div>
                 )
-            }
+            },
         },
         { name: "Quantity", key: "quantity" },
         { name: "Category", key: "category" },

@@ -1,6 +1,6 @@
 import {BsFillArchiveFill, BsFillGrid3X3GapFill, BsFillBellFill} from 'react-icons/bs'
 import { FaUserGroup } from "react-icons/fa6";
-import { orderImg, reportImg } from '../assets';
+import { reportImg, suitImg } from '../assets';
 
 export const sidebarTabs = [
     {
@@ -664,14 +664,14 @@ export const settingsPasswordFields = [
 export const ODTableData = [
     {
         id: 1,
-        items: { name: "2 Piece Suit - Iron", imgName: orderImg },
+        order: { name: "2 Piece Suit - Iron", imgName: suitImg },
         quantity: 2,
         category: "Laundry",
         price: "€7.00"
     },
     {
         id: 2,
-        items: { name: "2 Piece Suit - Iron", imgName: orderImg },
+        order: { name: "2 Piece Suit - Iron", imgName: suitImg },
         quantity: 2,
         category: "Laundry",
         price: "€7.00"
