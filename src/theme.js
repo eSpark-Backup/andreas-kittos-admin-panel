@@ -144,6 +144,7 @@ export const theme = createTheme({
                 input: {
                     "&::placeholder": {
                         color: "#9E9EA4",
+                        fontWeight:"500"
                     },
                 },
                 root: {

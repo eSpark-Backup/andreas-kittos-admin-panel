@@ -22,10 +22,12 @@ function Header({ OpenSidebar }) {
         {showDropDown ? <div className="head-dropdown">
           <div className="dropdown-top">
             <img src={user} alt='User' />
-            <Typography sx={{ color: "#9E9EA4", fontSize: "16px" }}>John Doe</Typography>
+            <Link to={"/settings"} onClick={()=>setDropDown(false)}>
+              <Typography sx={{ color: "#9E9EA4", fontSize: "16px" }}>John Doe</Typography>
+            </Link>
           </div>
-          <Divider />
-          <Link to={"/sign-in"}>
+          {/* <Divider /> */}
+          <Link to={"/sign-in"} onClick={()=>setDropDown(false)}>
             <button>
               <img src={logout} alt="Logout" />
               Logout

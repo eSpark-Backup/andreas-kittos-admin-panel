@@ -64,7 +64,7 @@ const AddProduct = () => {
     return (
         <main className='main-container'>
             <BackBtn />
-            <Box sx={{ display: "flex", justifyContent: { xs: "", md: "center" }, alignItems: { md: "center" }, marginTop: "20px" }}>
+            <Box sx={{ display: "flex", justifyContent: { xs: "", md: "center" }, alignItems: { md: "center" }, marginTop: "25px" }}>
                 <Box sx={{ width: { xs: "100%", md: "100%", lg: "65%", xl: "55%" }, border: "1px solid #424755", height: "100%", borderRadius: "10px", py: "20px", px: { xs: "5px", md: "10px", lg: "30px" } }}>
                     <Typography sx={{ color: "#FFFFFF", fontWeight: "700", fontSize: "20px" }}>ADD PRODUCT</Typography>
                     <Grid container sx={{ marginTop: "30px" }} columnSpacing={10}>

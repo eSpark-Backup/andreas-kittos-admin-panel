@@ -36,7 +36,9 @@ const Customers = () => {
 
     return (
         <main className='main-container'>
-            <PageHeader title="Customers" />
+            <Box sx={{height:"80px"}}>
+                <PageHeader title="Customers" />
+            </Box>
             <Box>
                 <Tabs
                     value={value}
@@ -50,9 +52,9 @@ const Customers = () => {
                     ))}
                 </Tabs>
             </Box>
-            <Grid container rowGap={2} sx={{ display: "flex", justifyContent: "space-between", marginTop: "40px" }}>
+            <Grid container rowGap={2} sx={{ display: "flex", justifyContent: "space-between", margin: "40px 0px 20px 0px" }}>
                 <Grid item xs={12} lg={4}>
-                   <SearchInput setSearch={setSearch}  placeholder="Search by order number or name" /> 
+                    <SearchInput setSearch={setSearch} placeholder="Search by order number or name" />
                 </Grid>
             </Grid>
             <Box>

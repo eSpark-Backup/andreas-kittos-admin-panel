@@ -3,7 +3,7 @@ import {
     BsListCheck, BsMenuButtonWideFill, BsFillGearFill, BsFillBellFill, BsCartPlus
 } from 'react-icons/bs'
 import { FaUserGroup } from "react-icons/fa6";
-import { reportImg } from '../assets';
+import { orderImg, reportImg } from '../assets';
 
 export const sidebarTabs = [
     {
@@ -26,11 +26,11 @@ export const sidebarTabs = [
         href: "/orders",
         icons: <BsCartPlus className='icon' />
     },
-    {
-        name: "Reports",
-        href: "/reports",
-        icons: <BsMenuButtonWideFill className='icon' />
-    },
+    // {
+    //     name: "Reports",
+    //     href: "/reports",
+    //     icons: <BsMenuButtonWideFill className='icon' />
+    // },
     {
         name: "Settings",
         href: "/settings",
@@ -99,7 +99,7 @@ export const chartData = [
         revenue: 120000,
         orders: 32000,
     },
- 
+
 ];
 
 export const cardsData = [
@@ -123,8 +123,8 @@ export const cardsData = [
         title: "ORDERS",
         icon: <BsFillArchiveFill className='card_icon' />,
         value: 300,
-        description:"Recent Orders:",
-        descriptionVal:"120"
+        description: "Recent Orders:",
+        descriptionVal: "120"
     },
 ]
 
@@ -271,7 +271,7 @@ export const personalInfoInutsData = [
 ]
 
 export const customerTabs = [
-    "All", "Active", "InActive"
+    "All", "Active", "Inactive"
 ]
 
 
@@ -474,8 +474,8 @@ export const customerDetailsTableData = [
 
 export const addProductData = [
     {
-        label:"Product name:",
-        placeholder:"Enter here..."
+        label: "Product name:",
+        placeholder: "Enter here..."
     }
 
 ]
@@ -485,9 +485,10 @@ export const columns = () => {
         { name: "Category", key: "category" },
         { name: "Total Orders", key: "totalOrders" },
         { name: "Price", key: "price" },
-        { name: "", key: "action",
-         
-      },
+        {
+            name: "", key: "action",
+
+        },
     ];
 };
 
@@ -607,7 +608,7 @@ export const catagoriesTableData = [
 
 ]
 
-export  const cateogoryTabs = [
+export const cateogoryTabs = [
     { title: 'Laundry', id: 1 },
     { title: 'Ironing', id: 2 },
     { title: 'Dry Cleaning', id: 3 },
@@ -616,26 +617,26 @@ export  const cateogoryTabs = [
 
 export const reportData = [
     {
-      img: reportImg,
-      title: "Sales reports",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor",
-      btnText: "Download",
+        img: reportImg,
+        title: "Sales reports",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor",
+        btnText: "Download",
     },
     {
-      img: reportImg,
-      title: "Order Reports",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor",
-      btnText: "Download",
+        img: reportImg,
+        title: "Order Reports",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor",
+        btnText: "Download",
     },
     {
-      img: reportImg,
-      title: "Inventory management reports",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor",
-      btnText: "Download",
+        img: reportImg,
+        title: "Inventory management reports",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor",
+        btnText: "Download",
     },
-  ];
+];
 
-  export const SettingsTabs = [
+export const SettingsTabs = [
     { title: 'Personal info', id: 1 },
     { title: 'Change password', id: 2 },
 ];
@@ -666,18 +667,18 @@ export const settingsPasswordFields = [
 export const ODTableData = [
     {
         id: 1,
-        items:"2 Piece Suit - Iron",
-        quantity:2,
-        category:"Laundry",
-        price:"€7.00"
+        items: { name: "2 Piece Suit - Iron", imgName: orderImg },
+        quantity: 2,
+        category: "Laundry",
+        price: "€7.00"
     },
     {
         id: 2,
-        items:"2 Piece Suit - Iron",
-        quantity:2,
-        category:"Laundry",
-        price:"€7.00"
+        items: { name: "2 Piece Suit - Iron", imgName: orderImg },
+        quantity: 2,
+        category: "Laundry",
+        price: "€7.00"
     },
-    
+
 
 ]

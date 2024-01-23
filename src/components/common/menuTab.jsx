@@ -1,9 +1,9 @@
 import { Box, Typography } from '@mui/material'
 import React from 'react'
 
-const MenuTab = ({key, item, onClick, currentTab}) => {
+const MenuTab = ({key, item, onClick, currentTab, categories}) => {
     return (
-        <Box key={key} onClick={onClick} sx={{ border: "1px solid #424755", height: "40px", borderRadius: "5px", display: "flex", alignItems: "center", paddingLeft: { xs: "7px", md: "10px" }, cursor: "pointer", backgroundColor: currentTab == item.id ? "#424755" : "", width: { xs: "99%", md: "98%", lg: "95%" } }} >
+        <Box key={key} onClick={onClick} sx={{ border: "1px solid #424755", height: "20px", borderRadius: "5px", display: "flex", alignItems: "center", cursor: "pointer", backgroundColor: currentTab == item.id ? "#424755" : "", width: { xs: categories?"96%":"45%", md: "75%", lg: categories?"94%":"88%" }, padding:"10px" }} >
             <Typography sx={{ color: "white", fontSize: { xs: "12px", lg: "14px" } }}>{item.title}</Typography>
         </Box>
     )
