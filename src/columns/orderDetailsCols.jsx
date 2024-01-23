@@ -7,7 +7,7 @@ export const columns = () => {
             component: (item) => {
                 return (
                     <div
-                        style={{ display: "flex", alignItems: "center", gap: "10px", justifyContent: "center" }}
+                        style={{ display: "flex", alignItems: "center", gap: "10px", justifyContent: "center", minWidth:"200px" }}
                     >
                         <div
                             style={{
