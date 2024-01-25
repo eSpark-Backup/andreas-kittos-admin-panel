@@ -33,11 +33,11 @@ const Routes = () => {
                 { path: "/order-details/:id", element: <OrderDetails /> },
             ]
         },
-        { path: "404", element: <NotFound/> },
+        // { path: "404", element: <NotFound /> },
         { path: "/sign-in", element: <SignIn /> },
         {
             path: "*",
-            element: <Navigate to="/404" />,
+            element: <Navigate to="/" />,
         },
     ])
 

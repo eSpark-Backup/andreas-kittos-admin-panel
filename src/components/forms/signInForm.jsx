@@ -20,6 +20,7 @@ const SignInForm = () => {
     initialValues: initialValues,
     validationSchema: signinSchema,
     onSubmit: () => {
+      localStorage.setItem('token', '123456789')
       navigate("/dashboard")
     }
   })
@@ -35,13 +36,13 @@ const SignInForm = () => {
           <Box sx={{ height: "4px", width: "65px", backgroundColor: "#1D2634", borderRadius: "5px" }}></Box>
         </Box>
         <Box>
-          <Typography sx={{ color: "#333333", fontSize: {xs:"14px", sm:"16px"}, fontWeight: "500" }}>Please enter credentials to login!</Typography>
+          <Typography sx={{ color: "#333333", fontSize: { xs: "14px", sm: "16px" }, fontWeight: "500" }}>Please enter credentials to login!</Typography>
         </Box>
         <form onSubmit={handleSubmit}>
           <Grid container gap={2}>
             <Grid item xs={12}>
               <Stack direction={"column"} gap={1}>
-                <InputLabel sx={{ color: "#424755", fontSize: {xs:"12px", sm:"14px"}, fontWeight: "500" }}>Email</InputLabel>
+                <InputLabel sx={{ color: "#424755", fontSize: { xs: "12px", sm: "14px" }, fontWeight: "500" }}>Email</InputLabel>
                 <TextField
                   name='email'
                   id="filled-hidden-label-normal"
