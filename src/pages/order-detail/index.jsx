@@ -57,7 +57,7 @@ const OrderDetails = () => {
     { label: 'Sub total:', value: '€14.00', fontSize: '12px' },
     { label: 'Pickup & delivery:', value: '€14.00', fontSize: '12px' },
     { label: 'Coupon discount:', value: '€14.00', fontSize: '12px' },
-    { label: 'Total Amount:', value: '€90.00' },
+    { label: 'Total Amount:', value: '€90.00', fontSize: '14px' },
   ];
 
 
@@ -92,14 +92,14 @@ const OrderDetails = () => {
     <main className='main-container'>
       <BackBtn />
 
-      <Box sx={{ display: "flex", justifyContent: { xs: "", md: "center" }, alignItems: { xs: "", md: "center" }, marginTop: "20px" }}>
-        <Box sx={{ width: { xs: "100%", md: "100%", lg: "90%", xl: "70%" }, border: "1px solid #424755", height: "100%", borderRadius: "10px", py: "20px", px: { xs: "4px", lg: "30px" } }}>
-          <PageHeader title="Order Details" />
+      <Box sx={{ display: "flex", justifyContent: { xs: "", md: "center" }, alignItems: { xs: "", md: "center" }, marginTop: "30px" }}>
+        <Box sx={{ width: { xs: "100%", md: "100%", lg: "90%", xl: "70%" }, border: "1px solid #424755", height: "100%", borderRadius: "10px", py: "25px", px: { xs: "4px", lg: "30px" } }}>
+          <PageHeader title="Order Details" sx={{textTransform:"capatilize"}} />
 
           <Box sx={{
             display: "flex",
             flexDirection: { xs: "column", lg: "row" },
-            p: "20px 0px",
+            p: "30px 0px",
             gap: "20px",
           }}>
             <Box
@@ -136,8 +136,8 @@ const OrderDetails = () => {
                             onChange={() => handleCheckboxChange(index)}
                           />
                         </Grid>
-                        <Grid alignItems="center" container item xs={6} lg={4}>
-                          <Box display="flex" alignItems="center">
+                        <Grid alignItems="center" container item xs={6} lg={4} sx={{display:"flex", justifyContent:"center", alignItems:"center"}}>
+                          <Box>
                             {item.isChecked ?
                               <Box sx={{ display: "flex" }}>
                                 <Box sx={{ marginRight: "10px" }}>
@@ -147,7 +147,7 @@ const OrderDetails = () => {
                                   <img src={viewEye} alt="suit" />
                                 </Box>
                               </Box> :
-                              "-"}
+                              <Typography sx={{color:"#9E9EA4"}}>-</Typography>}
                           </Box>
                         </Grid>
                       </React.Fragment>
@@ -160,18 +160,18 @@ const OrderDetails = () => {
 
               <OrderCard heading={"Order summary"}>
                 <Box>
-                  <Grid container rowGap={2}>
+                  <Box sx={{display:"flex", flexDirection:"column", rowGap:"12px"}}>
                     {orderSummaryData.map((item, index) => (
-                      <React.Fragment key={index}>
-                        <Grid item xs={6} md={8}>
+                      <Box key={index} sx={{display:"flex", justifyContent:"space-between", width:{xs:"90%", md:"80%"}}}>
+                        <>
                           <Typography sx={{ color: '#FFFFFF', fontSize: item.fontSize }}>{item.label}</Typography>
-                        </Grid>
-                        <Grid item xs={6} md={4}>
-                          <Typography sx={{ color: '#FFFFFF', fontSize: item.fontSize }}>{item.value}</Typography>
-                        </Grid>
-                      </React.Fragment>
+                        </>
+                        <>
+                          <Typography sx={{ color: '#FFFFFF', fontSize: item.fontSize}}>{item.value}</Typography>
+                        </>
+                      </Box>
                     ))}
-                  </Grid>
+                  </Box>
                 </Box>
               </OrderCard>
             </Box>

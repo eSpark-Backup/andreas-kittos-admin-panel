@@ -69,16 +69,20 @@ body {
   position: absolute;
   right: 10px;
   border-radius: 5px;
-  padding: 15px 0px;
+  padding: 10px 0px;
   display: flex;
   flex-direction: column;
   row-gap: 9px;
+  z-index: 1;
 }
 .dropdown-top{
   display: flex;
   column-gap: 6px;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
+  border-bottom: 1px solid #424755;
+  padding: 5px 0px;
 }
 .dropdown-top img{
   width: 30px;
@@ -139,13 +143,20 @@ body {
 .sidebar-list {
   padding: 0;
   list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
 }
 
 .sidebar-list-item {
-  padding: 17px 20px;
-  font-size: 18px;
+  padding: 0px 20px;
+  font-size: 16px;
   cursor: pointer;
+  display: flex;
+  column-gap: 5px;
+  font-weight: 500;
 }
+
 
 
 .sidebar-list-item-active {
@@ -185,6 +196,8 @@ body {
   justify-content: space-between;
   /* text-transform: uppercase; */
   color: #ffffff;
+  flex-wrap: wrap;
+  row-gap: 20px;
 }
 
 .main-cards {
@@ -216,6 +229,10 @@ body {
 
 .card:nth-child(4) {
   background-color: #2962FF;
+  /* margin-top: 6px; */
+}
+.card:nth-child(4) .card-inner{
+  margin-top: 9px;
 }
 
 .card-inner {
@@ -396,3 +413,12 @@ textarea:hover{
 .Toastify__toast-body {
   padding: 10px 20px !important;
 }
+
+.css-b6m6t9-MuiButtonBase-root-MuiTab-root{
+  text-transform: capitalize !important;
+}
+.css-uiu71f{
+  text-transform: capitalize !important;
+}
+
+

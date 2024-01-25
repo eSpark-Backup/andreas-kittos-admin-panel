@@ -61,18 +61,18 @@ const Catagories = () => {
                             {/* <Card sx={{ width: "100%", height: "95%", alignItems: "center", rowGap: "30px" }}> */}
 
                             <Typography sx={{ color: "white", fontSize: "20px", fontWeight: "700" }}>Categories</Typography>
-                            <Box sx={{ width: "100%", display: "flex", flexDirection: { xs: "column", md: "column" }, rowGap: "20px", columnGap: "10px", marginBottom: "10px" }}>
+                            <Box sx={{ width: "100%", display: "flex", flexDirection: { xs: "column", md: "column" }, rowGap: "10px", columnGap: "10px", marginBottom: "10px", justifyContent:"center", alignItems:"center" }}>
                                 {cateogoryTabs.map((item, index) => (
-                                    <MenuTab key={index} item={item} currentTab={currentTab} onClick={() => setCurrentTab(item.id)} />
+                                    <MenuTab categories={true} key={index} item={item} currentTab={currentTab} onClick={() => setCurrentTab(item.id)} />
                                 ))}
                             </Box>
                             {/* </Card> */}
                         </Grid>
 
-                        <Grid item xs={12} lg={8.5} sx={{ border: "1px solid #424755", padding: "30px 10px 0px 10px", borderRadius: "10px" }}>
+                        <Grid item xs={12} lg={8.5} sx={{ border: "1px solid #424755", padding: "10px 10px 0px 10px", borderRadius: "10px" }}>
                             {/* <Card sx={{ width: "100%", height: "95%" }}> */}
                                 <Box>
-                                    <Box sx={{ maxHeight: { xs: "75%", md: "100%" }, overflowY: "scroll", marginTop: "15px" }}>
+                                    <Box sx={{ maxHeight: { xs: "75%", md: "100%" }, overflowY: "scroll" }}>
                                         <Table
                                             data={data}
                                             columns={columns()}

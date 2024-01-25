@@ -20,5 +20,5 @@ export {
     trash,
     warning,
     suitImg,
-    viewEye
+    viewEye,
 }

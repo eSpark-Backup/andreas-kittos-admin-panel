@@ -5,7 +5,9 @@ import { Box, Card, Typography } from '@mui/material';
 const Dashboard = () => {
   return (
     <main className='main-container'>
-      <PageHeader title="Dashboard" />
+      <Box sx={{height:"55px"}}>
+        <PageHeader title="Dashboard" />
+      </Box>
 
       <div className='main-cards'>
         {cardsData.map((card, index) => {
@@ -15,7 +17,7 @@ const Dashboard = () => {
                 <Typography sx={{ fontSize: "16px", color: "#FFFFFF", fontWeight: "600" }}>{card.title}</Typography>
                 {card.icon}
               </div>
-              {card.description && <Typography sx={{color:"white", fontSize:"14px", marginTop:"10px"}}>{card.description} <span style={{fontWeight:"600"}}>{card.descriptionVal}</span></Typography>}
+              {card.description && <Typography sx={{ color: "white", fontSize: "14px", marginTop: "10px" }}>{card.description} <span style={{ fontWeight: "600" }}>{card.descriptionVal}</span></Typography>}
               <h1 className='card-value'>{card.value}</h1>
             </div>
           )
@@ -23,10 +25,8 @@ const Dashboard = () => {
       </div>
 
 
-      <Card>
-        <Typography variant="h6" sx={{ color: "#fff", fontSize: "25px", textAlign: "center", fontWeight:"500" }}>Revenue and Orders</Typography>
-
-
+      <Card sx={{marginTop:"35px", py:"20px"}}>
+        <Typography variant="h6" sx={{ color: "#fff", fontSize: "25px", textAlign: "center", fontWeight: "500" }}>Revenue and Orders</Typography>
 
         <Box sx={{
           display: "flex",
@@ -36,7 +36,7 @@ const Dashboard = () => {
 
           <ChartLabel rotate={true} heading={"Total Revenue"} color="#8884D8" />
 
-          <Box sx={{ width: "80%" }}>
+          <Box sx={{ width: {xs:"100%", md:"80%"} }}>
             <BarChart data={chartData} />
           </Box>
 

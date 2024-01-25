@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { BackBtn, ConfirmationModal, CustomButton, PageHeader } from '../../components';
 import { Box, Grid, Stack, Typography } from '@mui/material';
@@ -17,8 +17,10 @@ const CustomerDetails = () => {
     }
     return (
         <main className='main-container'>
-            <BackBtn/>
-            <PageHeader title={"CUSTOMER DETAILS"} sx={{marginTop:"10px"}} />
+            <BackBtn />
+            <Box sx={{height:"60px", marginTop:"20px"}}>
+                <PageHeader title={"CUSTOMER DETAILS"}  />
+            </Box>
             <Grid container gap={3} sx={{ marginTop: "15px" }}>
                 <Grid item xs={12} md={5} lg={3}>
                     <Box sx={{ display: "flex", flexDirection: "column", padding: "30px 0px", justifyContent: "center", alignItems: "center", rowGap: "15px", border: "1px solid #424755", borderRadius: "10px" }}>
@@ -43,7 +45,7 @@ const CustomerDetails = () => {
                             </Box>
                         </Stack>
                     </Box>
-                    <CustomButton variant="outlined" color="primary" sx={{ marginTop: "30px", width: "100%" }} onClick={()=>setOpenModal(true)}>
+                    <CustomButton variant="outlined" color="primary" sx={{ marginTop: "30px", width: "100%" }} onClick={() => setOpenModal(true)}>
                         Deactivate Customer
                     </CustomButton>
                 </Grid>

@@ -45,13 +45,15 @@ const Orders = () => {
 
   return (
     <main className='main-container'>
-      <Box sx={{display:"flex", justifyContent:"space-between", alignItems:"center", flexWrap:"wrap", rowGap:"5px"}}>
-      <PageHeader title="Orders" />
-        
-        <Box>
-       <CustomButton sx={{width:"270px"}} >Download Report</CustomButton>
-        </Box>
+      {/* <Box sx={{display:"flex", justifyContent:"space-between", alignItems:"center", flexWrap:"wrap", rowGap:"5px"}}> */}
+      <Box sx={{minHeight:"70px"}}>
+        <PageHeader title="Orders" btnText={"Download Report"} />
       </Box>
+
+      {/* <Box>
+        <CustomButton sx={{ width: "270px" }} >Download Report</CustomButton>
+      </Box> */}
+      {/* </Box> */}
       <Box>
         <Tabs
           value={value}
@@ -65,9 +67,9 @@ const Orders = () => {
           ))}
         </Tabs>
       </Box>
-      <Grid container rowGap={2} sx={{ display: "flex", justifyContent: "space-between", marginTop: "40px" }}>
+      <Grid container rowGap={2} sx={{ display: "flex", justifyContent: "space-between", margin: "45px 0px 20px 0px" }}>
         <Grid item xs={12} lg={4}>
-        <SearchInput setSearch={setSearch} placeholder="Search by order number or name" /> 
+          <SearchInput setSearch={setSearch} placeholder="Search by order number or name" />
         </Grid>
         <Grid item xs={12} lg={4} md={7}>
           <Box>

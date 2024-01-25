@@ -4,7 +4,7 @@ import React from 'react'
 const ChartLabel = ({ heading, color, rotate }) => {
     return (
         <Box sx={{
-            display: "flex", alignItems: "center", transform:
+            display: {xs:"none",md:"flex"}, alignItems: "center", transform:
                 rotate ? "rotate(-90deg)" : "rotate(0deg)", marginY: "auto", width: "14%"
         }}>
             <Box sx={{ width: "10px", height: "10px", borderRadius: "20%", bgcolor: color, mr: 1 }} />

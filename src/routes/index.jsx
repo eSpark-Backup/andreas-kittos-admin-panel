@@ -26,7 +26,7 @@ const Routes = () => {
                 { path: "/customers", element: <Customers /> },
                 { path: "/customer/:id", element: <CustomerDetails /> },
                 { path: "/orders", element: <Orders /> },
-                { path: "/reports", element: <Reports /> },
+                // { path: "/reports", element: <Reports /> },
                 { path: "/settings", element: <Settings /> },
                 { path: "/add-Product", element: <AddProduct /> },
                 { path: "/product-details/:id/:status", element: <ProductDetails /> },
