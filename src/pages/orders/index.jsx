@@ -50,7 +50,7 @@ const Orders = () => {
     <main className='main-container'>
       {/* <Box sx={{display:"flex", justifyContent:"space-between", alignItems:"center", flexWrap:"wrap", rowGap:"5px"}}> */}
       <Box sx={{ minHeight: "70px", marginTop:"14px" }}>
-        <PageHeader title="Orders" btnText={"Download report"} />
+        <PageHeader title="Orders" btnText={"Download Report"} />
       </Box>
 
       {/* <Box>
