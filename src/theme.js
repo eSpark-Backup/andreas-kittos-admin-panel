@@ -153,6 +153,7 @@ export const theme = createTheme({
                     color: "#FFFFFF",
                     lineHeight: "160%",
                     paddingLeft: "6px",
+                    height:"40px"
                 },
                 notchedOutline: {
                     borderColor: "#424755",
@@ -180,7 +181,7 @@ export const theme = createTheme({
                         borderBottom: "none",
                         fontSize: "14px",
                         fontWeight: 600,
-                        lineHeight: 1,
+                        lineHeight: 1.35,
                         letterSpacing: 0.5,
                         textTransform: "initial",
                         color: "#FFFFFF",
@@ -192,9 +193,10 @@ export const theme = createTheme({
             styleOverrides: {
                 root: {
                     "& .MuiTableCell-root": {
+                        lineHeight: 1.57,
                         color: "white",
                         fontSize: "12px",
-                        border:"none"
+                        border:"none",
 
                     },
                     "& .MuiTableRow-root": {

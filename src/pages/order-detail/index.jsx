@@ -13,8 +13,8 @@ import notChecked from "../../assets/icons/notCheckedWhite.svg"
 const CheckboxWithLabel = ({ label, isChecked, onChange }) => (
   <Box display="flex" alignItems="center">
     <Checkbox checked={isChecked} onChange={onChange}
-      icon={<img src={notChecked} alt='Checked' style={{width:"16px", height:"16px"}} />}
-      checkedIcon={<img src={checked} alt='Box' style={{width:"16px", height:"16px"}} />}
+      icon={<img src={notChecked} alt='Checked' style={{ width: "16px", height: "16px" }} />}
+      checkedIcon={<img src={checked} alt='Box' style={{ width: "16px", height: "16px" }} />}
     />
     <Typography sx={{ color: '#9E9EA4', fontSize: "12px" }}>{label}</Typography>
   </Box>
@@ -56,8 +56,8 @@ const OrderDetails = () => {
   const orderSummaryData = [
     { label: 'Sub total:', value: '€14.00', fontSize: '12px' },
     { label: 'Pickup & delivery:', value: '€14.00', fontSize: '12px' },
-    { label: 'Coupon discount:', value: '€14.00', fontSize: '12px' },
-    { label: 'Total Amount:', value: '€90.00', fontSize: '14px' },
+    { label: 'Coupon discount:', value: '10%', fontSize: '12px' },
+    { label: 'Total Amount:', value: '€90.00', fontSize: '14px', textDecoration: "underline" },
   ];
 
 
@@ -94,7 +94,7 @@ const OrderDetails = () => {
 
       <Box sx={{ display: "flex", justifyContent: { xs: "", md: "center" }, alignItems: { xs: "", md: "center" }, marginTop: "30px" }}>
         <Box sx={{ width: { xs: "100%", md: "100%", lg: "90%", xl: "70%" }, border: "1px solid #424755", height: "100%", borderRadius: "10px", py: "25px", px: { xs: "4px", lg: "30px" } }}>
-          <PageHeader title="Order Details" sx={{textTransform:"capatilize"}} />
+          <PageHeader title="Order Details" sx={{ textTransform: "capatilize" }} />
 
           <Box sx={{
             display: "flex",
@@ -108,7 +108,7 @@ const OrderDetails = () => {
               }}
             >
 
-              <Grid container rowGap={2}>
+              <Grid container rowGap={2.6} sx={{paddingLeft:{xs:"10px", lg:"0px"}}}>
                 {orderDetailsData.map(({ label, value }, index) => (
                   <OrderDetailItem key={index} label={label} value={value} />
                 ))}
@@ -136,18 +136,18 @@ const OrderDetails = () => {
                             onChange={() => handleCheckboxChange(index)}
                           />
                         </Grid>
-                        <Grid alignItems="center" container item xs={6} lg={4} sx={{display:"flex", justifyContent:"center", alignItems:"center"}}>
+                        <Grid alignItems="center" container item xs={6} lg={4} sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
                           <Box>
                             {item.isChecked ?
                               <Box sx={{ display: "flex" }}>
                                 <Box sx={{ marginRight: "10px" }}>
-                                  <Typography sx={{ color: "#E0E0E0", fontSize: "12px" }}>{item.value}</Typography>
+                                  <Typography sx={{ color: "#FFFFFF", fontSize: "10px" }}>{item.value}</Typography>
                                 </Box>
                                 <Box sx={{ cursor: "pointer" }} onClick={() => handleViewData(item)} >
                                   <img src={viewEye} alt="suit" />
                                 </Box>
                               </Box> :
-                              <Typography sx={{color:"#9E9EA4"}}>-</Typography>}
+                              <Typography sx={{ color: "#9E9EA4" }}>-</Typography>}
                           </Box>
                         </Grid>
                       </React.Fragment>
@@ -160,14 +160,14 @@ const OrderDetails = () => {
 
               <OrderCard heading={"Order summary"}>
                 <Box>
-                  <Box sx={{display:"flex", flexDirection:"column", rowGap:"12px"}}>
+                  <Box sx={{ display: "flex", flexDirection: "column", rowGap: "12px" }}>
                     {orderSummaryData.map((item, index) => (
-                      <Box key={index} sx={{display:"flex", justifyContent:"space-between", width:{xs:"90%", md:"80%"}}}>
+                      <Box key={index} sx={{ display: "flex", justifyContent: "space-between", width: { xs: "90%", md: "80%" } }}>
                         <>
                           <Typography sx={{ color: '#FFFFFF', fontSize: item.fontSize }}>{item.label}</Typography>
                         </>
                         <>
-                          <Typography sx={{ color: '#FFFFFF', fontSize: item.fontSize}}>{item.value}</Typography>
+                          <Typography sx={{ color: '#FFFFFF', fontSize: item.fontSize, textDecoration: item.textDecoration }}>{item.value}</Typography>
                         </>
                       </Box>
                     ))}
@@ -191,7 +191,7 @@ const OrderDetails = () => {
         </Box>
       </Box>
 
-      <StatusModal onConfirm={handleSaveStatus} open={openModal} heading={"Update Status"} label={"Reason: (optional)"} placeholder={"Enter here..."} cancelBtnText={"Cancel"} acceptBtnText={"Set"} onClose={handleModalClose} />
+      <StatusModal onConfirm={handleSaveStatus} open={openModal} heading={"Update Status"} label1={"Reason: "} label2={"(optional)"} placeholder={"Enter here..."} cancelBtnText={"Cancel"} acceptBtnText={"Set"} onClose={handleModalClose} />
 
       <ViewModal data={currentItem} open={openViewModal} onClose={() => setOpenViewModal(false)} />
     </main >

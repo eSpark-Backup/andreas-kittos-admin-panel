@@ -4,7 +4,7 @@ import CustomButton from '../buttons/customButton'
 import OrderDetailItem from '../common/orderDetailItem';
 
 const ViewModal = ({ open, onClose, sx, description, descriptionTwo, onConfirm, acceptBtnText, cancelBtnText, data }) => {
-    const {changedTo, date, time, value } = data || {}
+    const {changedTo, date, time, value , reason} = data || {}
     return (
         <Modal
             open={open}
@@ -43,9 +43,9 @@ const ViewModal = ({ open, onClose, sx, description, descriptionTwo, onConfirm, 
 
                     <Grid container rowGap={2}>
                         <OrderDetailItem label={"Changed to:"} value={changedTo} />
-                        <OrderDetailItem label={"Time:"} value={date} />
-                        <OrderDetailItem label={"Date:"} value={time} />
-                        <OrderDetailItem label={"Reason:"} value={value} />
+                        <OrderDetailItem label={"Time:"} value={time} />
+                        <OrderDetailItem label={"Date:"} value={date} />
+                        <OrderDetailItem label={"Reason:"} value={reason} />
 
                     </Grid>
 

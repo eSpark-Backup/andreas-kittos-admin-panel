@@ -151,7 +151,7 @@ const DynamicTable = ({
                 </TableContainer>
             }
             {data.length >= 10 ?
-                <Stack mt={0.5} p={{ xs: 0, sm: 2 }} alignItems="center">
+                <Stack sx={{marginTop:{xs:"20px", sm:"10px"}}} p={{ xs: 0, sm: 2 }} alignItems="center">
                     <Pagination variant="outlined" shape="rounded" onChange={handlePageChange ? (_, page) => handlePageChange(page) : () => { }} count={(total || 1) / 10} />
                 </Stack>
                 : null}

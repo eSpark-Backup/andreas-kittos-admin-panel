@@ -9,7 +9,7 @@ body {
 .icon {
   vertical-align: middle;
   line-height: 1px;
-  font-size: 20px;
+  font-size: 30px;
 }
 .icon_header {
   vertical-align: middle;
@@ -198,6 +198,12 @@ body {
   color: #ffffff;
   flex-wrap: wrap;
   row-gap: 20px;
+  flex-direction: row;
+}
+@media screen and (max-width:555px){
+  .main-title{
+    flex-direction: column;
+  }
 }
 
 .main-cards {
@@ -421,4 +427,13 @@ textarea:hover{
   text-transform: capitalize !important;
 }
 
+.css-1qz90fd-MuiTabs-scroller{
+  border-bottom: 1px solid #424755 !important;
+}
 
+.css-7dzs46-MuiFormLabel-root-MuiInputLabel-root{
+  font-size: 12px !important;
+  line-height: 0.8375em !important;
+  color: #9E9EA4 !important;
+  font-weight: 300 !important;
+}
