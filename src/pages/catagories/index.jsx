@@ -55,9 +55,12 @@ const Catagories = () => {
             <main className='main-container'>
                 <Box>
                     <PageHeader title="Categories" />
+                    <br/>
                     <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
                         <SearchInput placeholder="Search by name..." sx={{ width: "320px" }} />
                     </Box>
+
+                  
 
 
                     <Grid container sx={{

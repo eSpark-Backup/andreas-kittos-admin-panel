@@ -144,7 +144,7 @@ export const theme = createTheme({
                 input: {
                     "&::placeholder": {
                         color: "#9E9EA4",
-                        fontWeight:"500"
+                        fontWeight:"500",
                     },
                 },
                 root: {
@@ -158,6 +158,23 @@ export const theme = createTheme({
                 notchedOutline: {
                     borderColor: "#424755",
                     borderRadius: "5px",
+                },
+            },
+        },
+        MuiInputBase: {
+            styleOverrides: {
+                input: {
+                    "&::placeholder": {
+                        color: "#9E9EA4",
+                        fontWeight:"500",
+                    },
+                },
+                root: {
+                    fontSize: "14px",
+                    fontWeight: 500,
+                    color: "#FFFFFF",
+                    lineHeight: "160%",
+                    paddingLeft: "6px",
                 },
             },
         },

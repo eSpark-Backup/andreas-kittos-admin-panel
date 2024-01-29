@@ -65,10 +65,10 @@ const AddProduct = () => {
         <main className='main-container'>
             <BackBtn />
             <Box sx={{ display: "flex", justifyContent: { xs: "", md: "center" }, alignItems: { md: "center" }, marginTop: "25px" }}>
-                <Box sx={{ width: { xs: "100%", md: "100%", lg: "65%", xl: "55%" }, border: "1px solid #424755", height: "100%", borderRadius: "10px", py: "20px", px: { xs: "5px", md: "10px", lg: "30px" } }}>
+                <Box sx={{ width: { xs: "100%", md: "100%", lg: "65%", xl: "55%" }, border: "1px solid #424755", height: "100%", borderRadius: "10px", py: "20px", px: { xs: "10px", md: "10px", lg: "30px" } }}>
                     <Typography sx={{ color: "#FFFFFF", fontWeight: "700", fontSize: "20px" }}>ADD PRODUCT</Typography>
                     <Grid container sx={{ marginTop: "30px" }} columnSpacing={10}>
-                        <Grid item xs={12} md={6} xl={6.5} sx={{ display: "flex", flexDirection: "column", rowGap: "30px" }}>
+                        <Grid item xs={12} md={6} xl={6.5} sx={{ display: "flex", flexDirection: "column", rowGap: "30px"}}>
 
                             <Stack direction={"column"} gap={1.7}>
                                 <InputLabel sx={{ color: "#FFFFFF", fontSize: "16px", fontWeight: "500" }}>Product name:</InputLabel>
@@ -154,17 +154,17 @@ const AddProduct = () => {
                             </Stack>
 
                         </Grid>
-                        <Grid item xs={12} md={6} xl={5.5} sx={{ marginTop: { xs: "10px", lg: "0px" } }}>
+                        <Grid item xs={12} md={6} xl={5.5} sx={{ marginTop: { xs: "25px", md: "0px" } }}>
                             <Box sx={{ width: { xs: "100%", md: "100%", xl: "80%" }, height: "300px", border: "1px solid #424755", borderRadius: "5px", display: "flex", justifyContent: 'center', alignItems: "center" }}>
-                                <img src={Upload} alt="Upload Icon" />
+                                <img src={Upload} className='product-img' alt="Upload Icon" />
                             </Box>
-                            <Button component="label" variant="contained" sx={{ marginTop: "10px", width: { xs: "100%", xl: "82%" } }}>
-                                Upload file
+                            <CustomButton component="label" variant="contained" sx={{ marginTop: { xs: "25px", md: "15px" }, width: { xs: "100%", xl: "82%" } }}>
+                                Upload product image
                                 <VisuallyHiddenInput type="file" onChange={handleFileChange} />
-                            </Button>
+                            </CustomButton>
                         </Grid>
                     </Grid>
-                    <CustomButton sx={{ width: '100%', marginTop: "20px" }} variant="outlined" color="primary" onClick={HandleSubmit}>
+                    <CustomButton sx={{ width: '100%',  marginTop: { xs: "40px", md: "20px" }}} variant="outlined" color="primary" onClick={HandleSubmit}>
                         Add Product Now
                     </CustomButton>
                 </Box>

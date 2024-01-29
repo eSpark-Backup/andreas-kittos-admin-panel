@@ -21,7 +21,7 @@ const CustomerDetails = () => {
             <Box sx={{height:"60px", marginTop:"20px"}}>
                 <PageHeader title={"CUSTOMER DETAILS"}  />
             </Box>
-            <Grid container gap={3} sx={{ marginTop: "15px" }}>
+            <Grid container gap={3} sx={{ marginTop: "8px" }}>
                 <Grid item xs={12} md={5} lg={3}>
                     <Box sx={{ display: "flex", flexDirection: "column", padding: "30px 0px", justifyContent: "center", alignItems: "center", rowGap: "15px", border: "1px solid #424755", borderRadius: "10px" }}>
                         <Typography sx={{ color: "#FFFFFF", fontSize: "20px", fontWeight: "700" }}>Customer Profile</Typography>

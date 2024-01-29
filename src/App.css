@@ -398,6 +398,7 @@ textarea:hover{
 .rti--tag{
   color: #FFFFFF !important;
   background-color: #9E9EA4 !important;
+  font-size: 12px;
 }
 
 
@@ -430,6 +431,16 @@ textarea:hover{
 .css-1qz90fd-MuiTabs-scroller{
   border-bottom: 1px solid #424755 !important;
 }
+.product-img {
+  width: 250px
+}
+
+@media screen and (max-width: 800px) {
+  .product-img {
+    width: 150px
+  }
+}
+
 
 .css-7dzs46-MuiFormLabel-root-MuiInputLabel-root{
   font-size: 12px !important;
