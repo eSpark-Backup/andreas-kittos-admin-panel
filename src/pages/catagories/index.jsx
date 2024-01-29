@@ -5,12 +5,18 @@ import { columns } from "../../columns/categories";
 import { catagoriesTableData, cateogoryTabs } from "../../constant";
 import { toast } from "react-toastify";
 import { Link, useNavigate } from "react-router-dom";
+import useCategory from "../../hooks/useCategory";
 
 const Catagories = () => {
 
     const [currentTab, setCurrentTab] = useState(1)
     const [data, setData] = useState([])
     const [openModal, setOpenModal] = useState(false)
+    const {data: catagoryData, type, setType} = useCategory();
+
+    useEffect(() => {
+        console.log("catagoryData", catagoryData);
+    }, [catagoryData])
 
     const navigate = useNavigate()
 

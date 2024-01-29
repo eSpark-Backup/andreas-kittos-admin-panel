@@ -1,13 +1,6 @@
-import { baseUrl, prepareHeaders } from './_utils'
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
+import { api } from './rtk';
 
-export const authApi = createApi({
-  reducerPath: 'authApi',
-  baseQuery: fetchBaseQuery({
-    baseUrl,
-    prepareHeaders
-  }),
-
+export const authApi = api.injectEndpoints({
   endpoints: (builder) => ({
     getUserInfo: builder.mutation({
       query: () => "/user/detail",
