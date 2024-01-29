@@ -18,21 +18,23 @@ const CustomerDetails = () => {
     return (
         <main className='main-container'>
             <BackBtn />
-            <Box sx={{height:"60px", marginTop:"20px"}}>
-                <PageHeader title={"CUSTOMER DETAILS"}  />
+            <Box sx={{ height: "60px", marginTop: "20px" }}>
+                <PageHeader title={"CUSTOMER DETAILS"} />
             </Box>
             <Grid container gap={3} sx={{ marginTop: "8px" }}>
-                <Grid item xs={12} md={5} lg={3}>
+                <Grid item xs={12} md={12} lg={3} xl={2.3}>
                     <Box sx={{ display: "flex", flexDirection: "column", padding: "30px 0px", justifyContent: "center", alignItems: "center", rowGap: "15px", border: "1px solid #424755", borderRadius: "10px" }}>
                         <Typography sx={{ color: "#FFFFFF", fontSize: "20px", fontWeight: "700" }}>Customer Profile</Typography>
-                        <img src={user} alt='User' />
-                        <Box>
-                            {userData.map((eachItem, index) => (
-                                <Stack columnGap={1} direction={"row"} sx={{ paddingLeft: { md: "25px" }, marginTop: "10px" }} key={index}>
-                                    <Typography sx={{ color: "#FFFFFF", fontSize: "14px", fontWeight: "bold" }}>{eachItem.title}: </Typography>
-                                    <Typography sx={{ color: "#FFFFFF", fontSize: "14px" }}>{eachItem.description}</Typography>
-                                </Stack>
-                            ))}
+                        <Box sx={{display:"flex", justifyContent:"center", alignItems:"center", flexDirection:{xs:"row", sm:"column"}, px:"4px", columnGap:"10px"}}>
+                            <img src={user} alt='User' style={{height:"70px", width:"70px"}} />
+                            <Box>
+                                {userData.map((eachItem, index) => (
+                                    <Stack columnGap={1} direction={"row"} sx={{ paddingLeft: { md: "25px" }, marginTop: "10px" }} key={index}>
+                                        <Typography sx={{ color: "#FFFFFF", fontSize: "14px", fontWeight: "bold" }}>{eachItem.title}: </Typography>
+                                        <Typography sx={{ color: "#FFFFFF", fontSize: "14px" }}>{eachItem.description}</Typography>
+                                    </Stack>
+                                ))}
+                            </Box>
                         </Box>
                         <Stack sx={{ borderTop: "1px solid #424755", width: "100%", marginTop: "10px", height: "30px" }} direction={"row"}>
                             <Box sx={{ width: "50%", height: "200%", display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column" }}>
@@ -45,14 +47,14 @@ const CustomerDetails = () => {
                             </Box>
                         </Stack>
                     </Box>
-                    <CustomButton variant="outlined" color="primary" sx={{ marginTop: "30px", width: "100%" }} onClick={() => setOpenModal(true)}>
+                    <CustomButton variant="outlined" color="primary" sx={{ width: "100%", my:"50px" }} onClick={() => setOpenModal(true)}>
                         Deactivate Customer
                     </CustomButton>
                 </Grid>
 
                 <Grid item xs={12} md={12} lg={8.5} sx={{ border: "1px solid #424755", borderRadius: "10px", maxHeight: "79vh", padding: "5px 15px" }}>
                     <div className='main-title'>
-                        <Typography sx={{ color: "white", fontSize: "20px", fontWeight: "700", margin: "10px" }}>Orders <span style={{ fontWeight: "500" }}>(50)</span></Typography>
+                        <Typography sx={{ color: "white", fontSize: "20px", fontWeight: "700", margin: "10px", textAlign:{xs:"center", md:"start"}  }}>Orders <span style={{ fontWeight: "500"}}>(50)</span></Typography>
                     </div>
                     <CustomerOrders />
                 </Grid>

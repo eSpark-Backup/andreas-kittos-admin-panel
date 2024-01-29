@@ -197,7 +197,7 @@ export const theme = createTheme({
                     "& .MuiTableCell-root": {
                         borderBottom: "none",
                         fontSize: "14px",
-                        fontWeight: 600,
+                        fontWeight: 500,
                         lineHeight: 1.35,
                         letterSpacing: 0.5,
                         textTransform: "initial",

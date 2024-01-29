@@ -654,7 +654,7 @@ export const settingsPasswordFields = [
     },
     {
         id: 3,
-        label: "Confirm password:",
+        label: "Confirm new password:",
         placeholder: "John",
         type: "password"
     },

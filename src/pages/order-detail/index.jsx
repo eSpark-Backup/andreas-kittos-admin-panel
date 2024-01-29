@@ -92,9 +92,9 @@ const OrderDetails = () => {
     <main className='main-container'>
       <BackBtn />
 
-      <Box sx={{ display: "flex", justifyContent: { xs: "", md: "center" }, alignItems: { xs: "", md: "center" }, marginTop: "30px" }}>
-        <Box sx={{ width: { xs: "100%", md: "100%", lg: "90%", xl: "70%" }, border: "1px solid #424755", height: "100%", borderRadius: "10px", py: "25px", px: { xs: "4px", lg: "30px" } }}>
-          <PageHeader title="Order Details" sx={{ textTransform: "capatilize" }} />
+      <Box sx={{ display: "flex", justifyContent: { xs: "center", md: "center" }, alignItems: { xs: "", md: "center" }, marginTop: "30px" }}>
+        <Box sx={{ width: { xs: "100%", md: "100%", lg: "90%", xl: "70%" }, border: "1px solid #424755", height: "100%", borderRadius: "10px", py: "25px", px: { xs: "4px", lg: "30px" }}}>
+          <PageHeader title="Order Details" sx={{ textTransform: "capatilize", paddingLeft:{xs:"10px", lg:"0px"} }} />
 
           <Box sx={{
             display: "flex",
@@ -108,7 +108,7 @@ const OrderDetails = () => {
               }}
             >
 
-              <Grid container rowGap={2.6} sx={{paddingLeft:{xs:"10px", lg:"0px"}}}>
+              <Grid container rowGap={2.6} sx={{padding:{xs:"0px 10px", lg:"0px"}}}>
                 {orderDetailsData.map(({ label, value }, index) => (
                   <OrderDetailItem key={index} label={label} value={value} />
                 ))}

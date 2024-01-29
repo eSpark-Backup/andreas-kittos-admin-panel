@@ -421,12 +421,14 @@ textarea:hover{
   padding: 10px 20px !important;
 }
 
-.css-b6m6t9-MuiButtonBase-root-MuiTab-root{
+.css-b6m6t9-MuiButtonBase-root-MuiTab-root, .css-c3y3uj-MuiButtonBase-root-MuiTab-root{
   text-transform: capitalize !important;
 }
 .css-uiu71f{
   text-transform: capitalize !important;
 }
+
+
 
 .css-1qz90fd-MuiTabs-scroller{
   border-bottom: 1px solid #424755 !important;

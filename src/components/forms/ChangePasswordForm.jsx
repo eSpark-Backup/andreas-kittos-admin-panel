@@ -21,7 +21,7 @@ const ChangePasswordForm = (e) => {
 
 
     return (
-        <Box sx={{ width: "100%", display: "flex", justifyContent: "space-between", flexDirection: "column", paddingLeft: { xs: "10px", md: "20px" },marginTop: {xs:"20px", md:"20px"} }}>
+        <Box sx={{ width: "100%", display: "flex", justifyContent: "space-between", flexDirection: "column", padding: { xs: "0px 10px", md: "0px 20px" },marginTop: {xs:"20px", md:"20px"} }}>
             <Box>
                 <PageHeader title="Password" sx={{textTransform:"capitalize"}} />
                 <Grid container >
