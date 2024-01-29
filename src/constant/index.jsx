@@ -147,7 +147,7 @@ export const ordersTableData = [
         qty: 2,
         coupon: "Java-10%",
         status: "Pending",
-        total: "$100",
+        total: "€100",
     },
     {
         id: 2,
@@ -157,7 +157,7 @@ export const ordersTableData = [
         qty: 2,
         coupon: "Java-10%",
         status: "Processing",
-        total: "$100",
+        total: "€100",
     },
     {
         id: 3,
@@ -167,7 +167,7 @@ export const ordersTableData = [
         qty: 2,
         coupon: "Java-10%",
         status: "Completed",
-        total: "$100",
+        total: "€100",
     },
     {
         id: 4,
@@ -177,7 +177,7 @@ export const ordersTableData = [
         qty: 2,
         coupon: "Java-10%",
         status: "Cancelled",
-        total: "$100",
+        total: "€100",
     },
     {
         id: 5,
@@ -187,7 +187,7 @@ export const ordersTableData = [
         qty: 2,
         coupon: "Java-10%",
         status: "Rejected",
-        total: "$100",
+        total: "€100",
     },
     {
         id: 6,
@@ -197,7 +197,7 @@ export const ordersTableData = [
         qty: 2,
         coupon: "Java-10%",
         status: "Failed",
-        total: "$100",
+        total: "€100",
     },
     {
         id: 7,
@@ -207,7 +207,7 @@ export const ordersTableData = [
         qty: 2,
         coupon: "Java-10%",
         status: "On-hold",
-        total: "$100",
+        total: "€100",
     },
     {
         id: 8,
@@ -217,7 +217,7 @@ export const ordersTableData = [
         qty: 2,
         coupon: "Java-10%",
         status: "Pending",
-        total: "$100",
+        total: "€100",
     },
     {
         id: 9,
@@ -227,7 +227,7 @@ export const ordersTableData = [
         qty: 2,
         coupon: "Java-10%",
         status: "Refunded",
-        total: "$100",
+        total: "€100",
     },
     {
         id: 10,
@@ -237,7 +237,7 @@ export const ordersTableData = [
         qty: 2,
         coupon: "Java-10%",
         status: "Refunded",
-        total: "$100",
+        total: "€100",
     },
 ]
 
@@ -278,7 +278,7 @@ export const customerTableData = [
         customerName: "Carlo James",
         joinDate: "September 23,2023",
         totalOrders: 21,
-        earnings: "$100",
+        earnings: "€100",
         status: "Active",
 
     },
@@ -287,7 +287,7 @@ export const customerTableData = [
         customerName: "Ansolo Lazinatov",
         joinDate: "September 23,2023",
         totalOrders: 12,
-        earnings: "$100",
+        earnings: "€100",
         status: "InActive",
 
     },
@@ -296,7 +296,7 @@ export const customerTableData = [
         customerName: "Shatinon Mekalan",
         joinDate: "September 23,2023",
         totalOrders: 65,
-        earnings: "$100",
+        earnings: "€100",
         status: "Active",
 
     },
@@ -305,7 +305,7 @@ export const customerTableData = [
         customerName: "Jimmy Neutron",
         joinDate: "September 23,2023",
         totalOrders: 12,
-        earnings: "$100",
+        earnings: "€100",
         status: "InActive",
 
     },
@@ -314,7 +314,7 @@ export const customerTableData = [
         customerName: "John Doe",
         joinDate: "September 23,2023",
         totalOrders: 22,
-        earnings: "$100",
+        earnings: "€100",
         status: "Active",
 
     },
@@ -323,7 +323,7 @@ export const customerTableData = [
         customerName: "John Doe",
         joinDate: "September 23,2023",
         totalOrders: 23,
-        earnings: "$100",
+        earnings: "€100",
         status: "InActive",
 
     },
@@ -332,7 +332,7 @@ export const customerTableData = [
         customerName: "John Doe",
         joinDate: "September 23,2023",
         totalOrders: 30,
-        earnings: "$100",
+        earnings: "€100",
         status: "Active",
 
     },
@@ -341,7 +341,7 @@ export const customerTableData = [
         customerName: "John Doe",
         joinDate: "September 23,2023",
         totalOrders: 50,
-        earnings: "$100",
+        earnings: "€100",
         status: "InActive",
 
     },
@@ -350,7 +350,7 @@ export const customerTableData = [
         customerName: "John Doe",
         joinDate: "September 23,2023",
         totalOrders: 4,
-        earnings: "$100",
+        earnings: "€100",
         status: "Active",
 
     },
@@ -359,7 +359,7 @@ export const customerTableData = [
         customerName: "Carlo James",
         joinDate: "September 23,2023",
         totalOrders: 2,
-        earnings: "$200",
+        earnings: "€200",
         status: "Active",
 
     },
@@ -393,7 +393,7 @@ export const customerDetailsTableData = [
         qty: 2,
         coupon: "Java-10%",
         status: "Completed",
-        total: "$100",
+        total: "€100",
     },
     {
         id: 2,
@@ -402,7 +402,7 @@ export const customerDetailsTableData = [
         qty: 2,
         coupon: "Java-10%",
         status: "Completed",
-        total: "$100",
+        total: "€100",
     },
     {
         id: 3,
@@ -411,7 +411,7 @@ export const customerDetailsTableData = [
         qty: 2,
         coupon: "Java-10%",
         status: "Pending",
-        total: "$100",
+        total: "€100",
     },
     {
         id: 4,
@@ -420,7 +420,7 @@ export const customerDetailsTableData = [
         qty: 2,
         coupon: "Java-10%",
         status: "On-hold",
-        total: "$100",
+        total: "€100",
     },
     {
         id: 5,
@@ -429,7 +429,7 @@ export const customerDetailsTableData = [
         qty: 2,
         coupon: "Java-10%",
         status: "Failed",
-        total: "$100",
+        total: "€100",
     },
     {
         id: 6,
@@ -438,7 +438,7 @@ export const customerDetailsTableData = [
         qty: 2,
         coupon: "Java-10%",
         status: "Pending",
-        total: "$100",
+        total: "€100",
     },
     {
         id: 7,
@@ -447,7 +447,7 @@ export const customerDetailsTableData = [
         qty: 2,
         coupon: "Java-10%",
         status: "Refunded",
-        total: "$100",
+        total: "€100",
     },
     {
         id: 8,
@@ -456,7 +456,7 @@ export const customerDetailsTableData = [
         qty: 2,
         coupon: "Java-10%",
         status: "Cancelled",
-        total: "$100",
+        total: "€100",
     },
     {
         id: 9,
@@ -465,7 +465,7 @@ export const customerDetailsTableData = [
         qty: 2,
         coupon: "Java-10%",
         status: "Processing",
-        total: "$100",
+        total: "€100",
     },
 ]
 
@@ -495,105 +495,105 @@ export const catagoriesTableData = [
         productName: "Belt Combination / Leather...",
         category: "Laundry",
         totalOrders: 21,
-        price: "$100",
+        price: "€100",
     },
     {
         id: 2,
         productName: "Belt textile",
         category: "Ironing",
         totalOrders: 21,
-        price: "$100",
+        price: "€100",
     },
     {
         id: 3,
         productName: "Corset",
         category: "Laundry",
         totalOrders: 21,
-        price: "$100",
+        price: "€100",
     },
     {
         id: 4,
         productName: "Gloves leather / suede",
         category: "Ironing",
         totalOrders: 21,
-        price: "$100",
+        price: "€100",
     },
     {
         id: 5,
         productName: "Gloves mix material textile...",
         category: "Laundry",
         totalOrders: 21,
-        price: "$100",
+        price: "€100",
     },
     {
         id: 6,
         productName: "T-Shirt",
         category: "Ironing",
         totalOrders: 21,
-        price: "$100",
+        price: "€100",
     },
     {
         id: 7,
         productName: "T-Shirt",
         category: "Laundry",
         totalOrders: 21,
-        price: "$100",
+        price: "€100",
     },
     {
         id: 8,
         productName: "T-Shirt",
         category: "Ironing",
         totalOrders: 21,
-        price: "$100",
+        price: "€100",
     },
     {
         id: 9,
         productName: "T-Shirt",
         category: "Laundry",
         totalOrders: 21,
-        price: "$100",
+        price: "€100",
     },
     {
         id: 10,
         productName: "T-Shirt",
         category: "Ironing",
         totalOrders: 21,
-        price: "$100",
+        price: "€100",
     },
     {
         id: 11,
         productName: "T-Shirt",
         category: "Dry cleaning",
         totalOrders: 21,
-        price: "$100",
+        price: "€100",
     },
     {
         id: 12,
         productName: "T-Shirt",
         category: "Dry cleaning",
         totalOrders: 21,
-        price: "$100",
+        price: "€100",
     },
     {
         id: 13,
         productName: "T-Shirt",
         category: "Dry cleaning",
         totalOrders: 21,
-        price: "$100",
+        price: "€100",
     },
     {
         id: 14,
         productName: "T-Shirt",
         category: "Dry cleaning",
         totalOrders: 21,
-        price: "$100",
+        price: "€100",
     },
     {
         id: 15,
         productName: "T-Shirt",
         category: "Dry cleaning",
         totalOrders: 21,
-        price: "$100",
+        price: "€100",
     },
     {
         id: 16,

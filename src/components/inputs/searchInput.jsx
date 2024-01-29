@@ -8,7 +8,9 @@ const SearchInput = ({
     sx,
 }) => {
     return (
-        <TextField placeholder={placeholder} sx={{ width: "100%", ...sx }} InputProps={{ startAdornment: <SearchIcon sx={{ color: "#9E9EA4", height: "25px", width: "25px", m:"0px 10px" }} /> }} onChange={(e) => setSearch(e.target.value)} />
+        <TextField placeholder={placeholder} sx={{
+            width: "100%", ...sx,
+        }} InputProps={{ startAdornment: <SearchIcon sx={{ color: "#9E9EA4", height: "25px", width: "25px", m: "0px 10px" }} /> }} onChange={(e) => setSearch(e.target.value)} />
     )
 }
 

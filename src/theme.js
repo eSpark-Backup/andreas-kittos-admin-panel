@@ -153,7 +153,6 @@ export const theme = createTheme({
                     color: "#FFFFFF",
                     lineHeight: "160%",
                     paddingLeft: "6px",
-                    height:"40px"
                 },
                 notchedOutline: {
                     borderColor: "#424755",

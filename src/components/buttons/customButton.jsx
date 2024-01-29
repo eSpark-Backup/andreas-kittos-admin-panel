@@ -15,6 +15,7 @@ const CustomButton = ({ sx, children, variant, color, onClick, type, startIcon, 
                 },
                 color: '#fff',
                 fontSize:"16px",
+                fontWeight: 500,
                 ...sx,
             }}
             startIcon={startIcon}

@@ -402,13 +402,13 @@ textarea:hover{
 }
 
 
-.css-1h51icj-MuiAutocomplete-root .MuiAutocomplete-tag{
+.MuiAutocomplete-tag{
   background: transparent !important;
 }
-.css-1vefbgs-MuiButtonBase-root-MuiChip-root .MuiChip-deleteIcon{
-  display: none;
+.MuiChip-deleteIcon{
+  display: none !important;
 }
-.css-9f4dnw-MuiButtonBase-root-MuiIconButton-root-MuiAutocomplete-clearIndicator{
+.MuiAutocomplete-clearIndicator{
   display: none !important;
 }
 
@@ -444,9 +444,9 @@ textarea:hover{
 }
 
 
-.css-7dzs46-MuiFormLabel-root-MuiInputLabel-root{
+/* .css-7dzs46-MuiFormLabel-root-MuiInputLabel-root{
   font-size: 12px !important;
   line-height: 0.8375em !important;
   color: #9E9EA4 !important;
   font-weight: 300 !important;
-}
+} */
