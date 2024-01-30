@@ -145,8 +145,11 @@ export const theme = createTheme({
                     "&::placeholder": {
                         color: "#9E9EA4",
                         fontWeight:"500",
+                        opacity: 1,
                     },
+                    
                 },
+                
                 root: {
                     fontSize: "14px",
                     fontWeight: 500,
@@ -159,6 +162,8 @@ export const theme = createTheme({
                     borderRadius: "5px",
                 },
             },
+
+
         },
         MuiInputBase: {
             styleOverrides: {
@@ -166,6 +171,7 @@ export const theme = createTheme({
                     "&::placeholder": {
                         color: "#9E9EA4",
                         fontWeight:"500",
+                        opacity: 1,
                     },
                 },
                 root: {

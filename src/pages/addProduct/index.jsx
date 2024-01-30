@@ -1,4 +1,4 @@
-import { Box, Button, Grid, IconButton, InputBase, InputLabel, Paper, Stack, TextField, Typography } from '@mui/material'
+import { Box, Button, Grid, IconButton, InputBase, InputLabel, Paper, Stack, TextField, TextareaAutosize, Typography } from '@mui/material'
 import React, { useState } from 'react'
 import Euro from "../../assets/icons/euro.svg"
 import Upload from "../../assets/images/Upload.svg"
@@ -82,9 +82,12 @@ const AddProduct = () => {
                             </Stack>
                             <Stack direction={"column"} gap={1.7}>
                                 <InputLabel sx={{ color: "#FFFFFF", fontSize: { xs: "14px", sm: "16px" }, fontWeight: "500" }}>Description:</InputLabel>
-                                <textarea
+                                <TextField
+                                   
+                                    multiline
+                                    rows={4}
                                     onChange={HandleInputsChange}
-                                    name="description" id="" cols="30" rows="4" style={{ background: "transparent", border: "1px solid #424755", borderRadius: "5px", padding: "10px 10px 10px 10px" }} placeholder='Enter here...'></textarea>
+                                    placeholder='Enter here...'/>
                             </Stack>
                             <Stack direction={"column"} gap={1.7}>
                                 <InputLabel sx={{ color: "#FFFFFF", fontSize: { xs: "14px", sm: "16px" }, fontWeight: "500" }}>Select category:</InputLabel>

@@ -371,7 +371,7 @@ body {
 /* Handle on hover */
 }
 
-textarea{
+/* textarea{
   resize: none;
   color: white;
   font-family: 'Inter', sans-serif;
@@ -379,13 +379,10 @@ textarea{
   border: 1px solid #424755 !important;
   box-shadow: none;
 }
-textarea:placeholder-shown{
-  color: #899DB7;
-  font-family: 'Inter', sans-serif;
-}
+
 textarea:hover{
   border: 1px solid rgb(211, 211, 211) !important;
-}
+} */
 
 .tags-input{
   height: 90px;
