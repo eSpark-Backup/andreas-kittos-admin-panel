@@ -71,15 +71,15 @@ const Orders = () => {
         </Tabs>
       </Box>
       <Grid container rowGap={2} sx={{ display: "flex", justifyContent: "space-between", margin: "45px 0px 20px 0px" }}>
-        <Grid item xs={12} lg={4}>
+        <Grid item xs={10} sm={12} lg={4}>
           <SearchInput setSearch={setSearch} placeholder="Search by order number or name"/>
         </Grid>
-        <Grid item sm={12} lg={4} md={12} sx={{ display: "flex", justifyContent: "flex-end" }}>
+        <Grid item xs={12} lg={4} md={12} sx={{ display: "flex", justifyContent: "flex-end"}}>
           <Box>
             <LocalizationProvider dateAdapter={AdapterDayjs}>
               <Stack direction={
                 isSmallScreen ? "column" : "row"
-              } gap={2}>
+              } gap={2} sx={{display:"flex", justifyContent:"flex-end"}}>
                 <DesktopDatePicker label="Search from" sx={{ width:  isSmallScreen ? "100%" : "150px" }} />
                 <DesktopDatePicker label="Search to" sx={{ width: isSmallScreen ? "100%" : "150px" }} />
               </Stack>

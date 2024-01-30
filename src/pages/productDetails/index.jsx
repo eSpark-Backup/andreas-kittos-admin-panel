@@ -39,14 +39,14 @@ const ProductDetails = () => {
 
     return (
         <main className='main-container'>
-             <BackBtn />
+            <BackBtn />
             <Box sx={{ display: "flex", justifyContent: { xs: "", md: "center" }, alignItems: { xs: "", md: "center" }, marginTop: "25px" }}>
                 <Box sx={{ width: { xs: "100%", md: "100%", lg: "65%", xl: "55%" }, border: "1px solid #424755", height: "100%", borderRadius: "10px", py: "20px", px: { xs: "10px", md: "10px", lg: "30px" } }}>
-                    <Typography sx={{ color: "#FFFFFF", fontWeight: "700", fontSize:"20px" }}>PRODUCT</Typography>
+                    <Typography sx={{ color: "#FFFFFF", fontWeight: "700", fontSize: "20px" }}>PRODUCT</Typography>
                     <Grid container sx={{ marginTop: "30px" }} columnSpacing={10}>
                         <Grid item xs={12} md={6} xl={6.5} sx={{ display: "flex", flexDirection: "column", rowGap: "30px" }}>
                             <Stack direction={"column"} gap={1.7}>
-                                <InputLabel sx={{ color: "#FFFFFF", fontSize: "16px", fontWeight: "500" }}>Product name:</InputLabel>
+                                <InputLabel sx={{ color: "#FFFFFF", fontSize: { xs: "14px", sm: "16px" }, fontWeight: "500" }}>Product name:</InputLabel>
                                 <TextField
                                     id="filled-hidden-label-normal"
                                     placeholder="Enter here..."
@@ -58,12 +58,12 @@ const ProductDetails = () => {
                                 />
                             </Stack>
                             <Stack direction={"column"} gap={1.7}>
-                                <InputLabel sx={{ color: "#FFFFFF", fontSize: "16px", fontWeight: "500" }}>Description:</InputLabel>
+                                <InputLabel sx={{ color: "#FFFFFF", fontSize: { xs: "14px", sm: "16px" }, fontWeight: "500" }}>Description:</InputLabel>
                                 <textarea defaultValue={"Laundry-Dry-Ironing (per kilo), Laundry-Dry-Ironing (per kilo) Feather Duvet King – Cleaning"} name="" id="" cols="30" rows="4" style={{ background: "transparent", border: "1px solid #424755", borderRadius: "5px", padding: "10px 10px 10px 10px" }} placeholder='Enter here...' readOnly={params.status === "edit" ? false : true}></textarea>
                             </Stack>
                             {
                                 params.status === "edit" ? <Stack direction={"column"} gap={1.7}>
-                                    <InputLabel sx={{ color: "#FFFFFF", fontSize: "16px", fontWeight: "500" }}>Select category:</InputLabel>
+                                    <InputLabel sx={{ color: "#FFFFFF", fontSize: { xs: "14px", sm: "16px" }, fontWeight: "500" }}>Select category:</InputLabel>
                                     <Autocomplete
                                         multiple
                                         id="checkboxes-tags-demo"
@@ -93,7 +93,7 @@ const ProductDetails = () => {
                                         )}
                                     />
                                 </Stack> : <Stack direction={"column"} gap={1.7}>
-                                    <InputLabel sx={{ color: "#FFFFFF", fontSize: "16px", fontWeight: "500" }}>Select Category:</InputLabel>
+                                    <InputLabel sx={{ color: "#FFFFFF", fontSize: { xs: "14px", sm: "16px" }, fontWeight: "500" }}>Select Category:</InputLabel>
                                     <TextField
                                         id="filled-hidden-label-normal"
                                         placeholder="Enter here..."
@@ -109,7 +109,7 @@ const ProductDetails = () => {
 
                             <Stack direction={"column"} gap={1.7}>
                                 <>
-                                    <InputLabel sx={{ color: "#FFFFFF", fontSize: "16px", fontWeight: "500" }}>Price:</InputLabel>
+                                    <InputLabel sx={{ color: "#FFFFFF", fontSize: { xs: "14px", sm: "16px" }, fontWeight: "500" }}>Price:</InputLabel>
 
                                     <Paper
                                         component="form"
@@ -128,7 +128,7 @@ const ProductDetails = () => {
                                 </>
                             </Stack>
                             {params.status === "edit" ? <Stack direction={"column"} gap={1.7}>
-                                <InputLabel sx={{ color: "#FFFFFF", fontSize: "16px", fontWeight: "500" }}>Tags:</InputLabel>
+                                <InputLabel sx={{ color: "#FFFFFF", fontSize: { xs: "14px", sm: "16px" }, fontWeight: "500" }}>Tags:</InputLabel>
                                 <TagsInput
                                     value={selected}
                                     onChange={setSelected}
@@ -150,7 +150,7 @@ const ProductDetails = () => {
                             <Box sx={{ width: { xs: "100%", md: "100%", xl: "80%" }, height: "300px", border: "1px solid #424755", borderRadius: "5px", display: "flex", justifyContent: 'center', alignItems: "center" }}>
                                 <img src={productImg} className='product-img' alt="Upload Icon" />
                             </Box>
-                            {params.status === "edit" ? <CustomButton component="label" variant="contained" sx={{ marginTop:{ xs: "25px", md: "15px" }, width: { xs: "100%", xl: "82%" } }}>
+                            {params.status === "edit" ? <CustomButton component="label" variant="contained" sx={{ marginTop: { xs: "25px", md: "15px" }, width: { xs: "100%", xl: "82%" } }}>
                                 Upload product Image
                                 <VisuallyHiddenInput type="file" onChange={handleFileChange} />
                             </CustomButton> : null}
