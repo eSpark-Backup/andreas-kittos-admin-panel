@@ -78,10 +78,10 @@ const Catagories = () => {
                             {/* </Card> */}
                         </Grid>
 
-                        <Grid item xs={12} lg={8.5} sx={{ border: "1px solid #424755", padding: "10px 10px 0px 10px", borderRadius: "10px" }}>
+                        <Grid  item xs={12} lg={8.5} sx={{ border: "1px solid #424755", padding: "10px 10px 0px 10px", borderRadius: "10px", display:"flex", flexDirection: {xs:"column-reverse", sm:"column"} }}>
                             {/* <Card sx={{ width: "100%", height: "95%" }}> */}
                                 <Box>
-                                    <Box sx={{ maxHeight: { xs: "75%", md: "100%" }, overflowY: "scroll" }}>
+                                    <Box sx={{ maxHeight: "100%", overflowY: "scroll" }}>
                                         <Table
                                             data={data}
                                             columns={columns()}
