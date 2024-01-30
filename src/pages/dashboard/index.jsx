@@ -5,6 +5,8 @@ import BellIcon from "../../assets/icons/Bell.svg"
 import CategoriesIcon from "../../assets/icons/CategoriesWhite.svg"
 import UsersIcon from "../../assets/icons/UsersGroup.svg"
 import BoxIcon from "../../assets/icons/Box.svg"
+import purpleSquare from "../../assets/icons/purple-square.svg"
+import greenSquare from "../../assets/icons/green-square.svg"
 
 const Dashboard = () => {
   const iconMap = {
@@ -46,13 +48,13 @@ const Dashboard = () => {
           alignItems: "center",
         }}>
 
-          <ChartLabel rotate={true} heading={"Total Revenue"} color="#8884D8" />
+          <ChartLabel icon={purpleSquare} rotate={true} heading={"Total Revenue"} color="#8884D8" />
 
-          <Box sx={{ width: { xs: "100%", md: "80%" } }}>
+          <Box sx={{ width: "95%"}}>
             <BarChart data={chartData} />
           </Box>
 
-          <ChartLabel rotate={true} heading={"No. of Orders"} color="#82CA9D" />
+          <ChartLabel icon={greenSquare} rotate={true} heading={"No. of Orders"} color="#82CA9D" />
         </Box>
 
 
