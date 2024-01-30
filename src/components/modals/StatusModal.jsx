@@ -39,7 +39,7 @@ const StatusModal = ({ open, onClose, sx, onConfirm, acceptBtnText, cancelBtnTex
                 >
                     <Typography sx={{ color: "white", fontSize: "20px", fontWeight: "700" }}>{heading}</Typography>
                     <Stack direction={"column"} sx={{ width: "100%" }} rowGap={1}>
-                        <InputLabel sx={{ color: "#FFFFFF" }}><span style={{ fontSize: "20px", fontWeight: "700" }}>{label1}</span> {label2 && <span style={{fontSize:"14px", fontWeight:"300"}}>{label2}</span>}</InputLabel>
+                        <InputLabel sx={{ color: "#FFFFFF" }}><span style={{ fontSize: "16px", fontWeight: "700" }}>{label1}</span> {label2 && <span style={{fontSize:"14px", fontWeight:"300"}}>{label2}</span>}</InputLabel>
                         <TextField placeholder={placeholder} sx={{ width: "100%" }} />
                     </Stack>
 

@@ -11,11 +11,13 @@ const SignIn = () => {
         alignItems: 'center',
         flexDirection: {  xs: 'column', sm: 'row'  },
         margin: 'auto',
-        width: { xs: '100%', md: '80%'}, 
+        width: { xs: '100%',sm:"90%", md: '80%'}, 
         height: '100vh',
+        padding:{xs:"0px", sm:"20px", md:"0px"},
+        justifyContent:"center"
       }}>
         <Box sx={{
-          width:  { xs: '100%', md: '55%'},
+          width:  { xs: '100%',sm:"47%", md: '55%'},
           backgroundImage: { xs: `url(${SignInBgSm})`, sm: `url(${SignInBg})`},
           backgroundSize: 'cover',
           backgroundRepeat: 'no-repeat',
@@ -29,7 +31,7 @@ const SignIn = () => {
            
 
         <Box sx={{
-          width: { xs: '100%', lg: '45%'},
+          width: { xs: '100%',sm:"47%", lg: '45%'},
           backgroundColor: 'white',
           minHeight: { xs: '75vh',sm:'70vh', md: '80vh'},
         }}>

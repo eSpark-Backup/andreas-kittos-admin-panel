@@ -103,22 +103,22 @@ export const cardsData = [
 
     {
         title: "PRODUCTS",
-        icon: <BsFillBellFill className='card_icon' />,
+        icon: "Bell",
         value: 160
     },
     {
         title: "CATEGORIES",
-        icon: <BsFillGrid3X3GapFill className='card_icon' />,
+        icon: "Categories",
         value: 3
     },
     {
         title: "CUSTOMERS",
-        icon: <FaUserGroup className='card_icon' />,
+        icon: "Users",
         value: 33
     },
     {
         title: "ORDERS",
-        icon: <BsFillArchiveFill className='card_icon' />,
+        icon: "Box",
         value: 300,
         description: "Recent Orders:",
         descriptionVal: "120"

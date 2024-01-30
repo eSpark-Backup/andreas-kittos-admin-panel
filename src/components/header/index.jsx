@@ -25,7 +25,7 @@ function Header({ OpenSidebar }) {
       <div className='header-left'>
       </div>
       <div className='header-right'>
-        <BsPersonCircle className='icon header-icon !w-[30px] !h-[30px]' style={{ cursor: "pointer" }} onClick={() => setDropDown(!showDropDown)} />
+        <BsPersonCircle className='icon header-icon user-icon' style={{ cursor: "pointer" }} onClick={() => setDropDown(!showDropDown)} />
         {showDropDown ? <div className="head-dropdown">
           <div className="dropdown-top">
             <img src={user} alt='User' />

@@ -30,6 +30,10 @@ body {
   margin-top: 10px;
   cursor: pointer;
 }
+.user-icon{
+  width: 25px !important;
+  height: 25px;
+}
 
 .grid-container {
   display: grid;
@@ -450,3 +454,8 @@ textarea:hover{
   color: #9E9EA4 !important;
   font-weight: 300 !important;
 } */
+
+.recharts-text{
+  font-size: 12px !important;
+  color: #9E9EA4 !important;
+}

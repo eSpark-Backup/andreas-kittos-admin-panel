@@ -108,7 +108,7 @@ const OrderDetails = () => {
               }}
             >
 
-              <Grid container rowGap={2.6} sx={{padding:{xs:"0px 10px", lg:"0px"}}}>
+              <Grid container rowGap={2} sx={{padding:{xs:"0px 10px", lg:"0px"}}}>
                 {orderDetailsData.map(({ label, value }, index) => (
                   <OrderDetailItem key={index} label={label} value={value} />
                 ))}
