@@ -61,37 +61,52 @@ const ProductDetails = () => {
                                 <InputLabel sx={{ color: "#FFFFFF", fontSize: "16px", fontWeight: "500" }}>Description:</InputLabel>
                                 <textarea defaultValue={"Laundry-Dry-Ironing (per kilo), Laundry-Dry-Ironing (per kilo) Feather Duvet King – Cleaning"} name="" id="" cols="30" rows="4" style={{ background: "transparent", border: "1px solid #424755", borderRadius: "5px", padding: "10px 10px 10px 10px" }} placeholder='Enter here...' readOnly={params.status === "edit" ? false : true}></textarea>
                             </Stack>
-                            <Stack direction={"column"} gap={1.7}>
-                                <InputLabel sx={{ color: "#FFFFFF", fontSize: "16px", fontWeight: "500" }}>Select category:</InputLabel>
-                                <Autocomplete
-                                    multiple
-                                    id="checkboxes-tags-demo"
-                                    options={categoryOptions}
-                                    disableCloseOnSelect
-                                    getOptionLabel={(option) => option.title}
-                                    PaperComponent={({ children }) => (
-                                        <Paper style={{ background: 'rgb(29, 38, 52)' }}>{children}</Paper>
-                                    )}
-                                    defaultValue={params.status === "edit" ? [categoryOptions[0], categoryOptions[1], categoryOptions[2]] : [categoryOptions[0]]}
-                                    readOnly={params.status === "edit" ? false : true}
+                            {
+                                params.status === "edit" ? <Stack direction={"column"} gap={1.7}>
+                                    <InputLabel sx={{ color: "#FFFFFF", fontSize: "16px", fontWeight: "500" }}>Select category:</InputLabel>
+                                    <Autocomplete
+                                        multiple
+                                        id="checkboxes-tags-demo"
+                                        options={categoryOptions}
+                                        disableCloseOnSelect
+                                        getOptionLabel={(option) => option.title}
+                                        PaperComponent={({ children }) => (
+                                            <Paper style={{ background: 'rgb(29, 38, 52)' }}>{children}</Paper>
+                                        )}
+                                        defaultValue={params.status === "edit" ? [categoryOptions[0], categoryOptions[1], categoryOptions[2]] : [categoryOptions[0]]}
+                                        readOnly={params.status === "edit" ? false : true}
 
-                                    renderOption={(props, option, { selected }) => (
-                                        <li {...props}>
-                                            <Checkbox
-                                                style={{ marginRight: 8 }}
-                                                checked={selected}
-                                                icon={<img src={notChecked} alt='Checked' />}
-                                                checkedIcon={<img src={checked} alt='Box' />}
-                                            />
-                                            {option.title}
+                                        renderOption={(props, option, { selected }) => (
+                                            <li {...props}>
+                                                <Checkbox
+                                                    style={{ marginRight: 8 }}
+                                                    checked={selected}
+                                                    icon={<img src={notChecked} alt='Checked' />}
+                                                    checkedIcon={<img src={checked} alt='Box' />}
+                                                />
+                                                {option.title}
 
-                                        </li>
-                                    )}
-                                    renderInput={(params) => (
-                                        <TextField {...params} />
-                                    )}
-                                />
-                            </Stack>
+                                            </li>
+                                        )}
+                                        renderInput={(params) => (
+                                            <TextField {...params} />
+                                        )}
+                                    />
+                                </Stack> : <Stack direction={"column"} gap={1.7}>
+                                    <InputLabel sx={{ color: "#FFFFFF", fontSize: "16px", fontWeight: "500" }}>Select Category:</InputLabel>
+                                    <TextField
+                                        id="filled-hidden-label-normal"
+                                        placeholder="Enter here..."
+                                        fullWidth
+                                        defaultValue={"Laundry"}
+                                        InputProps={{
+                                            readOnly: params.status === "edit" ? false : true,
+                                        }}
+                                    />
+                                </Stack>
+                            }
+
+
                             <Stack direction={"column"} gap={1.7}>
                                 <>
                                     <InputLabel sx={{ color: "#FFFFFF", fontSize: "16px", fontWeight: "500" }}>Price:</InputLabel>

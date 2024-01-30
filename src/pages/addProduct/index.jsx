@@ -111,7 +111,10 @@ const AddProduct = () => {
                                         </li>
                                     )}
                                     renderInput={(params) => (
-                                        <TextField {...params} />
+                                        <TextField placeholder={
+                                            selectedCategories.length === 0 ? "Select" : ""
+                                        }  {...params} 
+                                        />
                                     )}
                                 />
                             </Stack>
