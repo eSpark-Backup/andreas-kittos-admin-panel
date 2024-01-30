@@ -119,7 +119,7 @@ const DynamicTable = ({
                                                     : "center"
                                             }
                                         >
-                                            <Stack direction="row" alignItems={"center"}>
+                                            <Stack direction="row" >
                                                 {column.name}
                                             </Stack>
                                         </Stack>
@@ -131,7 +131,6 @@ const DynamicTable = ({
                             <TableBody>
                                 {data?.map((item, index) => (
                                     <TableRow
-
                                         key={item.id}>
                                         {extendedColumns?.map((column) => (
                                             <TableCell sx={{ textAlign: "center" }} key={column.key.join(".")}>
@@ -151,7 +150,7 @@ const DynamicTable = ({
                 </TableContainer>
             }
             {data.length >= 10 ?
-                <Stack sx={{marginTop:{xs:"20px", sm:"10px"}}} p={{ xs: 0, sm: 2 }} alignItems="center">
+                <Stack sx={{ marginTop: { xs: "20px", sm: "10px" } }} p={{ xs: 0, sm: 2 }} alignItems="center">
                     <Pagination variant="outlined" shape="rounded" onChange={handlePageChange ? (_, page) => handlePageChange(page) : () => { }} count={(total || 1) / 10} />
                 </Stack>
                 : null}

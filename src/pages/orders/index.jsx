@@ -43,7 +43,7 @@ const Orders = () => {
     setData(filteredData);
   }, [value]);
 
-  const isSmallScreen = useMediaQuery('(max-width: 400px)');
+  const isSmallScreen = useMediaQuery('(max-width: 360px)');
 
 
   return (
@@ -74,12 +74,14 @@ const Orders = () => {
         <Grid item xs={12} lg={4}>
           <SearchInput setSearch={setSearch} placeholder="Search by order number or name"/>
         </Grid>
-        <Grid item xs={12} lg={4} md={12} sx={{ display: "flex", justifyContent: "flex-end" }}>
+        <Grid item sm={12} lg={4} md={12} sx={{ display: "flex", justifyContent: "flex-end" }}>
           <Box>
             <LocalizationProvider dateAdapter={AdapterDayjs}>
-              <Stack direction={"row"} gap={2}>
-                <DesktopDatePicker label="Search from" sx={{ width: isSmallScreen ? "120px" : "150px" }} />
-                <DesktopDatePicker label="Search to" sx={{ width: isSmallScreen ? "120px" : "150px" }} />
+              <Stack direction={
+                isSmallScreen ? "column" : "row"
+              } gap={2}>
+                <DesktopDatePicker label="Search from" sx={{ width:  isSmallScreen ? "100%" : "150px" }} />
+                <DesktopDatePicker label="Search to" sx={{ width: isSmallScreen ? "100%" : "150px" }} />
               </Stack>
             </LocalizationProvider>
           </Box>

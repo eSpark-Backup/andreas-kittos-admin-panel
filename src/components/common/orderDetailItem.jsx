@@ -8,7 +8,10 @@ const OrderDetailItem = ({ label, value }) => {
                 <Typography sx={{ color: '#FFFFFF', fontSize: {xs:"12px", lg:"14px"}, fontWeight:"500"}}>{label}</Typography>
             </Grid>
             <Grid item xs={6} lg={8}>
-                <Typography sx={{ color: '#FFFFFF', fontSize: {xs:"12px", lg:"16px"}, fontWeight:"500"}}>{value}</Typography>
+                <Typography sx={{ color: '#FFFFFF', fontSize: {xs:"12px", lg:"16px"}, fontWeight:"500", textAlign: {
+                    xs:"right",
+                    lg:"left"
+                }}}>{value}</Typography>
             </Grid>
         </>
     )

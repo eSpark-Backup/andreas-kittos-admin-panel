@@ -403,6 +403,12 @@ textarea:hover{
   color: #FFFFFF !important;
   background-color: #9E9EA4 !important;
   font-size: 12px;
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.rti--tag button {
+  color: white !important;
 }
 
 
@@ -445,6 +451,10 @@ textarea:hover{
   .product-img {
     width: 150px
   }
+}
+
+.MuiTableCell-root {
+  min-width: 150px !important;
 }
 
 
