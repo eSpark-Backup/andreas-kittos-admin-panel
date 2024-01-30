@@ -155,7 +155,7 @@ export const theme = createTheme({
                     fontWeight: 500,
                     color: "#FFFFFF",
                     lineHeight: "160%",
-                    paddingLeft: "6px",
+                    // paddingLeft: "6px",
                 },
                 notchedOutline: {
                     borderColor: "#424755",

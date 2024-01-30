@@ -437,7 +437,7 @@ textarea:hover{
 
 
 
-.css-1qz90fd-MuiTabs-scroller{
+.MuiTabs-scroller{
   border-bottom: 1px solid #424755 !important;
 }
 .product-img {
@@ -465,4 +465,7 @@ textarea:hover{
 .recharts-text{
   font-size: 12px !important;
   color: #9E9EA4 !important;
+}
+.MuiOutlinedInput-root .MuiAutocomplete-endAdornment{
+  right: 20px !important;
 }

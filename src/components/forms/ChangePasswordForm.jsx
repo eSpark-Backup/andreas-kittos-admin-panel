@@ -29,7 +29,7 @@ const ChangePasswordForm = (e) => {
                     <Grid item xs={12}>
                         <Stack direction={"column"} gap={2} sx={{ marginTop: "25px" }}>
                             {settingsPasswordFields.map((eachItem, index) => (
-                                <CustomInput key={index} onInputChange={(e) => handleInputChange(e)} inputName={eachItem.id} label={eachItem.label} placeholder={eachItem.placeholder} type={eachItem.type} sx={{ width: { xs: "100%", md: "60%", lg: "40%" } }} />
+                                <CustomInput changePasswordForm={true} key={index} onInputChange={(e) => handleInputChange(e)} inputName={eachItem.id} label={eachItem.label} placeholder={eachItem.placeholder} type={eachItem.type} sx={{ width: { xs: "100%", md: "60%", lg: "40%" } }} />
                             ))}
                         </Stack>
                     </Grid>

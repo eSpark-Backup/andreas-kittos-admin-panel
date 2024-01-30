@@ -13,6 +13,7 @@ import Checkbox from '@mui/material/Checkbox';
 import checked from "../../assets/icons/checked.svg"
 import notChecked from "../../assets/icons/notChecked.svg"
 import productImg from "../../assets/images/washingMachine.svg"
+import { IoChevronDown } from 'react-icons/io5'
 
 const ProductDetails = () => {
     const params = useParams()
@@ -59,12 +60,19 @@ const ProductDetails = () => {
                             </Stack>
                             <Stack direction={"column"} gap={1.7}>
                                 <InputLabel sx={{ color: "#FFFFFF", fontSize: { xs: "14px", sm: "16px" }, fontWeight: "500" }}>Description:</InputLabel>
-                                <textarea defaultValue={"Laundry-Dry-Ironing (per kilo), Laundry-Dry-Ironing (per kilo) Feather Duvet King – Cleaning"} name="" id="" cols="30" rows="4" style={{ background: "transparent", border: "1px solid #424755", borderRadius: "5px", padding: "10px 10px 10px 10px" }} placeholder='Enter here...' readOnly={params.status === "edit" ? false : true}></textarea>
+                                {/* <textarea defaultValue={"Laundry-Dry-Ironing (per kilo), Laundry-Dry-Ironing (per kilo) Feather Duvet King – Cleaning"} name="" id="" cols="30" rows="4" style={{ background: "transparent", border: "1px solid #424755", borderRadius: "5px", padding: "10px 10px 10px 10px" }} placeholder='Enter here...' readOnly={params.status === "edit" ? false : true}></textarea> */}
+                                <TextField
+                                    defaultValue={"Laundry-Dry-Ironing (per kilo), Laundry-Dry-Ironing (per kilo) Feather Duvet King – Cleaning"}
+                                    multiline
+                                    InputProps={{readOnly:params.status === "edit" ? false : true}}
+                                    rows={3}
+                                    placeholder='Enter here...' />
                             </Stack>
                             {
                                 params.status === "edit" ? <Stack direction={"column"} gap={1.7}>
                                     <InputLabel sx={{ color: "#FFFFFF", fontSize: { xs: "14px", sm: "16px" }, fontWeight: "500" }}>Select category:</InputLabel>
                                     <Autocomplete
+                                    popupIcon={<IoChevronDown style={{fontSize:"15px"}} />}
                                         multiple
                                         id="checkboxes-tags-demo"
                                         options={categoryOptions}

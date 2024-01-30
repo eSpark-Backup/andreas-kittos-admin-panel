@@ -9,6 +9,7 @@ import Autocomplete from '@mui/material/Autocomplete';
 import Checkbox from '@mui/material/Checkbox';
 import checked from "../../assets/icons/checked.svg"
 import notChecked from "../../assets/icons/notChecked.svg"
+import { IoChevronDown } from "react-icons/io5";
 
 
 const AddProduct = () => {
@@ -85,13 +86,14 @@ const AddProduct = () => {
                                 <TextField
                                    
                                     multiline
-                                    rows={4}
+                                    rows={3}
                                     onChange={HandleInputsChange}
                                     placeholder='Enter here...'/>
                             </Stack>
                             <Stack direction={"column"} gap={1.7}>
                                 <InputLabel sx={{ color: "#FFFFFF", fontSize: { xs: "14px", sm: "16px" }, fontWeight: "500" }}>Select category:</InputLabel>
                                 <Autocomplete
+                                    popupIcon={<IoChevronDown className='dropdown-icon' fontSize={15} />}
                                     multiple
                                     id="checkboxes-tags-demo"
                                     options={categoryOptions}

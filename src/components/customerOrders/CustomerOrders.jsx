@@ -49,7 +49,7 @@ const CustomerOrders = () => {
                     aria-label="scrollable auto tabs example"
                 >
                     {ordersTabs.map((item, index) => (
-                        <Tab label={item} key={index} />
+                        <Tab label={item} key={index} sx={{textTransform:"capitalize !important"}} />
                     ))}
                 </Tabs>
             </Box>
