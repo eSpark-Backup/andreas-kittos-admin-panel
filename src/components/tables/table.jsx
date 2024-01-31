@@ -41,7 +41,7 @@ const DynamicTable = ({
         return column.key[0] === "action" ? (
             <Stack
                 direction="row"
-                justifyContent={"center"}
+                justifyContent={"flex-start"}
                 justifyItems="center"
                 alignItems="center"
                 spacing={1}
@@ -115,7 +115,9 @@ const DynamicTable = ({
                                             alignItems={"center"}
                                             justifyContent={
                                                 column.key[0] === "action"
-                                                    ? "flex-end"
+                                                    ? "flex-end" 
+                                                    : column.left ?
+                                                     "flex-start"
                                                     : "center"
                                             }
                                         >
@@ -133,7 +135,7 @@ const DynamicTable = ({
                                     <TableRow
                                         key={item.id}>
                                         {extendedColumns?.map((column) => (
-                                            <TableCell sx={{ textAlign: "center" }} key={column.key.join(".")}>
+                                            <TableCell sx={{ textAlign: column.left ? "left" : "center",pl:column.left?"20px":"20px" }} key={column.key.join(".")}>
                                                 {generateCell(column, item)}
                                             </TableCell>
                                         ))}
