@@ -20,7 +20,7 @@ const Settings = () => {
             <Grid container sx={{ minHeight: currentTab === 1 ? "75vh" : { xs: "55vh", md: "75vh" }, borderRadius: "10px", border: { xs: "1px solid #424755", md: "none" } }}>
                 <Grid item xs={12} md={3} sx={{ border: { md: "1px solid #424755" }, borderTopLeftRadius: "10px", borderBottomLeftRadius: "10px", padding:"30px 0px" }}>
 
-                    <Box sx={{ width: {md:"100%"}, display: "flex", flexDirection: {md:"column", sm:"row", xs: isSmallScreen ? "column" : "row"}, rowGap: "10px", columnGap: "12px", justifyContent:"center", alignItems:"center", padding:{xs:"0px 5px", md:"0px 0px"} }}>
+                    <Box sx={{ width: {md:"100%"}, display: "flex", flexDirection: {md:"column", sm:"column", xs: isSmallScreen ? "column" : "row"}, rowGap: "10px", columnGap: "12px", justifyContent:"center", alignItems:"center", padding:{xs:"0px 5px", md:"0px 0px"} }}>
                         {SettingsTabs.map((item, index) => (
                             <MenuTab key={index} item={item} currentTab={currentTab} onClick={() => setCurrentTab(item.id)} />
                         ))}
