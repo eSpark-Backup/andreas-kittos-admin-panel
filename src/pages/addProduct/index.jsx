@@ -23,7 +23,7 @@ const AddProduct = () => {
     const [productData, setProductData] = useState({
         name: "",
         description: "",
-        price: 0,
+        price: "",
         tags: [],
         categories: [],
         image: null,
@@ -50,7 +50,7 @@ const AddProduct = () => {
             setProductData({
                 name: "",
                 description: "",
-                price: 0,
+                price: "",
                 tags: [],
                 categories: [],
                 image: null,
