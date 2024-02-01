@@ -15,8 +15,8 @@ const Catagories = () => {
     const [data, setData] = useState([])
     const [openModal, setOpenModal] = useState(false)
     // const {data: catagoryData, type, setType} = useCategory();
-    const { data: categories } = useGetCategoriesQuery();
-    const { data: products, isLoading } = useGetProductsQuery();
+    const { data: categories, isLoading: GetQueryLoading } = useGetCategoriesQuery();
+    const { data: products, isLoading: GetProductsLoading } = useGetProductsQuery();
     const [deleteProduct, { isLoading: DeleteLoading, isSuccess, isError }] = useDeleteProductMutation()
     const [deleteID, setDeleteID] = useState("")
 
@@ -67,6 +67,14 @@ const Catagories = () => {
     }
         , [products])
 
+    if(GetProductsLoading || GetQueryLoading){
+        return (
+            <Box sx={{width:"80vw", height:"100%", display:"flex", justifyContent:"center", alignItems:"center"}}>
+                <div class="loader"></div>
+            </Box>
+        )
+    }
+
 
     return (
         <>
@@ -99,7 +107,7 @@ const Catagories = () => {
                                     <Table
                                         data={products?.data}
                                         columns={columns()}
-                                        isLoading={isLoading}
+                                        isLoading={GetProductsLoading}
                                         total={data.length}
                                         handleDelete={(item) => handleDelete(item?.id)}
                                         handleEdit={(item) => navigate(`/update-product/${item.id}`)}
