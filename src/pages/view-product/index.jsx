@@ -10,13 +10,18 @@ import { useGetProductQuery } from '../../services/products'
 
 const ViewProduct = () => {
     const params = useParams()
-    const {data, isloading} = useGetProductQuery(params.id)
+    const { data, isloading } = useGetProductQuery(params.id)
     console.log({ params })
 
     // useEffect(() => {
-      
+
     // }
     // , [data])
+    if (isloading) {
+        return (
+            <div class="loader"></div>
+        )
+    }
 
     return (
         <main className='main-container'>
