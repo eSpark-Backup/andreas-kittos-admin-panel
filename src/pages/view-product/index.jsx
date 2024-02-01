@@ -7,19 +7,24 @@ import Euro from "../../assets/icons/euro.svg"
 import { BackBtn, } from '../../components'
 import productImg from "../../assets/images/washingMachine.svg"
 import { useGetProductQuery } from '../../services/products'
+import { TagsInput } from 'react-tag-input-component'
 
 const ViewProduct = () => {
     const params = useParams()
-    const { data, isloading } = useGetProductQuery(params.id)
-    console.log({ params })
+    const { data, isLoading } = useGetProductQuery(params.id)
+    const [product, setProduct] = useState()
 
-    // useEffect(() => {
+    useEffect(() => {
+        setProduct(data?.data)
+        console.log(data?.data)
+    }, [data])
 
-    // }
-    // , [data])
-    if (isloading) {
+    if (isLoading) {
+        console.log("Loading...")
         return (
-            <div class="loader"></div>
+            <Box sx={{width:"80vw", height:"100%", display:"flex", justifyContent:"center", alignItems:"center"}}>
+                <div class="loader"></div>
+            </Box>
         )
     }
 
@@ -37,7 +42,7 @@ const ViewProduct = () => {
                                     id="filled-hidden-label-normal"
                                     placeholder="Enter here..."
                                     fullWidth
-                                    defaultValue={"Laundry-Dry-Ironing (per kilo)"}
+                                    value={product?.name}
                                     InputProps={{
                                         readOnly: true,
                                     }}
@@ -46,9 +51,11 @@ const ViewProduct = () => {
                             <Stack direction={"column"} gap={1.7}>
                                 <InputLabel sx={{ color: "#FFFFFF", fontSize: { xs: "14px", sm: "16px" }, fontWeight: "500" }}>Description:</InputLabel>
                                 <TextField
-                                    defaultValue={"Laundry-Dry-Ironing (per kilo), Laundry-Dry-Ironing (per kilo) Feather Duvet King – Cleaning"}
+                                    value={product?.description}
                                     multiline
-                                    InputProps={true}
+                                    InputProps={{
+                                        readOnly: true,
+                                    }}
                                     rows={3}
                                     placeholder='Enter here...' />
                             </Stack>
@@ -81,6 +88,7 @@ const ViewProduct = () => {
                                             placeholder="Enter here..."
                                             defaultValue={"9.00"}
                                             readOnly={true}
+                                            value={product?.price}
                                         />
                                         <IconButton color="primary" sx={{ borderLeft: "1px solid #424755", borderRadius: "0px 5px 5px 0px", backgroundColor: "#263043", height: "100%", ":hover": { backgroundColor: "#263043" }, width: "50px" }} aria-label="directions">
                                             <img src={Euro} alt='Euro' />
@@ -89,11 +97,40 @@ const ViewProduct = () => {
                                 </>
                             </Stack>
 
+                            <Stack direction={"column"} gap={1.7}>
+                                <InputLabel sx={{ color: "#FFFFFF", fontSize: { xs: "14px", sm: "16px" }, fontWeight: "500" }}>Quantity:</InputLabel>
+                                <TextField
+                                    id="filled-hidden-label-normal"
+                                    placeholder="Enter here..."
+                                    fullWidth
+                                    value={product?.quantity}
+                                    InputProps={{
+                                        readOnly: true,
+                                    }}
+                                />
+                            </Stack>
+
+                            <Stack direction={"column"} gap={1.7}>
+                                <InputLabel sx={{ color: "#FFFFFF", fontSize: { xs: "14px", sm: "16px" }, fontWeight: "500" }}>Tags:</InputLabel>
+                                <TagsInput
+                                    value={product?.tags.match(/#([^,]+)/g)}
+                                    name="tags"
+                                    classNames={"tags-input"}
+                                // beforeAddValidate={(tag) => {
+                                //     if (tag.trim().startsWith("#")) {
+                                //         return true;
+                                //     } else {
+                                //         return false;
+                                //     }
+                                // }}
+                                />
+                            </Stack>
+
 
                         </Grid>
                         <Grid item xs={12} md={6} xl={5.5} sx={{ marginTop: { xs: "10px", lg: "0px" } }}>
                             <Box sx={{ width: { xs: "100%", md: "100%", xl: "80%" }, height: "300px", border: "1px solid #424755", borderRadius: "5px", display: "flex", justifyContent: 'center', alignItems: "center" }}>
-                                <img src={productImg} className='product-img' alt="Upload Icon" />
+                                <img src={product?.productImage ? product?.productImage : productImg} className='product-img' alt="Upload Icon" />
                             </Box>
                         </Grid>
                     </Grid>
