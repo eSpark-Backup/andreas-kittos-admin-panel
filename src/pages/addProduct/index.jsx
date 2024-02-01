@@ -116,7 +116,7 @@ const AddProduct = () => {
                                         </li>
                                     )}
                                     renderInput={(params) => (
-                                        <TextField placeholder={
+                                        <TextField sx={{color:"white !important"}} placeholder={
                                             selectedCategories.length === 0 ? "Select" : ""
                                         }  {...params} 
                                         />

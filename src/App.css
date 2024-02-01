@@ -225,6 +225,10 @@ body {
   border-radius: 5px;
 }
 
+@media screen  and (max-width:450px){
+  .card{height: 127px;}
+}
+
 .card:first-child {
   background-color: #49ACE1;
 }
@@ -351,7 +355,8 @@ body {
 }
 
 ::-webkit-scrollbar {
-  width: 1px;
+  width: 10px;
+  height: 10px;
 }
 
 /* Track */
@@ -466,6 +471,25 @@ textarea:hover{
   font-size: 12px !important;
   color: #9E9EA4 !important;
 }
-.MuiOutlinedInput-root .MuiAutocomplete-endAdornment{
-  right: 20px !important;
+@media screen and (min-width:450px){
+  .MuiOutlinedInput-root .MuiAutocomplete-endAdornment{
+    right: 20px !important;
+  }
+}
+
+.cutomer-detail-icon{
+  height: 64px;
+  width: 64px;
+}
+
+.MuiChip-root{
+  color: white !important;
+}
+
+
+@media screen and (min-width: 450px){
+  .cutomer-detail-icon{
+    height: 120px;
+    width: 120px;
+  }
 }

@@ -12,7 +12,7 @@ const Catagories = () => {
     const [currentTab, setCurrentTab] = useState(1)
     const [data, setData] = useState([])
     const [openModal, setOpenModal] = useState(false)
-    const {data: catagoryData, type, setType} = useCategory();
+    const { data: catagoryData, type, setType } = useCategory();
 
     useEffect(() => {
         console.log("catagoryData", catagoryData);
@@ -55,12 +55,12 @@ const Catagories = () => {
             <main className='main-container'>
                 <Box>
                     <PageHeader title="Categories" />
-                    <br/>
+                    <br />
                     <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
                         <SearchInput placeholder="Search by name..." sx={{ width: "320px" }} />
                     </Box>
 
-                  
+
 
 
                     <Grid container sx={{
@@ -70,7 +70,7 @@ const Catagories = () => {
                             {/* <Card sx={{ width: "100%", height: "95%", alignItems: "center", rowGap: "30px" }}> */}
 
                             <Typography sx={{ color: "white", fontSize: "20px", fontWeight: "700" }}>Categories</Typography>
-                            <Box sx={{ width: "100%", display: "flex", flexDirection: { xs: "row",sm:"column", md: "column" }, rowGap: "10px", columnGap: "10px", marginBottom: "10px",overflowX:{xs:"scroll", sm:"hidden"}, alignItems:{md:"center"} }}>
+                            <Box sx={{ width: "100%", display: "flex", flexDirection: { xs: "row", sm: "column", md: "column" }, rowGap: "10px", columnGap: "10px", marginBottom: "10px", overflowX: { xs: "scroll", sm: "hidden" }, alignItems: { md: "center" } }}>
                                 {cateogoryTabs.map((item, index) => (
                                     <MenuTab categories={true} key={index} item={item} currentTab={currentTab} onClick={() => setCurrentTab(item.id)} />
                                 ))}
@@ -78,27 +78,27 @@ const Catagories = () => {
                             {/* </Card> */}
                         </Grid>
 
-                        <Grid  item xs={12} lg={8.5} sx={{ border: "1px solid #424755", padding: "10px 10px 0px 10px", borderRadius: "10px", display:"flex", flexDirection: {xs:"column-reverse", sm:"column"} }}>
+                        <Grid item xs={12} lg={8.5} sx={{ border: "1px solid #424755", padding: "10px 10px 0px 10px", borderRadius: "10px", display: "flex", flexDirection: { xs: "column-reverse", sm: "column" } }}>
                             {/* <Card sx={{ width: "100%", height: "95%" }}> */}
+                            <Box  sx={{ maxHeight: "60vh", overflowY: "scroll", px:"8px" }}>
                                 <Box>
-                                    <Box sx={{ maxHeight: "100%", overflowY: "scroll" }}>
-                                        <Table
-                                            data={data}
-                                            columns={columns()}
-                                            isLoading={false}
-                                            total={data.length}
-                                            handleDelete={handleDelete}
-                                            handleEdit={(item) => navigate(`/product-details/${item.id}/edit`)}
-                                            handleView={(item) => navigate(`/product-details/${item.id}/view`)}
-                                        />
-                                    </Box>
+                                    <Table
+                                        data={data}
+                                        columns={columns()}
+                                        isLoading={false}
+                                        total={data.length}
+                                        handleDelete={handleDelete}
+                                        handleEdit={(item) => navigate(`/product-details/${item.id}/edit`)}
+                                        handleView={(item) => navigate(`/product-details/${item.id}/view`)}
+                                    />
                                 </Box>
+                            </Box>
 
-                                <Box>
-                                    <Link to={"/add-Product"}>
-                                        <CustomButton sx={{ width: "100%", margin: "10px 0px" }}> Add New Product</CustomButton>
-                                    </Link>
-                                </Box>
+                            <Box sx={{marginTop:{md:"10px"}}}>
+                                <Link to={"/add-Product"}>
+                                    <CustomButton sx={{ width: "100%", margin: "10px 0px" }}> Add New Product</CustomButton>
+                                </Link>
+                            </Box>
 
                             {/* </Card> */}
 
