@@ -7,7 +7,7 @@ import { toast } from "react-toastify";
 import { Link, useNavigate } from "react-router-dom";
 import useCategory from "../../hooks/useCategory";
 import { useGetCategoriesQuery } from "../../services/categories";
-import { useGetProductsQuery } from "../../services/products";
+import { useDeleteProductMutation, useGetProductsQuery } from "../../services/products";
 
 const Catagories = () => {
 
@@ -17,6 +17,8 @@ const Catagories = () => {
     // const {data: catagoryData, type, setType} = useCategory();
     const { data: categories } = useGetCategoriesQuery();
     const { data: products, isLoading } = useGetProductsQuery();
+    const [deleteProduct, { isLoading: DeleteLoading, isSuccess, isError }] = useDeleteProductMutation()
+    const [deleteID, setDeleteID] = useState("")
 
     const navigate = useNavigate()
 
@@ -39,15 +41,26 @@ const Catagories = () => {
 
     }, [currentTab]);
 
-    const handleDelete = () => {
+    const handleDelete = (id) => {
+        setDeleteID(id)
         setOpenModal(true)
     }
 
     const onConfirm = () => {
         setOpenModal(false)
-        toast.success('Your Product has been deleted succesfully!', {
-        });
+        deleteProduct(deleteID)
+
     }
+    useEffect(() => {
+        if (isSuccess) {
+            toast.success('Your Product has been deleted succesfully!', {
+            });
+            setDeleteID("")
+        }
+        if (isError) {
+            toast.error("Something went wrong");
+        }
+    }, [isSuccess, isError])
 
     useEffect(() => {
         console.log("products", products);
@@ -88,7 +101,7 @@ const Catagories = () => {
                                         columns={columns()}
                                         isLoading={isLoading}
                                         total={data.length}
-                                        handleDelete={handleDelete}
+                                        handleDelete={(item) => handleDelete(item?.id)}
                                         handleEdit={(item) => navigate(`/update-product/${item.id}`)}
                                         handleView={(item) => navigate(`/view-product/${item.id}`)}
                                     />

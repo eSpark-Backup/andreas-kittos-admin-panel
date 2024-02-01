@@ -53,9 +53,6 @@ const UpdateProduct = () => {
                                     placeholder="Enter here..."
                                     fullWidth
                                     defaultValue={"Laundry-Dry-Ironing (per kilo)"}
-                                    InputProps={{
-                                        readOnly: params.status === "edit" ? false : true,
-                                    }}
                                 />
                             </Stack>
                             <Stack direction={"column"} gap={1.7}>
@@ -64,12 +61,10 @@ const UpdateProduct = () => {
                                 <TextField
                                     defaultValue={"Laundry-Dry-Ironing (per kilo), Laundry-Dry-Ironing (per kilo) Feather Duvet King – Cleaning"}
                                     multiline
-                                    InputProps={{readOnly:params.status === "edit" ? false : true}}
                                     rows={3}
                                     placeholder='Enter here...' />
                             </Stack>
-                            {
-                                params.status === "edit" ? <Stack direction={"column"} gap={1.7}>
+                            <Stack direction={"column"} gap={1.7}>
                                     <InputLabel sx={{ color: "#FFFFFF", fontSize: { xs: "14px", sm: "16px" }, fontWeight: "500" }}>Select category:</InputLabel>
                                     <Autocomplete
                                     popupIcon={<IoChevronDown style={{fontSize:"15px"}} />}
@@ -82,7 +77,6 @@ const UpdateProduct = () => {
                                             <Paper style={{ background: 'rgb(29, 38, 52)' }}>{children}</Paper>
                                         )}
                                         defaultValue={params.status === "edit" ? [categoryOptions[0], categoryOptions[1], categoryOptions[2]] : [categoryOptions[0]]}
-                                        readOnly={params.status === "edit" ? false : true}
 
                                         renderOption={(props, option, { selected }) => (
                                             <li {...props}>
@@ -100,19 +94,7 @@ const UpdateProduct = () => {
                                             <TextField {...params} />
                                         )}
                                     />
-                                </Stack> : <Stack direction={"column"} gap={1.7}>
-                                    <InputLabel sx={{ color: "#FFFFFF", fontSize: { xs: "14px", sm: "16px" }, fontWeight: "500" }}>Select Category:</InputLabel>
-                                    <TextField
-                                        id="filled-hidden-label-normal"
-                                        placeholder="Enter here..."
-                                        fullWidth
-                                        defaultValue={"Laundry"}
-                                        InputProps={{
-                                            readOnly: params.status === "edit" ? false : true,
-                                        }}
-                                    />
                                 </Stack>
-                            }
 
 
                             <Stack direction={"column"} gap={1.7}>
@@ -127,7 +109,6 @@ const UpdateProduct = () => {
                                             sx={{ ml: 1, flex: 1, py: "5px", pl: "5px" }}
                                             placeholder="Enter here..."
                                             defaultValue={"9.00"}
-                                            readOnly={params.status === "edit" ? false : true}
                                         />
                                         <IconButton color="primary" sx={{ borderLeft: "1px solid #424755", borderRadius: "0px 5px 5px 0px", backgroundColor: "#263043", height: "100%", ":hover": { backgroundColor: "#263043" }, width: "50px" }} aria-label="directions">
                                             <img src={Euro} alt='Euro' />
@@ -135,7 +116,7 @@ const UpdateProduct = () => {
                                     </Paper>
                                 </>
                             </Stack>
-                            {params.status === "edit" ? <Stack direction={"column"} gap={1.7}>
+                            <Stack direction={"column"} gap={1.7}>
                                 <InputLabel sx={{ color: "#FFFFFF", fontSize: { xs: "14px", sm: "16px" }, fontWeight: "500" }}>Tags:</InputLabel>
                                 <TagsInput
                                     value={selected}
@@ -151,7 +132,7 @@ const UpdateProduct = () => {
                                         }
                                     }}
                                 />
-                            </Stack> : null}
+                            </Stack> 
 
                         </Grid>
                         <Grid item xs={12} md={6} xl={5.5} sx={{ marginTop: { xs: "10px", lg: "0px" } }}>
@@ -164,9 +145,9 @@ const UpdateProduct = () => {
                             </CustomButton> : null}
                         </Grid>
                     </Grid>
-                    {params.status === "edit" ? <CustomButton sx={{ width: '100%', marginTop: { xs: "40px", md: "20px" } }} variant="outlined" color="primary" >
+                    <CustomButton sx={{ width: '100%', marginTop: { xs: "40px", md: "20px" } }} variant="outlined" color="primary" >
                         Update now
-                    </CustomButton> : null}
+                    </CustomButton>
                 </Box>
             </Box>
         </main>

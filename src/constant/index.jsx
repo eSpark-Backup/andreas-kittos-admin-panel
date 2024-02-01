@@ -635,8 +635,8 @@ export const reportData = [
 ];
 
 export const SettingsTabs = [
-    { title: 'Personal info', id: 1 },
-    { title: 'Change password', id: 2 },
+    { name: 'Personal info', id: 1 },
+    { name: 'Change password', id: 2 },
 ];
 
 
