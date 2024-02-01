@@ -1,6 +1,7 @@
 import {BsFillArchiveFill, BsFillGrid3X3GapFill, BsFillBellFill} from 'react-icons/bs'
 import { FaUserGroup } from "react-icons/fa6";
 import { reportImg, suitImg } from '../assets';
+import styled from '@emotion/styled';
 
 export const sidebarTabs = [
     {
@@ -679,3 +680,15 @@ export const ODTableData = [
 
 
 ]
+
+export const VisuallyHiddenInput = styled('input')({
+    clip: 'rect(0 0 0 0)',
+    clipPath: 'inset(50%)',
+    height: 1,
+    overflow: 'hidden',
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    whiteSpace: 'nowrap',
+    width: 1,
+});

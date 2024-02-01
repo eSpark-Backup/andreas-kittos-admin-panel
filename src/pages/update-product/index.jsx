@@ -15,7 +15,7 @@ import notChecked from "../../assets/icons/notChecked.svg"
 import productImg from "../../assets/images/washingMachine.svg"
 import { IoChevronDown } from 'react-icons/io5'
 
-const ProductDetails = () => {
+const UpdateProduct = () => {
     const params = useParams()
     const navigate = useNavigate()
     console.log(params)
@@ -179,4 +179,4 @@ const categoryOptions = [
     { title: 'Dry Cleaning' },
 ];
 
-export default ProductDetails
+export default UpdateProduct

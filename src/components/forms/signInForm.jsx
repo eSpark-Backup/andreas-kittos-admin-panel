@@ -1,5 +1,5 @@
 import { Box, Button, FormControl, Grid, Input, InputLabel, Stack, TextField, Typography } from '@mui/material'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { LoginInputs } from '../../constant'
 // import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 import VisibilityOffOutlinedIcon from '@mui/icons-material/VisibilityOffOutlined';
@@ -8,20 +8,35 @@ import { useFormik } from 'formik';
 import { signinSchema } from '../../schema';
 import { useNavigate } from 'react-router-dom';
 import CustomButton from '../buttons/customButton';
+import { useLoginMutation } from '../../services/auth';
+import { toast } from 'react-toastify';
 
 const SignInForm = () => {
   const [showPass, setShowPass] = useState(false)
   const navigate = useNavigate()
+  const [login,{isLoading, isError, isSuccess}] = useLoginMutation();
+
   const initialValues = {
     email: "",
     password: ""
   }
+
+  useEffect(() => {
+    if(isSuccess) {
+      toast.success("Login Success");
+      navigate("/dashboard")
+    }
+    if(isError) {
+      toast.error("Email or password is Incorrect");
+    }
+  }, [isError])
+  
   const { values, errors, handleBlur, handleChange, handleSubmit, touched } = useFormik({
     initialValues: initialValues,
-    validationSchema: signinSchema,
-    onSubmit: () => {
-      localStorage.setItem('token', '123456789')
-      navigate("/dashboard")
+    // validationSchema: signinSchema,
+    onSubmit: async (values) => {
+      console.log(values);
+      login(values)
     }
   })
   return (
@@ -85,7 +100,8 @@ const SignInForm = () => {
           <Box sx={{ marginTop: "70px" }}>
             {/* <Button type='submit' sx={{ width: "100%", height: "40px", fontWeight: "500", fontSize: "18px", backgroundColor: "#263043", borderRadius: "5px", color: "white", ":hover": { backgroundColor: "#263043" } }}>
               Sign in</Button> */}
-            <CustomButton type={"submit"} sx={{ width: "100%", fontWeight: "500", fontSize: "18px", borderRadius: "5px", color: "white" }}>Sign in</CustomButton>
+            <CustomButton isLoading={isLoading}  type={"submit"} sx={{ width: "100%", fontWeight: "500", fontSize: "18px", borderRadius: "5px", color: "white", 
+           }}>Sign in</CustomButton>
           </Box>
         </form>
       </Box>

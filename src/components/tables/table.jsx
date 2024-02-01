@@ -97,7 +97,7 @@ const DynamicTable = ({
     return (
         <>
 
-            {data.length === 0 && !isLoading ?
+            {data?.length === 0 && !isLoading ?
                 <Stack direction="row" justifyContent="center" alignItems="center">
                     <img src={nodata} width="300px" height="300px" alt="no-data" />
                 </Stack>
@@ -151,7 +151,7 @@ const DynamicTable = ({
                     )}
                 </TableContainer>
             }
-            {data.length >= 10 ?
+            {data?.length >= 10 ?
                 <Stack sx={{ marginTop: { xs: "20px", sm: "10px" } }} p={{ xs: 0, sm: 2 }} alignItems="center">
                     <Pagination variant="outlined" shape="rounded" onChange={handlePageChange ? (_, page) => handlePageChange(page) : () => { }} count={(total || 1) / 10} />
                 </Stack>

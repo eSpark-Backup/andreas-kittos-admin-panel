@@ -8,6 +8,8 @@ import SignIn from "./signIn";
 import Orders from "./orders";
 import NotFound from "./not-found";
 import OrderDetails from "./order-detail";
+import ViewProduct from "./view-product";
+import UpdateProduct from "./update-product";
 
 export {
     Dashboard,
@@ -20,4 +22,6 @@ export {
     Orders,
     NotFound,
     OrderDetails,
+    ViewProduct,
+    UpdateProduct
 }

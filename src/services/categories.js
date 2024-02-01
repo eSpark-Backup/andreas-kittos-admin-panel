@@ -4,7 +4,7 @@ export const categoryApi = api.injectEndpoints({
   endpoints: (builder) => ({
     getCategories: builder.query({
       query: () => ({
-        url: `http://universities.hipolabs.com/search?country=United+States`,
+        url: `/category`,
       }),
     }),
     addCategory: builder.mutation({
@@ -36,5 +36,4 @@ export const categoryApi = api.injectEndpoints({
 
 export const {
   useGetCategoriesQuery,
-  useUpdatePostMutation
 } = categoryApi;
