@@ -480,9 +480,9 @@ input::-webkit-inner-spin-button {
   background-color: #1D2634;
 }
 
-.css-qw5c90-MuiModal-root-MuiPopover-root-MuiMenu-root .MuiBackdrop-root {
-  background-color: rgba(0, 0, 0);
-  border: none;
+.MuiBackdrop-root {
+  background-color: transparent !important;
+  border: none !important;
 }
 
 

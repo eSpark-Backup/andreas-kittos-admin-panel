@@ -6,6 +6,7 @@ export const productApi = api.injectEndpoints({
             query: (id) => ({
                 url: `/product/${id}`,
             }),
+            providesTags: ['products'],
         }),
         getProduct: builder.query({
             query: (id) => ({
@@ -18,20 +19,25 @@ export const productApi = api.injectEndpoints({
                 method: 'POST',
                 body: product
             }),
+            invalidatesTags: ['products'],
         }),
+        
         updateProduct: builder.mutation({
             query: ({ id, ...rest }) => ({
                 url: `/product/${id}`,
                 method: 'PATCH',
                 body: rest
             }),
+            invalidatesTags: ['products'],
         }),
         deleteProduct: builder.mutation({
             query: (id) => ({
                 url: `/product/${id}`,
                 method: 'DELETE',
             }),
+            invalidatesTags: ['products'],
         }),
+        
     }),
 
 });

@@ -4,29 +4,14 @@ import Euro from "../../assets/icons/euro.svg"
 import Upload from "../../assets/images/Upload.svg"
 import { TagsInput } from 'react-tag-input-component'
 import { BackBtn, CustomButton } from '../../components'
-import Autocomplete from '@mui/material/Autocomplete';
-import Checkbox from '@mui/material/Checkbox';
-import checked from "../../assets/icons/checked.svg"
-import notChecked from "../../assets/icons/notChecked.svg"
-import { IoChevronDown } from "react-icons/io5";
 import { VisuallyHiddenInput } from '../../constant'
 import { isFormEmpty } from '../utils/helpers'
 import { toast } from 'react-toastify'
 import { useAddProductMutation } from '../../services/products'
 import { useNavigate } from 'react-router-dom'
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { useGetCategoriesQuery } from '../../services/categories'
 
 
-const ITEM_HEIGHT = 48;
-const ITEM_PADDING_TOP = 8;
-const MenuProps = {
-    PaperProps: {
-        style: {
-            maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-            width: 250,
-        },
-    },
-};
 
 const names = [
     'Oliver Hansen',
@@ -34,28 +19,21 @@ const names = [
     'April Tucker',
 ];
 
-function getStyles(name, personName, theme) {
-    return {
-        fontWeight:
-            personName.indexOf(name) === -1
-                ? theme.typography.fontWeightRegular
-                : theme.typography.fontWeightMedium,
-    };
-}
+
 
 
 const AddProduct = () => {
-    const theme = useTheme();
-    const [personName, setPersonName] = React.useState([]);
     const navigate = useNavigate()
     const fileInputRef = useRef(null);
     const [addProduct, { isLoading, isSuccess, isError }] = useAddProductMutation()
+    const { data: categories, isLoading: GetQueryLoading } = useGetCategoriesQuery();
+    const [categoriesOptions, setCategoriesOptions] = useState([])
     const [productData, setProductData] = useState({
         name: "",
         description: "",
         price: "",
         tags: [],
-        categories: [],
+        categoryIds: [],
         image: null,
         quantity: 0
     })
@@ -82,7 +60,7 @@ const AddProduct = () => {
                 description: "",
                 price: "",
                 tags: [],
-                categories: [],
+                categoryIds: [],
                 image: null,
                 quantity: 0
             })
@@ -103,8 +81,7 @@ const AddProduct = () => {
                 ...productData,
                 tags: productData.tags.map(tag => `${tag}`).join(','),
                 file: productData.image,
-                // categories: productData.categories.map((category) => category.value),
-                categoryId: productData.categories[0].value,
+                categoryIds: productData.categoryIds.id
             }
             const { categories, image, ...rest } = values
 
@@ -118,13 +95,22 @@ const AddProduct = () => {
         }
     }
 
-    const handleChange = (event) => {
-        setPersonName(event.target.value);
-        
+    const handleChange = (item) => {
+        setProductData((prevData) => ({
+            ...prevData,
+            categoryIds: item
+        }))    
     };
-    useEffect(()=>{
-        console.log(personName)
-    },[personName])
+
+    useEffect(() => {
+        const categoryOptions = categories?.data?.map((item) => ({
+            id: item.id,
+            label: item.name
+        }))
+
+        setCategoriesOptions(categoryOptions)
+    }
+    , [categories])
 
 
     return (
@@ -189,25 +175,24 @@ const AddProduct = () => {
                                 /> */}
                                 <Select
                                     displayEmpty
-                                    value={personName}
-                                    onChange={handleChange}
+                                    // onChange={handleChange}
+                                    value={productData?.categoryIds?.label}
                                     renderValue={(selected) => {
-                                        if (selected.length === 0) {
+                                        if (selected?.length === 0) {
                                             return <em style={{ color: "#9E9EA4" }}>Select</em>;
                                         }
 
                                         return selected;
                                     }}
-                                    MenuProps={MenuProps}
                                     inputProps={{ 'aria-label': 'Without label' }}
                                 >
-                                    {categoryOptions.map((name) => (
+                                    {categoriesOptions?.map((item) => (
                                         <MenuItem
-                                            key={name.value}
-                                            value={name.name}
-                                            style={getStyles(name, personName, theme)}
+                                            key={item.id}
+                                            value={item.label}
+                                            onClick={() => { handleChange(item) }}
                                         >
-                                            {name.name}
+                                            {item.label}
                                         </MenuItem>
                                     ))}
                                 </Select>
@@ -247,7 +232,7 @@ const AddProduct = () => {
                             <Stack direction={"column"} gap={1.7}>
                                 <InputLabel sx={{ color: "#FFFFFF", fontSize: { xs: "14px", sm: "16px" }, fontWeight: "500" }}>Tags:</InputLabel>
                                 <TagsInput
-                                    value={productData.tags}
+                                    value={productData?.tags}
                                     onChange={(e) => handleInputsChange("tags", e)}
                                     name="tags"
                                     placeHolder="start with #"
@@ -282,20 +267,6 @@ const AddProduct = () => {
     )
 }
 
-const categoryOptions = [
-    {
-        name: 'Laundry',
-        value: "2439ae58-19d5-48c3-86fa-037fb031c422",
 
-    },
-    {
-        name: 'Ironing',
-        value: "2439ae58-19d5-48c3-86fa-037fb031c422",
-    },
-    {
-        name: 'Dry Cleaning',
-        value: "2439ae58-19d5-48c3-86fa-037fb031c422",
-    },
-];
 
 export default AddProduct
