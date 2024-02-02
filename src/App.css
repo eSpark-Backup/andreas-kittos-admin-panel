@@ -476,7 +476,7 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 
-.css-6hp17o-MuiList-root-MuiMenu-list{
+.MuiMenu-list{
   background-color: #1D2634;
 }
 
@@ -484,6 +484,22 @@ input::-webkit-inner-spin-button {
   background-color: transparent !important;
   border: none !important;
 }
-
+.MuiMenu-list{
+  display: flex !important;
+  flex-direction: column !important;
+  /* row-gap: 15px !important; */
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
+  border: 1px solid #424755 !important;
+}
+.MuiMenu-paper{
+  box-shadow: none !important;
+}
+.MuiMenuItem-root{
+  min-height: 54px !important;
+  border-top: 1px solid #424755 !important;
+  border-right: 1px solid #424755 !important;
+  border-left: 1px solid #424755 !important;
+}
 
 
