@@ -1,4 +1,4 @@
-import { Box, Grid, IconButton, InputBase, InputLabel, Paper, Stack, TextField, Typography } from '@mui/material'
+import { Box, Grid, IconButton, InputBase, InputLabel, ListItemIcon, MenuItem, Paper, Select, Stack, TextField, Typography, useTheme } from '@mui/material'
 import React, { useEffect, useRef, useState } from 'react'
 import Euro from "../../assets/icons/euro.svg"
 import Upload from "../../assets/images/Upload.svg"
@@ -14,9 +14,39 @@ import { isFormEmpty } from '../utils/helpers'
 import { toast } from 'react-toastify'
 import { useAddProductMutation } from '../../services/products'
 import { useNavigate } from 'react-router-dom'
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+
+
+const ITEM_HEIGHT = 48;
+const ITEM_PADDING_TOP = 8;
+const MenuProps = {
+    PaperProps: {
+        style: {
+            maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+            width: 250,
+        },
+    },
+};
+
+const names = [
+    'Oliver Hansen',
+    'Van Henry',
+    'April Tucker',
+];
+
+function getStyles(name, personName, theme) {
+    return {
+        fontWeight:
+            personName.indexOf(name) === -1
+                ? theme.typography.fontWeightRegular
+                : theme.typography.fontWeightMedium,
+    };
+}
 
 
 const AddProduct = () => {
+    const theme = useTheme();
+    const [personName, setPersonName] = React.useState([]);
     const navigate = useNavigate()
     const fileInputRef = useRef(null);
     const [addProduct, { isLoading, isSuccess, isError }] = useAddProductMutation()
@@ -62,21 +92,21 @@ const AddProduct = () => {
             toast.error("Something went wrong");
         }
     }, [isSuccess, isError])
-    
+
     const handleSubmit = () => {
         if (isFormEmpty(productData)) {
             toast.error("Please fill in all fields.");
         } else {
             // remove productData.categories
-             
+
             const values = {
                 ...productData,
                 tags: productData.tags.map(tag => `${tag}`).join(','),
                 file: productData.image,
                 // categories: productData.categories.map((category) => category.value),
-                categoryId : productData.categories[0].value,
+                categoryId: productData.categories[0].value,
             }
-            const {categories, image, ...rest } = values
+            const { categories, image, ...rest } = values
 
             const formData = new FormData();
             for (const key in rest) {
@@ -87,6 +117,15 @@ const AddProduct = () => {
 
         }
     }
+
+    const handleChange = (event) => {
+        setPersonName(event.target.value);
+        
+    };
+    useEffect(()=>{
+        console.log(personName)
+    },[personName])
+
 
     return (
         <main className='main-container'>
@@ -118,7 +157,7 @@ const AddProduct = () => {
                             </Stack>
                             <Stack direction={"column"} gap={1.7}>
                                 <InputLabel sx={{ color: "#FFFFFF", fontSize: { xs: "14px", sm: "16px" }, fontWeight: "500" }}>Select category:</InputLabel>
-                                <Autocomplete
+                                {/* <Autocomplete
                                     popupIcon={<IoChevronDown className='dropdown-icon' fontSize={15} />}
                                     multiple
                                     id="checkboxes-tags-demo"
@@ -147,7 +186,31 @@ const AddProduct = () => {
                                         }  {...params}
                                         />
                                     )}
-                                />
+                                /> */}
+                                <Select
+                                    displayEmpty
+                                    value={personName}
+                                    onChange={handleChange}
+                                    renderValue={(selected) => {
+                                        if (selected.length === 0) {
+                                            return <em style={{ color: "#9E9EA4" }}>Select</em>;
+                                        }
+
+                                        return selected;
+                                    }}
+                                    MenuProps={MenuProps}
+                                    inputProps={{ 'aria-label': 'Without label' }}
+                                >
+                                    {categoryOptions.map((name) => (
+                                        <MenuItem
+                                            key={name.value}
+                                            value={name.name}
+                                            style={getStyles(name, personName, theme)}
+                                        >
+                                            {name.name}
+                                        </MenuItem>
+                                    ))}
+                                </Select>
                             </Stack>
                             <Stack direction={"column"} gap={1.7}>
                                 <>

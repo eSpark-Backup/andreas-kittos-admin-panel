@@ -476,5 +476,14 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 
+.css-6hp17o-MuiList-root-MuiMenu-list{
+  background-color: #1D2634;
+}
+
+.css-qw5c90-MuiModal-root-MuiPopover-root-MuiMenu-root .MuiBackdrop-root {
+  background-color: rgba(0, 0, 0);
+  border: none;
+}
+
 
 
