@@ -47,7 +47,7 @@ const CustomerDetails = () => {
                             </Box>
                         </Stack>
                     </Box>
-                    <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", marginTop: "20px" }}>
+                    <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", marginTop: {xs:"45px", lg:"20px"}, marginBottom:{xs:"25px"} }}>
                         <CustomButton variant="outlined" color="primary" sx={{ width: "87%" }} onClick={() => setOpenModal(true)}>
                             Deactivate Customer
                         </CustomButton>

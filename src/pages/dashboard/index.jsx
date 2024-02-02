@@ -26,13 +26,24 @@ const Dashboard = () => {
           const IconComponent = iconMap[card.icon];
           return (
             <div key={index} className='card'>
-              <div className='card-inner'>
+              {/* <div className='card-inner'>
                 <Typography sx={{ fontSize: "16px", color: "#FFFFFF", fontWeight: "600" }}>{card.title}</Typography>
-                {/* {card.icon} */}
                 <img src={IconComponent} alt={card.title} />
               </div>
               {card.description && <Typography sx={{ color: "white", fontSize: "14px", marginTop: "10px" }}>{card.description} <span style={{ fontWeight: "600" }}>{card.descriptionVal}</span></Typography>}
-              <h1 className='card-value'>{card.value}</h1>
+              <h1 className='card-value'>{card.value}</h1> */}
+              <Box>
+                <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+                  <Typography sx={{ fontSize: "16px", color: "#FFFFFF", fontWeight: "600" }}>{card.title}</Typography>
+                  <img src={IconComponent} alt={card.title} />
+                </Box>
+                <Box sx={{ height: "30%", marginTop: "4px" }}>
+                  {card.description && <Typography sx={{ color: "white", fontSize: "14px"}}>{card.description} <span style={{ fontWeight: "600" }}>{card.descriptionVal}</span></Typography>}
+                </Box>
+              </Box>
+              <Box>
+                <Typography sx={{ color: "white", fontSize: "25px", fontWeight: "bold" }}>{card.value}</Typography>
+              </Box>
             </div>
           )
         })}
@@ -40,7 +51,7 @@ const Dashboard = () => {
 
 
       <Card sx={{ marginTop: "35px", py: "20px" }}>
-        <Typography variant="h6" sx={{ color: "#fff", fontSize: "25px", textAlign: "center", fontWeight: "500", display:{xs:"none", sm:"block"} }}>Revenue and Orders</Typography>
+        <Typography variant="h6" sx={{ color: "#fff", fontSize: "25px", textAlign: "center", fontWeight: "500", display: { xs: "none", sm: "block" } }}>Revenue and Orders</Typography>
 
         <Box sx={{
           display: "flex",
@@ -50,7 +61,7 @@ const Dashboard = () => {
 
           <ChartLabel icon={purpleSquare} rotate={true} heading={"Total Revenue"} color="#8884D8" />
 
-          <Box sx={{ width: "95%"}}>
+          <Box sx={{ width: "95%" }}>
             <BarChart data={chartData} />
           </Box>
 

@@ -220,14 +220,13 @@ body {
 .card {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
-  padding: 20px 15px;
   border-radius: 5px;
+  height: 100px;
+  padding: 15px 15px;
+  justify-content: space-between;
 }
 
-@media screen  and (max-width:450px){
-  .card{height: 127px;}
-}
+/* .card{height: 90px;} */
 
 .card:first-child {
   background-color: #49ACE1;
@@ -245,23 +244,24 @@ body {
   background-color: #2962FF;
   /* margin-top: 6px; */
 }
-.card:nth-child(4) .card-inner{
-  margin-top: 9px;
-}
+/* .card:nth-child(4) .card-inner{
+  margin-top: 20px;
+} */
 
-.card-inner {
+/* .card-inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
   color: #ffffff;
 }
 
-.card-value {
-  color: #ffffff;
-  font-size: 25px;
-}
+
 
 .card-inner > .card_icon {
+  font-size: 25px;
+} */
+.card-value {
+  color: #ffffff;
   font-size: 25px;
 }
 
