@@ -27,6 +27,7 @@ const DynamicTable = ({
     total,
     ...rest
 }) => {
+    console.log(data)
     const extendedColumns = columns?.map((column) => {
         return { ...column, key: column.key.split(".") };
     });
@@ -97,7 +98,7 @@ const DynamicTable = ({
     return (
         <>
 
-            {data?.length === 0 && !isLoading ?
+            {(data?.length === 0 || data === undefined) && !isLoading ?
                 <Stack direction="row" justifyContent="center" alignItems="center">
                     <img src={nodata} width="300px" height="300px" alt="no-data" />
                 </Stack>

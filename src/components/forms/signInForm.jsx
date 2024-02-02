@@ -36,12 +36,13 @@ const SignInForm = () => {
   
   const { values, errors, handleBlur, handleChange, handleSubmit, touched } = useFormik({
     initialValues: initialValues,
-    // validationSchema: signinSchema,
+    validationSchema: signinSchema,
     onSubmit: async (values) => {
       console.log({values});
       login(values)
     }
   })
+  console.log(errors)
   return (
     <Box
       sx={{
