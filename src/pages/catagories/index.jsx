@@ -5,35 +5,35 @@ import { columns } from "../../columns/categories";
 import { toast } from "react-toastify";
 import { Link, useNavigate } from "react-router-dom";
 import { useGetCategoriesQuery } from "../../services/categories";
-import { useDeleteProductMutation, useGetProductsQuery } from "../../services/products";
+import { useDeleteProductMutation } from "../../services/products";
+import useProducts from "../../hooks/useProducts";
 
 const Catagories = () => {
 
     const [currentTab, setCurrentTab] = useState("")
     const navigate = useNavigate()
     const [openModal, setOpenModal] = useState(false)
-    const { data: categories, isLoading: GetQueryLoading } = useGetCategoriesQuery();
-    const { data: productsData, isLoading: GetProductsLoading } = useGetProductsQuery(currentTab || "2439ae58-19d5-48c3-86fa-037fb031c422");
-    const [deleteProduct, { isLoading: DeleteLoading, isSuccess, isError }] = useDeleteProductMutation()
-    const [deleteID, setDeleteID] = useState("")
-    const [products, setProducts] = useState([])
+    const { data: categories, isLoading: isCategoryLoading } = useGetCategoriesQuery();
+    const { products, isProductLoading } = useProducts(currentTab);
+    const [deleteProduct, { isSuccess, isError }] = useDeleteProductMutation()
+    const [deleteid, setDeleteId] = useState("")
 
 
     const handleDelete = (id) => {
-        setDeleteID(id)
+        setDeleteId(id)
         setOpenModal(true)
     }
 
     const onConfirm = () => {
         setOpenModal(false)
-        deleteProduct(deleteID)
+        deleteProduct(deleteid)
 
     }
     useEffect(() => {
         if (isSuccess) {
             toast.success('Your Product has been deleted succesfully!', {
             });
-            setDeleteID("")
+            setDeleteId("")
         }
         if (isError) {
             toast.error("Something went wrong");
@@ -46,32 +46,17 @@ const Catagories = () => {
             setCurrentTab(categories?.data[0]?.id)
         }
     }
-    , [categories])
+        , [categories])
 
 
-    useEffect(() => {
-        const categoryProduct = productsData?.data[0]?.categoryProduct || [];
-        const category = productsData?.data[0]?.name || '';
-
-        const updatedProducts = categoryProduct?.map((item) => ({
-            ...item.product,
-            category,
-        }));
-
-        setProducts(updatedProducts);
-    }, [productsData]);
-
-
-
-    if (GetProductsLoading || GetQueryLoading) {
+    if (isCategoryLoading) {
         return (
             <Box sx={{ width: "80vw", height: "100%", display: "flex", justifyContent: "center", alignItems: "center" }}>
                 <div class="loader"></div>
             </Box>
         )
     }
-
-
+    
     return (
         <>
             <main className='main-container'>
@@ -103,7 +88,7 @@ const Catagories = () => {
                                     <Table
                                         data={products}
                                         columns={columns()}
-                                        isLoading={GetProductsLoading}
+                                        isLoading={isProductLoading}
                                         total={products?.length}
                                         handleDelete={(item) => handleDelete(item?.id)}
                                         handleEdit={(item) => navigate(`/update-product/${item.id}`)}
