@@ -13,15 +13,6 @@ import { useGetCategoriesQuery } from '../../services/categories'
 
 
 
-const names = [
-    'Oliver Hansen',
-    'Van Henry',
-    'April Tucker',
-];
-
-
-
-
 const AddProduct = () => {
     const navigate = useNavigate()
     const fileInputRef = useRef(null);
@@ -75,7 +66,6 @@ const AddProduct = () => {
         if (isFormEmpty(productData)) {
             toast.error("Please fill in all fields.");
         } else {
-            // remove productData.categories
 
             const values = {
                 ...productData,

@@ -88,7 +88,6 @@ const UpdateProduct = () => {
                 ...productData,
                 tags: productData.tags.map(tag => `'${tag}'`).join(','),
                 file: productData.image,
-                // categories: productData.categories.map((category) => category.value),
                 categoryId: productData.categories[0].value,
             }
             const { categories, image, ...rest } = values

@@ -39,7 +39,7 @@ const Catagories = () => {
             toast.error("Something went wrong");
         }
     }, [isSuccess, isError])
-    
+
 
     useEffect(() => {
         if (categories?.data?.length > 0) {
@@ -50,9 +50,18 @@ const Catagories = () => {
 
 
     useEffect(() => {
-        const categoryProduct = productsData?.data[0]?.categoryProduct.map((item) => item.product)
-        setProducts(categoryProduct)
-    }, [productsData])
+        const categoryProduct = productsData?.data[0]?.categoryProduct || [];
+        const category = productsData?.data[0]?.name || '';
+
+        const updatedProducts = categoryProduct?.map((item) => ({
+            ...item.product,
+            category,
+        }));
+
+        setProducts(updatedProducts);
+    }, [productsData]);
+
+
 
     if (GetProductsLoading || GetQueryLoading) {
         return (
