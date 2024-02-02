@@ -14,28 +14,31 @@ import { toast } from 'react-toastify';
 const SignInForm = () => {
   const [showPass, setShowPass] = useState(false)
   const navigate = useNavigate()
-  const [login,{isLoading, isError, isSuccess}] = useLoginMutation();
+  const [login,{data, isLoading, isError, isSuccess}] = useLoginMutation();
 
   const initialValues = {
-    email: "",
+    userCred: "",
     password: ""
   }
 
   useEffect(() => {
     if(isSuccess) {
-      toast.success("Login Success");
-      navigate("/dashboard")
+      toast.success("Login has been Successful");
+      if(data?.data?.token) {
+        localStorage.setItem('token', data?.data?.token)
+        navigate("/dashboard")
+      }
     }
     if(isError) {
       toast.error("Email or password is Incorrect");
     }
-  }, [isError])
+  }, [isSuccess, isError])
   
   const { values, errors, handleBlur, handleChange, handleSubmit, touched } = useFormik({
     initialValues: initialValues,
     // validationSchema: signinSchema,
     onSubmit: async (values) => {
-      console.log(values);
+      console.log({values});
       login(values)
     }
   })
@@ -59,16 +62,16 @@ const SignInForm = () => {
               <Stack direction={"column"} gap={1}>
                 <InputLabel sx={{ color: "#424755", fontSize: { xs: "12px", sm: "14px" }, fontWeight: "500" }}>Email</InputLabel>
                 <TextField
-                  name='email'
+                  name='userCred'
                   id="filled-hidden-label-normal"
                   placeholder="Enter email"
                   fullWidth
-                  type='email'
-                  value={values.email}
+                  type='userCred'
+                  value={values.userCred}
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  error={touched.email && errors.email ? true : false}
-                  helperText={touched.email && errors.email ? errors.email : null}
+                  error={touched.userCred && errors.userCred ? true : false}
+                  helperText={touched.userCred && errors.userCred ? errors.userCred : null}
                   InputProps={{
                     style: { color: 'black' } // Change the color to your desired color
                   }}

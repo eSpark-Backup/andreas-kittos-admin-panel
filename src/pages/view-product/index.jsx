@@ -8,6 +8,7 @@ import { BackBtn, } from '../../components'
 import productImg from "../../assets/images/washingMachine.svg"
 import { useGetProductQuery } from '../../services/products'
 import { TagsInput } from 'react-tag-input-component'
+import { splitImagePath, splitTags } from '../utils/helpers'
 
 const ViewProduct = () => {
     const params = useParams()
@@ -15,14 +16,31 @@ const ViewProduct = () => {
     const [product, setProduct] = useState()
 
     useEffect(() => {
-        setProduct(data?.data)
-        console.log(data?.data)
+        const productData = data?.data[0]
+        const product = {
+            name: productData?.name,
+            description: productData?.description,
+            price: productData?.price,
+            image: productData?.productImage,
+            quantity: productData?.quantity,
+            tags: splitTags(productData?.tags),
+            productImage: productData?.productImage ? splitImagePath(productData?.productImage) : productImg
+        };
+    
+        setProduct(product);
+
     }, [data])
+
+
+
+
+
+    
 
     if (isLoading) {
         console.log("Loading...")
         return (
-            <Box sx={{width:"80vw", height:"100%", display:"flex", justifyContent:"center", alignItems:"center"}}>
+            <Box sx={{ width: "80vw", height: "100%", display: "flex", justifyContent: "center", alignItems: "center" }}>
                 <div class="loader"></div>
             </Box>
         )
@@ -113,16 +131,10 @@ const ViewProduct = () => {
                             <Stack direction={"column"} gap={1.7}>
                                 <InputLabel sx={{ color: "#FFFFFF", fontSize: { xs: "14px", sm: "16px" }, fontWeight: "500" }}>Tags:</InputLabel>
                                 <TagsInput
-                                    value={product?.tags.match(/#([^,]+)/g)}
+                                    value={product?.tags}
                                     name="tags"
                                     classNames={"tags-input"}
-                                // beforeAddValidate={(tag) => {
-                                //     if (tag.trim().startsWith("#")) {
-                                //         return true;
-                                //     } else {
-                                //         return false;
-                                //     }
-                                // }}
+                                    disabled={true}
                                 />
                             </Stack>
 
@@ -130,7 +142,7 @@ const ViewProduct = () => {
                         </Grid>
                         <Grid item xs={12} md={6} xl={5.5} sx={{ marginTop: { xs: "10px", lg: "0px" } }}>
                             <Box sx={{ width: { xs: "100%", md: "100%", xl: "80%" }, height: "300px", border: "1px solid #424755", borderRadius: "5px", display: "flex", justifyContent: 'center', alignItems: "center" }}>
-                                <img src={product?.productImage ? product?.productImage : productImg} className='product-img' alt="Upload Icon" />
+                                <img src={product?.productImage} className='product-img' alt="Upload Icon" />
                             </Box>
                         </Grid>
                     </Grid>

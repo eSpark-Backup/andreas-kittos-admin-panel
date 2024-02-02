@@ -1,5 +1,5 @@
-export const prepareHeaders = (headers, { getState }) => {
-    const token = getState().auth.token
+export const prepareHeaders = (headers) => {
+    const token = localStorage.getItem('token')
     if (token) {
       headers.set('Authorization', `Bearer ${token}`)
     }

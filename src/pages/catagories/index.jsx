@@ -1,45 +1,23 @@
-import { Box, Card, Grid, TextField, Typography } from "@mui/material"
+import { Box, Grid, Typography } from "@mui/material"
 import { useEffect, useState } from "react";
 import { ConfirmationModal, CustomButton, MenuTab, PageHeader, SearchInput, Table } from "../../components";
 import { columns } from "../../columns/categories";
-import { catagoriesTableData, cateogoryTabs } from "../../constant";
 import { toast } from "react-toastify";
 import { Link, useNavigate } from "react-router-dom";
-import useCategory from "../../hooks/useCategory";
 import { useGetCategoriesQuery } from "../../services/categories";
 import { useDeleteProductMutation, useGetProductsQuery } from "../../services/products";
 
 const Catagories = () => {
 
-    const [currentTab, setCurrentTab] = useState(1)
-    const [data, setData] = useState([])
+    const [currentTab, setCurrentTab] = useState("")
+    const navigate = useNavigate()
     const [openModal, setOpenModal] = useState(false)
-    // const {data: catagoryData, type, setType} = useCategory();
     const { data: categories, isLoading: GetQueryLoading } = useGetCategoriesQuery();
-    const { data: products, isLoading: GetProductsLoading } = useGetProductsQuery();
+    const { data: productsData, isLoading: GetProductsLoading } = useGetProductsQuery(currentTab || "2439ae58-19d5-48c3-86fa-037fb031c422");
     const [deleteProduct, { isLoading: DeleteLoading, isSuccess, isError }] = useDeleteProductMutation()
     const [deleteID, setDeleteID] = useState("")
+    const [products, setProducts] = useState([])
 
-    const navigate = useNavigate()
-
-    useEffect(() => {
-        let filteredData = [...catagoriesTableData];
-        const statusMap = {
-            1: "Laundry",
-            2: "Ironing",
-            3: "Dry cleaning",
-        };
-
-
-        const statusToFilter = statusMap[currentTab];
-
-        if (statusToFilter) {
-            filteredData = filteredData.filter((item) => item?.category === statusToFilter);
-        } else {
-        }
-        setData(filteredData);
-
-    }, [currentTab]);
 
     const handleDelete = (id) => {
         setDeleteID(id)
@@ -61,15 +39,24 @@ const Catagories = () => {
             toast.error("Something went wrong");
         }
     }, [isSuccess, isError])
+    
 
     useEffect(() => {
-        console.log("products", products);
+        if (categories?.data?.length > 0) {
+            setCurrentTab(categories?.data[0]?.id)
+        }
     }
-        , [products])
+    , [categories])
 
-    if(GetProductsLoading || GetQueryLoading){
+
+    useEffect(() => {
+        const categoryProduct = productsData?.data[0]?.categoryProduct.map((item) => item.product)
+        setProducts(categoryProduct)
+    }, [productsData])
+
+    if (GetProductsLoading || GetQueryLoading) {
         return (
-            <Box sx={{width:"80vw", height:"100%", display:"flex", justifyContent:"center", alignItems:"center"}}>
+            <Box sx={{ width: "80vw", height: "100%", display: "flex", justifyContent: "center", alignItems: "center" }}>
                 <div class="loader"></div>
             </Box>
         )
@@ -105,10 +92,10 @@ const Catagories = () => {
                             <Box>
                                 <Box sx={{ maxHeight: "100%", overflowY: "scroll" }}>
                                     <Table
-                                        data={products?.data}
+                                        data={products}
                                         columns={columns()}
                                         isLoading={GetProductsLoading}
-                                        total={data.length}
+                                        total={products?.length}
                                         handleDelete={(item) => handleDelete(item?.id)}
                                         handleEdit={(item) => navigate(`/update-product/${item.id}`)}
                                         handleView={(item) => navigate(`/view-product/${item.id}`)}

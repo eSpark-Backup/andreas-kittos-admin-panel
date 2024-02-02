@@ -28,4 +28,13 @@ export const isFormEmpty = (data) => {
     return false;
   };
 
+//image path splitter
+
+export const splitImagePath = (imagePath) => {
+    const splitIndex = imagePath?.indexOf(':$:');
+    return imagePath?.substring(0, splitIndex);
+}
+
+//tag splitter
+export const splitTags = (tags) => tags?.split(',')?.map(tag => tag?.trim()) || [];
 

@@ -3,13 +3,13 @@ import { api } from './rtk';
 export const productApi = api.injectEndpoints({
     endpoints: (builder) => ({
         getProducts: builder.query({
-            query: () => ({
-                url: `/product`,
+            query: (id) => ({
+                url: `/product/${id}`,
             }),
         }),
         getProduct: builder.query({
             query: (id) => ({
-                url: `/product/${id}`,
+                url: `/product/product-detail/${id}`,
             }),
         }),
         addProduct: builder.mutation({
