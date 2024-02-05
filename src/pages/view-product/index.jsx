@@ -24,9 +24,10 @@ const ViewProduct = () => {
             image: productData?.productImage,
             quantity: productData?.quantity,
             tags: splitTags(productData?.tags),
+            category: productData?.categoryProduct[0]?.category.name,
             productImage: productData?.productImage ? splitImagePath(productData?.productImage) : productImg
         };
-    
+
         setProduct(product);
 
     }, [data])
@@ -35,13 +36,12 @@ const ViewProduct = () => {
 
 
 
-    
+
 
     if (isLoading) {
-        console.log("Loading...")
         return (
             <Box sx={{ width: "80vw", height: "100%", display: "flex", justifyContent: "center", alignItems: "center" }}>
-                <div class="loader"></div>
+                <div className="loader"></div>
             </Box>
         )
     }
@@ -79,12 +79,12 @@ const ViewProduct = () => {
                             </Stack>
                             {
                                 <Stack direction={"column"} gap={1.7}>
-                                    <InputLabel sx={{ color: "#FFFFFF", fontSize: { xs: "14px", sm: "16px" }, fontWeight: "500" }}>Select Category:</InputLabel>
+                                    <InputLabel sx={{ color: "#FFFFFF", fontSize: { xs: "14px", sm: "16px" }, fontWeight: "500" }}>Category:</InputLabel>
                                     <TextField
                                         id="filled-hidden-label-normal"
                                         placeholder="Enter here..."
                                         fullWidth
-                                        defaultValue={"Laundry"}
+                                        value={product?.category}
                                         InputProps={{
                                             readOnly: true,
                                         }}

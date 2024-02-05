@@ -36,7 +36,7 @@ const Catagories = () => {
             setDeleteId("")
         }
         if (isError) {
-            toast.error("Something went wrong");
+            toast.error("An error occurred. Please try again");
         }
     }, [isSuccess, isError])
 
@@ -52,11 +52,11 @@ const Catagories = () => {
     if (isCategoryLoading) {
         return (
             <Box sx={{ width: "80vw", height: "100%", display: "flex", justifyContent: "center", alignItems: "center" }}>
-                <div class="loader"></div>
+                <div className="loader"></div>
             </Box>
         )
     }
-    
+
     return (
         <>
             <main className='main-container'>

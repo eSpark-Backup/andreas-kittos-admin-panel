@@ -21,7 +21,7 @@ export const productApi = api.injectEndpoints({
             }),
             invalidatesTags: ['products'],
         }),
-        
+
         updateProduct: builder.mutation({
             query: ({ id, ...rest }) => ({
                 url: `/product/${id}`,
@@ -37,7 +37,7 @@ export const productApi = api.injectEndpoints({
             }),
             invalidatesTags: ['products'],
         }),
-        
+
     }),
 
 });

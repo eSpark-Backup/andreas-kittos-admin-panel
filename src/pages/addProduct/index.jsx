@@ -17,7 +17,7 @@ const AddProduct = () => {
     const navigate = useNavigate()
     const fileInputRef = useRef(null);
     const [addProduct, { isLoading, isSuccess, isError }] = useAddProductMutation()
-    const { data: categories, isLoading: GetQueryLoading } = useGetCategoriesQuery();
+    const { data: categories } = useGetCategoriesQuery();
     const [categoriesOptions, setCategoriesOptions] = useState([])
     const [productData, setProductData] = useState({
         name: "",
@@ -58,7 +58,7 @@ const AddProduct = () => {
             navigate("/catagories")
         }
         if (isError) {
-            toast.error("Something went wrong");
+            toast.error("An error occurred. Please try again");
         }
     }, [isSuccess, isError])
 
@@ -89,7 +89,7 @@ const AddProduct = () => {
         setProductData((prevData) => ({
             ...prevData,
             categoryIds: item
-        }))    
+        }))
     };
 
     useEffect(() => {
@@ -100,7 +100,7 @@ const AddProduct = () => {
 
         setCategoriesOptions(categoryOptions)
     }
-    , [categories])
+        , [categories])
 
 
     return (

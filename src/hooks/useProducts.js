@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useGetProductsQuery } from '../services/products';
 
 const useProducts = (tabId) => {
-  const { data: productsData, isLoading: isProductLoading } = useGetProductsQuery(tabId || "2439ae58-19d5-48c3-86fa-037fb031c422");
+  const { data: productsData, isLoading: isProductLoading, refetch } = useGetProductsQuery(tabId || "2439ae58-19d5-48c3-86fa-037fb031c422");
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
@@ -17,9 +17,15 @@ const useProducts = (tabId) => {
     setProducts(updatedProducts);
   }, [productsData]);
 
+  // if currenttab change refetch will be called
+  useEffect(() => {
+    refetch();
+  }, [tabId]);
+
   return {
     products,
     isProductLoading,
+
   };
 };
 
