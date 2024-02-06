@@ -480,7 +480,7 @@ input::-webkit-inner-spin-button {
   background-color: #1D2634;
 }
 
-.MuiBackdrop-root {
+.MuiMenu-root .MuiBackdrop-root {
   background-color: transparent !important;
   border: none !important;
 }
@@ -490,7 +490,7 @@ input::-webkit-inner-spin-button {
   /* row-gap: 15px !important; */
   padding-top: 0px !important;
   padding-bottom: 0px !important;
-  border: 1px solid #424755 !important;
+  border-bottom: 1px solid #424755 !important;
 }
 .MuiMenu-paper{
   box-shadow: none !important;
@@ -501,5 +501,12 @@ input::-webkit-inner-spin-button {
   border-right: 1px solid #424755 !important;
   border-left: 1px solid #424755 !important;
 }
+
+.change-backdrop .MuiSelect-icon {
+  color: #9E9EA4 !important;
+  width: 15px !important;
+  width: 15px !important;
+}
+
 
 

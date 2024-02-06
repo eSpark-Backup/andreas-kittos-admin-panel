@@ -10,6 +10,7 @@ import { toast } from 'react-toastify'
 import { useAddProductMutation } from '../../services/products'
 import { useNavigate } from 'react-router-dom'
 import { useGetCategoriesQuery } from '../../services/categories'
+import { IoIosArrowDown } from "react-icons/io";
 
 
 
@@ -164,6 +165,8 @@ const AddProduct = () => {
                                     )}
                                 /> */}
                                 <Select
+                                IconComponent={IoIosArrowDown}
+                                className='change-backdrop'
                                     displayEmpty
                                     // onChange={handleChange}
                                     value={productData?.categoryIds?.label}
