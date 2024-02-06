@@ -10,8 +10,8 @@ export const sidebarTabs = [
         icons: "Dashboard"
     },
     {
-        name: "Categories",
-        href: "/catagories",
+        name: "Products",
+        href: "/products",
         icons: "Categories"
     },
     {

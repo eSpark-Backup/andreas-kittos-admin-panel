@@ -12,6 +12,7 @@ const Catagories = () => {
 
     const [currentTab, setCurrentTab] = useState("")
     const navigate = useNavigate()
+    const [searchValue, setSearchValue] = useState("")
     const [openModal, setOpenModal] = useState(false)
     const { data: categories, isLoading: isCategoryLoading } = useGetCategoriesQuery();
     const { products, isProductLoading } = useProducts(currentTab);
@@ -23,6 +24,12 @@ const Catagories = () => {
         setDeleteId(id)
         setOpenModal(true)
     }
+    useEffect(() => {
+        let timer = setTimeout(() => {
+            console.log(searchValue)
+        }, 1000)
+        return () => clearTimeout(timer)
+    }, [searchValue])
 
     const onConfirm = () => {
         setOpenModal(false)
@@ -57,14 +64,16 @@ const Catagories = () => {
         )
     }
 
+
+
     return (
         <>
             <main className='main-container'>
                 <Box>
-                    <PageHeader title="Categories" />
+                    <PageHeader title="Products" />
                     <br />
                     <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
-                        <SearchInput placeholder="Search by name..." sx={{ width: "320px" }} />
+                        <SearchInput placeholder="Search by name..." sx={{ width: "320px" }} setSearch={(e) => setSearchValue(e)} />
                     </Box>
 
 

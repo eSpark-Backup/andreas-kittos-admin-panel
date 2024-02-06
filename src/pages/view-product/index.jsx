@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom'
 import Euro from "../../assets/icons/euro.svg"
 import { BackBtn, } from '../../components'
 import productImg from "../../assets/images/washingMachine.svg"
+import loader from "../../assets/icons/loader.gif"
 import { useGetProductQuery } from '../../services/products'
 import { TagsInput } from 'react-tag-input-component'
 import { splitImagePath, splitTags } from '../utils/helpers'
@@ -25,7 +26,7 @@ const ViewProduct = () => {
             quantity: productData?.quantity,
             tags: splitTags(productData?.tags),
             category: productData?.categoryProduct[0]?.category.name,
-            productImage: productData?.productImage ? splitImagePath(productData?.productImage) : productImg
+            productImage: productData?.productImage ? splitImagePath(productData?.productImage) : loader
         };
 
         setProduct(product);

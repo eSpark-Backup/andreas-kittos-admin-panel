@@ -23,7 +23,7 @@ const Routes = () => {
             children: [
                 { path: "/", element: <Dashboard /> },
                 { path: "/dashboard", element: <Dashboard /> },
-                { path: "/catagories", element: <Catagories /> },
+                { path: "/products", element: <Catagories /> },
                 { path: "/customers", element: <Customers /> },
                 { path: "/customer/:id", element: <CustomerDetails /> },
                 { path: "/orders", element: <Orders /> },
