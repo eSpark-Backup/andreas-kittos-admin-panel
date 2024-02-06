@@ -16,6 +16,8 @@ import { toast } from 'react-toastify'
 import { useGetProductQuery, useUpdateProductMutation } from '../../services/products'
 import { useNavigate, useParams } from 'react-router-dom'
 import { useGetCategoriesQuery } from '../../services/categories'
+import loader from "../../assets/icons/loader.gif"
+
 
 
 const UpdateProduct = () => {
@@ -105,7 +107,7 @@ const UpdateProduct = () => {
                 id: productData?.categoryProduct[0]?.category?.id,
                 label: productData?.categoryProduct[0]?.category?.name,
             },
-            image: productData?.productImage ? splitImagePath(productData?.productImage) : productImg
+            image: productData?.productImage ? splitImagePath(productData?.productImage) : loader
         };
 
         console.log(product, "productData");

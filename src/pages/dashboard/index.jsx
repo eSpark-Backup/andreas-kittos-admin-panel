@@ -2,7 +2,7 @@ import { cardsData, chartData } from '../../constant';
 import { BarChart, ChartLabel, PageHeader } from '../../components';
 import { Box, Card, Typography } from '@mui/material';
 import BellIcon from "../../assets/icons/Bell.svg"
-import CategoriesIcon from "../../assets/icons/CategoriesWhite.svg"
+import CategoriesIcon from "../../assets/icons/ProductsWhite.svg"
 import UsersIcon from "../../assets/icons/UsersGroup.svg"
 import BoxIcon from "../../assets/icons/Box.svg"
 import purpleSquare from "../../assets/icons/purple-square.svg"
