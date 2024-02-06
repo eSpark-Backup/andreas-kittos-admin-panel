@@ -2,9 +2,10 @@ import { api } from './rtk';
 
 export const productApi = api.injectEndpoints({
     endpoints: (builder) => ({
-        getProducts: builder.query({
+        getProducts: builder.mutation({
             query: (id) => ({
                 url: `/product/${id}`,
+                method: 'GET',
             }),
             providesTags: ['products'],
         }),
@@ -43,7 +44,7 @@ export const productApi = api.injectEndpoints({
 });
 
 export const {
-    useGetProductsQuery,
+    useGetProductsMutation,
     useGetProductQuery,
     useAddProductMutation,
     useUpdateProductMutation,
