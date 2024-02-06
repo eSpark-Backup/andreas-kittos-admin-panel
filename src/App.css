@@ -220,10 +220,13 @@ body {
 .card {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
-  padding: 20px 15px;
   border-radius: 5px;
+  height: 100px;
+  padding: 15px 15px;
+  justify-content: space-between;
 }
+
+/* .card{height: 90px;} */
 
 .card:first-child {
   background-color: #49ACE1;
@@ -241,23 +244,24 @@ body {
   background-color: #2962FF;
   /* margin-top: 6px; */
 }
-.card:nth-child(4) .card-inner{
-  margin-top: 9px;
-}
+/* .card:nth-child(4) .card-inner{
+  margin-top: 20px;
+} */
 
-.card-inner {
+/* .card-inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
   color: #ffffff;
 }
 
-.card-value {
-  color: #ffffff;
-  font-size: 25px;
-}
+
 
 .card-inner > .card_icon {
+  font-size: 25px;
+} */
+.card-value {
+  color: #ffffff;
   font-size: 25px;
 }
 
@@ -351,7 +355,8 @@ body {
 }
 
 ::-webkit-scrollbar {
-  width: 1px;
+  width: 10px;
+  height: 10px;
 }
 
 /* Track */
@@ -466,8 +471,27 @@ textarea:hover{
   font-size: 12px !important;
   color: #9E9EA4 !important;
 }
-.MuiOutlinedInput-root .MuiAutocomplete-endAdornment{
-  right: 20px !important;
+@media screen and (min-width:450px){
+  .MuiOutlinedInput-root .MuiAutocomplete-endAdornment{
+    right: 20px !important;
+  }
+}
+
+.cutomer-detail-icon{
+  height: 64px;
+  width: 64px;
+}
+
+.MuiChip-root{
+  color: white !important;
+}
+
+
+@media screen and (min-width: 450px){
+  .cutomer-detail-icon{
+    height: 120px;
+    width: 120px;
+  }
 }
 
 input::-webkit-outer-spin-button,

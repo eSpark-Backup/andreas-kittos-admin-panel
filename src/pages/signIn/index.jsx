@@ -26,6 +26,7 @@ const SignIn = () => {
           display: { xs:"flex", sm: 'flex', md: 'flex'}, 
           flexDirection: 'column',
           justifyContent: 'center',
+          marginTop:{xs:"180px", sm:"0px"}
         }}>
         </Box>
            

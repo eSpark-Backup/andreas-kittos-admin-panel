@@ -49,8 +49,8 @@ const Orders = () => {
   return (
     <main className='main-container'>
       {/* <Box sx={{display:"flex", justifyContent:"space-between", alignItems:"center", flexWrap:"wrap", rowGap:"5px"}}> */}
-      <Box sx={{ minHeight: "70px", marginTop:"14px" }}>
-        <PageHeader title="Orders" btnText={"Download Report"} />
+      <Box sx={{ minHeight: "70px", marginTop:"14px", marginBottom:{xs:"25px", sm:"0px"} }}>
+        <PageHeader title="Orders" btnText={"Download report"} />
       </Box>
 
       {/* <Box>
@@ -74,7 +74,7 @@ const Orders = () => {
         <Grid item xs={10} sm={12} lg={4}>
           <SearchInput setSearch={setSearch} placeholder="Search by order number or name"/>
         </Grid>
-        <Grid item xs={12} lg={4} md={12} sx={{ display: "flex", justifyContent: "flex-end"}}>
+        <Grid item xs={12} lg={4} md={12} sx={{ display: "flex", justifyContent: "flex-end", marginTop:{xs:"20px", sm:"0px"}}}>
           <Box>
             <LocalizationProvider dateAdapter={AdapterDayjs}>
               <Stack direction={
