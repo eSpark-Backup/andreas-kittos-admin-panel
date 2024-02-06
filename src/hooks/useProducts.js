@@ -25,6 +25,7 @@ const useProducts = (tabId) => {
   return {
     products,
     isProductLoading,
+    fetch,
 
   };
 };

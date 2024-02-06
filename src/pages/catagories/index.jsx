@@ -15,7 +15,7 @@ const Catagories = () => {
     const [searchValue, setSearchValue] = useState("")
     const [openModal, setOpenModal] = useState(false)
     const { data: categories, isLoading: isCategoryLoading } = useGetCategoriesQuery();
-    const { products, isProductLoading } = useProducts(currentTab);
+    const { products, isProductLoading,fetch } = useProducts(currentTab);
     const [deleteProduct, { isSuccess, isError }] = useDeleteProductMutation()
     const [deleteid, setDeleteId] = useState("")
 
@@ -40,6 +40,7 @@ const Catagories = () => {
         if (isSuccess) {
             toast.success('Your Product has been deleted succesfully!', {
             });
+            fetch(currentTab)
             setDeleteId("")
         }
         if (isError) {
