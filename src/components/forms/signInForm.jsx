@@ -60,7 +60,7 @@ const SignInForm = () => {
         <form onSubmit={handleSubmit}>
           <Grid container gap={2}>
             <Grid item xs={12}>
-              <Stack direction={"column"} gap={1}>
+              <Stack direction={"column"} gap={1} className='signin-input'>
                 <InputLabel sx={{ color: "#424755", fontSize: { xs: "12px", sm: "14px" }, fontWeight: "500" }}>Email</InputLabel>
                 <TextField
                   name='userCred'
@@ -76,6 +76,7 @@ const SignInForm = () => {
                   InputProps={{
                     style: { color: 'black' } // Change the color to your desired color
                   }}
+                  
                 />
               </Stack>
             </Grid>

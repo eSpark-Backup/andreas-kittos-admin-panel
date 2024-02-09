@@ -532,6 +532,18 @@ input::-webkit-inner-spin-button {
   width: 15px !important;
 }
 
+
+
+.signin-input input:-webkit-autofill,
+.signin-input input:-webkit-autofill:hover, 
+.signin-input input:-webkit-autofill:focus, 
+.signin-input input:-webkit-autofill:active{
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: #000000 !important;
+    transition: background-color 5000s ease-in-out 0s !important;
+    box-shadow: inset 0 0 20px 20px #ffffff29 !important;
+}
+
 input:-webkit-autofill,
 input:-webkit-autofill:hover, 
 input:-webkit-autofill:focus, 
