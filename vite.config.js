@@ -5,8 +5,7 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   server:{
     headers:{
-      'Content-Security-Policy': `style-src 'nonece-random' 'self'`,
-      "upgrade-insecure-requests": "1",
+      'Content-Security-Policy': 'upgrade-insecure-requests',
     }, 
   },
   plugins: [react()],
