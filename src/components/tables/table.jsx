@@ -28,7 +28,7 @@ const DynamicTable = ({
     total,
     ...rest
 }) => {
-    console.log(data)
+    // console.log(data)
     const extendedColumns = columns?.map((column) => {
         return { ...column, key: column.key.split(".") };
     });
