@@ -24,8 +24,8 @@ const SignInForm = () => {
   useEffect(() => {
     if(isSuccess) {
       toast.success("Login has been Successful");
-      if(data?.data?.token) {
-        localStorage.setItem('token', data?.data?.token?.token)
+      if(data?.data?.userObject) {
+        localStorage.setItem('token', data?.data?.userObject?.token)
         navigate("/dashboard")
       }
     }
