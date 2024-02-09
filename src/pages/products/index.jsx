@@ -10,13 +10,11 @@ import useProducts from "../../hooks/useProducts";
 
 const Products = () => {
 
-    const [currentTab, setCurrentTab] = useState()
-    console.log(currentTab, "currentTab");
     const navigate = useNavigate()
     const [searchValue, setSearchValue] = useState("")
     const [openModal, setOpenModal] = useState(false)
-    const { data: categories, isLoading: isCategoryLoading,  } = useGetCategoriesQuery();
-    const { products, isProductLoading, handleFetch } = useProducts(currentTab, 1, searchValue);
+    const { data: categories, isLoading: isCategoryLoading, } = useGetCategoriesQuery();
+    const { products, totalItems, page, setPage, isProductLoading, handleFetch, handleTabChange, currentTab } = useProducts(searchValue);
     const [deleteProduct, { isSuccess, isError }] = useDeleteProductMutation()
     const [deleteid, setDeleteId] = useState("")
 
@@ -30,6 +28,10 @@ const Products = () => {
     const handleDelete = (id) => {
         setDeleteId(id)
         setOpenModal(true)
+    }
+
+    const handlePageChange = (page) => {
+        setPage(page)
     }
 
     useEffect(() => {
@@ -49,10 +51,10 @@ const Products = () => {
 
     useEffect(() => {
         if (categories?.data?.length > 0) {
-            setCurrentTab(categories?.data[0]?.id)
+            handleTabChange(categories?.data[0]?.id)
         }
     }
-    , [categories])
+        , [categories])
 
 
     if (isCategoryLoading) {
@@ -85,7 +87,7 @@ const Products = () => {
                             <Typography sx={{ color: "white", fontSize: "20px", fontWeight: "700" }}>Categories</Typography>
                             <Box sx={{ width: "100%", display: "flex", flexDirection: { xs: "row", sm: "column", md: "column" }, rowGap: "10px", columnGap: "10px", marginBottom: "10px", overflowX: { xs: "scroll", sm: "hidden" }, alignItems: { md: "center" } }}>
                                 {categories?.data?.map((item, index) => (
-                                    <MenuTab categories={true} key={index} item={item} currentTab={currentTab} onClick={() => setCurrentTab(item.id)} />
+                                    <MenuTab categories={true} key={index} item={item} currentTab={currentTab} onClick={() => handleTabChange(item.id)} />
                                 ))}
                             </Box>
                         </Grid>
@@ -97,10 +99,12 @@ const Products = () => {
                                         data={products}
                                         columns={columns()}
                                         isLoading={isProductLoading}
-                                        total={products?.length}
+                                        total={totalItems}
                                         handleDelete={(item) => handleDelete(item?.id)}
                                         handleEdit={(item) => navigate(`/update-product/${item.id}`)}
                                         handleView={(item) => navigate(`/view-product/${item.id}`)}
+                                        page={page}
+                                        handlePageChange={handlePageChange}
                                     />
                                 </Box>
                             </Box>

@@ -3,7 +3,7 @@ import { api } from './rtk';
 export const productApi = api.injectEndpoints({
     endpoints: (builder) => ({
         getProducts: builder.mutation({
-            query: ({ categoryId, page = 1 , productName, take = 7 }) => {
+            query: ({ categoryId, page = 1 , productName, take = 4 }) => {
               const queryString = new URLSearchParams({
                 categoryId,
                 page: page.toString(),
