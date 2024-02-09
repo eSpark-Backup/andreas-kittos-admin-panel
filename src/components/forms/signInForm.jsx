@@ -25,7 +25,7 @@ const SignInForm = () => {
     if(isSuccess) {
       toast.success("Login has been Successful");
       if(data?.data?.token) {
-        localStorage.setItem('token', data?.data?.token)
+        localStorage.setItem('token', data?.data?.token?.token)
         navigate("/dashboard")
       }
     }
