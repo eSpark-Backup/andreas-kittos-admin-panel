@@ -4,7 +4,7 @@ import { sidebarTabs } from '../../constant';
 import { Link, useLocation } from 'react-router-dom';
 
 import DashboardIcon from '../../assets/icons/Dashboard.svg';
-import CategoriesIcon from '../../assets/icons/Categories.svg';
+import CategoriesIcon from '../../assets/icons/Products.svg';
 import UsersIcon from '../../assets/icons/Users.svg';
 import OrderIcon from '../../assets/icons/Order.svg';
 import SettingIcon from '../../assets/icons/setting.svg';

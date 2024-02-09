@@ -2,7 +2,6 @@ import { Navigate, useRoutes } from 'react-router-dom';
 import MainLayout from '../layout'
 import {
     Dashboard,
-    Catagories,
     Customers,
     Reports,
     Settings,
@@ -11,6 +10,7 @@ import {
     NotFound,
     UpdateProduct,
     ViewProduct,
+    Products,
 } from '../pages';
 import CustomerDetails from '../pages/customerDetails';
 import AddProduct from '../pages/addProduct';
@@ -23,7 +23,7 @@ const Routes = () => {
             children: [
                 { path: "/", element: <Dashboard /> },
                 { path: "/dashboard", element: <Dashboard /> },
-                { path: "/products", element: <Catagories /> },
+                { path: "/products", element: <Products /> },
                 { path: "/customers", element: <Customers /> },
                 { path: "/customer/:id", element: <CustomerDetails /> },
                 { path: "/orders", element: <Orders /> },

@@ -1,14 +1,14 @@
 import { Box, Grid, Typography } from "@mui/material"
 import { useEffect, useState } from "react";
 import { ConfirmationModal, CustomButton, MenuTab, PageHeader, SearchInput, Table } from "../../components";
-import { columns } from "../../columns/categories";
+import { columns } from "../../columns/products";
 import { toast } from "react-toastify";
 import { Link, useNavigate } from "react-router-dom";
 import { useGetCategoriesQuery } from "../../services/categories";
 import { useDeleteProductMutation } from "../../services/products";
 import useProducts from "../../hooks/useProducts";
 
-const Catagories = () => {
+const Products = () => {
 
     const [currentTab, setCurrentTab] = useState("")
     const navigate = useNavigate()
@@ -133,4 +133,4 @@ const Catagories = () => {
     )
 }
 
-export default Catagories
+export default Products

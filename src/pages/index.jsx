@@ -1,5 +1,5 @@
 import Dashboard from "./dashboard";
-import Catagories from "./catagories";
+import Products from "./products";
 import Customers from "./customers";
 import Inventory from "./inventory";
 import Reports from "./reports";
@@ -13,7 +13,7 @@ import UpdateProduct from "./update-product";
 
 export {
     Dashboard,
-    Catagories,
+    Products,
     Customers,
     Inventory,
     Reports,
