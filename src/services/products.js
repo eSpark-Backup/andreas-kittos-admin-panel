@@ -3,12 +3,21 @@ import { api } from './rtk';
 export const productApi = api.injectEndpoints({
     endpoints: (builder) => ({
         getProducts: builder.mutation({
-            query: (id) => ({
-                url: `/product/?categoryId=${id}`,
+            query: ({ categoryId, page = 1 , productName, take = 7 }) => {
+              const queryString = new URLSearchParams({
+                categoryId,
+                page: page.toString(),
+                take: take.toString(),
+                ...(productName && { productName }),
+              }).toString();
+      
+              return {
+                url: `/product/?${queryString}`,
                 method: 'GET',
-            }),
+              };
+            },
             providesTags: ['products'],
-        }),
+          }),
         getProduct: builder.query({
             query: (id) => ({
                 url: `/product/product-detail/${id}`,

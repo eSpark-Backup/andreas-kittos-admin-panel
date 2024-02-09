@@ -10,32 +10,27 @@ import useProducts from "../../hooks/useProducts";
 
 const Products = () => {
 
-    const [currentTab, setCurrentTab] = useState("")
+    const [currentTab, setCurrentTab] = useState()
     const navigate = useNavigate()
     const [searchValue, setSearchValue] = useState("")
     const [openModal, setOpenModal] = useState(false)
     const { data: categories, isLoading: isCategoryLoading } = useGetCategoriesQuery();
-    const { products, isProductLoading,fetch } = useProducts(currentTab);
+    const { products, isProductLoading, fetch } = useProducts(currentTab, 1, searchValue);
     const [deleteProduct, { isSuccess, isError }] = useDeleteProductMutation()
     const [deleteid, setDeleteId] = useState("")
 
-
-    const handleDelete = (id) => {
-        setDeleteId(id)
-        setOpenModal(true)
-    }
-    useEffect(() => {
-        let timer = setTimeout(() => {
-            console.log(searchValue)
-        }, 1000)
-        return () => clearTimeout(timer)
-    }, [searchValue])
 
     const onConfirm = () => {
         setOpenModal(false)
         deleteProduct(deleteid)
 
     }
+
+    const handleDelete = (id) => {
+        setDeleteId(id)
+        setOpenModal(true)
+    }
+
     useEffect(() => {
         if (isSuccess) {
             toast.success('Your Product has been deleted succesfully!', {
@@ -49,12 +44,14 @@ const Products = () => {
     }, [isSuccess, isError])
 
 
+
+
     useEffect(() => {
         if (categories?.data?.length > 0) {
             setCurrentTab(categories?.data[0]?.id)
         }
     }
-        , [categories])
+    , [categories])
 
 
     if (isCategoryLoading) {
