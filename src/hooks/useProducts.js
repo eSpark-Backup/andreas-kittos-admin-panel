@@ -29,7 +29,6 @@ const useProducts = (productName) => {
   }
 
   const handleTabChange = (id) => {
-    console.log({id});
     setPage(1)
     setCurrentTab(id)
   }
