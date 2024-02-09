@@ -3,5 +3,11 @@ import react from '@vitejs/plugin-react'
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  server:{
+    headers:{
+      'Content-Security-Policy': `style-src 'nonece-random' 'self'`,
+      "upgrade-insecure-requests": "1",
+    }, 
+  },
   plugins: [react()],
 })
