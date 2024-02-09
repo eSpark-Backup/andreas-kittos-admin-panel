@@ -1,4 +1,4 @@
-import { Box, Grid, Typography, useMediaQuery } from "@mui/material"
+import { Box, Grid, Typography } from "@mui/material"
 import { useEffect, useState } from "react";
 import { ConfirmationModal, CustomButton, MenuTab, PageHeader, SearchInput, Table } from "../../components";
 import { columns } from "../../columns/products";
@@ -10,7 +10,7 @@ import useProducts from "../../hooks/useProducts";
 
 const Products = () => {
 
-    const [currentTab, setCurrentTab] = useState(localStorage.getItem("currentTab") || "")
+    const [currentTab, setCurrentTab] = useState()
     const navigate = useNavigate()
     const [searchValue, setSearchValue] = useState("")
     const [openModal, setOpenModal] = useState(false)
@@ -18,8 +18,6 @@ const Products = () => {
     const { products, isProductLoading, fetch } = useProducts(currentTab, 1, searchValue);
     const [deleteProduct, { isSuccess, isError }] = useDeleteProductMutation()
     const [deleteid, setDeleteId] = useState("")
-    const isSmallScreen = useMediaQuery('(max-width: 991px)');
-
 
 
     const onConfirm = () => {
@@ -50,8 +48,7 @@ const Products = () => {
 
     useEffect(() => {
         if (categories?.data?.length > 0) {
-            // setCurrentTab(localStorage.getItem("currentTab") || categories?.data[0]?.id)
-            localStorage.setItem("currentTab", categories?.data[0]?.id)
+            setCurrentTab(categories?.data[0]?.id)
         }
     }
     , [categories])
@@ -59,7 +56,7 @@ const Products = () => {
 
     if (isCategoryLoading) {
         return (
-            <Box sx={{ width: isSmallScreen?"100vw":"80vw", height: "100%", display: "flex", justifyContent: "center", alignItems: "center" }}>
+            <Box sx={{ width: "80vw", height: "100%", display: "flex", justifyContent: "center", alignItems: "center" }}>
                 <div className="loader"></div>
             </Box>
         )
