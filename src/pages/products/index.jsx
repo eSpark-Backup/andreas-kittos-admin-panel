@@ -11,11 +11,12 @@ import useProducts from "../../hooks/useProducts";
 const Products = () => {
 
     const [currentTab, setCurrentTab] = useState()
+    console.log(currentTab, "currentTab");
     const navigate = useNavigate()
     const [searchValue, setSearchValue] = useState("")
     const [openModal, setOpenModal] = useState(false)
-    const { data: categories, isLoading: isCategoryLoading } = useGetCategoriesQuery();
-    const { products, isProductLoading, fetch } = useProducts(currentTab, 1, searchValue);
+    const { data: categories, isLoading: isCategoryLoading,  } = useGetCategoriesQuery();
+    const { products, isProductLoading, handleFetch } = useProducts(currentTab, 1, searchValue);
     const [deleteProduct, { isSuccess, isError }] = useDeleteProductMutation()
     const [deleteid, setDeleteId] = useState("")
 
@@ -35,7 +36,7 @@ const Products = () => {
         if (isSuccess) {
             toast.success('Your Product has been deleted succesfully!', {
             });
-            fetch(currentTab)
+            handleFetch()
             setDeleteId("")
         }
         if (isError) {

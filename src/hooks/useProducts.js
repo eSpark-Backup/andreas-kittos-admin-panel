@@ -4,6 +4,8 @@ import { useGetProductsMutation } from '../services/products';
 const useProducts = (categoryId, page, productName) => {
   const [fetch, { data: productsData, isLoading: isProductLoading }] = useGetProductsMutation();
   const [products, setProducts] = useState([]);
+  const [search, setSearch] = useState("");
+
 
   useEffect(() => {
     const category = productsData?.data?.items[0]?.name || "";
@@ -17,23 +19,27 @@ const useProducts = (categoryId, page, productName) => {
     setProducts(updatedProducts);
   }, [productsData]);
 
+  const handleFetch = () => {
+    fetch({ categoryId, page, productName })
+  }
+
   useEffect(() => {
-    fetch({categoryId, page, productName})
+    if (categoryId) {
+      handleFetch()
+    }
+  }, [search, categoryId]);
 
-}, [categoryId]);
-
-useEffect(() => {
-  let timer = setTimeout(() => {
-      fetch({categoryId, page, productName})
-  }, 1000)
-  return () => clearTimeout(timer)
-}, [productName])
-
+  useEffect(() => {
+    let timer = setTimeout(() => {
+      setSearch(productName)
+    }, 1000)
+    return () => clearTimeout(timer)
+  }, [productName])
 
   return {
     products,
     isProductLoading,
-    fetch,
+    handleFetch,
   };
 };
 
