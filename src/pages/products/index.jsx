@@ -1,4 +1,4 @@
-import { Box, Grid, Typography, useMediaQuery } from "@mui/material"
+import { Box, Grid, Typography } from "@mui/material"
 import { useEffect, useState } from "react";
 import { ConfirmationModal, CustomButton, MenuTab, PageHeader, SearchInput, Table } from "../../components";
 import { columns } from "../../columns/products";
@@ -10,16 +10,13 @@ import useProducts from "../../hooks/useProducts";
 
 const Products = () => {
 
-    const [currentTab, setCurrentTab] = useState(localStorage.getItem("currentTab") || "")
     const navigate = useNavigate()
     const [searchValue, setSearchValue] = useState("")
     const [openModal, setOpenModal] = useState(false)
-    const { data: categories, isLoading: isCategoryLoading } = useGetCategoriesQuery();
-    const { products, isProductLoading, fetch } = useProducts(currentTab, 1, searchValue);
+    const { data: categories, isLoading: isCategoryLoading, } = useGetCategoriesQuery();
+    const { products, totalItems, page, setPage, isProductLoading, handleFetch, handleTabChange, currentTab } = useProducts(searchValue);
     const [deleteProduct, { isSuccess, isError }] = useDeleteProductMutation()
     const [deleteid, setDeleteId] = useState("")
-    const isSmallScreen = useMediaQuery('(max-width: 991px)');
-
 
 
     const onConfirm = () => {
@@ -33,11 +30,15 @@ const Products = () => {
         setOpenModal(true)
     }
 
+    const handlePageChange = (page) => {
+        setPage(page)
+    }
+
     useEffect(() => {
         if (isSuccess) {
             toast.success('Your Product has been deleted succesfully!', {
             });
-            fetch(currentTab)
+            handleFetch()
             setDeleteId("")
         }
         if (isError) {
@@ -50,16 +51,15 @@ const Products = () => {
 
     useEffect(() => {
         if (categories?.data?.length > 0) {
-            // setCurrentTab(localStorage.getItem("currentTab") || categories?.data[0]?.id)
-            localStorage.setItem("currentTab", categories?.data[0]?.id)
+            handleTabChange(categories?.data[0]?.id)
         }
     }
-    , [categories])
+        , [categories])
 
 
     if (isCategoryLoading) {
         return (
-            <Box sx={{ width: isSmallScreen?"100vw":"80vw", height: "100%", display: "flex", justifyContent: "center", alignItems: "center" }}>
+            <Box sx={{ width: "80vw", height: "100%", display: "flex", justifyContent: "center", alignItems: "center" }}>
                 <div className="loader"></div>
             </Box>
         )
@@ -87,7 +87,7 @@ const Products = () => {
                             <Typography sx={{ color: "white", fontSize: "20px", fontWeight: "700" }}>Categories</Typography>
                             <Box sx={{ width: "100%", display: "flex", flexDirection: { xs: "row", sm: "column", md: "column" }, rowGap: "10px", columnGap: "10px", marginBottom: "10px", overflowX: { xs: "scroll", sm: "hidden" }, alignItems: { md: "center" } }}>
                                 {categories?.data?.map((item, index) => (
-                                    <MenuTab categories={true} key={index} item={item} currentTab={currentTab} onClick={() => setCurrentTab(item.id)} />
+                                    <MenuTab categories={true} key={index} item={item} currentTab={currentTab} onClick={() => handleTabChange(item.id)} />
                                 ))}
                             </Box>
                         </Grid>
@@ -99,10 +99,12 @@ const Products = () => {
                                         data={products}
                                         columns={columns()}
                                         isLoading={isProductLoading}
-                                        total={products?.length}
+                                        total={totalItems}
                                         handleDelete={(item) => handleDelete(item?.id)}
                                         handleEdit={(item) => navigate(`/update-product/${item.id}`)}
                                         handleView={(item) => navigate(`/view-product/${item.id}`)}
+                                        page={page}
+                                        handlePageChange={handlePageChange}
                                     />
                                 </Box>
                             </Box>
