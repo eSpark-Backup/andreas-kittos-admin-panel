@@ -82,7 +82,8 @@ const UpdateProduct = () => {
                 formData.append(key, rest[key])
             }
 
-            updateProduct(values)
+            
+            updateProduct(rest)
 
         }
     }
@@ -107,7 +108,7 @@ const UpdateProduct = () => {
                 id: productData?.categoryProduct[0]?.category?.id,
                 label: productData?.categoryProduct[0]?.category?.name,
             },
-            image: productData?.productImage ? splitImagePath(productData?.productImage) : loader
+            image: productData?.productImage ? productData?.productImage : loader
         };
 
         console.log(product, "productData");
@@ -130,6 +131,7 @@ const UpdateProduct = () => {
     useEffect(() => {
         if (isSuccess) {
             toast.success("Product updated successfully");
+            navigate(-1)
         }
         if (isError) {
             toast.error("An error occurred. Please try again");

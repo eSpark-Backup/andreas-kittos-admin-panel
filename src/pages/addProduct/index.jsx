@@ -56,7 +56,7 @@ const AddProduct = () => {
                 image: null,
                 quantity: 0
             })
-            navigate("/catagories")
+            navigate("/products")
         }
         if (isError) {
             toast.error("An error occurred. Please try again");

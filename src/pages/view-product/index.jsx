@@ -26,7 +26,7 @@ const ViewProduct = () => {
             quantity: productData?.quantity,
             tags: splitTags(productData?.tags),
             category: productData?.categoryProduct[0]?.category.name,
-            productImage: productData?.productImage ? splitImagePath(productData?.productImage) : loader
+            productImage: productData?.productImage ? productData?.productImage : loader
         };
 
         setProduct(product);
