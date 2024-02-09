@@ -34,7 +34,6 @@ useEffect(() => {
     products,
     isProductLoading,
     fetch,
-
   };
 };
 
