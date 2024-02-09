@@ -1,4 +1,4 @@
-import { Box, Grid, Typography } from "@mui/material"
+import { Box, Grid, Typography, useMediaQuery } from "@mui/material"
 import { useEffect, useState } from "react";
 import { ConfirmationModal, CustomButton, MenuTab, PageHeader, SearchInput, Table } from "../../components";
 import { columns } from "../../columns/products";
@@ -18,6 +18,8 @@ const Products = () => {
     const { products, isProductLoading, fetch } = useProducts(currentTab, 1, searchValue);
     const [deleteProduct, { isSuccess, isError }] = useDeleteProductMutation()
     const [deleteid, setDeleteId] = useState("")
+    const isSmallScreen = useMediaQuery('(max-width: 991px)');
+
 
 
     const onConfirm = () => {
@@ -57,7 +59,7 @@ const Products = () => {
 
     if (isCategoryLoading) {
         return (
-            <Box sx={{ width: "80vw", height: "100%", display: "flex", justifyContent: "center", alignItems: "center" }}>
+            <Box sx={{ width: isSmallScreen?"100vw":"80vw", height: "100%", display: "flex", justifyContent: "center", alignItems: "center" }}>
                 <div className="loader"></div>
             </Box>
         )
