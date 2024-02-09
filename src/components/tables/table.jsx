@@ -153,11 +153,11 @@ const DynamicTable = ({
                     )}
                 </TableContainer>
             }
-            {data?.length >= 0 ?
+            {data?.length >= 7 ?
                 <Stack sx={{ marginTop: { xs: "20px", sm: "10px" } }} p={{ xs: 0, sm: 2 }} alignItems="center">
                     <Pagination
                     page={page}
-                    variant="outlined" shape="rounded" onChange={handlePageChange ? (_, page) => handlePageChange(page) : () => { }} count={Math.ceil((total || 1) / 4)} />
+                    variant="outlined" shape="rounded" onChange={handlePageChange ? (_, page) => handlePageChange(page) : () => { }} count={Math.ceil((total || 1) / 7)} />
                 </Stack>
                 : null}
         </>
