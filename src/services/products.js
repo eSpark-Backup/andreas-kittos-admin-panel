@@ -4,7 +4,7 @@ export const productApi = api.injectEndpoints({
     endpoints: (builder) => ({
         getProducts: builder.mutation({
             query: (id) => ({
-                url: `/product/${id}`,
+                url: `/product/?categoryId=${id}`,
                 method: 'GET',
             }),
             providesTags: ['products'],

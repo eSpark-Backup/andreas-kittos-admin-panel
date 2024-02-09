@@ -6,8 +6,8 @@ const useProducts = (tabId) => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    const categoryProduct = productsData?.data[0]?.categoryProduct || [];
-    const category = productsData?.data[0]?.name || '';
+    const category = productsData?.data?.items[0]?.name || "";
+    const categoryProduct = productsData?.data?.items[0]?.categoryProduct
 
     const updatedProducts = categoryProduct?.map((item) => ({
       ...item.product,
