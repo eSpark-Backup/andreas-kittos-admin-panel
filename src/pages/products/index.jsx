@@ -10,7 +10,7 @@ import useProducts from "../../hooks/useProducts";
 
 const Products = () => {
 
-    const [currentTab, setCurrentTab] = useState()
+    const [currentTab, setCurrentTab] = useState(localStorage.getItem("currentTab") || "")
     const navigate = useNavigate()
     const [searchValue, setSearchValue] = useState("")
     const [openModal, setOpenModal] = useState(false)
@@ -50,7 +50,8 @@ const Products = () => {
 
     useEffect(() => {
         if (categories?.data?.length > 0) {
-            setCurrentTab(categories?.data[0]?.id)
+            // setCurrentTab(localStorage.getItem("currentTab") || categories?.data[0]?.id)
+            localStorage.setItem("currentTab", categories?.data[0]?.id)
         }
     }
     , [categories])
