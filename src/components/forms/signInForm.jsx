@@ -23,14 +23,17 @@ const SignInForm = () => {
 
   useEffect(() => {
     if(isSuccess) {
-      toast.success("Login has been Successful");
       if(data?.data?.userObject) {
+        toast.success("Login has been Successful");
         localStorage.setItem('token', data?.data?.userObject?.token)
         navigate("/dashboard")
       }
+      else {
+        toast.error("Email or password is Incorrect");
+      }
     }
     if(isError) {
-      toast.error("Email or password is Incorrect");
+      toast.error("Internal Server Error, Please try again later");
     }
   }, [isSuccess, isError])
   
