@@ -1,6 +1,7 @@
-import {BsFillArchiveFill, BsFillGrid3X3GapFill, BsFillBellFill} from 'react-icons/bs'
+import { BsFillArchiveFill, BsFillGrid3X3GapFill, BsFillBellFill } from 'react-icons/bs'
 import { FaUserGroup } from "react-icons/fa6";
 import { reportImg, suitImg } from '../assets';
+import styled from '@emotion/styled';
 
 export const sidebarTabs = [
     {
@@ -9,8 +10,8 @@ export const sidebarTabs = [
         icons: "Dashboard"
     },
     {
-        name: "Categories",
-        href: "/catagories",
+        name: "Products",
+        href: "/products",
         icons: "Categories"
     },
     {
@@ -103,22 +104,22 @@ export const cardsData = [
 
     {
         title: "PRODUCTS",
-        icon: <BsFillBellFill className='card_icon' />,
+        icon: "Bell",
         value: 160
     },
     {
         title: "CATEGORIES",
-        icon: <BsFillGrid3X3GapFill className='card_icon' />,
+        icon: "Categories",
         value: 3
     },
     {
         title: "CUSTOMERS",
-        icon: <FaUserGroup className='card_icon' />,
+        icon: "Users",
         value: 33
     },
     {
         title: "ORDERS",
-        icon: <BsFillArchiveFill className='card_icon' />,
+        icon: "Box",
         value: 300,
         description: "Recent Orders:",
         descriptionVal: "120"
@@ -147,7 +148,7 @@ export const ordersTableData = [
         qty: 2,
         coupon: "Java-10%",
         status: "Pending",
-        total: "$100",
+        total: "€100",
     },
     {
         id: 2,
@@ -157,7 +158,7 @@ export const ordersTableData = [
         qty: 2,
         coupon: "Java-10%",
         status: "Processing",
-        total: "$100",
+        total: "€100",
     },
     {
         id: 3,
@@ -167,7 +168,7 @@ export const ordersTableData = [
         qty: 2,
         coupon: "Java-10%",
         status: "Completed",
-        total: "$100",
+        total: "€100",
     },
     {
         id: 4,
@@ -177,7 +178,7 @@ export const ordersTableData = [
         qty: 2,
         coupon: "Java-10%",
         status: "Cancelled",
-        total: "$100",
+        total: "€100",
     },
     {
         id: 5,
@@ -187,7 +188,7 @@ export const ordersTableData = [
         qty: 2,
         coupon: "Java-10%",
         status: "Rejected",
-        total: "$100",
+        total: "€100",
     },
     {
         id: 6,
@@ -197,7 +198,7 @@ export const ordersTableData = [
         qty: 2,
         coupon: "Java-10%",
         status: "Failed",
-        total: "$100",
+        total: "€100",
     },
     {
         id: 7,
@@ -207,7 +208,7 @@ export const ordersTableData = [
         qty: 2,
         coupon: "Java-10%",
         status: "On-hold",
-        total: "$100",
+        total: "€100",
     },
     {
         id: 8,
@@ -217,7 +218,7 @@ export const ordersTableData = [
         qty: 2,
         coupon: "Java-10%",
         status: "Pending",
-        total: "$100",
+        total: "€100",
     },
     {
         id: 9,
@@ -227,7 +228,7 @@ export const ordersTableData = [
         qty: 2,
         coupon: "Java-10%",
         status: "Refunded",
-        total: "$100",
+        total: "€100",
     },
     {
         id: 10,
@@ -237,7 +238,7 @@ export const ordersTableData = [
         qty: 2,
         coupon: "Java-10%",
         status: "Refunded",
-        total: "$100",
+        total: "€100",
     },
 ]
 
@@ -278,7 +279,7 @@ export const customerTableData = [
         customerName: "Carlo James",
         joinDate: "September 23,2023",
         totalOrders: 21,
-        earnings: "$100",
+        earnings: "€100",
         status: "Active",
 
     },
@@ -287,7 +288,7 @@ export const customerTableData = [
         customerName: "Ansolo Lazinatov",
         joinDate: "September 23,2023",
         totalOrders: 12,
-        earnings: "$100",
+        earnings: "€100",
         status: "InActive",
 
     },
@@ -296,7 +297,7 @@ export const customerTableData = [
         customerName: "Shatinon Mekalan",
         joinDate: "September 23,2023",
         totalOrders: 65,
-        earnings: "$100",
+        earnings: "€100",
         status: "Active",
 
     },
@@ -305,7 +306,7 @@ export const customerTableData = [
         customerName: "Jimmy Neutron",
         joinDate: "September 23,2023",
         totalOrders: 12,
-        earnings: "$100",
+        earnings: "€100",
         status: "InActive",
 
     },
@@ -314,7 +315,7 @@ export const customerTableData = [
         customerName: "John Doe",
         joinDate: "September 23,2023",
         totalOrders: 22,
-        earnings: "$100",
+        earnings: "€100",
         status: "Active",
 
     },
@@ -323,7 +324,7 @@ export const customerTableData = [
         customerName: "John Doe",
         joinDate: "September 23,2023",
         totalOrders: 23,
-        earnings: "$100",
+        earnings: "€100",
         status: "InActive",
 
     },
@@ -332,7 +333,7 @@ export const customerTableData = [
         customerName: "John Doe",
         joinDate: "September 23,2023",
         totalOrders: 30,
-        earnings: "$100",
+        earnings: "€100",
         status: "Active",
 
     },
@@ -341,7 +342,7 @@ export const customerTableData = [
         customerName: "John Doe",
         joinDate: "September 23,2023",
         totalOrders: 50,
-        earnings: "$100",
+        earnings: "€100",
         status: "InActive",
 
     },
@@ -350,7 +351,7 @@ export const customerTableData = [
         customerName: "John Doe",
         joinDate: "September 23,2023",
         totalOrders: 4,
-        earnings: "$100",
+        earnings: "€100",
         status: "Active",
 
     },
@@ -359,7 +360,7 @@ export const customerTableData = [
         customerName: "Carlo James",
         joinDate: "September 23,2023",
         totalOrders: 2,
-        earnings: "$200",
+        earnings: "€200",
         status: "Active",
 
     },
@@ -393,7 +394,7 @@ export const customerDetailsTableData = [
         qty: 2,
         coupon: "Java-10%",
         status: "Completed",
-        total: "$100",
+        total: "€100",
     },
     {
         id: 2,
@@ -402,7 +403,7 @@ export const customerDetailsTableData = [
         qty: 2,
         coupon: "Java-10%",
         status: "Completed",
-        total: "$100",
+        total: "€100",
     },
     {
         id: 3,
@@ -411,7 +412,7 @@ export const customerDetailsTableData = [
         qty: 2,
         coupon: "Java-10%",
         status: "Pending",
-        total: "$100",
+        total: "€100",
     },
     {
         id: 4,
@@ -420,7 +421,7 @@ export const customerDetailsTableData = [
         qty: 2,
         coupon: "Java-10%",
         status: "On-hold",
-        total: "$100",
+        total: "€100",
     },
     {
         id: 5,
@@ -429,7 +430,7 @@ export const customerDetailsTableData = [
         qty: 2,
         coupon: "Java-10%",
         status: "Failed",
-        total: "$100",
+        total: "€100",
     },
     {
         id: 6,
@@ -438,7 +439,7 @@ export const customerDetailsTableData = [
         qty: 2,
         coupon: "Java-10%",
         status: "Pending",
-        total: "$100",
+        total: "€100",
     },
     {
         id: 7,
@@ -447,7 +448,7 @@ export const customerDetailsTableData = [
         qty: 2,
         coupon: "Java-10%",
         status: "Refunded",
-        total: "$100",
+        total: "€100",
     },
     {
         id: 8,
@@ -456,7 +457,7 @@ export const customerDetailsTableData = [
         qty: 2,
         coupon: "Java-10%",
         status: "Cancelled",
-        total: "$100",
+        total: "€100",
     },
     {
         id: 9,
@@ -465,7 +466,7 @@ export const customerDetailsTableData = [
         qty: 2,
         coupon: "Java-10%",
         status: "Processing",
-        total: "$100",
+        total: "€100",
     },
 ]
 
@@ -492,116 +493,291 @@ export const columns = () => {
 export const catagoriesTableData = [
     {
         id: 1,
-        productName: "Belt Combination / Leather...",
+        productName: "Laundry-Dry-Ironing (per kilo)",
         category: "Laundry",
         totalOrders: 21,
-        price: "$100",
+        price: "€9.00",
     },
     {
         id: 2,
-        productName: "Belt textile",
-        category: "Ironing",
+        productName: "5kg - Laundry - Dry - Ironing - 5kg",
+        category: "Laundry",
         totalOrders: 21,
-        price: "$100",
+        price: "€45.00",
     },
     {
         id: 3,
-        productName: "Corset",
+        productName: "Laundry-Wash -Dry & Fold per Kg",
         category: "Laundry",
         totalOrders: 21,
-        price: "$100",
+        price: "€5.00",
     },
     {
         id: 4,
-        productName: "Gloves leather / suede",
-        category: "Ironing",
+        productName: "5kg - Laundry-Wash -Dry & Fold",
+        category: "Laundry",
         totalOrders: 21,
-        price: "$100",
+        price: "€25.00",
     },
     {
         id: 5,
-        productName: "Gloves mix material textile...",
+        productName: "Bath Mat - Wash & Iron",
         category: "Laundry",
         totalOrders: 21,
-        price: "$100",
+        price: "€6.00",
     },
     {
         id: 6,
-        productName: "T-Shirt",
-        category: "Ironing",
+        productName: "Big Size Towel – Cleaning",
+        category: "Laundry",
         totalOrders: 21,
-        price: "$100",
+        price: "€4.00",
     },
     {
         id: 7,
-        productName: "T-Shirt",
+        productName: "Big Size Towel – Cleaning",
         category: "Laundry",
         totalOrders: 21,
-        price: "$100",
+        price: "€26.00",
     },
     {
         id: 8,
-        productName: "T-Shirt",
-        category: "Ironing",
+        productName: "Feather Duvet King – Cleaning",
+        category: "Laundry",
         totalOrders: 21,
-        price: "$100",
+        price: "€3.00",
     },
     {
         id: 9,
-        productName: "T-Shirt",
+        productName: "Medium Size Towel Cleaning",
         category: "Laundry",
         totalOrders: 21,
-        price: "$100",
+        price: "€100",
     },
     {
         id: 10,
-        productName: "T-Shirt",
+        productName: "2 Piece Suit - Iron",
         category: "Ironing",
         totalOrders: 21,
-        price: "$100",
+        price: "€7.00",
     },
     {
         id: 11,
-        productName: "T-Shirt",
-        category: "Dry cleaning",
+        productName: "Blouse/Top/Shirt/Silk TShirt/R...",
+        category: "Ironing",
         totalOrders: 21,
-        price: "$100",
+        price: "€6.50",
     },
     {
         id: 12,
-        productName: "T-Shirt",
-        category: "Dry cleaning",
+        productName: "Cardigan - Iron",
+        category: "Ironing",
         totalOrders: 21,
-        price: "$100",
+        price: "€3.00",
     },
     {
         id: 13,
-        productName: "T-Shirt",
-        category: "Dry cleaning",
+        productName: "Double Bed Sheet - Iron",
+        category: "Ironing",
         totalOrders: 21,
-        price: "$100",
+        price: "€4.00",
     },
     {
         id: 14,
-        productName: "T-Shirt",
-        category: "Dry cleaning",
+        productName: "Dress / Overalls - Iron",
+        category: "Ironing",
         totalOrders: 21,
-        price: "$100",
+        price: "€6.00",
     },
     {
         id: 15,
-        productName: "T-Shirt",
-        category: "Dry cleaning",
+        productName: "Duvet Cover Double - Iron",
+        category: "Ironing",
         totalOrders: 21,
-        price: "$100",
+        price: "€5.00",
     },
     {
         id: 16,
-        productName: "T-Shirt",
+        productName: "Duvet Cover King - Iron",
+        category: "Ironing",
+        totalOrders: 21,
+        price: "€5.00",
+    },
+    {
+        id: 17,
+        productName: "Duvet Cover Single - Iron",
+        category: "Ironing",
+        totalOrders: 21,
+        price: "€4.00",
+    },
+    {
+        id: 18,
+        productName: "Evening Dress / Overalls - Iron",
+        category: "Ironing",
+        totalOrders: 21,
+        price: "€7.00",
+    },
+    {
+        id: 19,
+        productName: "Belt Combination / Leather...",
         category: "Dry cleaning",
         totalOrders: 21,
-        price: "$100",
+        price: "€18.00",
     },
+    {
+        id: 20,
+        productName: "Belt textile",
+        category: "Dry cleaning",
+        totalOrders: 21,
+        price: "€12.00",
+    },
+    {
+        id: 21,
+        productName: "Corset",
+        category: "Dry cleaning",
+        totalOrders: 21,
+        price: "€12.50",
+    },
+    {
+        id: 22,
+        productName: "Gloves leather / suede",
+        category: "Dry cleaning",
+        totalOrders: 21,
+        price: "€15.00",
+    },
+    {
+        id: 23,
+        productName: "Gloves mix material textile...",
+        category: "Dry cleaning",
+        totalOrders: 21,
+        price: "€12.00",
+    },
+    {
+        id: 24,
+        productName: "Gloves textile",
+        category: "Dry cleaning",
+        totalOrders: 21,
+        price: "€6.00",
+    },
+    {
+        id: 25,
+        productName: "Bra",
+        category: "Dry cleaning",
+        totalOrders: 21,
+        price: "€6.00",
+    },
+    {
+        id: 26,
+        productName: "Bridal Veil",
+        category: "Dry cleaning",
+        totalOrders: 21,
+        price: "€10.00",
+    },
+    {
+        id: 27,
+        productName: "Bridal Veil exclusive designer",
+        category: "Dry cleaning",
+        totalOrders: 21,
+        price: "€35.00",
+    },
+    // {
+    //     id: 3,
+    //     productName: "Corset",
+    //     category: "Laundry",
+    //     totalOrders: 21,
+    //     price: "€100",
+    // },
+    // {
+    //     id: 4,
+    //     productName: "Gloves leather / suede",
+    //     category: "Ironing",
+    //     totalOrders: 21,
+    //     price: "€100",
+    // },
+    // {
+    //     id: 5,
+    //     productName: "Gloves mix material textile...",
+    //     category: "Laundry",
+    //     totalOrders: 21,
+    //     price: "€100",
+    // },
+    // {
+    //     id: 6,
+    //     productName: "T-Shirt",
+    //     category: "Ironing",
+    //     totalOrders: 21,
+    //     price: "€100",
+    // },
+    // {
+    //     id: 7,
+    //     productName: "T-Shirt",
+    //     category: "Laundry",
+    //     totalOrders: 21,
+    //     price: "€100",
+    // },
+    // {
+    //     id: 8,
+    //     productName: "T-Shirt",
+    //     category: "Ironing",
+    //     totalOrders: 21,
+    //     price: "€100",
+    // },
+    // {
+    //     id: 9,
+    //     productName: "T-Shirt",
+    //     category: "Laundry",
+    //     totalOrders: 21,
+    //     price: "€100",
+    // },
+    // {
+    //     id: 10,
+    //     productName: "T-Shirt",
+    //     category: "Ironing",
+    //     totalOrders: 21,
+    //     price: "€100",
+    // },
+    // {
+    //     id: 11,
+    //     productName: "T-Shirt",
+    //     category: "Dry cleaning",
+    //     totalOrders: 21,
+    //     price: "€100",
+    // },
+    // {
+    //     id: 12,
+    //     productName: "T-Shirt",
+    //     category: "Dry cleaning",
+    //     totalOrders: 21,
+    //     price: "€100",
+    // },
+    // {
+    //     id: 13,
+    //     productName: "T-Shirt",
+    //     category: "Dry cleaning",
+    //     totalOrders: 21,
+    //     price: "€100",
+    // },
+    // {
+    //     id: 14,
+    //     productName: "T-Shirt",
+    //     category: "Dry cleaning",
+    //     totalOrders: 21,
+    //     price: "€100",
+    // },
+    // {
+    //     id: 15,
+    //     productName: "T-Shirt",
+    //     category: "Dry cleaning",
+    //     totalOrders: 21,
+    //     price: "€100",
+    // },
+    // {
+    //     id: 16,
+    //     productName: "T-Shirt",
+    //     category: "Dry cleaning",
+    //     totalOrders: 21,
+    //     price: "$100",
+    // },
 
 ]
 
@@ -634,8 +810,8 @@ export const reportData = [
 ];
 
 export const SettingsTabs = [
-    { title: 'Personal info', id: 1 },
-    { title: 'Change password', id: 2 },
+    { name: 'Personal info', id: 1 },
+    { name: 'Change password', id: 2 },
 ];
 
 
@@ -654,7 +830,7 @@ export const settingsPasswordFields = [
     },
     {
         id: 3,
-        label: "Confirm password:",
+        label: "Confirm new password:",
         placeholder: "John",
         type: "password"
     },
@@ -679,3 +855,15 @@ export const ODTableData = [
 
 
 ]
+
+export const VisuallyHiddenInput = styled('input')({
+    clip: 'rect(0 0 0 0)',
+    clipPath: 'inset(50%)',
+    height: 1,
+    overflow: 'hidden',
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    whiteSpace: 'nowrap',
+    width: 1,
+});

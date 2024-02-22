@@ -8,6 +8,7 @@ const OrderCard = ({ heading, children }) => {
                 border: "1px solid #424755",
                 p: "10px 0px",
                 borderRadius: "10px",
+                marginTop:{xs:"25px", lg:"0px"}
             }}
         >
             <Box sx={{
@@ -16,7 +17,7 @@ const OrderCard = ({ heading, children }) => {
                 paddingBottom: "10px",
                 px: "20px",
             }}>
-                <Typography sx={{ color: '#FFFFFF' }}>{heading}</Typography>
+                <Typography sx={{ color: '#FFFFFF', fontSize:"14px", fontWeight:"500" }}>{heading}</Typography>
             </Box>
 
             <Box

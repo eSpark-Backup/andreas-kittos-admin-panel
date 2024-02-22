@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { CustomButton, PageHeader, SearchInput, Table } from '../../components'
-import { Box, Grid, Stack } from '@mui/material'
+import { Box, Grid, Stack, useMediaQuery } from '@mui/material'
 import { columns } from '../../columns/orders'
 import { ordersTableData, ordersTabs } from '../../constant'
 import Tabs from '@mui/material/Tabs';
@@ -8,6 +8,7 @@ import Tab from '@mui/material/Tab';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
 
 
 const Orders = () => {
@@ -42,12 +43,14 @@ const Orders = () => {
     setData(filteredData);
   }, [value]);
 
+  const isSmallScreen = useMediaQuery('(max-width: 360px)');
+
 
   return (
     <main className='main-container'>
       {/* <Box sx={{display:"flex", justifyContent:"space-between", alignItems:"center", flexWrap:"wrap", rowGap:"5px"}}> */}
-      <Box sx={{minHeight:"70px"}}>
-        <PageHeader title="Orders" btnText={"Download Report"} />
+      <Box sx={{ minHeight: "70px", marginTop:"14px", marginBottom:{xs:"25px", sm:"0px"} }}>
+        <PageHeader title="Orders" btnText={"Download report"} />
       </Box>
 
       {/* <Box>
@@ -68,15 +71,17 @@ const Orders = () => {
         </Tabs>
       </Box>
       <Grid container rowGap={2} sx={{ display: "flex", justifyContent: "space-between", margin: "45px 0px 20px 0px" }}>
-        <Grid item xs={12} lg={4}>
-          <SearchInput setSearch={setSearch} placeholder="Search by order number or name" />
+        <Grid item xs={10} sm={12} lg={4}>
+          <SearchInput setSearch={setSearch} placeholder="Search by order number or name"/>
         </Grid>
-        <Grid item xs={12} lg={4} md={7}>
+        <Grid item xs={12} lg={4} md={12} sx={{ display: "flex", justifyContent: "flex-end", marginTop:{xs:"20px", sm:"0px"}}}>
           <Box>
             <LocalizationProvider dateAdapter={AdapterDayjs}>
-              <Stack direction={"row"} gap={2}>
-                <DatePicker label="Search from" sx={{ width: "50%" }} />
-                <DatePicker label="Search to" sx={{ width: "50%" }} />
+              <Stack direction={
+                isSmallScreen ? "column" : "row"
+              } gap={2} sx={{display:"flex", justifyContent:"flex-end"}}>
+                <DesktopDatePicker label="Search from" sx={{ width:  isSmallScreen ? "100%" : "150px" }} />
+                <DesktopDatePicker label="Search to" sx={{ width: isSmallScreen ? "100%" : "150px" }} />
               </Stack>
             </LocalizationProvider>
           </Box>

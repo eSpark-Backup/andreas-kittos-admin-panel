@@ -52,7 +52,7 @@ const ConfirmationModal = ({ open, onClose, sx, description, descriptionTwo, onC
                         </Box>
 
                         <Box>
-                            <Typography variant="h6" sx={{ color: "white" }} component="div">
+                            <Typography variant="h6" sx={{ color: "white", fontSize:"20px" }} component="div">
                                 Warning!
                             </Typography>
                         </Box>

@@ -7,11 +7,11 @@ const BackBtn = () => {
     const navigate = useNavigate()
     return (
         <>
-            <Box sx={{ display: "flex", alignItems: "center" }} >
+            <Box onClick={() => navigate(-1)} sx={{ display: "flex", alignItems: "center", cursor: "pointer" }} >
                 <Box sx={{ mr: "15px" }}>
                     <img src={Back} alt='Back' />
                 </Box>
-                <Typography onClick={() => navigate(-1)} sx={{ color: "white", cursor: "pointer", width: "fit-content" }}>
+                <Typography  sx={{ color: "white",  width: "fit-content" }}>
                     Back</Typography>
             </Box>
         </>

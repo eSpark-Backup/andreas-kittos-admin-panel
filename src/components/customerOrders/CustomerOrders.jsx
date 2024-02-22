@@ -49,17 +49,20 @@ const CustomerOrders = () => {
                     aria-label="scrollable auto tabs example"
                 >
                     {ordersTabs.map((item, index) => (
-                        <Tab label={item} key={index} />
+                        <Tab label={item} key={index} sx={{textTransform:"capitalize !important"}} />
                     ))}
                 </Tabs>
             </Box>
-            <Box sx={{maxHeight:{xs:"75%",md:"82%"}, overflowY:"scroll",marginTop:"15px"}}>
-                <Table
-                    data={data}
-                    columns={columns()}
-                    isLoading={false}
-                    total={data.length}
-                />
+            {/*  */}
+            <Box sx={{ maxHeight: { xs: "75%", md: "82%" }, overflowY:"scroll", marginTop:"12px" }}>
+                <Box sx={{ marginTop: "15px", width:"99%" }}>
+                    <Table
+                        data={data}
+                        columns={columns()}
+                        isLoading={false}
+                        total={data.length}
+                    />
+                </Box>
             </Box>
         </>
     )

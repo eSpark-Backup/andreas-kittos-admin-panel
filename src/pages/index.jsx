@@ -1,5 +1,5 @@
 import Dashboard from "./dashboard";
-import Catagories from "./catagories";
+import Products from "./products";
 import Customers from "./customers";
 import Inventory from "./inventory";
 import Reports from "./reports";
@@ -8,10 +8,12 @@ import SignIn from "./signIn";
 import Orders from "./orders";
 import NotFound from "./not-found";
 import OrderDetails from "./order-detail";
+import ViewProduct from "./view-product";
+import UpdateProduct from "./update-product";
 
 export {
     Dashboard,
-    Catagories,
+    Products,
     Customers,
     Inventory,
     Reports,
@@ -20,4 +22,6 @@ export {
     Orders,
     NotFound,
     OrderDetails,
+    ViewProduct,
+    UpdateProduct
 }

@@ -2,17 +2,18 @@ import { Navigate, useRoutes } from 'react-router-dom';
 import MainLayout from '../layout'
 import {
     Dashboard,
-    Catagories,
     Customers,
     Reports,
     Settings,
     SignIn,
     Orders,
     NotFound,
+    UpdateProduct,
+    ViewProduct,
+    Products,
 } from '../pages';
 import CustomerDetails from '../pages/customerDetails';
 import AddProduct from '../pages/addProduct';
-import ProductDetails from '../pages/productDetails';
 import OrderDetails from '../pages/order-detail';
 
 const Routes = () => {
@@ -22,14 +23,15 @@ const Routes = () => {
             children: [
                 { path: "/", element: <Dashboard /> },
                 { path: "/dashboard", element: <Dashboard /> },
-                { path: "/catagories", element: <Catagories /> },
+                { path: "/products", element: <Products /> },
                 { path: "/customers", element: <Customers /> },
                 { path: "/customer/:id", element: <CustomerDetails /> },
                 { path: "/orders", element: <Orders /> },
                 // { path: "/reports", element: <Reports /> },
                 { path: "/settings", element: <Settings /> },
-                { path: "/add-Product", element: <AddProduct /> },
-                { path: "/product-details/:id/:status", element: <ProductDetails /> },
+                { path: "/add-product", element: <AddProduct /> },
+                { path: "/update-product/:id", element: <UpdateProduct /> },
+                { path: "/view-product/:id", element: <ViewProduct /> },
                 { path: "/order-details/:id", element: <OrderDetails /> },
             ]
         },

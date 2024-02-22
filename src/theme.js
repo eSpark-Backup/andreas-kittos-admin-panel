@@ -144,7 +144,34 @@ export const theme = createTheme({
                 input: {
                     "&::placeholder": {
                         color: "#9E9EA4",
-                        fontWeight:"500"
+                        fontWeight:"500",
+                        opacity: 1,
+                    },
+                    
+                },
+                
+                root: {
+                    fontSize: "14px",
+                    fontWeight: 500,
+                    color: "#FFFFFF",
+                    lineHeight: "160%",
+                    // paddingLeft: "6px",
+                },
+                notchedOutline: {
+                    borderColor: "#424755",
+                    borderRadius: "5px",
+                },
+            },
+
+
+        },
+        MuiInputBase: {
+            styleOverrides: {
+                input: {
+                    "&::placeholder": {
+                        color: "#9E9EA4",
+                        fontWeight:"500",
+                        opacity: 1,
                     },
                 },
                 root: {
@@ -153,10 +180,6 @@ export const theme = createTheme({
                     color: "#FFFFFF",
                     lineHeight: "160%",
                     paddingLeft: "6px",
-                },
-                notchedOutline: {
-                    borderColor: "#424755",
-                    borderRadius: "5px",
                 },
             },
         },
@@ -179,8 +202,8 @@ export const theme = createTheme({
                     "& .MuiTableCell-root": {
                         borderBottom: "none",
                         fontSize: "14px",
-                        fontWeight: 600,
-                        lineHeight: 1,
+                        fontWeight: 500,
+                        lineHeight: 1.35,
                         letterSpacing: 0.5,
                         textTransform: "initial",
                         color: "#FFFFFF",
@@ -192,9 +215,10 @@ export const theme = createTheme({
             styleOverrides: {
                 root: {
                     "& .MuiTableCell-root": {
+                        lineHeight: 1.57,
                         color: "white",
                         fontSize: "12px",
-                        border:"none"
+                        border:"none",
 
                     },
                     "& .MuiTableRow-root": {

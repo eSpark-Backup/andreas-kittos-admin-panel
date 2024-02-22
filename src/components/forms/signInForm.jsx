@@ -1,5 +1,5 @@
 import { Box, Button, FormControl, Grid, Input, InputLabel, Stack, TextField, Typography } from '@mui/material'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { LoginInputs } from '../../constant'
 // import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 import VisibilityOffOutlinedIcon from '@mui/icons-material/VisibilityOffOutlined';
@@ -8,22 +8,44 @@ import { useFormik } from 'formik';
 import { signinSchema } from '../../schema';
 import { useNavigate } from 'react-router-dom';
 import CustomButton from '../buttons/customButton';
+import { useLoginMutation } from '../../services/auth';
+import { toast } from 'react-toastify';
 
 const SignInForm = () => {
   const [showPass, setShowPass] = useState(false)
   const navigate = useNavigate()
+  const [login,{data, isLoading, isError, isSuccess}] = useLoginMutation();
+
   const initialValues = {
-    email: "",
+    userCred: "",
     password: ""
   }
+
+  useEffect(() => {
+    if(isSuccess) {
+      if(data?.data?.userObject) {
+        toast.success("Login has been Successful");
+        localStorage.setItem('token', data?.data?.userObject?.token)
+        navigate("/dashboard")
+      }
+      else {
+        toast.error("Email or password is Incorrect");
+      }
+    }
+    if(isError) {
+      toast.error("Internal Server Error, Please try again later");
+    }
+  }, [isSuccess, isError])
+  
   const { values, errors, handleBlur, handleChange, handleSubmit, touched } = useFormik({
     initialValues: initialValues,
     validationSchema: signinSchema,
-    onSubmit: () => {
-      localStorage.setItem('token', '123456789')
-      navigate("/dashboard")
+    onSubmit: async (values) => {
+      console.log({values});
+      login(values)
     }
   })
+  console.log(errors)
   return (
     <Box
       sx={{
@@ -41,22 +63,23 @@ const SignInForm = () => {
         <form onSubmit={handleSubmit}>
           <Grid container gap={2}>
             <Grid item xs={12}>
-              <Stack direction={"column"} gap={1}>
+              <Stack direction={"column"} gap={1} className='signin-input'>
                 <InputLabel sx={{ color: "#424755", fontSize: { xs: "12px", sm: "14px" }, fontWeight: "500" }}>Email</InputLabel>
                 <TextField
-                  name='email'
+                  name='userCred'
                   id="filled-hidden-label-normal"
                   placeholder="Enter email"
                   fullWidth
-                  type='email'
-                  value={values.email}
+                  type='userCred'
+                  value={values.userCred}
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  error={touched.email && errors.email ? true : false}
-                  helperText={touched.email && errors.email ? errors.email : null}
+                  error={touched.userCred && errors.userCred ? true : false}
+                  helperText={touched.userCred && errors.userCred ? errors.userCred : null}
                   InputProps={{
                     style: { color: 'black' } // Change the color to your desired color
                   }}
+                  
                 />
               </Stack>
             </Grid>
@@ -85,7 +108,8 @@ const SignInForm = () => {
           <Box sx={{ marginTop: "70px" }}>
             {/* <Button type='submit' sx={{ width: "100%", height: "40px", fontWeight: "500", fontSize: "18px", backgroundColor: "#263043", borderRadius: "5px", color: "white", ":hover": { backgroundColor: "#263043" } }}>
               Sign in</Button> */}
-            <CustomButton type={"submit"} sx={{ width: "100%", fontWeight: "500", fontSize: "18px", borderRadius: "5px", color: "white" }}>Sign in</CustomButton>
+            <CustomButton isLoading={isLoading}  type={"submit"} sx={{ width: "100%", fontWeight: "500", fontSize: "18px", borderRadius: "5px", color: "white", 
+           }}>Sign in</CustomButton>
           </Box>
         </form>
       </Box>

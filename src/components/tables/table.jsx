@@ -23,10 +23,12 @@ const DynamicTable = ({
     data,
     columns,
     isLoading,
+    page,
     handlePageChange,
     total,
     ...rest
 }) => {
+    // console.log(data)
     const extendedColumns = columns?.map((column) => {
         return { ...column, key: column.key.split(".") };
     });
@@ -41,7 +43,7 @@ const DynamicTable = ({
         return column.key[0] === "action" ? (
             <Stack
                 direction="row"
-                justifyContent={"center"}
+                justifyContent={"flex-start"}
                 justifyItems="center"
                 alignItems="center"
                 spacing={1}
@@ -97,7 +99,7 @@ const DynamicTable = ({
     return (
         <>
 
-            {data.length === 0 && !isLoading ?
+            {(data?.length === 0) && !isLoading ?
                 <Stack direction="row" justifyContent="center" alignItems="center">
                     <img src={nodata} width="300px" height="300px" alt="no-data" />
                 </Stack>
@@ -116,10 +118,12 @@ const DynamicTable = ({
                                             justifyContent={
                                                 column.key[0] === "action"
                                                     ? "flex-end"
-                                                    : "center"
+                                                    : column.left ?
+                                                        "flex-start"
+                                                        : "center"
                                             }
                                         >
-                                            <Stack direction="row" alignItems={"center"}>
+                                            <Stack direction="row" >
                                                 {column.name}
                                             </Stack>
                                         </Stack>
@@ -131,10 +135,9 @@ const DynamicTable = ({
                             <TableBody>
                                 {data?.map((item, index) => (
                                     <TableRow
-
                                         key={item.id}>
                                         {extendedColumns?.map((column) => (
-                                            <TableCell sx={{ textAlign: "center" }} key={column.key.join(".")}>
+                                            <TableCell sx={{ textAlign: column.left ? "left" : "center", pl: column.left ? "20px" : "20px" }} key={column.key.join(".")}>
                                                 {generateCell(column, item)}
                                             </TableCell>
                                         ))}
@@ -150,11 +153,24 @@ const DynamicTable = ({
                     )}
                 </TableContainer>
             }
-            {data.length >= 10 ?
-                <Stack mt={0.5} p={{ xs: 0, sm: 2 }} alignItems="center">
-                    <Pagination variant="outlined" shape="rounded" onChange={handlePageChange ? (_, page) => handlePageChange(page) : () => { }} count={(total || 1) / 10} />
+            {/* {data?.length >= 7 ?
+                <Stack sx={{ marginTop: { xs: "20px", sm: "10px" } }} p={{ xs: 0, sm: 2 }} alignItems="center">
+                    <Pagination
+                    page={page}
+                    variant="outlined" shape="rounded" onChange={handlePageChange ? (_, page) => handlePageChange(page) : () => { }} count={Math.ceil((total || 1) / 7)} />
                 </Stack>
-                : null}
+                : null} */}
+            {
+                page > 1 ? <Stack sx={{ marginTop: { xs: "20px", sm: "10px" } }} p={{ xs: 0, sm: 2 }} alignItems="center">
+                    <Pagination
+                        page={page}
+                        variant="outlined" shape="rounded" onChange={handlePageChange ? (_, page) => handlePageChange(page) : () => { }} count={Math.ceil((total || 1) / 7)} />
+                </Stack> : data?.length >= 7 ? <Stack sx={{ marginTop: { xs: "20px", sm: "10px" } }} p={{ xs: 0, sm: 2 }} alignItems="center">
+                    <Pagination
+                        page={page}
+                        variant="outlined" shape="rounded" onChange={handlePageChange ? (_, page) => handlePageChange(page) : () => { }} count={Math.ceil((total || 1) / 7)} />
+                </Stack> : null
+            }
         </>
     );
 };

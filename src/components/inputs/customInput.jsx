@@ -11,16 +11,17 @@ const CustomInput = ({
     sx,
     inputName,
     onInputChange,
+    changePasswordForm
 }) => {
 
-    const [showPassword, setShowPassword] = useState(false);
+    const [showPassword, setShowPassword] = useState(changePasswordForm ? true : false);
 
 
 
 
     return (
         <>
-            <InputLabel sx={{ color: "#FFFFFF", fontSize: "16px", fontWeight: "500" }}>{label}</InputLabel>
+            <InputLabel sx={{ color: "#FFFFFF", fontSize: { xs: "14px", sm: "16px" }, fontWeight: "500" }}>{label}</InputLabel>
             <TextField
                 name={inputName}
                 id="filled-hidden-label-normal"
@@ -33,7 +34,8 @@ const CustomInput = ({
                 } : {}}
                 disabled={disabled}
                 sx={{ ...sx }}
-                onChange={(e)=> onInputChange(e)}
+                onChange={(e) => onInputChange(e)}
+                defaultValue={changePasswordForm ? "John" : null}
 
             />
         </>
