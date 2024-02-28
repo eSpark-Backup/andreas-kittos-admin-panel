@@ -812,6 +812,7 @@ export const reportData = [
 export const SettingsTabs = [
     { name: 'Personal info', id: 1 },
     { name: 'Change password', id: 2 },
+    { name: 'Static Content', id: 3 },
 ];
 
 
@@ -867,3 +868,51 @@ export const VisuallyHiddenInput = styled('input')({
     whiteSpace: 'nowrap',
     width: 1,
 });
+
+export const staticContent = [
+    {
+        id: 1,
+        key: "Lorem Ipsum",
+        value: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor"
+    },
+    {
+        id: 2,
+        key: "Lorem Ipsum2",
+        value: "Lorem2 ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor"
+    },
+    {
+        id: 3,
+        key: "Lorem Ipsum3",
+        value: "Lorem3 ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor"
+    },
+    {
+        id: 4,
+        key: "Lorem Ipsum4",
+        value: "Lorem4 ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor"
+    },
+    {
+        id: 5,
+        key: "Lorem Ipsum4",
+        value: "Lorem4 ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor"
+    },
+    {
+        id: 6,
+        key: "Lorem Ipsum4",
+        value: "Lorem4 ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor"
+    },
+    {
+        id: 7,
+        key: "Lorem Ipsum4",
+        value: "Lorem4 ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor"
+    },
+    {
+        id: 8,
+        key: "Lorem Ipsum4",
+        value: "Lorem4 ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor"
+    },
+    {
+        id: 9,
+        key: "Lorem Ipsum4",
+        value: "Lorem4 ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor"
+    },
+]

@@ -12,11 +12,11 @@ function App() {
   const token = localStorage.getItem('token')
 
   // Call the API on component mount (similar to componentDidMount) and on every page reload
-  useEffect(() => {
-    if (token) {
-      TokenValidator();
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (token) {
+  //     TokenValidator();
+  //   }
+  // }, []);
 
 
   return (
