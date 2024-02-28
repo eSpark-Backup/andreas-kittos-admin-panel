@@ -1,18 +1,23 @@
 import { Box, Divider, Typography } from '@mui/material'
-import React, { useState } from 'react'
+import React from 'react'
 import BackBtn from '../buttons/backBtn'
 import PageHeader from '../common/pageHeader'
-import { useLocation } from 'react-router-dom'
-import CustomButton from '../buttons/customButton'
+import { useParams } from 'react-router-dom'
+import { useGetContentQuery } from '../../services/contents'
 
 const StaticContentCard = () => {
-    const location = useLocation()
-    const [key, setKey] = useState("")
-    const [value, setValue] = useState("")
-    const UpdateHandler = () => {
-        console.log(key, "Key")
-        console.log(value, "Value")
+    const params = useParams()
+    const { data: content, isLoading } = useGetContentQuery(params.id)
+
+
+    if (isLoading) {
+        return (
+            <Box sx={{ width: "80vw", height: "100%", display: "flex", justifyContent: "center", alignItems: "center" }}>
+                <div className="loader"></div>
+            </Box>
+        )
     }
+
     return (
         <main className='main-container'>
             <BackBtn />
@@ -21,12 +26,13 @@ const StaticContentCard = () => {
                     <PageHeader title="View Content" sx={{ textTransform: "capatilize", paddingLeft: { xs: "10px", lg: "0px" } }} />
                     <Divider />
                     <br />
-                    <Typography sx={{ color: "white", fontSize: "28px" }} contentEditable={location.pathname.split("/").includes("edit-content") ? true : false} onInput={(e) => setKey(e.target.innerText)}>Where does it come from?</Typography>
-                    <br />
-                    <Typography sx={{ color: "white", borderRadius: "8px" }} contentEditable={location.pathname.split("/").includes("edit-content") ? true : false} onInput={(e) => setValue(e.target.innerText)}>
-                        Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.
+                    <Typography sx={{ color: "white", fontSize: "28px" }} >
+                        {content?.data?.key}
                     </Typography>
-                    {location.pathname.split("/").includes("edit-content") ? <CustomButton onClick={UpdateHandler} sx={{ width: "100%", marginTop: "10px" }}>Update Content</CustomButton> : null}
+                    <br />
+                    <Typography sx={{ color: "white", borderRadius: "8px" }} >
+                        {content?.data?.value}
+                    </Typography>
 
                 </Box>
 

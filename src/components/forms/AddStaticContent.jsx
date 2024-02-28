@@ -1,10 +1,17 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import BackBtn from '../buttons/backBtn'
 import { Box, Divider, InputLabel, Stack, TextField } from '@mui/material'
 import PageHeader from '../common/pageHeader'
 import CustomButton from '../buttons/customButton'
+import { useAddContentMutation } from '../../services/contents'
+import { toast } from 'react-toastify'
+import { useNavigate } from 'react-router-dom'
+import { isFormEmpty } from '../../pages/utils/helpers'
 
 const AddStaticContent = () => {
+    const navigate = useNavigate()
+    const [addCotent, { isLoading, isSuccess, isError }] = useAddContentMutation()
+
     const [content, setContent] = useState({
         key: "",
         value: ""
@@ -17,6 +24,31 @@ const AddStaticContent = () => {
             }))
         }
     }
+
+
+
+    const handleSubmit = () => {
+        if (isFormEmpty(content)) {
+            toast.error("Please fill in all fields.");
+        } else {
+            addCotent(content)
+        }
+    }
+
+    useEffect(() => {
+        if (isSuccess) {
+            toast.success("Static Content added successfully");
+            setContent({
+                key: "",
+                value: ""
+            })
+            navigate("/settings")
+        }
+        if (isError) {
+            toast.error("An error occurred. Please try again");
+        }
+    }, [isSuccess, isError])
+
     return (
         <main className='main-container'>
             <BackBtn />
@@ -41,7 +73,7 @@ const AddStaticContent = () => {
                             onChange={(e) => handleInputsChange("value", e.target.value)}
                             placeholder='Enter here...' />
                     </Stack>
-                    <CustomButton sx={{ width: "100%", marginTop: "20px" }} onClick={() => console.log(content)}>Add Content</CustomButton>
+                    <CustomButton isLoading={isLoading} sx={{ width: "100%", marginTop: "20px" }} onClick={handleSubmit}>Add Content</CustomButton>
                 </Box>
 
             </Box>

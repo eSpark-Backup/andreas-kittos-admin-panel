@@ -29,7 +29,7 @@ const Settings = () => {
 
                 </Grid>
                 <Grid item xs={12} md={9} sx={{ border: { md: "1px solid #424755" }, borderTopRightRadius: "10px", borderBottomRightRadius: "10px", padding: { sx: "10px 10px 10px 10px", md: "10px 20px 10px 20px" }, display: "flex", rowGap: "20px" }}>
-                    {currentTab === 1 ? <InformationForm /> : currentTab === 3 ? <StaticContentForm /> : <ChangePasswordForm />}
+                    {currentTab === 1 ? <StaticContentForm /> : currentTab === 3 ? <ChangePasswordForm /> : <InformationForm />}
                 </Grid>
             </Grid>
         </main>

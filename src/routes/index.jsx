@@ -17,6 +17,7 @@ import AddProduct from '../pages/addProduct';
 import OrderDetails from '../pages/order-detail';
 import StaticContentCard from '../components/cards/staticContentCard';
 import AddStaticContent from '../components/forms/AddStaticContent';
+import UpdateStaticContent from '../components/forms/UpdateStaticContent';
 
 const Routes = () => {
     return useRoutes([
@@ -36,8 +37,8 @@ const Routes = () => {
                 { path: "/view-product/:id", element: <ViewProduct /> },
                 { path: "/order-details/:id", element: <OrderDetails /> },
                 { path: "/view-content/:id", element: <StaticContentCard /> },
-                { path: "/edit-content/:id", element: <StaticContentCard /> },
                 { path: "/add-content", element: <AddStaticContent /> },
+                { path: "/update-content/:id", element: <UpdateStaticContent /> },
             ]
         },
         // { path: "404", element: <NotFound /> },
