@@ -11,8 +11,12 @@ import { isFormEmpty } from '../../pages/utils/helpers'
 const UpdateStaticContent = () => {
     const params = useParams()
     const navigate = useNavigate()
-    const { data, isLoading: isContentLoading } = useGetContentQuery(params.id)
+    const { data, isLoading: isContentLoading, refetch,isFetching } = useGetContentQuery(params.id)
     const [updateContent, { isLoading, isSuccess, isError }] = useUpdateContentMutation()
+
+    useEffect(() => {
+        refetch()
+     }, [refetch])
 
     const [content, setContent] = useState({
         id: "",
@@ -59,7 +63,7 @@ const UpdateStaticContent = () => {
         , [data])
 
 
-    if (isContentLoading) {
+    if (isContentLoading || isFetching) {
         return (
             <Box sx={{ width: "80vw", height: "100%", display: "flex", justifyContent: "center", alignItems: "center" }}>
                 <div className="loader"></div>

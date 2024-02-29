@@ -1,5 +1,5 @@
 import { Box, Divider, Typography } from '@mui/material'
-import React from 'react'
+import React, { useEffect } from 'react'
 import BackBtn from '../buttons/backBtn'
 import PageHeader from '../common/pageHeader'
 import { useParams } from 'react-router-dom'
@@ -7,10 +7,14 @@ import { useGetContentQuery } from '../../services/contents'
 
 const StaticContentCard = () => {
     const params = useParams()
-    const { data: content, isLoading } = useGetContentQuery(params.id)
+    const { data: content, isLoading, refetch,isFetching } = useGetContentQuery(params.id)
+    
+    useEffect(() => { 
+        refetch()
+    }, [refetch])
 
 
-    if (isLoading) {
+    if (isLoading || isFetching) {
         return (
             <Box sx={{ width: "80vw", height: "100%", display: "flex", justifyContent: "center", alignItems: "center" }}>
                 <div className="loader"></div>
