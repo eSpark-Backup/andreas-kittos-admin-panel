@@ -11,12 +11,12 @@ import { isFormEmpty } from '../../pages/utils/helpers'
 const UpdateStaticContent = () => {
     const params = useParams()
     const navigate = useNavigate()
-    const { data, isLoading: isContentLoading, refetch,isFetching } = useGetContentQuery(params.id)
+    const { data, isLoading: isContentLoading, refetch, isFetching } = useGetContentQuery(params.id)
     const [updateContent, { isLoading, isSuccess, isError }] = useUpdateContentMutation()
 
     useEffect(() => {
         refetch()
-     }, [refetch])
+    }, [refetch])
 
     const [content, setContent] = useState({
         id: "",
@@ -77,7 +77,7 @@ const UpdateStaticContent = () => {
             <BackBtn />
             <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", marginTop: "10px" }}>
                 <Box sx={{ width: { xs: "100%", md: "100%", lg: "90%", xl: "70%" }, border: "1px solid #424755", height: "100%", borderRadius: "10px", py: "25px", px: { xs: "4px", lg: "30px" } }}>
-                    <PageHeader title="Add Content" sx={{ textTransform: "capitalize" }} />
+                    <PageHeader title="Update Content" sx={{ textTransform: "capitalize" }} />
                     <Stack direction={"column"} gap={1.7} sx={{ marginTop: "10px" }}>
                         <InputLabel sx={{ color: "#FFFFFF", fontSize: { xs: "14px", sm: "16px" }, fontWeight: "500" }}>Key:</InputLabel>
                         <TextField
