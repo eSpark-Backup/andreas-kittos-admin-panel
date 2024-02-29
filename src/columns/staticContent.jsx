@@ -6,7 +6,7 @@ export const columns = () => {
         {
             name: "Value", key: "value", component: (item) => {
                 return (
-                    <Typography sx={{ color: "white", fontSize: "12px" }}>{item?.value?.slice(0, 31)}...</Typography>
+                    <Typography sx={{ color: "white", fontSize: "12px" }}> {item?.value ? `${item?.value?.slice(0, 31)}...` : ""}      </Typography>
                 )
             }
         },

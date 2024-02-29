@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useGetProductsMutation } from '../services/products';
+import { useGetProductsMutation } from '../../services/products';
 
 const useProducts = (productName) => {
   const [fetch, { data: productsData, isLoading: isProductLoading }] = useGetProductsMutation();
@@ -19,13 +19,13 @@ const useProducts = (productName) => {
       ...item.product,
       category,
     }));
-    
+
     setTotalItems(totalItems);
     setProducts(updatedProducts);
   }, [productsData]);
 
   const handleFetch = () => {
-    fetch({ categoryId:currentTab, page, productName })
+    fetch({ categoryId: currentTab, page, productName })
   }
 
   const handleTabChange = (id) => {

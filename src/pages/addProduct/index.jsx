@@ -16,9 +16,10 @@ import { IoIosArrowDown } from "react-icons/io";
 
 const AddProduct = () => {
     const navigate = useNavigate()
-    const fileInputRef = useRef(null);
     const [addProduct, { isLoading, isSuccess, isError }] = useAddProductMutation()
     const { data: categories } = useGetCategoriesQuery();
+
+    const fileInputRef = useRef(null);
     const [categoriesOptions, setCategoriesOptions] = useState([])
     const [productData, setProductData] = useState({
         name: "",
@@ -165,8 +166,8 @@ const AddProduct = () => {
                                     )}
                                 /> */}
                                 <Select
-                                IconComponent={IoIosArrowDown}
-                                className='change-backdrop'
+                                    IconComponent={IoIosArrowDown}
+                                    className='change-backdrop'
                                     displayEmpty
                                     // onChange={handleChange}
                                     value={productData?.categoryIds?.label}

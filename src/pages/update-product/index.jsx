@@ -82,7 +82,7 @@ const UpdateProduct = () => {
                 formData.append(key, rest[key])
             }
 
-            
+
             updateProduct(rest)
 
         }
@@ -111,9 +111,7 @@ const UpdateProduct = () => {
             image: productData?.productImage ? productData?.productImage : loader
         };
 
-        console.log(product, "productData");
-        console.log(productData, "productData1");
-        console.log(categories, "categories");
+
         setProductData(product);
 
     }, [data, categories])
