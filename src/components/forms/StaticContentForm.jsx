@@ -1,44 +1,16 @@
 import { Box } from '@mui/material'
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import PageHeader from '../common/pageHeader'
 import { ConfirmationModal, CustomButton, Table } from '../../components'
 import { columns } from '../../columns/staticContent'
 import { useNavigate } from 'react-router-dom'
-import { useDeleteContentMutation, useGetContentsQuery } from '../../services/contents'
-import { toast } from 'react-toastify'
+import { useGetContentsQuery } from '../../services/contents'
+import { useDeleteContent } from '../../hooks'
 
 const StaticContentForm = () => {
     const navigate = useNavigate()
     const { data: staticContent, isLoading } = useGetContentsQuery()
-    const [deleteProduct, { isSuccess, isError }] = useDeleteContentMutation()
-    const [deleteid, setDeleteId] = useState("")
-    const [confirmModal, setConfirmModal] = useState(false)
-
-
-    const onConfirm = () => {
-        setConfirmModal(false)
-        deleteProduct(deleteid)
-
-    }
-
-    const handleDelete = (id) => {
-        setDeleteId(id)
-        setConfirmModal(true)
-    }
-
-
-    useEffect(() => {
-        if (isSuccess) {
-            toast.success('Your Content has been deleted succesfully!', {
-            });
-            setDeleteId("")
-        }
-        if (isError) {
-            toast.error("An error occurred. Please try again");
-        }
-    }, [isSuccess, isError])
-
-
+    const { handleDelete, onConfirm, confirmModal, setConfirmModal } = useDeleteContent()
 
 
     return (

@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 import { Link, useNavigate } from "react-router-dom";
 import { useGetCategoriesQuery } from "../../services/categories";
 import { useDeleteProductMutation } from "../../services/products";
-import useProducts from "../../hooks/useProducts";
+import { useProducts } from "../../hooks";
 
 const Products = () => {
 

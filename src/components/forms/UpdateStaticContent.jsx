@@ -3,55 +3,19 @@ import BackBtn from '../buttons/backBtn'
 import { Box, Divider, InputLabel, Stack, TextField } from '@mui/material'
 import PageHeader from '../common/pageHeader'
 import CustomButton from '../buttons/customButton'
-import { useAddContentMutation, useGetContentQuery, useUpdateContentMutation } from '../../services/contents'
-import { toast } from 'react-toastify'
-import { useNavigate, useParams } from 'react-router-dom'
-import { isFormEmpty } from '../../pages/utils/helpers'
+import { useGetContentQuery } from '../../services/contents'
+import { useParams } from 'react-router-dom'
+import { useUpdateContent } from '../../hooks'
 
 const UpdateStaticContent = () => {
     const params = useParams()
-    const navigate = useNavigate()
     const { data, isLoading: isContentLoading, refetch, isFetching } = useGetContentQuery(params.id)
-    const [updateContent, { isLoading, isSuccess, isError }] = useUpdateContentMutation()
+    const { content, setContent, handleInputsChange, handleSubmit, isLoading } = useUpdateContent()
+
 
     useEffect(() => {
         refetch()
     }, [refetch])
-
-    const [content, setContent] = useState({
-        id: "",
-        key: "",
-        value: ""
-    })
-
-
-    const handleInputsChange = (name, value) => {
-        if (value) {
-            setContent((prevData) => ({
-                ...prevData,
-                [name]: value
-            }))
-        }
-    }
-
-    const handleSubmit = () => {
-        if (isFormEmpty(content)) {
-            toast.error("Please fill in all fields.");
-        } else {
-            updateContent(content)
-        }
-    }
-
-    useEffect(() => {
-        if (isSuccess) {
-            toast.success("Static Content updated successfully");
-            navigate("/settings")
-        }
-        if (isError) {
-            toast.error("An error occurred. Please try again");
-        }
-    }, [isSuccess, isError])
-
 
     useEffect(() => {
         setContent({
@@ -61,6 +25,7 @@ const UpdateStaticContent = () => {
         })
     }
         , [data])
+
 
 
     if (isContentLoading || isFetching) {
