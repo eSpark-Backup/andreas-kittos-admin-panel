@@ -9,16 +9,16 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
-import { useGetAllOrdersQuery } from '../../services/orders'
+// import { useGetAllOrdersQuery } from '../../services/orders'
 import { DateConverter } from '../../utility/DateConverter'
+import useProducts from '../../hooks/Product/useProducts'
+import useOrders from '../../hooks/Order/useOrder'
 
 
 const Orders = () => {
   const [value, setValue] = useState(0);
-  // const [data, setData] = useState([])
-  // const [search, setSearch] = useState("")
-
-  const {data:ordersData,isLoading} = useGetAllOrdersQuery()
+  const { ordersData, totalItems, page, setPage, isOrdersLoading} = useOrders();
+  console.log(totalItems)
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -58,6 +58,9 @@ const Orders = () => {
   // }, [value]);
 
   const isSmallScreen = useMediaQuery('(max-width: 360px)');
+  const handlePageChange = (page) => {
+    setPage(page)
+}
 
 
 
@@ -104,8 +107,10 @@ const Orders = () => {
         <Table
           data={tableData && tableData}
           columns={columns()}
-          isLoading={isLoading}
-          total={tableData && tableData.length}
+          isLoading={isOrdersLoading}
+          total={totalItems}
+          handlePageChange={handlePageChange}
+          page={page}
         />
       </Box>
 
