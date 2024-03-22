@@ -13,17 +13,26 @@ import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
 import { DateConverter } from '../../utility/DateConverter'
 import useProducts from '../../hooks/Product/useProducts'
 import useOrders from '../../hooks/Order/useOrder'
+import { useGetAllOrdersQuery } from '../../services/orders'
 
 
 const Orders = () => {
   const [value, setValue] = useState(0);
-  const { ordersData, totalItems, page, setPage, isOrdersLoading} = useOrders();
-  console.log(totalItems)
-
+  const [page, setPage] = useState(1);
   const handleChange = (event, newValue) => {
     setValue(newValue);
-
+    
   };
+  const statusMap = {
+    1: "Pending",
+    2: "Processing",
+    3: "On-hold",
+    4: "Completed",
+    5: "Cancelled",
+    6: "Refunded",
+    7: "Failed"
+  };
+  const { data:ordersData,isLoading} = useGetAllOrdersQuery({page,orderState:statusMap[value]});
 
   const tableData = ordersData?.data?.items.map((item)=>({
     id:item?.id,
@@ -35,32 +44,12 @@ const Orders = () => {
     total:item?.total
   }))
 
-  // useEffect(() => {
-  //   let filteredData = [...ordersTableData];
-  //   const statusMap = {
-  //     1: "Pending",
-  //     2: "Processing",
-  //     3: "On-hold",
-  //     4: "Completed",
-  //     5: "Cancelled",
-  //     6: "Refunded",
-  //     7: "Failed"
-  //   };
 
-
-  //   const statusToFilter = statusMap[value];
-
-  //   if (statusToFilter) {
-  //     filteredData = filteredData.filter((item) => item.status === statusToFilter);
-  //   } else {
-  //   }
-  //   setData(filteredData);
-  // }, [value]);
 
   const isSmallScreen = useMediaQuery('(max-width: 360px)');
-  const handlePageChange = (page) => {
-    setPage(page)
-}
+  const handlePageChange = (newPage) => {
+    setPage(newPage);
+  };
 
 
 
@@ -104,14 +93,14 @@ const Orders = () => {
         </Grid>
       </Grid>
       <Box>
-        <Table
-          data={tableData && tableData}
-          columns={columns()}
-          isLoading={isOrdersLoading}
-          total={totalItems}
-          handlePageChange={handlePageChange}
-          page={page}
-        />
+      <Table
+        data={tableData}
+        columns={columns()}
+        isLoading={isLoading}
+        handlePageChange={handlePageChange}
+        page={page}
+        total={tableData && ordersData?.data?.meta?.totalItems}
+      />
       </Box>
 
     </main>

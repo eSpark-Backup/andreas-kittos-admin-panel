@@ -8,6 +8,9 @@ import { columns } from '../../columns/orderDetailsCols';
 import StatusModal from '../../components/modals/StatusModal';
 import checked from "../../assets/icons/checkedWhite.svg"
 import notChecked from "../../assets/icons/notCheckedWhite.svg"
+import { useGetOrderDetailsQuery } from '../../services/orders';
+import { useParams } from 'react-router-dom';
+import { DateConverter } from '../../utility/DateConverter';
 
 
 const CheckboxWithLabel = ({ label, isChecked, onChange }) => (
@@ -28,6 +31,9 @@ const OrderDetails = () => {
   const [Reason, setReason] = useState('');
   const [openViewModal, setOpenViewModal] = useState(false);
   const [currentItem, setCurrentItem] = useState({});
+  const params = useParams()
+  const { data: OdDATA, isLoading } = useGetOrderDetailsQuery(params?.id)
+
 
   const [checkboxData, setCheckboxData] = useState(
     [
@@ -40,23 +46,23 @@ const OrderDetails = () => {
 
 
   const orderDetailsData = [
-    { label: 'Order#', value: '123456' },
-    { label: 'Purchase date', value: 'September 23, 2023' },
-    { label: 'Coupon:', value: 'Java' },
-    { label: 'Payment method:', value: 'Cash or Card on delivery' },
-    { label: 'Shipping method:', value: 'Pickup & delivery' },
-    { label: 'Customer name:', value: 'Carlo James' },
-    { label: 'Customer email:', value: 'carlo.james@123.com' },
-    { label: 'Customer phone:', value: '123456789' },
-    { label: 'Customer country:', value: 'CY' },
-    { label: 'Customer city:', value: 'Limmasol' },
-    { label: 'Customer address:', value: 'Zephyr Residences Georgious A' },
+    { label: 'Order#', value: OdDATA?.data?.orderNumber },
+    { label: 'Purchase date', value: DateConverter(Number(OdDATA?.data?.orderStatus?.scheduledDate))},
+    // { label: 'Coupon:', value: '' },
+    { label: 'Payment method:', value: OdDATA?.data?.payment?.paymentType },
+    { label: 'Shipping method:', value: OdDATA?.data?.shippingType },
+    { label: 'Customer name:', value: OdDATA?.data?.user?.firstName + " " + OdDATA?.data?.user?.lastName },
+    { label: 'Customer email:', value: OdDATA?.data?.user?.email },
+    { label: 'Customer phone:', value: OdDATA?.data?.user?.phoneNumber },
+    { label: 'Customer country:', value: OdDATA?.data?.shippingAddress?.country },
+    { label: 'Customer city:', value: OdDATA?.data?.shippingAddress?.city },
+    { label: 'Customer address:', value: OdDATA?.data?.shippingAddress?.apartment+" "+ OdDATA?.data?.shippingAddress?.block+" "+OdDATA?.data?.shippingAddress?.street+" "+OdDATA?.data?.shippingAddress?.state+" "+OdDATA?.data?.shippingAddress?.country+" "+OdDATA?.data?.shippingAddress?.zipCode},
   ];
 
   const orderSummaryData = [
     { label: 'Sub total:', value: '€14.00', fontSize: '12px' },
     { label: 'Pickup & delivery:', value: '€14.00', fontSize: '12px' },
-    { label: 'Coupon discount:', value: '10%', fontSize: '12px' },
+    // { label: 'Coupon discount:', value: '10%', fontSize: '12px' },
     { label: 'Total Amount:', value: '€90.00', fontSize: '14px', textDecoration: "underline" },
   ];
 
@@ -86,6 +92,28 @@ const OrderDetails = () => {
     setCurrentItem(item);
     setOpenViewModal(true);
   }
+  if (isLoading) {
+    return (
+      <Box sx={{ width: "80vw", height: "100%", display: "flex", justifyContent: "center", alignItems: "center" }}>
+        <div className="loader"></div>
+      </Box>
+    )
+  }
+  const tableData = OdDATA?.data?.orderDetail?.map((item) => ({
+    id:item?.product?.id,
+    order:{name:item?.product?.name, imgName: item?.product?.productImage},
+    quantity:item?.quantity,
+    category:"",
+    price:item?.product?.price
+  }));
+  console.log(tableData)
+  // [{
+  //   id: OdDATA?.data?.orderDetail[0].product?.id,
+  //   order: { name: OdDATA?.data?.orderDetail[0].product?.name, imgName: OdDATA?.data?.orderDetail[0].product?.productImage },
+  //   quantity: OdDATA?.data?.orderDetail[0].product?.quantity,
+  //   category: "",
+  //   price: OdDATA?.data?.orderDetail[0].product?.price
+  // }]
 
 
   return (
@@ -93,8 +121,8 @@ const OrderDetails = () => {
       <BackBtn />
 
       <Box sx={{ display: "flex", justifyContent: { xs: "center", md: "center" }, alignItems: { xs: "", md: "center" }, marginTop: "30px" }}>
-        <Box sx={{ width: { xs: "100%", md: "100%", lg: "90%", xl: "70%" }, border: "1px solid #424755", height: "100%", borderRadius: "10px", py: "25px", px: { xs: "4px", lg: "30px" }}}>
-          <PageHeader title="Order Details" sx={{ textTransform: "capatilize", paddingLeft:{xs:"10px", lg:"0px"} }} />
+        <Box sx={{ width: { xs: "100%", md: "100%", lg: "90%", xl: "70%" }, border: "1px solid #424755", height: "100%", borderRadius: "10px", py: "25px", px: { xs: "4px", lg: "30px" } }}>
+          <PageHeader title="Order Details" sx={{ textTransform: "capatilize", paddingLeft: { xs: "10px", lg: "0px" } }} />
 
           <Box sx={{
             display: "flex",
@@ -108,7 +136,7 @@ const OrderDetails = () => {
               }}
             >
 
-              <Grid container rowGap={2} sx={{padding:{xs:"0px 10px", lg:"0px"}}}>
+              <Grid container rowGap={2} sx={{ padding: { xs: "0px 10px", lg: "0px" } }}>
                 {orderDetailsData.map(({ label, value }, index) => (
                   <OrderDetailItem key={index} label={label} value={value} />
                 ))}
@@ -181,10 +209,10 @@ const OrderDetails = () => {
 
           {/* <Box sx={{border:"1px solid white", borderRadius:"6px"}}> */}
           <Table
-            data={ODTableData}
+            data={tableData &&tableData}
             columns={columns()}
             isLoading={false}
-            total={ODTableData.length}
+            total={tableData &&tableData.length}
           />
           {/* </Box> */}
 

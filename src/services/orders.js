@@ -13,11 +13,12 @@ export const orderApi = api.injectEndpoints({
         //     }),
         // }),
         getAllOrders: builder.query({
-            query: ({ page = 1, take = 7, userId }) => {
+            query: ({ page = 1, take = 10, userId,orderState }) => {
                 const queryString = new URLSearchParams({
                     page: page.toString(),
                     take: take.toString(),
                     ...(userId && { userId }),
+                    ...(orderState && {orderState})
                 }).toString();
 
                 return {
@@ -26,10 +27,15 @@ export const orderApi = api.injectEndpoints({
                 };
             },
         }),
+        getOrderDetails: builder.query({
+            query: (id) => ({
+                url: `/order/order-detail/${id}`,
+            }),
+        }),
 
     }),
 
 });
 
 
-export const { useGetAllOrdersQuery } = orderApi
+export const { useGetAllOrdersQuery, useGetOrderDetailsQuery } = orderApi
