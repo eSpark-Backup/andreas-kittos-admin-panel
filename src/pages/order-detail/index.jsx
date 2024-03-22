@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import BackBtn from '../../components/buttons/backBtn'
 import { Box, Checkbox, Grid, Paper, Typography, Modal, Button, TextField } from '@mui/material'
 import { ConfirmationModal, OrderCard, OrderDetailItem, OrderItemCard, PageHeader, Table, ViewModal } from '../../components'
@@ -10,7 +10,7 @@ import checked from "../../assets/icons/checkedWhite.svg"
 import notChecked from "../../assets/icons/notCheckedWhite.svg"
 import { useGetOrderDetailsQuery } from '../../services/orders';
 import { useParams } from 'react-router-dom';
-import { DateConverter } from '../../utility/DateConverter';
+import { DateConverter, TimeFetcher } from '../../utility/DateConverter';
 
 
 const CheckboxWithLabel = ({ label, isChecked, onChange }) => (
@@ -34,13 +34,32 @@ const OrderDetails = () => {
   const params = useParams()
   const { data: OdDATA, isLoading } = useGetOrderDetailsQuery(params?.id)
 
+  // useEffect(()=>{
+  //   if(OdDATA?.data?.orderStatus?.scheduled && !OdDATA?.data?.orderStatus?.picked){
+  //     setEnabledIndex(1)
+  //     console.log("Hello1")
+  //     console.log(enabledIndex)
+  //   }
+  //   else if(OdDATA?.data?.orderStatus?.scheduled && OdDATA?.data?.orderStatus?.picked && !OdDATA?.data?.orderStatus?.washing){
+  //     setEnabledIndex(2)
+  //     console.log("Hello2")
+  //     console.log(enabledIndex)
+  //   }
+  //   else if(OdDATA?.data?.orderStatus?.scheduled && OdDATA?.data?.orderStatus?.picked && OdDATA?.data?.orderStatus?.washing){
+  //     console.log("Hello3")
+  //     setEnabledIndex(3)
+  //   }
+  // },[])
 
   const [checkboxData, setCheckboxData] = useState(
     [
-      { label: 'Scheduled', isChecked: false, value: "12 Dec ,23", changedTo: "Washing", time: "3:00 PM", date: "23 December 2023", reason: "The order was picked up." },
-      { label: 'Pickup up', isChecked: false, value: "15 Dec ,23", changedTo: "Washing", time: "3:00 PM,", date: "23 December 2023", reason: "The order was picked up." },
-      { label: 'Washing', isChecked: false, value: "20 Dec ,23", changedTo: "Washing", time: "3:00 PM,", date: "23 December 2023", reason: "The order was picked up." },
-      { label: 'Delivered', isChecked: false, value: "21 Dec ,23", changedTo: "Washing", time: "3:00 PM,", date: "23 December 2023", reason: "The order was picked up." },
+      { label: 'Scheduled', isChecked: OdDATA?.data?.orderStatus?.scheduled?true:false, value: TimeFetcher(Number(OdDATA?.data?.orderStatus?.scheduledDate)), changedTo: "Washing", time: "3:00 PM", date: "23 December 2023", reason: "The order was picked up." },
+
+      { label: 'Pickup up', isChecked: OdDATA?.data?.orderStatus?.picked?true:false, value: TimeFetcher(Number(OdDATA?.data?.orderStatus?.pickedDate)), changedTo: "Washing", time: "3:00 PM,", date: "23 December 2023", reason: "The order was picked up." },
+
+      { label: 'Washing', isChecked: OdDATA?.data?.orderStatus?.washing?true:false, value: TimeFetcher(Number(OdDATA?.data?.orderStatus?.washingDate)), changedTo: "Washing", time: "3:00 PM,", date: "23 December 2023", reason: "The order was picked up." },
+
+      { label: 'Delivered', isChecked: OdDATA?.data?.orderStatus?.delivered?true:false, value: TimeFetcher(Number(OdDATA?.data?.orderStatus?.deliveredDate)), changedTo: "Washing", time: "3:00 PM,", date: "23 December 2023", reason: "The order was picked up." },
     ]
   );
 
@@ -106,7 +125,6 @@ const OrderDetails = () => {
     category:"",
     price:item?.product?.price
   }));
-  console.log(tableData)
   // [{
   //   id: OdDATA?.data?.orderDetail[0].product?.id,
   //   order: { name: OdDATA?.data?.orderDetail[0].product?.name, imgName: OdDATA?.data?.orderDetail[0].product?.productImage },
