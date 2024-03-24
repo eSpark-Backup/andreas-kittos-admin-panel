@@ -8,7 +8,7 @@ import { columns } from '../../columns/orderDetailsCols';
 import StatusModal from '../../components/modals/StatusModal';
 import checked from "../../assets/icons/checkedWhite.svg"
 import notChecked from "../../assets/icons/notCheckedWhite.svg"
-import { useGetOrderDetailsQuery } from '../../services/orders';
+import { useGetOrderDetailsQuery, useUpdateOrderStatusMutation } from '../../services/orders';
 import { useParams } from 'react-router-dom';
 import { DateConverter, TimeFetcher } from '../../utility/DateConverter';
 
@@ -33,40 +33,50 @@ const OrderDetails = () => {
   const [currentItem, setCurrentItem] = useState({});
   const params = useParams()
   const { data: OdDATA, isLoading } = useGetOrderDetailsQuery(params?.id)
+  const [updateOrderStatus, { isLoading: isOrderStatusLoading, isSuccess, isError }] = useUpdateOrderStatusMutation()
 
-  // useEffect(()=>{
-  //   if(OdDATA?.data?.orderStatus?.scheduled && !OdDATA?.data?.orderStatus?.picked){
-  //     setEnabledIndex(1)
-  //     console.log("Hello1")
-  //     console.log(enabledIndex)
-  //   }
-  //   else if(OdDATA?.data?.orderStatus?.scheduled && OdDATA?.data?.orderStatus?.picked && !OdDATA?.data?.orderStatus?.washing){
-  //     setEnabledIndex(2)
-  //     console.log("Hello2")
-  //     console.log(enabledIndex)
-  //   }
-  //   else if(OdDATA?.data?.orderStatus?.scheduled && OdDATA?.data?.orderStatus?.picked && OdDATA?.data?.orderStatus?.washing){
-  //     console.log("Hello3")
-  //     setEnabledIndex(3)
-  //   }
-  // },[])
 
   const [checkboxData, setCheckboxData] = useState(
     [
-      { label: 'Scheduled', isChecked: OdDATA?.data?.orderStatus?.scheduled?true:false, value: TimeFetcher(Number(OdDATA?.data?.orderStatus?.scheduledDate)), changedTo: "Washing", time: "3:00 PM", date: "23 December 2023", reason: "The order was picked up." },
+      { label: 'Scheduled', isChecked: OdDATA?.data?.orderStatus?.scheduled ? true : false, value: TimeFetcher(Number(OdDATA?.data?.orderStatus?.scheduledDate)), changedTo: "Washing", time: "3:00 PM", date: "23 December 2023", reason: "The order was picked up." },
 
-      { label: 'Pickup up', isChecked: OdDATA?.data?.orderStatus?.picked?true:false, value: TimeFetcher(Number(OdDATA?.data?.orderStatus?.pickedDate)), changedTo: "Washing", time: "3:00 PM,", date: "23 December 2023", reason: "The order was picked up." },
+      { label: 'Pickup up', isChecked: OdDATA?.data?.orderStatus?.picked ? true : false, value: TimeFetcher(Number(OdDATA?.data?.orderStatus?.pickedDate)), changedTo: "Washing", time: "3:00 PM,", date: "23 December 2023", reason: "The order was picked up." },
 
-      { label: 'Washing', isChecked: OdDATA?.data?.orderStatus?.washing?true:false, value: TimeFetcher(Number(OdDATA?.data?.orderStatus?.washingDate)), changedTo: "Washing", time: "3:00 PM,", date: "23 December 2023", reason: "The order was picked up." },
+      { label: 'Washing', isChecked: OdDATA?.data?.orderStatus?.washing ? true : false, value: TimeFetcher(Number(OdDATA?.data?.orderStatus?.washingDate)), changedTo: "Washing", time: "3:00 PM,", date: "23 December 2023", reason: "The order was picked up." },
 
-      { label: 'Delivered', isChecked: OdDATA?.data?.orderStatus?.delivered?true:false, value: TimeFetcher(Number(OdDATA?.data?.orderStatus?.deliveredDate)), changedTo: "Washing", time: "3:00 PM,", date: "23 December 2023", reason: "The order was picked up." },
+      { label: 'Delivered', isChecked: OdDATA?.data?.orderStatus?.delivered ? true : false, value: TimeFetcher(Number(OdDATA?.data?.orderStatus?.deliveredDate)), changedTo: "Washing", time: "3:00 PM,", date: "23 December 2023", reason: "The order was picked up." },
     ]
   );
+
+  useEffect(() => {
+    if (OdDATA?.data?.orderStatus?.scheduled && !OdDATA?.data?.orderStatus?.picked) {
+      setEnabledIndex(1)
+    }
+    else if (OdDATA?.data?.orderStatus?.scheduled && OdDATA?.data?.orderStatus?.picked && !OdDATA?.data?.orderStatus?.washing) {
+      setEnabledIndex(2)
+    }
+    else if (OdDATA?.data?.orderStatus?.scheduled && OdDATA?.data?.orderStatus?.picked && OdDATA?.data?.orderStatus?.washing) {
+      setEnabledIndex(3)
+    }
+
+    setCheckboxData((prevCheckboxData) => {
+      const updatedData = [...prevCheckboxData];
+      updatedData[0].isChecked = OdDATA?.data?.orderStatus?.scheduled ? true : false;
+      updatedData[0].value = TimeFetcher(Number(OdDATA?.data?.orderStatus?.scheduledDate));
+      updatedData[1].isChecked = OdDATA?.data?.orderStatus?.picked ? true : false;
+      updatedData[1].value = TimeFetcher(Number(OdDATA?.data?.orderStatus?.pickedDate));
+      updatedData[2].isChecked = OdDATA?.data?.orderStatus?.washing ? true : false;
+      updatedData[2].value = TimeFetcher(Number(OdDATA?.data?.orderStatus?.washingDate));
+      updatedData[3].isChecked = OdDATA?.data?.orderStatus?.delivered ? true : false;
+      updatedData[3].value = TimeFetcher(Number(OdDATA?.data?.orderStatus?.deliveredDate));
+      return updatedData;
+    });
+  }, [OdDATA])
 
 
   const orderDetailsData = [
     { label: 'Order#', value: OdDATA?.data?.orderNumber },
-    { label: 'Purchase date', value: DateConverter(Number(OdDATA?.data?.orderStatus?.scheduledDate))},
+    { label: 'Purchase date', value: DateConverter(Number(OdDATA?.data?.orderStatus?.scheduledDate)) },
     // { label: 'Coupon:', value: '' },
     { label: 'Payment method:', value: OdDATA?.data?.payment?.paymentType },
     { label: 'Shipping method:', value: OdDATA?.data?.shippingType },
@@ -75,7 +85,7 @@ const OrderDetails = () => {
     { label: 'Customer phone:', value: OdDATA?.data?.user?.phoneNumber },
     { label: 'Customer country:', value: OdDATA?.data?.shippingAddress?.country },
     { label: 'Customer city:', value: OdDATA?.data?.shippingAddress?.city },
-    { label: 'Customer address:', value: OdDATA?.data?.shippingAddress?.apartment+" "+ OdDATA?.data?.shippingAddress?.block+" "+OdDATA?.data?.shippingAddress?.street+" "+OdDATA?.data?.shippingAddress?.state+" "+OdDATA?.data?.shippingAddress?.country+" "+OdDATA?.data?.shippingAddress?.zipCode},
+    { label: 'Customer address:', value: OdDATA?.data?.shippingAddress?.apartment + " " + OdDATA?.data?.shippingAddress?.block + " " + OdDATA?.data?.shippingAddress?.street + " " + OdDATA?.data?.shippingAddress?.state + " " + OdDATA?.data?.shippingAddress?.country + " " + OdDATA?.data?.shippingAddress?.zipCode },
   ];
 
   const orderSummaryData = [
@@ -87,13 +97,22 @@ const OrderDetails = () => {
 
 
   const handleSaveStatus = () => {
-    setCheckboxData((prevCheckboxData) => {
-      const updatedData = [...prevCheckboxData];
-      updatedData[enabledIndex].isChecked = true;
-      return updatedData;
-    });
+    let payload = {
+      "scheduled": enabledIndex >= 0,
+      "picked": enabledIndex >= 1,
+      "washing": enabledIndex >= 2,
+      "delivered": enabledIndex >= 3
+    };
 
-    setEnabledIndex((prevIndex) => prevIndex + 1);
+    updateOrderStatus({ id: params?.id, ...payload }) // API CALL
+
+    // setCheckboxData((prevCheckboxData) => {
+    //   const updatedData = [...prevCheckboxData];
+    //   updatedData[enabledIndex].isChecked = true;
+    //   return updatedData;
+    // });
+
+    // setEnabledIndex((prevIndex) => prevIndex + 1);
     setOpenModal(false);
   };
 
@@ -119,11 +138,11 @@ const OrderDetails = () => {
     )
   }
   const tableData = OdDATA?.data?.orderDetail?.map((item) => ({
-    id:item?.product?.id,
-    order:{name:item?.product?.name, imgName: item?.product?.productImage},
-    quantity:item?.quantity,
-    category:"",
-    price:item?.product?.price
+    id: item?.product?.id,
+    order: { name: item?.product?.name, imgName: item?.product?.productImage },
+    quantity: item?.quantity,
+    category: "",
+    price: item?.product?.price
   }));
   // [{
   //   id: OdDATA?.data?.orderDetail[0].product?.id,
@@ -227,10 +246,10 @@ const OrderDetails = () => {
 
           {/* <Box sx={{border:"1px solid white", borderRadius:"6px"}}> */}
           <Table
-            data={tableData &&tableData}
+            data={tableData && tableData}
             columns={columns()}
             isLoading={false}
-            total={tableData &&tableData.length}
+            total={tableData && tableData.length}
           />
           {/* </Box> */}
 

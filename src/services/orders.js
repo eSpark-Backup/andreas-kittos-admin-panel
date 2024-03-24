@@ -13,12 +13,12 @@ export const orderApi = api.injectEndpoints({
         //     }),
         // }),
         getAllOrders: builder.query({
-            query: ({ page = 1, take = 10, userId,orderState }) => {
+            query: ({ page = 1, take = 10, userId, orderState }) => {
                 const queryString = new URLSearchParams({
                     page: page.toString(),
                     take: take.toString(),
                     ...(userId && { userId }),
-                    ...(orderState && {orderState})
+                    ...(orderState && { orderState })
                 }).toString();
 
                 return {
@@ -31,6 +31,16 @@ export const orderApi = api.injectEndpoints({
             query: (id) => ({
                 url: `/order/order-detail/${id}`,
             }),
+            providesTags: ['SingeOrderDetails'],
+        }),
+
+        updateOrderStatus: builder.mutation({
+            query: ({ id, ...rest }) => ({
+                url: `/order/status/${id}`,
+                method: 'PUT',
+                body: rest
+            }),
+            invalidatesTags: ['SingeOrderDetails'],
         }),
 
     }),
@@ -38,4 +48,4 @@ export const orderApi = api.injectEndpoints({
 });
 
 
-export const { useGetAllOrdersQuery, useGetOrderDetailsQuery } = orderApi
+export const { useGetAllOrdersQuery, useGetOrderDetailsQuery, useUpdateOrderStatusMutation } = orderApi
