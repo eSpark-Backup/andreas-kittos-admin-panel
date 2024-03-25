@@ -62,13 +62,13 @@ const OrderDetails = () => {
     setCheckboxData((prevCheckboxData) => {
       const updatedData = [...prevCheckboxData];
       updatedData[0].isChecked = OdDATA?.data?.orderStatus?.scheduled ? true : false;
-      updatedData[0].value = TimeFetcher(Number(OdDATA?.data?.orderStatus?.scheduledDate));
+      updatedData[0].value = OdDATA?.data?.orderStatus?.scheduledDate.split("-").length === 1?TimeFetcher(Number(OdDATA?.data?.orderStatus?.scheduledDate)):TimeFetcher(OdDATA?.data?.orderStatus?.scheduledDate);
       updatedData[1].isChecked = OdDATA?.data?.orderStatus?.picked ? true : false;
-      updatedData[1].value = TimeFetcher(Number(OdDATA?.data?.orderStatus?.pickedDate));
+      updatedData[1].value = OdDATA?.data?.orderStatus?.pickedDate.split("-").length === 1?TimeFetcher(Number(OdDATA?.data?.orderStatus?.pickedDate)):TimeFetcher(OdDATA?.data?.orderStatus?.pickedDate);
       updatedData[2].isChecked = OdDATA?.data?.orderStatus?.washing ? true : false;
-      updatedData[2].value = TimeFetcher(Number(OdDATA?.data?.orderStatus?.washingDate));
+      updatedData[2].value = OdDATA?.data?.orderStatus?.washingDate.split("-").length === 1?TimeFetcher(Number(OdDATA?.data?.orderStatus?.washingDate)):TimeFetcher(OdDATA?.data?.orderStatus?.washingDate);
       updatedData[3].isChecked = OdDATA?.data?.orderStatus?.delivered ? true : false;
-      updatedData[3].value = TimeFetcher(Number(OdDATA?.data?.orderStatus?.deliveredDate));
+      updatedData[3].value = OdDATA?.data?.orderStatus?.deliveredDate.split("-").length === 1?TimeFetcher(Number(OdDATA?.data?.orderStatus?.deliveredDate)):TimeFetcher(OdDATA?.data?.orderStatus?.deliveredDate);
       return updatedData;
     });
   }, [OdDATA])
@@ -76,7 +76,8 @@ const OrderDetails = () => {
 
   const orderDetailsData = [
     { label: 'Order#', value: OdDATA?.data?.orderNumber },
-    { label: 'Purchase date', value: DateConverter(Number(OdDATA?.data?.orderStatus?.scheduledDate)) },
+    // { label: 'Purchase date', value: DateConverter(Number(OdDATA?.data?.orderStatus?.scheduledDate))},
+    { label: 'Purchase date', value: OdDATA?.data?.orderStatus?.scheduledDate.split("-").length>1?DateConverter(OdDATA?.data?.orderStatus?.scheduledDate):DateConverter(Number(OdDATA?.data?.orderStatus?.scheduledDate))},
     // { label: 'Coupon:', value: '' },
     { label: 'Payment method:', value: OdDATA?.data?.payment?.paymentType },
     { label: 'Shipping method:', value: OdDATA?.data?.shippingType },
@@ -89,10 +90,10 @@ const OrderDetails = () => {
   ];
 
   const orderSummaryData = [
-    { label: 'Sub total:', value: '€14.00', fontSize: '12px' },
-    { label: 'Pickup & delivery:', value: '€14.00', fontSize: '12px' },
+    { label: 'Sub total:', value: "€"+OdDATA?.data?.subTotal, fontSize: '12px' },
+    { label: 'Pickup & delivery:', value: "€"+OdDATA?.data?.deliveryCharges, fontSize: '12px' },
     // { label: 'Coupon discount:', value: '10%', fontSize: '12px' },
-    { label: 'Total Amount:', value: '€90.00', fontSize: '14px', textDecoration: "underline" },
+    { label: 'Total Amount:', value: "€"+OdDATA?.data?.total, fontSize: '14px', textDecoration: "underline" },
   ];
 
 
@@ -138,11 +139,11 @@ const OrderDetails = () => {
     )
   }
   const tableData = OdDATA?.data?.orderDetail?.map((item) => ({
-    id: item?.product?.id,
-    order: { name: item?.product?.name, imgName: item?.product?.productImage },
-    quantity: item?.quantity,
-    category: "",
-    price: item?.product?.price
+    id:item?.product?.id,
+    order:{name:item?.product?.name, imgName: item?.product?.productImage},
+    quantity:item?.quantity,
+    category:item?.product?.categoryProduct[0]?.category?.name,
+    price:item?.product?.price
   }));
   // [{
   //   id: OdDATA?.data?.orderDetail[0].product?.id,

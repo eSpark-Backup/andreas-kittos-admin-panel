@@ -37,7 +37,8 @@ const Orders = () => {
   const tableData = ordersData?.data?.items.map((item)=>({
     id:item?.id,
     order:item?.orderNumber,
-    prdDate:DateConverter(Number(item?.orderStatus?.scheduledDate)),
+    // prdDate:DateConverter(Number(item?.orderStatus?.scheduledDate)),
+    prdDate:item?.orderStatus?.scheduledDate.split("-").length > 1?DateConverter(item?.orderStatus?.scheduledDate):DateConverter(Number(item?.orderStatus?.scheduledDate)),
     name:item?.user?.firstName+" "+item?.user?.lastName,
     qty:item?.orderDetail[0].quantity,
     status: item?.orderState.slice(0, 1).toUpperCase() + item?.orderState.slice(1).toLowerCase(),
