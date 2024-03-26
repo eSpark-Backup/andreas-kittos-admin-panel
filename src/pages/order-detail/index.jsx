@@ -10,7 +10,7 @@ import checked from "../../assets/icons/checkedWhite.svg"
 import notChecked from "../../assets/icons/notCheckedWhite.svg"
 import { useGetOrderDetailsQuery, useUpdateOrderStatusMutation } from '../../services/orders';
 import { useParams } from 'react-router-dom';
-import { DateConverter, TimeFetcher } from '../../utility/DateConverter';
+import { DateConverter, DateMonthYear, TimeFetcher } from '../../utility/DateConverter';
 import { toast } from 'react-toastify';
 import { getLastKeyValue } from '../../utility/KeyValue';
 
@@ -40,10 +40,10 @@ const OrderDetails = () => {
 
 
   const [checkboxData, setCheckboxData] = useState([
-    { label: 'Scheduled', isChecked: false, value: "", changedTo: "Washing", time: "3:00 PM", date: "23 December 2023", reason: "" },
-    { label: 'Pickup up', isChecked: false, value: "", changedTo: "Washing", time: "3:00 PM,", date: "23 December 2023", reason: "" },
+    { label: 'Scheduled', isChecked: false, value: "", changedTo: "Scheduled", time: "3:00 PM", date: "23 December 2023", reason: "" },
+    { label: 'Pickup up', isChecked: false, value: "", changedTo: "Pickup up", time: "3:00 PM,", date: "23 December 2023", reason: "" },
     { label: 'Washing', isChecked: false, value: "", changedTo: "Washing", time: "3:00 PM,", date: "23 December 2023", reason: "" },
-    { label: 'Delivered', isChecked: false, value: "", changedTo: "Washing", time: "3:00 PM,", date: "23 December 2023", reason: "" },
+    { label: 'Delivered', isChecked: false, value: "", changedTo: "Delivered", time: "3:00 PM,", date: "23 December 2023", reason: "" },
   ]);
 
   useEffect(() => {
@@ -52,26 +52,34 @@ const OrderDetails = () => {
         {
           ...prevCheckboxData[0],
           isChecked: OdDATA?.data?.orderStatus?.scheduled || false,
-          value: OdDATA?.data?.orderStatus?.scheduledDate ? TimeFetcher(Number(OdDATA?.data?.orderStatus?.scheduledDate)) : "",
+          value: OdDATA?.data?.orderStatus?.scheduledDate ? TimeFetcher(OdDATA?.data?.orderStatus?.scheduledDate) : "",
           reason: OdDATA?.data?.orderStatus?.scheduledReason || "",
+          time: OdDATA?.data?.orderStatus?.scheduledDate ? TimeFetcher(OdDATA?.data?.orderStatus?.scheduledDate) : "",
+          date:OdDATA?.data?.orderStatus?.scheduledDate ? DateMonthYear(OdDATA?.data?.orderStatus?.scheduledDate) :""
         },
         {
           ...prevCheckboxData[1],
           isChecked: OdDATA?.data?.orderStatus?.picked || false,
-          value: OdDATA?.data?.orderStatus?.pickedDate ? TimeFetcher(Number(OdDATA?.data?.orderStatus?.pickedDate)) : "",
+          value: OdDATA?.data?.orderStatus?.pickedDate ? TimeFetcher(OdDATA?.data?.orderStatus?.pickedDate) : "",
           reason: OdDATA?.data?.orderStatus?.pickedReason || "",
+          time: OdDATA?.data?.orderStatus?.pickedDate ? TimeFetcher(OdDATA?.data?.orderStatus?.pickedDate) : "",
+          date:OdDATA?.data?.orderStatus?.pickedDate ? DateMonthYear(OdDATA?.data?.orderStatus?.pickedDate) :""
         },
         {
           ...prevCheckboxData[2],
           isChecked: OdDATA?.data?.orderStatus?.washing || false,
-          value: OdDATA?.data?.orderStatus?.washingDate ? TimeFetcher(Number(OdDATA?.data?.orderStatus?.washingDate)) : "",
+          value: OdDATA?.data?.orderStatus?.washingDate ? TimeFetcher(OdDATA?.data?.orderStatus?.washingDate) : "",
           reason: OdDATA?.data?.orderStatus?.washingReason || "",
+          time:OdDATA?.data?.orderStatus?.washingDate ? TimeFetcher(OdDATA?.data?.orderStatus?.washingDate) : "",
+          date:OdDATA?.data?.orderStatus?.washingDate ? DateMonthYear(OdDATA?.data?.orderStatus?.washingDate) :""
         },
         {
           ...prevCheckboxData[3],
           isChecked: OdDATA?.data?.orderStatus?.delivered || false,
-          value: OdDATA?.data?.orderStatus?.deliveredDate ? TimeFetcher(Number(OdDATA?.data?.orderStatus?.deliveredDate)) : "",
+          value: OdDATA?.data?.orderStatus?.deliveredDate ? TimeFetcher(OdDATA?.data?.orderStatus?.deliveredDate) : "",
           reason: OdDATA?.data?.orderStatus?.deliveredReason || "",
+          time:OdDATA?.data?.orderStatus?.deliveredDate ? TimeFetcher(OdDATA?.data?.orderStatus?.deliveredDate) : "",
+          date:OdDATA?.data?.orderStatus?.deliveredDate ? DateMonthYear(OdDATA?.data?.orderStatus?.deliveredDate) :""
         },
       ]);
     }

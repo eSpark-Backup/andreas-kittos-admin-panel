@@ -50,15 +50,20 @@ const Orders = () => {
     };
   }, [search]);
 
-  const tableData = ordersData?.data?.items.map((item) => ({
-    id: item?.id,
-    order: item?.orderNumber,
-    prdDate: item?.orderStatus?.scheduledDate.split("-").length > 1 ? DateConverter(item?.orderStatus?.scheduledDate) : DateConverter(Number(item?.orderStatus?.scheduledDate)),
-    name: item?.user?.firstName + " " + item?.user?.lastName,
-    qty: item?.orderDetail[0].quantity,
-    status: item?.orderState.slice(0, 1).toUpperCase() + item?.orderState.slice(1).toLowerCase(),
-    total: item?.total
-  }));
+
+  const tableData = ordersData?.data?.items.map((item) => {
+    const totalQuantity = item.orderDetail.reduce((acc, curr) => acc + curr.quantity, 0);
+    return {
+      id: item?.id,
+      order: item?.orderNumber,
+      prdDate: item?.orderStatus?.scheduledDate.split("-").length > 1 ? DateConverter(item?.orderStatus?.scheduledDate) : DateConverter(Number(item?.orderStatus?.scheduledDate)),
+      name: item?.user?.firstName + " " + item?.user?.lastName,
+      qty: totalQuantity,
+      status: item?.orderState.slice(0, 1).toUpperCase() + item?.orderState.slice(1).toLowerCase(),
+      total: item?.total
+    };
+  });
+  
 
   const isSmallScreen = useMediaQuery('(max-width: 360px)');
   const handlePageChange = (newPage) => {
