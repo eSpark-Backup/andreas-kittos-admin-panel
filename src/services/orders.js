@@ -13,20 +13,29 @@ export const orderApi = api.injectEndpoints({
         //     }),
         // }),
         getAllOrders: builder.query({
-            query: ({ page = 1, take = 10, userId, orderState }) => {
-                const queryString = new URLSearchParams({
+            query: ({ page = 1, take = 10, userId, orderState, OrderNameEmail, startDate, endDate }) => {
+                const params = {
                     page: page.toString(),
                     take: take.toString(),
                     ...(userId && { userId }),
-                    ...(orderState && { orderState })
-                }).toString();
-
+                    ...(orderState && { orderState }),
+                    ...(OrderNameEmail && { 'Order#/Name/Email': OrderNameEmail }),
+                };
+        
+                // Check if both startDate and endDate are provided
+                if (startDate && endDate) {
+                    params.startDate = startDate;
+                    params.endDate = endDate;
+                }
+        
+                const queryString = new URLSearchParams(params).toString();
+        
                 return {
                     url: `/order/order-list?${queryString}`,
                     method: 'GET',
                 };
             },
-        }),
+        }),        
         getOrderDetails: builder.query({
             query: (id) => ({
                 url: `/order/order-detail/${id}`,

@@ -11,6 +11,8 @@ import notChecked from "../../assets/icons/notCheckedWhite.svg"
 import { useGetOrderDetailsQuery, useUpdateOrderStatusMutation } from '../../services/orders';
 import { useParams } from 'react-router-dom';
 import { DateConverter, TimeFetcher } from '../../utility/DateConverter';
+import { toast } from 'react-toastify';
+import { getLastKeyValue } from '../../utility/KeyValue';
 
 
 const CheckboxWithLabel = ({ label, isChecked, onChange }) => (
@@ -34,19 +36,48 @@ const OrderDetails = () => {
   const params = useParams()
   const { data: OdDATA, isLoading } = useGetOrderDetailsQuery(params?.id)
   const [updateOrderStatus, { isLoading: isOrderStatusLoading, isSuccess, isError }] = useUpdateOrderStatusMutation()
+  const [sr,setSR] = useState("")
 
 
-  const [checkboxData, setCheckboxData] = useState(
-    [
-      { label: 'Scheduled', isChecked: OdDATA?.data?.orderStatus?.scheduled ? true : false, value: TimeFetcher(Number(OdDATA?.data?.orderStatus?.scheduledDate)), changedTo: "Washing", time: "3:00 PM", date: "23 December 2023", reason: "The order was picked up." },
+  const [checkboxData, setCheckboxData] = useState([
+    { label: 'Scheduled', isChecked: false, value: "", changedTo: "Washing", time: "3:00 PM", date: "23 December 2023", reason: "" },
+    { label: 'Pickup up', isChecked: false, value: "", changedTo: "Washing", time: "3:00 PM,", date: "23 December 2023", reason: "" },
+    { label: 'Washing', isChecked: false, value: "", changedTo: "Washing", time: "3:00 PM,", date: "23 December 2023", reason: "" },
+    { label: 'Delivered', isChecked: false, value: "", changedTo: "Washing", time: "3:00 PM,", date: "23 December 2023", reason: "" },
+  ]);
 
-      { label: 'Pickup up', isChecked: OdDATA?.data?.orderStatus?.picked ? true : false, value: TimeFetcher(Number(OdDATA?.data?.orderStatus?.pickedDate)), changedTo: "Washing", time: "3:00 PM,", date: "23 December 2023", reason: "The order was picked up." },
-
-      { label: 'Washing', isChecked: OdDATA?.data?.orderStatus?.washing ? true : false, value: TimeFetcher(Number(OdDATA?.data?.orderStatus?.washingDate)), changedTo: "Washing", time: "3:00 PM,", date: "23 December 2023", reason: "The order was picked up." },
-
-      { label: 'Delivered', isChecked: OdDATA?.data?.orderStatus?.delivered ? true : false, value: TimeFetcher(Number(OdDATA?.data?.orderStatus?.deliveredDate)), changedTo: "Washing", time: "3:00 PM,", date: "23 December 2023", reason: "The order was picked up." },
-    ]
-  );
+  useEffect(() => {
+    if (OdDATA?.data?.orderStatus) {
+      setCheckboxData(prevCheckboxData => [
+        {
+          ...prevCheckboxData[0],
+          isChecked: OdDATA?.data?.orderStatus?.scheduled || false,
+          value: OdDATA?.data?.orderStatus?.scheduledDate ? TimeFetcher(Number(OdDATA?.data?.orderStatus?.scheduledDate)) : "",
+          reason: OdDATA?.data?.orderStatus?.scheduledReason || "",
+        },
+        {
+          ...prevCheckboxData[1],
+          isChecked: OdDATA?.data?.orderStatus?.picked || false,
+          value: OdDATA?.data?.orderStatus?.pickedDate ? TimeFetcher(Number(OdDATA?.data?.orderStatus?.pickedDate)) : "",
+          reason: OdDATA?.data?.orderStatus?.pickedReason || "",
+        },
+        {
+          ...prevCheckboxData[2],
+          isChecked: OdDATA?.data?.orderStatus?.washing || false,
+          value: OdDATA?.data?.orderStatus?.washingDate ? TimeFetcher(Number(OdDATA?.data?.orderStatus?.washingDate)) : "",
+          reason: OdDATA?.data?.orderStatus?.washingReason || "",
+        },
+        {
+          ...prevCheckboxData[3],
+          isChecked: OdDATA?.data?.orderStatus?.delivered || false,
+          value: OdDATA?.data?.orderStatus?.deliveredDate ? TimeFetcher(Number(OdDATA?.data?.orderStatus?.deliveredDate)) : "",
+          reason: OdDATA?.data?.orderStatus?.deliveredReason || "",
+        },
+      ]);
+    }
+  }, [OdDATA]);
+  
+  
 
   useEffect(() => {
     if (OdDATA?.data?.orderStatus?.scheduled && !OdDATA?.data?.orderStatus?.picked) {
@@ -72,6 +103,8 @@ const OrderDetails = () => {
       return updatedData;
     });
   }, [OdDATA])
+
+
 
 
   const orderDetailsData = [
@@ -104,18 +137,18 @@ const OrderDetails = () => {
       "washing": enabledIndex >= 2,
       "delivered": enabledIndex >= 3
     };
-
-    updateOrderStatus({ id: params?.id, ...payload }) // API CALL
-
-    // setCheckboxData((prevCheckboxData) => {
-    //   const updatedData = [...prevCheckboxData];
-    //   updatedData[enabledIndex].isChecked = true;
-    //   return updatedData;
-    // });
-
-    // setEnabledIndex((prevIndex) => prevIndex + 1);
-    setOpenModal(false);
+    const lastKeyValue = getLastKeyValue(payload)
+    const data = {...lastKeyValue,reason: Reason}   
+    updateOrderStatus({ id: params?.id, ...data })
   };
+
+  useEffect(()=>{
+      if(isSuccess){
+        setOpenModal(false)
+        toast.success("Status Updated Successfully")
+      }
+  },[isSuccess])
+
 
   const handleCheckboxChange = (index) => {
     if (index === enabledIndex) {
@@ -145,13 +178,6 @@ const OrderDetails = () => {
     category:item?.product?.categoryProduct[0]?.category?.name,
     price:item?.product?.price
   }));
-  // [{
-  //   id: OdDATA?.data?.orderDetail[0].product?.id,
-  //   order: { name: OdDATA?.data?.orderDetail[0].product?.name, imgName: OdDATA?.data?.orderDetail[0].product?.productImage },
-  //   quantity: OdDATA?.data?.orderDetail[0].product?.quantity,
-  //   category: "",
-  //   price: OdDATA?.data?.orderDetail[0].product?.price
-  // }]
 
 
   return (
@@ -257,7 +283,7 @@ const OrderDetails = () => {
         </Box>
       </Box>
 
-      <StatusModal onConfirm={handleSaveStatus} open={openModal} heading={"Update Status"} label1={"Reason: "} label2={"(optional)"} placeholder={"Enter here..."} cancelBtnText={"Cancel"} acceptBtnText={"Set"} onClose={handleModalClose} />
+      <StatusModal onInputChange={(e)=>setReason(e.target.value)} onConfirm={handleSaveStatus} open={openModal} heading={"Update Status"} label1={"Reason: "} label2={"(optional)"} placeholder={"Enter here..."} cancelBtnText={"Cancel"} acceptBtnText={"Set"} onClose={handleModalClose} loading={isOrderStatusLoading} />
 
       <ViewModal data={currentItem} open={openViewModal} onClose={() => setOpenViewModal(false)} />
     </main >

@@ -7,3 +7,7 @@ export const DateConverter = (date)=>{
 export const TimeFetcher = (data)=>{
     return moment(data).format("LT")
 }
+
+export const DateObjectConverter = (data)=>{
+    return moment(data).format('YYYY-MM-DD')
+}

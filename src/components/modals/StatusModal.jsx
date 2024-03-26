@@ -2,7 +2,7 @@ import { Box, Modal, Typography, Stack, InputLabel, TextField } from '@mui/mater
 import React from 'react'
 import CustomButton from '../buttons/customButton'
 
-const StatusModal = ({ open, onClose, sx, onConfirm, acceptBtnText, cancelBtnText, heading, label1, placeholder, label2 }) => {
+const StatusModal = ({ open, onClose, sx, onConfirm, acceptBtnText, cancelBtnText, heading, label1, placeholder, label2, loading,onInputChange}) => {
     return (
         <Modal
             open={open}
@@ -40,7 +40,7 @@ const StatusModal = ({ open, onClose, sx, onConfirm, acceptBtnText, cancelBtnTex
                     <Typography sx={{ color: "white", fontSize: "20px", fontWeight: "700" }}>{heading}</Typography>
                     <Stack direction={"column"} sx={{ width: "100%" }} rowGap={1}>
                         <InputLabel sx={{ color: "#FFFFFF" }}><span style={{ fontSize: "16px", fontWeight: "700" }}>{label1}</span> {label2 && <span style={{ fontSize: "14px", fontWeight: "300" }}>{label2}</span>}</InputLabel>
-                        <TextField placeholder={placeholder} sx={{ width: "100%" }} />
+                        <TextField placeholder={placeholder} sx={{ width: "100%" }} onChange={onInputChange}/>
                     </Stack>
 
                     <Box
@@ -53,7 +53,7 @@ const StatusModal = ({ open, onClose, sx, onConfirm, acceptBtnText, cancelBtnTex
                         }}
                     >
                         <CustomButton onClick={onClose} sx={{ width: "100%", backgroundColor: "transparent" }}> {cancelBtnText}</CustomButton>
-                        <CustomButton onClick={onConfirm} sx={{ width: "100%" }}> {acceptBtnText}</CustomButton>
+                        <CustomButton onClick={onConfirm} sx={{ width: "100%" }} isLoading={loading}> {acceptBtnText}</CustomButton>
                     </Box>
                 </Box>
             </Box>
