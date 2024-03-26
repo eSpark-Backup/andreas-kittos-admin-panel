@@ -1,4 +1,3 @@
-import { cardsData, chartData } from '../../constant';
 import { BarChart, ChartLabel, PageHeader } from '../../components';
 import { Box, Card, Typography } from '@mui/material';
 import BellIcon from "../../assets/icons/Bell.svg"
@@ -7,6 +6,8 @@ import UsersIcon from "../../assets/icons/UsersGroup.svg"
 import BoxIcon from "../../assets/icons/Box.svg"
 import purpleSquare from "../../assets/icons/purple-square.svg"
 import greenSquare from "../../assets/icons/green-square.svg"
+import { useGetDashboardChartDataQuery, useGetDashboardStaticDataQuery } from '../../services/dashboard';
+import { MothFetcher } from '../../utility/DateConverter';
 
 const Dashboard = () => {
   const iconMap = {
@@ -15,6 +16,53 @@ const Dashboard = () => {
     Users: UsersIcon,
     Box: BoxIcon
   }
+  const { data: staticData, isLoading: staticLoading } = useGetDashboardStaticDataQuery()
+  const { data: cData, isLoading: chartLoading } = useGetDashboardChartDataQuery()
+
+  if (staticLoading || chartLoading) {
+    return (
+      <Box sx={{ width: "80vw", height: "100%", display: "flex", justifyContent: "center", alignItems: "center" }}>
+        <div className="loader"></div>
+      </Box>
+    );
+  }
+
+  const cardsData = [
+
+    {
+      title: "PRODUCTS",
+      icon: "Bell",
+      value: staticData?.data?.totalProducts
+    },
+    {
+      title: "CATEGORIES",
+      icon: "Categories",
+      value: staticData?.data?.totalCategories
+    },
+    {
+      title: "CUSTOMERS",
+      icon: "Users",
+      value: staticData?.data?.totalCustomers
+    },
+    {
+      title: "ORDERS",
+      icon: "Box",
+      value: staticData?.data?.totalOrders,
+      description: "Recent Orders:",
+      descriptionVal: staticData?.data?.recentOrders
+    },
+  ]
+
+  const chartData = cData?.data.map((item) => ({
+    name: MothFetcher(item?.month),
+    revenue: Number(item?.total),
+    orders: Number(item?.orderCount)
+  }));
+  console.log(chartData)
+
+
+
+
   return (
     <main className='main-container'>
       <Box sx={{ height: "55px" }}>
@@ -26,19 +74,13 @@ const Dashboard = () => {
           const IconComponent = iconMap[card.icon];
           return (
             <div key={index} className='card'>
-              {/* <div className='card-inner'>
-                <Typography sx={{ fontSize: "16px", color: "#FFFFFF", fontWeight: "600" }}>{card.title}</Typography>
-                <img src={IconComponent} alt={card.title} />
-              </div>
-              {card.description && <Typography sx={{ color: "white", fontSize: "14px", marginTop: "10px" }}>{card.description} <span style={{ fontWeight: "600" }}>{card.descriptionVal}</span></Typography>}
-              <h1 className='card-value'>{card.value}</h1> */}
               <Box>
                 <Box sx={{ display: "flex", justifyContent: "space-between" }}>
                   <Typography sx={{ fontSize: "16px", color: "#FFFFFF", fontWeight: "600" }}>{card.title}</Typography>
                   <img src={IconComponent} alt={card.title} />
                 </Box>
                 <Box sx={{ height: "30%", marginTop: "4px" }}>
-                  {card.description && <Typography sx={{ color: "white", fontSize: "14px"}}>{card.description} <span style={{ fontWeight: "600" }}>{card.descriptionVal}</span></Typography>}
+                  {card.description && <Typography sx={{ color: "white", fontSize: "14px" }}>{card.description} <span style={{ fontWeight: "600" }}>{card.descriptionVal}</span></Typography>}
                 </Box>
               </Box>
               <Box>
