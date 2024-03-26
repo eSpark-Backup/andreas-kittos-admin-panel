@@ -3,8 +3,25 @@ import React from 'react'
 import PageHeader from '../common/pageHeader'
 import { personalInfoInutsData } from '../../constant'
 import CustomInput from '../inputs/customInput'
+import { useGetInfoQuery } from '../../services/personalInfo'
 
 const InformationForm = () => {
+
+    const {data:infoData,isLoading} = useGetInfoQuery()
+    if (isLoading) {
+        return (
+            <Box sx={{ width: "80vw", height: "100%", display: "flex", justifyContent: "center", alignItems: "center" }}>
+                <div className="loader"></div>
+            </Box>
+        )
+    }
+    const inputsData = {
+        "First name:":infoData?.data?.firstName,
+        "Last name:":infoData?.data?.lastName,
+        "Full name:":infoData?.data?.firstName+" "+infoData?.data?.lastName,
+        "Email:":infoData?.data?.email,
+        "Phone:":infoData?.data?.phoneNumber
+    }
 
     return (
         <Box sx={{ width: "100%", marginTop: {xs:"20px", md:"20px"}, padding: { xs: "0px 10px", md: "0px 20px" } }}>
@@ -20,7 +37,8 @@ const InformationForm = () => {
                                     
                                 },
                             }}
-                            disabled={true} type={"text"} label={eachItem.label} placeholder={eachItem.placeholder} />
+                            disabled={true} type={"text"} label={eachItem.label}
+                            placeholder={inputsData[eachItem?.label]} />
                         </Stack>
                     </Grid>
                 ))}
