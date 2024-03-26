@@ -42,7 +42,7 @@ const ViewModal = ({ open, onClose, sx, description, descriptionTwo, onConfirm, 
                     <Typography sx={{ color: '#FFFFFF', fontSize: '20px', fontWeight: 'bold' }}>{"Status Details"}</Typography>
 
                     <Grid container rowGap={2}>
-                        <OrderDetailItem label={"Changed to:"} value={changedTo} />
+                        <OrderDetailItem label={"Status:"} value={changedTo} />
                         <OrderDetailItem label={"Time:"} value={time} />
                         <OrderDetailItem label={"Date:"} value={date} />
                         <OrderDetailItem label={"Reason:"} value={reason} />
