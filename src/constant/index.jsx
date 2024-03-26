@@ -821,19 +821,22 @@ export const settingsPasswordFields = [
         id: 1,
         label: "Current password:",
         placeholder: "John",
-        type: "password"
+        type: "password",
+        name:"currentPass"
     },
     {
         id: 2,
         label: "New password:",
         placeholder: "John",
-        type: "password"
+        type: "password",
+        name:"newPass"
     },
     {
         id: 3,
         label: "Confirm new password:",
         placeholder: "John",
-        type: "password"
+        type: "password",
+        name:"confirmPass"
     },
 ]
 

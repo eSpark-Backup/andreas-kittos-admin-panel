@@ -14,7 +14,7 @@ const CustomInput = ({
     changePasswordForm
 }) => {
 
-    const [showPassword, setShowPassword] = useState(changePasswordForm ? true : false);
+    const [showPassword, setShowPassword] = useState(false);
 
 
 
@@ -26,7 +26,9 @@ const CustomInput = ({
                 name={inputName}
                 id="filled-hidden-label-normal"
                 placeholder={placeholder}
-                type={type === 'password' ? (showPassword ? "text" : "password") : type}
+                type={type
+                     === 'password' ? (showPassword ? "text" : "password") : type
+                    }
                 InputProps={type === 'password' ? {
                     endAdornment: showPassword ?
                         <VisibilityOutlinedIcon sx={{ cursor: "pointer", color: "#9E9EA4" }} onClick={() => setShowPassword(!showPassword)} /> :
@@ -35,7 +37,7 @@ const CustomInput = ({
                 disabled={disabled}
                 sx={{ ...sx }}
                 onChange={(e) => onInputChange(e)}
-                defaultValue={changePasswordForm ? "John" : null}
+                // defaultValue={changePasswordForm ? "John" : null}
 
             />
         </>

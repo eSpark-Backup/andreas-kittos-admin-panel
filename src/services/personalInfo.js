@@ -7,9 +7,16 @@ export const personalInfoAPi = api.injectEndpoints({
                 url: `/user/user-profile`,
             }),
         }),
+        changePassword: builder.mutation({
+            query: (credentials) => ({
+              url: "/user/change-password",
+              method: "PUT",
+              body: credentials,
+            }),
+        }),
 
     }),
 
 });
 
-export const {useGetInfoQuery} = personalInfoAPi
+export const {useGetInfoQuery, useChangePasswordMutation} = personalInfoAPi
