@@ -11,15 +11,25 @@ import { DateConverter } from '../../utility/DateConverter'
 
 const Customers = () => {
     const [value, setValue] = useState(0);
-    // const [data, setData] = useState([])
     const [search, setSearch] = useState("")
+    const [debouncedSearch, setDebouncedSearch] = useState("");
     const [page, setPage] = useState(1);
     const statusMap = {
         1: "Active",
         2: "InActive",
     };
 
-    const {data:customersData,isLoading,isFetching} = useGetAllCustomersQuery({page,userStatus:statusMap[value]})
+    useEffect(() => {
+        const timer = setTimeout(() => {
+          setDebouncedSearch(search);
+        }, 500);
+    
+        return () => {
+          clearTimeout(timer);
+        };
+    }, [search]);
+
+    const {data:customersData,isLoading,isFetching} = useGetAllCustomersQuery({page,userStatus:statusMap[value],customerName:debouncedSearch})
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
@@ -39,24 +49,6 @@ const Customers = () => {
     const handlePageChange = (newPage) => {
         setPage(newPage);
     };
-
-
-    // useEffect(() => {
-    //     let filteredData = [...customerTableData];
-    //     const statusMap = {
-    //         1: "Active",
-    //         2: "InActive",
-    //     };
-
-
-    //     const statusToFilter = statusMap[value];
-
-    //     if (statusToFilter) {
-    //         filteredData = filteredData.filter((item) => item.status === statusToFilter);
-    //     } else {
-    //     }
-    //     setData(filteredData);
-    // }, [value]);
 
     if (isLoading) {
         return (
