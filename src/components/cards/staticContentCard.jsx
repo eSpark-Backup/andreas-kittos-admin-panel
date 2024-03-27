@@ -4,12 +4,14 @@ import BackBtn from '../buttons/backBtn'
 import PageHeader from '../common/pageHeader'
 import { useParams } from 'react-router-dom'
 import { useGetContentQuery } from '../../services/contents'
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
 
 const StaticContentCard = () => {
     const params = useParams()
-    const { data: content, isLoading, refetch,isFetching } = useGetContentQuery(params.id)
-    
-    useEffect(() => { 
+    const { data: content, isLoading, refetch, isFetching } = useGetContentQuery(params.id)
+
+    useEffect(() => {
         refetch()
     }, [refetch])
 
@@ -34,9 +36,17 @@ const StaticContentCard = () => {
                         {content?.data?.key}
                     </Typography>
                     <br />
-                    <Typography sx={{ color: "white", borderRadius: "8px" }} >
+                    {/* <Typography sx={{ color: "white", borderRadius: "8px" }} >
                         {content?.data?.value}
-                    </Typography>
+                    </Typography> */}
+                    <ReactQuill
+                        style={{ color: "white"}}
+                        value={content?.data?.value}
+                        readOnly={true}
+                        modules={{ toolbar: false }}
+                        theme="snow"
+                    />
+
 
                 </Box>
 

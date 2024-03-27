@@ -15,3 +15,7 @@ export const DateObjectConverter = (data)=>{
 export const DateMonthYear = (data)=>{
     return moment(data).format("DD MMMM YYYY")
 }
+
+export const MothFetcher = (data)=>{
+    return moment(data).format("MMM")
+}

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import BackBtn from '../buttons/backBtn'
 import { Box, Divider, InputLabel, Stack, TextField } from '@mui/material'
 import PageHeader from '../common/pageHeader'
@@ -6,11 +6,14 @@ import CustomButton from '../buttons/customButton'
 import { useGetContentQuery } from '../../services/contents'
 import { useParams } from 'react-router-dom'
 import { useUpdateContent } from '../../hooks'
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
 
 const UpdateStaticContent = () => {
     const params = useParams()
     const { data, isLoading: isContentLoading, refetch, isFetching } = useGetContentQuery(params.id)
     const { content, setContent, handleInputsChange, handleSubmit, isLoading } = useUpdateContent()
+    const quillRef = useRef(null);
 
 
     useEffect(() => {
@@ -36,6 +39,17 @@ const UpdateStaticContent = () => {
         )
     }
 
+    const handleKeyDown = (event) => {
+        if (event.key === 'Enter') {
+            const quill = quillRef.current.getEditor();
+            const selection = quill.getSelection();
+            const cursorPosition = selection ? selection.index : 0;
+            quill.insertText(cursorPosition, '\n', 'user');
+            quill.setSelection(cursorPosition + 1);
+            event.preventDefault(); // Prevent default behavior of Enter key
+        }
+    };
+
 
     return (
         <main className='main-container'>
@@ -55,13 +69,24 @@ const UpdateStaticContent = () => {
                     </Stack>
                     <Stack direction={"column"} gap={1.7} sx={{ marginTop: "10px" }}>
                         <InputLabel sx={{ color: "#FFFFFF", fontSize: { xs: "14px", sm: "16px" }, fontWeight: "500" }}>Value:</InputLabel>
-                        <TextField
-                            name='value'
-                            multiline
-                            rows={15}
-                            onChange={(e) => handleInputsChange("value", e.target.value)}
+                        <ReactQuill
+                            style={{minHeight:"300px", border:"1px solid #424755",color:"white",borderRadius:"4px"}}
                             value={content.value}
-                            placeholder='Enter here...' />
+                            ref={quillRef}
+                            onChange={(value) => handleInputsChange("value", value)}
+                            modules={{
+                                toolbar: [
+                                    [{ header: '1' }, { header: '2' }],
+                                    [{ size: [] }],
+                                    ['bold', 'italic', 'underline', 'strike', 'blockquote'],
+                                    [{ list: 'ordered' }, { list: 'bullet' }],
+                                    ['clean'],
+                                ],
+                            }}
+                            placeholder='Enter here...'
+                            onKeyDown={handleKeyDown}
+                        />
+
                     </Stack>
                     <CustomButton isLoading={isLoading} sx={{ width: "100%", marginTop: "20px" }} onClick={handleSubmit}>Update Content</CustomButton>
                 </Box>
