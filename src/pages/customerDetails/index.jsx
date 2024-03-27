@@ -114,6 +114,7 @@ const CustomerDetails = () => {
                 onConfirm={()=>onConfirm(CustomerInfoData?.data?.user?.userStatus === "active"?"inactive":"active")}
                 acceptBtnText={CustomerInfoData?.data?.user?.userStatus === "active"?"Deactivate":"Activate"}
                 cancelBtnText={"Cancel"}
+                isLoading={statusLoading}
             />
         </main>
     )
