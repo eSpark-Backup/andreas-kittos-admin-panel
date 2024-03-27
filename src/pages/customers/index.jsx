@@ -5,33 +5,60 @@ import { columns } from '../../columns/customers'
 import { customerTabs, customerTableData } from '../../constant'
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
+import { useGetAllCustomersQuery } from '../../services/customers'
+import { DateConverter } from '../../utility/DateConverter'
 
 
 const Customers = () => {
     const [value, setValue] = useState(0);
-    const [data, setData] = useState([])
     const [search, setSearch] = useState("")
-
-    const handleChange = (event, newValue) => {
-        setValue(newValue);
+    const [debouncedSearch, setDebouncedSearch] = useState("");
+    const [page, setPage] = useState(1);
+    const statusMap = {
+        1: "Active",
+        2: "InActive",
     };
 
     useEffect(() => {
-        let filteredData = [...customerTableData];
-        const statusMap = {
-            1: "Active",
-            2: "InActive",
+        const timer = setTimeout(() => {
+          setDebouncedSearch(search);
+        }, 500);
+    
+        return () => {
+          clearTimeout(timer);
         };
+    }, [search]);
 
+    const {data:customersData,isLoading,isFetching} = useGetAllCustomersQuery({page,userStatus:statusMap[value],customerName:debouncedSearch})
 
-        const statusToFilter = statusMap[value];
+    const handleChange = (event, newValue) => {
+        setValue(newValue);
+        setPage(1)
+    };
 
-        if (statusToFilter) {
-            filteredData = filteredData.filter((item) => item.status === statusToFilter);
-        } else {
+    const data = customersData?.data?.items.map((item)=>{
+        return{
+            id: item?.id,
+            customerName: item?.firstName+" "+item?.lastName,
+            joinDate:DateConverter(item?.createdAt),
+            totalOrders:item?.orderCount,
+            earnings:item?.earning,
+            status:item?.userStatus.slice(0,1).toUpperCase()+item?.userStatus.slice(1).toLowerCase()
         }
-        setData(filteredData);
-    }, [value]);
+    })
+    const handlePageChange = (newPage) => {
+        setPage(newPage);
+    };
+
+    if (isLoading) {
+        return (
+            <Box sx={{ width: "80vw", height: "100%", display: "flex", justifyContent: "center", alignItems: "center" }}>
+                <div className="loader"></div>
+            </Box>
+        )
+    }
+
+    
 
 
     return (
@@ -59,10 +86,12 @@ const Customers = () => {
             </Grid>
             <Box>
                 <Table
-                    data={data}
+                    data={data && data}
                     columns={columns()}
-                    isLoading={false}
-                    total={data.length}
+                    isLoading={isLoading || isFetching}
+                    total={data && customersData?.data?.meta?.totalItems}
+                    handlePageChange={handlePageChange}
+                    page={page}
                 />
             </Box>
 

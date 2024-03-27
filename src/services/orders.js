@@ -13,7 +13,7 @@ export const orderApi = api.injectEndpoints({
         //     }),
         // }),
         getAllOrders: builder.query({
-            query: ({ page = 1, take = 10, userId, orderState, OrderNameEmail, startDate, endDate }) => {
+            query: ({ page = 1, take = 7, userId, orderState, OrderNameEmail, startDate, endDate }) => {
                 const params = {
                     page: page.toString(),
                     take: take.toString(),

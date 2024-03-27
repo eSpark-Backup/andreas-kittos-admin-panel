@@ -5,7 +5,7 @@ export const columns = () => {
         { name: "Order#", key: "order" },
         { name: "Purchased date", key: "prdDate" },
         { name: "Qty", key: "qty" },
-        { name: "Coupon", key: "coupon"},
+        // { name: "Coupon", key: "coupon"},
         { name: "Status", key: "status" },
         { name: "Total", key: "total" },
         { name: "Details", key: "details",
