@@ -122,7 +122,7 @@ const AddStaticContent = () => {
                             ref={quillRef}
                             value={content.value}
                             onChange={handleChangeQuill}
-                            style={{height:"300px", border:"1px solid #424755",color:"white",borderRadius:"4px"}}
+                            style={{minHeight:"300px", border:"1px solid #424755",color:"white",borderRadius:"4px"}}
                             modules={{
                                 toolbar: [
                                     [{ header: '1' }, { header: '2' }],
