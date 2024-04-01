@@ -2,7 +2,8 @@ import { toast } from "react-toastify"
 
 
 
-export const baseUrl = import.meta.env.VITE_BASE_URL
+// export const baseUrl = "http://api.mpougadalaundry.com/"
+export const baseUrl = "http://localhost:3000"
 
 export const prepareHeaders = (headers) => {
   const token = localStorage.getItem('token')
@@ -14,7 +15,7 @@ export const prepareHeaders = (headers) => {
 
 export const TokenValidator = () => {
   const token = localStorage.getItem('token')
-  
+
   fetch(`${baseUrl}/category`, {
     headers: {
       'Authorization': `Bearer ${token}`,
