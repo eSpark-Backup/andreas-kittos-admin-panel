@@ -1,12 +1,18 @@
 import { useState } from 'react'
 import { Header, Sidebar } from "../components"
-import { Outlet } from 'react-router-dom'
+import { Navigate, Outlet } from 'react-router-dom'
 
 const MainLayout = () => {
     const [openSidebarToggle, setOpenSidebarToggle] = useState(false)
+    const token = localStorage.getItem('token')
 
     const OpenSidebar = () => {
         setOpenSidebarToggle(!openSidebarToggle)
+    }
+
+
+    if (!token) {
+        return <Navigate to="/sign-in" />
     }
 
     return (

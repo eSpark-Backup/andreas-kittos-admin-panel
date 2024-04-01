@@ -21,7 +21,7 @@ export const theme = createTheme({
         MuiTab: {
             styleOverrides: {
                 root: {
-                    color: '#7C7F84',
+                    color: '#9E9EA4',
                     '&.Mui-selected': {
                         color: '#FFFFFF',
                         fontWeight: "bolder",
@@ -69,6 +69,18 @@ export const theme = createTheme({
         MuiButtonBase: {
             defaultProps: {
                 disableRipple: false,
+            },
+        },
+        MuiCard: {
+            styleOverrides: {
+                root: {
+                    borderRadius: "10px",
+                    backgroundColor: "transparent",
+                    border: "1px solid #424755",
+                    padding: 10,
+                    display: "flex",
+                    flexDirection: "column",
+                },
             },
         },
         MuiCardContent: {
@@ -131,7 +143,35 @@ export const theme = createTheme({
             styleOverrides: {
                 input: {
                     "&::placeholder": {
-                        color: "#899DB7",
+                        color: "#9E9EA4",
+                        fontWeight:"500",
+                        opacity: 1,
+                    },
+                    
+                },
+                
+                root: {
+                    fontSize: "14px",
+                    fontWeight: 500,
+                    color: "#FFFFFF",
+                    lineHeight: "160%",
+                    // paddingLeft: "6px",
+                },
+                notchedOutline: {
+                    borderColor: "#424755",
+                    borderRadius: "5px",
+                },
+            },
+
+
+        },
+        MuiInputBase: {
+            styleOverrides: {
+                input: {
+                    "&::placeholder": {
+                        color: "#9E9EA4",
+                        fontWeight:"500",
+                        opacity: 1,
                     },
                 },
                 root: {
@@ -140,10 +180,6 @@ export const theme = createTheme({
                     color: "#FFFFFF",
                     lineHeight: "160%",
                     paddingLeft: "6px",
-                },
-                notchedOutline: {
-                    borderColor: "#424755",
-                    borderRadius: "5px",
                 },
             },
         },
@@ -166,8 +202,8 @@ export const theme = createTheme({
                     "& .MuiTableCell-root": {
                         borderBottom: "none",
                         fontSize: "14px",
-                        fontWeight: 600,
-                        lineHeight: 1,
+                        fontWeight: 500,
+                        lineHeight: 1.35,
                         letterSpacing: 0.5,
                         textTransform: "initial",
                         color: "#FFFFFF",
@@ -179,9 +215,10 @@ export const theme = createTheme({
             styleOverrides: {
                 root: {
                     "& .MuiTableCell-root": {
+                        lineHeight: 1.57,
                         color: "white",
                         fontSize: "12px",
-                        border:"none"
+                        border:"none",
 
                     },
                     "& .MuiTableRow-root": {
@@ -208,7 +245,24 @@ export const theme = createTheme({
                     border: "1px solid #424755"
                 }
             }
-        }
+        },
+        MuiModal: {
+            styleOverrides: {
+                root: {
+                    "& .MuiBackdrop-root": {
+                        backgroundColor: "rgba(0, 0, 0, 0.5)",
+                        border: "none",
+                    },
+                },
+            },
+        },
+        MuiCheckbox: {
+            styleOverrides: {
+                root: {
+                    color: "#424755",
+                },
+            },
+        },
     },
 
     palette: {
