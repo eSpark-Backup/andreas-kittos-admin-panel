@@ -11,6 +11,7 @@ import { useAddProductMutation } from '../../services/products'
 import { useNavigate } from 'react-router-dom'
 import { useGetCategoriesQuery } from '../../services/categories'
 import { IoIosArrowDown } from "react-icons/io";
+import Checkbox from '@mui/material/Checkbox';
 
 
 
@@ -28,7 +29,8 @@ const AddProduct = () => {
         tags: [],
         categoryIds: [],
         image: null,
-        quantity: 0
+        quantity: 0,
+        isGeneral: false
     })
 
 
@@ -67,7 +69,7 @@ const AddProduct = () => {
     const handleSubmit = () => {
         if (isFormEmpty(productData)) {
             toast.error("Please fill in all fields.");
-        } else {
+        }else {
 
             const values = {
                 ...productData,
@@ -105,6 +107,14 @@ const AddProduct = () => {
         , [categories])
 
 
+    const CheckBoxHandler = (event) => {
+        setProductData((prevData) => ({
+            ...prevData,
+            isGeneral: event.target.checked
+        }))
+    }
+
+
     return (
         <main className='main-container'>
             <BackBtn />
@@ -132,6 +142,10 @@ const AddProduct = () => {
                                     rows={3}
                                     onChange={(e) => handleInputsChange("description", e.target.value)}
                                     placeholder='Enter here...' />
+                            </Stack>
+                            <Stack direction={"row"}>
+                                <InputLabel sx={{ color: "#FFFFFF", fontSize: { xs: "14px", sm: "16px" }, fontWeight: "500", pt: "10px" }}>General</InputLabel>
+                                <Checkbox color="secondary" onChange={CheckBoxHandler} />
                             </Stack>
                             <Stack direction={"column"} gap={1.7}>
                                 <InputLabel sx={{ color: "#FFFFFF", fontSize: { xs: "14px", sm: "16px" }, fontWeight: "500" }}>Select category:</InputLabel>
