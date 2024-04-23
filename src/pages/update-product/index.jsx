@@ -140,13 +140,6 @@ const UpdateProduct = () => {
     }, [isSuccess, isError])
 
 
-    useEffect(() => {
-        console.log("productData", data?.data[0]);
-    }, [data])
-
-    console.log(productData)
-
-
     if (isProductLoading) {
         return (
             <Box sx={{ width: "80vw", height: "100%", display: "flex", justifyContent: "center", alignItems: "center" }}>
