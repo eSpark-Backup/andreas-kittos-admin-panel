@@ -20,6 +20,7 @@ import loader from "../../assets/icons/loader.gif"
 
 
 
+
 const UpdateProduct = () => {
     const params = useParams()
     const { data, isLoading: isProductLoading } = useGetProductQuery(params.id)
@@ -43,6 +44,7 @@ const UpdateProduct = () => {
             id: "",
             label: ""
         },
+        isGeneral: false
     })
 
 
@@ -108,7 +110,8 @@ const UpdateProduct = () => {
                 id: productData?.categoryProduct[0]?.category?.id,
                 label: productData?.categoryProduct[0]?.category?.name,
             },
-            image: productData?.productImage ? productData?.productImage : loader
+            image: productData?.productImage ? productData?.productImage : loader,
+            isGeneral: productData?.isGeneral ? true : false
         };
 
 
@@ -138,8 +141,10 @@ const UpdateProduct = () => {
 
 
     useEffect(() => {
-        console.log("productData", productData);
-    }, [productData])
+        console.log("productData", data?.data[0]);
+    }, [data])
+
+    console.log(productData)
 
 
     if (isProductLoading) {
@@ -148,6 +153,13 @@ const UpdateProduct = () => {
                 <div className="loader"></div>
             </Box>
         )
+    }
+
+    const CheckBoxHandler = (event) => {
+        setProductData((prevData) => ({
+            ...prevData,
+            isGeneral: event.target.checked
+        }))
     }
 
 
@@ -180,6 +192,10 @@ const UpdateProduct = () => {
                                     value={productData.description}
                                     onChange={(e) => handleInputsChange("description", e.target.value)}
                                     placeholder='Enter here...' />
+                            </Stack>
+                            <Stack direction={"row"}>
+                                <InputLabel sx={{ color: "#FFFFFF", fontSize: { xs: "14px", sm: "16px" }, fontWeight: "500", pt: "10px" }}>General</InputLabel>
+                                <Checkbox color="secondary" onChange={CheckBoxHandler} checked={productData?.isGeneral} />
                             </Stack>
                             {/* <Stack direction={"column"} gap={1.7}>
                                 <InputLabel sx={{ color: "#FFFFFF", fontSize: { xs: "14px", sm: "16px" }, fontWeight: "500" }}>Select category:</InputLabel>
