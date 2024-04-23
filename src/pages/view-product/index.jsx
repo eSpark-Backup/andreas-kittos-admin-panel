@@ -10,23 +10,36 @@ import loader from "../../assets/icons/loader.gif"
 import { useGetProductQuery } from '../../services/products'
 import { TagsInput } from 'react-tag-input-component'
 import { splitImagePath, splitTags } from '../utils/helpers'
+import Checkbox from '@mui/material/Checkbox';
+
 
 const ViewProduct = () => {
     const params = useParams()
     const { data, isLoading } = useGetProductQuery(params.id)
-    const [product, setProduct] = useState()
+    const [product, setProduct] = useState({
+        name: "",
+        description: "",
+        price: "",
+        tags: [],
+        image: null,
+        quantity: 0,
+        category: "",
+        isGeneral: false
+    })
 
     useEffect(() => {
+        console.log(data)
         const productData = data?.data[0]
         const product = {
             name: productData?.name,
             description: productData?.description,
             price: productData?.price,
-            image: productData?.productImage,
-            quantity: productData?.quantity,
+            // image: productData?.productImage,
             tags: splitTags(productData?.tags),
+            image: productData?.productImage ? productData?.productImage : loader,
+            quantity: productData?.quantity,
             category: productData?.categoryProduct[0]?.category.name,
-            productImage: productData?.productImage ? productData?.productImage : loader
+            isGeneral: productData?.isGeneral ?true:false
         };
 
         setProduct(product);
@@ -77,6 +90,10 @@ const ViewProduct = () => {
                                     }}
                                     rows={3}
                                     placeholder='Enter here...' />
+                            </Stack>
+                            <Stack direction={"row"}>
+                                <InputLabel sx={{ color: "#FFFFFF", fontSize: { xs: "14px", sm: "16px" }, fontWeight: "500", pt: "10px" }}>General</InputLabel>
+                                <Checkbox color="secondary" disabled checked={product?.isGeneral} />
                             </Stack>
                             {
                                 <Stack direction={"column"} gap={1.7}>
@@ -143,7 +160,7 @@ const ViewProduct = () => {
                         </Grid>
                         <Grid item xs={12} md={6} xl={5.5} sx={{ marginTop: { xs: "10px", lg: "0px" } }}>
                             <Box sx={{ width: { xs: "100%", md: "100%", xl: "80%" }, height: "300px", border: "1px solid #424755", borderRadius: "5px", display: "flex", justifyContent: 'center', alignItems: "center" }}>
-                                <img src={product?.productImage} className='product-img' alt="Upload Icon" />
+                                <img src={product?.image} className='product-img' alt="Upload Icon" />
                             </Box>
                         </Grid>
                     </Grid>
