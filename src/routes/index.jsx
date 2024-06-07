@@ -18,6 +18,7 @@ import OrderDetails from '../pages/order-detail';
 import StaticContentCard from '../components/cards/staticContentCard';
 import AddStaticContent from '../components/forms/AddStaticContent';
 import UpdateStaticContent from '../components/forms/UpdateStaticContent';
+import DeleteAccount from '../pages/delete-account';
 
 const Routes = () => {
     return useRoutes([
@@ -43,6 +44,7 @@ const Routes = () => {
         },
         // { path: "404", element: <NotFound /> },
         { path: "/sign-in", element: <SignIn /> },
+        { path: "/delete-account", element: <DeleteAccount /> },
         {
             path: "*",
             element: <Navigate to="/" />,
