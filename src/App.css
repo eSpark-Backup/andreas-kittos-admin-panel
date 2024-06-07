@@ -574,4 +574,36 @@ input:-webkit-autofill:active{
   flex-direction: column;
 }
 
+.delete-box {
+  /* sx={{ border: "1px solid lightgrey", width: "40%", p: "10px", display: "flex", flexDirection: "column", rowGap: "10px" }} */
+  /* border: 1px solid lightgrey; */
+  width: 40%;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+}
 
+
+.header2 {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  padding: 0 30px 0 30px;
+  box-shadow: 0 6px 7px -3px rgba(0, 0, 0, 0.35);
+  column-gap: 10px;
+  justify-content: center;
+}
+
+
+@media screen and (max-width:550px) {
+  .delete-box {
+    width: 95%;
+  }
+}
+
+@media screen and (min-width:551px) and (max-width:1024px) {
+  .delete-box {
+    width: 55%;
+  }
+}
