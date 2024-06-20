@@ -16,7 +16,7 @@ export const prepareHeaders = (headers) => {
 export const TokenValidator = () => {
   const token = localStorage.getItem('token')
 
-  fetch(`${baseUrl}/category`, {
+  fetch(`${baseUrl}category`, {
     headers: {
       'Authorization': `Bearer ${token}`,
     },

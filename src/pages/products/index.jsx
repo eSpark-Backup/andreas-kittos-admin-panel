@@ -4,9 +4,10 @@ import { ConfirmationModal, CustomButton, MenuTab, PageHeader, SearchInput, Tabl
 import { columns } from "../../columns/products";
 import { toast } from "react-toastify";
 import { Link, useNavigate } from "react-router-dom";
-import { useGetCategoriesQuery } from "../../services/categories";
+import { useAddCategoryMutation, useGetCategoriesQuery } from "../../services/categories";
 import { useDeleteProductMutation } from "../../services/products";
 import { useProducts } from "../../hooks";
+import StatusModal from "../../components/modals/StatusModal";
 
 const Products = () => {
 
@@ -17,6 +18,9 @@ const Products = () => {
     const { products, totalItems, page, setPage, isProductLoading, handleFetch, handleTabChange, currentTab } = useProducts(searchValue);
     const [deleteProduct, { isSuccess, isError }] = useDeleteProductMutation()
     const [deleteid, setDeleteId] = useState("")
+    const [newCategoryName, setNewCategoryName] = useState("")
+    const [addCategory, { isSuccess: AddCategorySuccess, isError: AddCategoryError, isLoading: AddCategoryLoading }] = useAddCategoryMutation()
+    const [addCategoryModal, setAddCategoryModal] = useState(false)
 
 
     const onConfirm = () => {
@@ -34,6 +38,11 @@ const Products = () => {
         setPage(page)
     }
 
+
+    const HandleAddCategory = () => {
+        addCategory({ name: newCategoryName })
+    }
+
     useEffect(() => {
         if (isSuccess) {
             toast.success('Your Product has been deleted succesfully!', {
@@ -44,7 +53,19 @@ const Products = () => {
         if (isError) {
             toast.error("An error occurred. Please try again");
         }
-    }, [isSuccess, isError])
+
+        if (AddCategorySuccess) {
+            setNewCategoryName("")
+            setAddCategoryModal(false)
+            toast.success('Your Category has been added succesfully!', {})
+        }
+
+        if (AddCategoryError) {
+            setNewCategoryName("")
+            setAddCategoryModal(false)
+            toast.error("An error occurred. Please try again")
+        }
+    }, [isSuccess, isError, AddCategorySuccess, AddCategoryError])
 
 
 
@@ -86,12 +107,12 @@ const Products = () => {
                         <Grid item xs={12} lg={3} sx={{ border: "1px solid #424755", padding: "30px 10px 0px 10px", display: "flex", flexDirection: "column", alignItems: "center", rowGap: "30px", borderRadius: "10px" }}>
                             <Typography sx={{ color: "white", fontSize: "20px", fontWeight: "700" }}>Categories</Typography>
                             <Box sx={{ width: "100%", height: "100%", display: "flex", flexDirection: { xs: "column-reverse", md: "column" }, justifyContent: "space-between", alignItems: "center" }}>
-                                <Box sx={{ width: "100%", height: "80%", display: "flex", flexDirection: { xs: "row", sm: "column", md: "column" }, rowGap: "10px", columnGap: "10px", marginBottom: "10px", overflowX: { xs: "scroll", sm: "hidden" }, alignItems: { md: "center" }, overflowY: { sm: "auto" } }}>
+                                <Box sx={{ width: "100%", height: "90%", display: "flex", flexDirection: { xs: "row", sm: "column", md: "column" }, rowGap: "10px", columnGap: "10px", marginBottom: "10px", overflowX: { xs: "scroll", sm: "hidden" }, alignItems: { md: "center" }, overflowY: { sm: "auto" } }}>
                                     {categories?.data?.map((item, index) => (
                                         <MenuTab categories={true} key={index} item={item} currentTab={currentTab} onClick={() => handleTabChange(item.id)} />
                                     ))}
                                 </Box>
-                                <CustomButton onClick={() => { }} sx={{ width: "100%", marginBottom: { xs: "40px" } }}>
+                                <CustomButton onClick={() => setAddCategoryModal(true)} sx={{ width: "100%", marginBottom: { xs: "40px", sm:"10px" } }}>
                                     Add Category
                                 </CustomButton>
 
@@ -137,6 +158,8 @@ const Products = () => {
                 cancelBtnText={"Cancel"}
 
             />
+
+            <StatusModal onInputChange={(e) => setNewCategoryName(e.target.value)} open={addCategoryModal} heading={"Add Category"} label1={"Category Name:"} placeholder={"Enter here..."} cancelBtnText={"Cancel"} acceptBtnText={"Add"} onClose={() => setAddCategoryModal(false)} onConfirm={HandleAddCategory} loading={AddCategoryLoading}  />
         </>
     )
 }

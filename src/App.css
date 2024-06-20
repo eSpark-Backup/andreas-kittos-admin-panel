@@ -396,6 +396,9 @@ textarea:hover{
   background: transparent !important;
   color: white !important;
 }
+.rti--input{
+  width: 100% !important;
+}
 .rti--container{
   border: 1px solid #424755 !important;
   min-height: 90px;

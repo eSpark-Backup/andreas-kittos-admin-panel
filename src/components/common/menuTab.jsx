@@ -15,9 +15,10 @@ const MenuTab = ({ key, item, onClick, currentTab, categories }) => {
     const [editModal, setEditModal] = useState(false)
 
     const [name, setName] = useState("")
-
+    
     const [deleteCategory, { isSuccess: DeleteSuccess, isError: DeleteError, isLoading: DeleteLoading }] = useDeleteCategoryMutation()
     const [updateCategory, { isSuccess: EditSuccess, isError: EditError, isLoading: EditLoading }] = useUpdateCategoryMutation()
+
 
     const HandleDelete = (id) => {
         setDeleteId(id)
@@ -114,7 +115,9 @@ const MenuTab = ({ key, item, onClick, currentTab, categories }) => {
                 isLoading={DeleteLoading}
             />
 
-            <StatusModal onInputChange={(e) => setName(e.target.value)} open={editModal} heading={"Edit Category"} label1={"Category Name:"} placeholder={"Enter here..."} cancelBtnText={"Cancel"} acceptBtnText={"Add"} onClose={() => setEditModal(false)} onConfirm={HandleConfirmEdit} loading={EditLoading} />
+            <StatusModal onInputChange={(e) => setName(e.target.value)} open={editModal} heading={"Edit Category"} label1={"Category Name:"} placeholder={"Enter here..."} cancelBtnText={"Cancel"} acceptBtnText={"Update"} onClose={() => setEditModal(false)} onConfirm={HandleConfirmEdit} loading={EditLoading} />
+
+
         </Box>
     );
 };
