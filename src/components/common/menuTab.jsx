@@ -114,7 +114,7 @@ const MenuTab = ({ key, item, onClick, currentTab, categories }) => {
                 isLoading={DeleteLoading}
             />
 
-            <StatusModal onInputChange={(e) => setName(e.target.value)} open={editModal} heading={"Add Category"} label1={"Category Name:"} placeholder={"Enter here..."} cancelBtnText={"Cancel"} acceptBtnText={"Add"} onClose={() => setEditModal(false)} onConfirm={HandleConfirmEdit} loading={EditLoading} />
+            <StatusModal onInputChange={(e) => setName(e.target.value)} open={editModal} heading={"Edit Category"} label1={"Category Name:"} placeholder={"Enter here..."} cancelBtnText={"Cancel"} acceptBtnText={"Add"} onClose={() => setEditModal(false)} onConfirm={HandleConfirmEdit} loading={EditLoading} />
         </Box>
     );
 };
