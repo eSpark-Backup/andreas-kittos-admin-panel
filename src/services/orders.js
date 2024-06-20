@@ -35,6 +35,7 @@ export const orderApi = api.injectEndpoints({
                     method: 'GET',
                 };
             },
+            providesTags:['orders']
         }),        
         getOrderDetails: builder.query({
             query: (id) => ({
@@ -49,7 +50,7 @@ export const orderApi = api.injectEndpoints({
                 method: 'PUT',
                 body: rest
             }),
-            invalidatesTags: ['SingeOrderDetails'],
+            invalidatesTags: ['SingeOrderDetails',"orders"],
         }),
 
     }),

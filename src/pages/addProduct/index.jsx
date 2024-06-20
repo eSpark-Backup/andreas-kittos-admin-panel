@@ -243,7 +243,7 @@ const AddProduct = () => {
                                     value={productData?.tags}
                                     onChange={(e) => handleInputsChange("tags", e)}
                                     name="tags"
-                                    placeHolder="start with #"
+                                    placeHolder="Enter tags starting with # and press Enter to create a tag"
                                     classNames={"tags-input"}
                                     beforeAddValidate={(tag) => {
                                         if (tag.trim().startsWith("#")) {
