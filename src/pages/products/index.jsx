@@ -85,10 +85,16 @@ const Products = () => {
                     }}>
                         <Grid item xs={12} lg={3} sx={{ border: "1px solid #424755", padding: "30px 10px 0px 10px", display: "flex", flexDirection: "column", alignItems: "center", rowGap: "30px", borderRadius: "10px" }}>
                             <Typography sx={{ color: "white", fontSize: "20px", fontWeight: "700" }}>Categories</Typography>
-                            <Box sx={{ width: "100%", display: "flex", flexDirection: { xs: "row", sm: "column", md: "column" }, rowGap: "10px", columnGap: "10px", marginBottom: "10px", overflowX: { xs: "scroll", sm: "hidden" }, alignItems: { md: "center" } }}>
-                                {categories?.data?.map((item, index) => (
-                                    <MenuTab categories={true} key={index} item={item} currentTab={currentTab} onClick={() => handleTabChange(item.id)} />
-                                ))}
+                            <Box sx={{ width: "100%", height: "100%", display: "flex", flexDirection: { xs: "column-reverse", md: "column" }, justifyContent: "space-between", alignItems: "center" }}>
+                                <Box sx={{ width: "100%", height: "80%", display: "flex", flexDirection: { xs: "row", sm: "column", md: "column" }, rowGap: "10px", columnGap: "10px", marginBottom: "10px", overflowX: { xs: "scroll", sm: "hidden" }, alignItems: { md: "center" }, overflowY: { sm: "auto" } }}>
+                                    {categories?.data?.map((item, index) => (
+                                        <MenuTab categories={true} key={index} item={item} currentTab={currentTab} onClick={() => handleTabChange(item.id)} />
+                                    ))}
+                                </Box>
+                                <CustomButton onClick={() => { }} sx={{ width: "100%", marginBottom: { xs: "40px" } }}>
+                                    Add Category
+                                </CustomButton>
+
                             </Box>
                         </Grid>
 

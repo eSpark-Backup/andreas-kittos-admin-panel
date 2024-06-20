@@ -6,6 +6,7 @@ export const categoryApi = api.injectEndpoints({
       query: () => ({
         url: `/category`,
       }),
+      providesTags: ['categories']
     }),
     addCategory: builder.mutation({
       // note: an optional `queryFn` may be used in place of `query`
@@ -17,18 +18,20 @@ export const categoryApi = api.injectEndpoints({
     }),
     updateCategory: builder.mutation({
       // note: an optional `queryFn` may be used in place of `query`
-      query: ({id, ...rest}) => ({
-        url: `/update-category/${id}`,
-        method: 'PUT',
+      query: ({ id, ...rest }) => ({
+        url: `/category/${id}`,
+        method: 'PATCH',
         body: rest
       }),
+      invalidatesTags: ['products', 'categories'],
     }),
     deleteCategory: builder.mutation({
       // note: an optional `queryFn` may be used in place of `query`
       query: (id) => ({
-        url: `/delete-category/${id}`,
+        url: `/category/${id}`,
         method: 'DELETE',
       }),
+      invalidatesTags: ['products', 'categories'],
     }),
   }),
 
@@ -36,4 +39,6 @@ export const categoryApi = api.injectEndpoints({
 
 export const {
   useGetCategoriesQuery,
+  useDeleteCategoryMutation,
+  useUpdateCategoryMutation
 } = categoryApi;

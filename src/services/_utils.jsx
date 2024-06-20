@@ -2,7 +2,7 @@ import { toast } from "react-toastify"
 
 
 
-export const baseUrl = "http://api.mpougadalaundry.com/"
+export const baseUrl = "https://api.mpougadalaundry.com/"
 // export const baseUrl = "http://localhost:3000"
 
 export const prepareHeaders = (headers) => {
