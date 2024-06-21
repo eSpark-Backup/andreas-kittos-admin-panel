@@ -15,8 +15,6 @@ const MenuTab = ({ key, item, onClick, currentTab, categories }) => {
     const [editModal, setEditModal] = useState(false)
     const [editCategoryName, setEditCategoryName] = useState("")
 
-    const [name, setName] = useState("")
-
 
     const [deleteCategory, { isSuccess: DeleteSuccess, isError: DeleteError, isLoading: DeleteLoading }] = useDeleteCategoryMutation()
     const [updateCategory, { isSuccess: EditSuccess, isError: EditError, isLoading: EditLoading }] = useUpdateCategoryMutation()
@@ -38,7 +36,7 @@ const MenuTab = ({ key, item, onClick, currentTab, categories }) => {
     }
 
     const HandleConfirmEdit = () => {
-        updateCategory({ id: editId, name })
+        updateCategory({ id: editId, name: editCategoryName })
     }
 
     useEffect(() => {
@@ -87,7 +85,7 @@ const MenuTab = ({ key, item, onClick, currentTab, categories }) => {
                     lg: categories ? "88%" : "88%",
                     xl: categories ? "93%" : "88%"
                 },
-                padding:"10px",
+                padding: "10px",
                 marginBottom: {
                     xs: categories ? "10px" : "0px"
                 },
@@ -98,7 +96,7 @@ const MenuTab = ({ key, item, onClick, currentTab, categories }) => {
                 justifyContent: categories ? 'space-between' : 'flex-start'
             }}
         >
-            <Typography sx={{ color: "white", fontSize: "16px", width: "70%",overflowX:"auto" }} onClick={onClick}>{item?.name}</Typography>
+            <Typography sx={{ color: "white", fontSize: "16px", width: "70%", overflowX: "auto" }} onClick={onClick}>{item?.name}</Typography>
             {categories && (
                 <Box sx={{ display: 'flex', gap: '10px', width: "30%", justifyContent: "flex-end" }}>
                     <EditIcon sx={{ color: 'white', cursor: 'pointer' }} onClick={() => HandleEdit(item)} />
@@ -116,7 +114,7 @@ const MenuTab = ({ key, item, onClick, currentTab, categories }) => {
                 isLoading={DeleteLoading}
             />
 
-            <StatusModal defaultValue={editCategoryName} onInputChange={(e) => setName(e.target.value)} open={editModal} heading={"Edit Category"} label1={"Category Name:"} placeholder={"Enter here..."} cancelBtnText={"Cancel"} acceptBtnText={"Update"} onClose={() => setEditModal(false)} onConfirm={HandleConfirmEdit} loading={EditLoading} />
+            <StatusModal defaultValue={editCategoryName} onInputChange={(e) => setEditCategoryName(e.target.value)} open={editModal} heading={"Edit Category"} label1={"Category Name:"} placeholder={"Enter here..."} cancelBtnText={"Cancel"} acceptBtnText={"Update"} onClose={() => setEditModal(false)} onConfirm={HandleConfirmEdit} loading={EditLoading} />
 
 
         </Box>
