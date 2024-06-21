@@ -2,7 +2,7 @@ import { toast } from "react-toastify"
 
 
 
-export const baseUrl = "http://api.mpougadalaundry.com/"
+export const baseUrl = "https://api.mpougadalaundry.com/"
 // export const baseUrl = "http://localhost:3000"
 
 export const prepareHeaders = (headers) => {
@@ -16,7 +16,7 @@ export const prepareHeaders = (headers) => {
 export const TokenValidator = () => {
   const token = localStorage.getItem('token')
 
-  fetch(`${baseUrl}/category`, {
+  fetch(`${baseUrl}category`, {
     headers: {
       'Authorization': `Bearer ${token}`,
     },

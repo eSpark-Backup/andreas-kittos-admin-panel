@@ -94,8 +94,11 @@ const OrderDetails = () => {
     else if (OdDATA?.data?.orderStatus?.scheduled && OdDATA?.data?.orderStatus?.picked && !OdDATA?.data?.orderStatus?.washing) {
       setEnabledIndex(2)
     }
-    else if (OdDATA?.data?.orderStatus?.scheduled && OdDATA?.data?.orderStatus?.picked && OdDATA?.data?.orderStatus?.washing) {
+    else if (OdDATA?.data?.orderStatus?.scheduled && OdDATA?.data?.orderStatus?.picked && OdDATA?.data?.orderStatus?.washing && !OdDATA?.data?.orderStatus?.delivered) {
       setEnabledIndex(3)
+    }
+    else if (OdDATA?.data?.orderStatus?.scheduled && OdDATA?.data?.orderStatus?.picked && OdDATA?.data?.orderStatus?.washing && OdDATA?.data?.orderStatus?.delivered) {
+      setEnabledIndex(4)
     }
 
     setCheckboxData((prevCheckboxData) => {
