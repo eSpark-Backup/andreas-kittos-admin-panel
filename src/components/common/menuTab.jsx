@@ -13,9 +13,11 @@ const MenuTab = ({ key, item, onClick, currentTab, categories }) => {
 
     const [editId, setEditId] = useState("")
     const [editModal, setEditModal] = useState(false)
+    const [editCategoryName, setEditCategoryName] = useState("")
 
     const [name, setName] = useState("")
-    
+
+
     const [deleteCategory, { isSuccess: DeleteSuccess, isError: DeleteError, isLoading: DeleteLoading }] = useDeleteCategoryMutation()
     const [updateCategory, { isSuccess: EditSuccess, isError: EditError, isLoading: EditLoading }] = useUpdateCategoryMutation()
 
@@ -25,8 +27,9 @@ const MenuTab = ({ key, item, onClick, currentTab, categories }) => {
         setDeleteModal(true)
     }
 
-    const HandleEdit = (id) => {
-        setEditId(id)
+    const HandleEdit = (item) => {
+        setEditId(item?.id)
+        setEditCategoryName(item?.name)
         setEditModal(true)
     }
 
@@ -40,45 +43,43 @@ const MenuTab = ({ key, item, onClick, currentTab, categories }) => {
 
     useEffect(() => {
         if (DeleteSuccess) {
-            setDeleteModal(false)
-            toast.success('Category has been deleted succesfully!', {
-            });
-            setDeleteId("")
+            setDeleteModal(false);
+            toast.success('Category has been deleted successfully!', {});
+            setDeleteId("");
         }
         if (DeleteError) {
-            setDeleteModal(false)
-            toast.error('An error occurred. Please try again', {
-            });
-            setDeleteId("")
+            setDeleteModal(false);
+            toast.error('An error occurred. Please try again', {});
+            setDeleteId("");
         }
 
+    }, [DeleteSuccess, DeleteError])
+
+    useEffect(() => {
         if (EditSuccess) {
-            setEditModal(false)
-            toast.success('Category has been updated succesfully!', {
-            });
-            setEditId("")
+            setEditModal(false);
+            toast.success('Category has been updated successfully!', {});
+            setEditId("");
         }
-
         if (EditError) {
-            setEditModal(false)
-            toast.error('An error occurred. Please try again', {
-            });
-            setEditId("")
+            setEditModal(false);
+            toast.error('An error occurred. Please try again', {});
+            setEditId("");
         }
+    }, [EditSuccess, EditError])
 
-    }, [DeleteSuccess, DeleteError, EditSuccess, EditError])
     return (
         <Box
             key={key}
             // onClick={onClick}
             sx={{
-                border: "1px solid #424755",
-                height: "20px",
+                border: "1px solid #424755cf",
+                minHeight: "20px",
                 borderRadius: "5px",
                 display: "flex",
                 alignItems: "center",
                 cursor: "pointer",
-                backgroundColor: currentTab == item.id ? "#424755" : "",
+                backgroundColor: currentTab == item.id ? "#424755cf" : "",
                 width: {
                     xs: categories ? "270px" : "92%",
                     sm: categories ? "96%" : "91%",
@@ -86,7 +87,7 @@ const MenuTab = ({ key, item, onClick, currentTab, categories }) => {
                     lg: categories ? "88%" : "88%",
                     xl: categories ? "93%" : "88%"
                 },
-                padding: "10px",
+                padding:"10px",
                 marginBottom: {
                     xs: categories ? "10px" : "0px"
                 },
@@ -97,10 +98,10 @@ const MenuTab = ({ key, item, onClick, currentTab, categories }) => {
                 justifyContent: categories ? 'space-between' : 'flex-start'
             }}
         >
-            <Typography sx={{ color: "white", fontSize: "16px", width: "70%" }} onClick={onClick}>{item?.name}</Typography>
+            <Typography sx={{ color: "white", fontSize: "16px", width: "70%",overflowX:"auto" }} onClick={onClick}>{item?.name}</Typography>
             {categories && (
                 <Box sx={{ display: 'flex', gap: '10px', width: "30%", justifyContent: "flex-end" }}>
-                    <EditIcon sx={{ color: 'white', cursor: 'pointer' }} onClick={() => HandleEdit(item?.id)} />
+                    <EditIcon sx={{ color: 'white', cursor: 'pointer' }} onClick={() => HandleEdit(item)} />
                     <DeleteIcon sx={{ color: 'white', cursor: 'pointer' }} onClick={() => HandleDelete(item?.id)} />
                 </Box>
             )}
@@ -115,7 +116,7 @@ const MenuTab = ({ key, item, onClick, currentTab, categories }) => {
                 isLoading={DeleteLoading}
             />
 
-            <StatusModal onInputChange={(e) => setName(e.target.value)} open={editModal} heading={"Edit Category"} label1={"Category Name:"} placeholder={"Enter here..."} cancelBtnText={"Cancel"} acceptBtnText={"Update"} onClose={() => setEditModal(false)} onConfirm={HandleConfirmEdit} loading={EditLoading} />
+            <StatusModal defaultValue={editCategoryName} onInputChange={(e) => setName(e.target.value)} open={editModal} heading={"Edit Category"} label1={"Category Name:"} placeholder={"Enter here..."} cancelBtnText={"Cancel"} acceptBtnText={"Update"} onClose={() => setEditModal(false)} onConfirm={HandleConfirmEdit} loading={EditLoading} />
 
 
         </Box>

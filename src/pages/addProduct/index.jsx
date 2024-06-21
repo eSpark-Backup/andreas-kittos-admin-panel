@@ -67,27 +67,65 @@ const AddProduct = () => {
     }, [isSuccess, isError])
 
     const handleSubmit = () => {
-        if (isFormEmpty(productData)) {
-            toast.error("Please fill in all fields.");
-        }else {
-
-            const values = {
-                ...productData,
-                tags: productData.tags.map(tag => `${tag}`).join(','),
-                file: productData.image,
-                categoryIds: productData.categoryIds.id
-            }
-            const { categories, image, ...rest } = values
-
-            const formData = new FormData();
-            for (const key in rest) {
-                formData.append(key, rest[key])
-            }
-
-            addProduct(formData)
-
+        if (!productData?.name || productData.name === "") {
+            toast.error("Product name is required");
+            return;
         }
-    }
+        if (!productData?.description || productData.description === "") {
+            toast.error("Product description is required");
+            return;
+        }
+        if (!productData?.categoryIds || productData.categoryIds.length <= 0) {
+            toast.error("Categories field is required");
+            return;
+        }
+        if (!productData?.price || productData.price === "") {
+            toast.error("Product price is required");
+            return;
+        }
+        if (Number(productData?.price) <= 0) {
+            toast.error("Product price should be greater than 0");
+            return;
+        }
+        if (isNaN(Number(productData?.price))) {
+            toast.error("Invalid Price");
+            return;
+        }
+        if (!productData?.quantity || Number(productData.quantity) <= 0) {
+            toast.error("Product quantity is required");
+            return;
+        }
+        if (isNaN(Number(productData?.quantity))) {
+            toast.error("Invalid Quantity");
+            return;
+        }
+        if (!productData?.tags || productData.tags.length <= 0) {
+            toast.error("Tags field is required");
+            return;
+        }
+        if (!productData?.image) {
+            toast.error("Product image is required");
+            return;
+        }
+    
+        // If no errors, proceed with form submission
+        const values = {
+            ...productData,
+            tags: productData.tags.map(tag => `${tag}`).join(','),
+            file: productData.image,
+            categoryIds: productData.categoryIds.id
+        };
+        const { categories, image, ...rest } = values;
+    
+        const formData = new FormData();
+        for (const key in rest) {
+            formData.append(key, rest[key]);
+        }
+    
+        addProduct(formData);
+    };
+    
+    
 
     const handleChange = (item) => {
         setProductData((prevData) => ({
