@@ -399,10 +399,19 @@ textarea:hover{
 .rti--input{
   width: 100% !important;
 }
+
+@media screen and (max-width:1710px){
+  .rti--input::placeholder{
+    font-size: 12px !important;
+  }
+}
+
+
 .rti--container{
   border: 1px solid #424755 !important;
   min-height: 90px;
   align-items: flex-start !important;
+  padding: 8px 4px !important;
 }
 .rti--tag{
   color: #FFFFFF !important;
@@ -449,12 +458,14 @@ textarea:hover{
   border-bottom: 1px solid #424755 !important;
 }
 .product-img {
-  width: 250px
+  width: 250px;
+  max-height: 90%;
 }
 
 @media screen and (max-width: 800px) {
   .product-img {
-    width: 150px
+    width: 150px;
+    max-height: 90%;
   }
 }
 
@@ -609,4 +620,18 @@ input:-webkit-autofill:active{
   .delete-box {
     width: 55%;
   }
+}
+
+.css-c5o8c4-MuiPaper-root-MuiPopover-paper-MuiMenu-paper{
+  background: transparent !important;
+}
+
+.css-6hp17o-MuiList-root-MuiMenu-list{
+  max-width: 443px !important;
+}
+
+.css-ocrtf8-MuiButtonBase-root-MuiMenuItem-root{
+  max-width: 443px !important;
+  overflow-x: auto;
+
 }
