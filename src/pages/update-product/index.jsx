@@ -23,7 +23,9 @@ import loader from "../../assets/icons/loader.gif"
 
 const UpdateProduct = () => {
     const params = useParams()
-    const { data, isLoading: isProductLoading } = useGetProductQuery(params.id)
+    const { data, isLoading: isProductLoading, isFetching } = useGetProductQuery(params.id, {
+        refetchOnMountOrArgChange: true,
+    })
     const navigate = useNavigate()
     const fileInputRef = useRef(null);
     const [updateProduct, { isLoading, isSuccess, isError, error }] = useUpdateProductMutation()
@@ -140,7 +142,7 @@ const UpdateProduct = () => {
 
 
 
-    if (isProductLoading) {
+    if (isProductLoading || isFetching) {
         return (
             <Box sx={{ width: "80vw", height: "100%", display: "flex", justifyContent: "center", alignItems: "center" }}>
                 <div className="loader"></div>

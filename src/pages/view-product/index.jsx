@@ -15,7 +15,9 @@ import Checkbox from '@mui/material/Checkbox';
 
 const ViewProduct = () => {
     const params = useParams()
-    const { data, isLoading } = useGetProductQuery(params.id)
+    const { data, isLoading, isFetching } = useGetProductQuery(params.id, {
+        refetchOnMountOrArgChange: true,
+    })
     const [product, setProduct] = useState({
         name: "",
         description: "",
@@ -39,7 +41,7 @@ const ViewProduct = () => {
             image: productData?.productImage ? productData?.productImage : loader,
             quantity: productData?.quantity,
             category: productData?.categoryProduct[0]?.category.name,
-            isGeneral: productData?.isGeneral ?true:false
+            isGeneral: productData?.isGeneral ? true : false
         };
 
         setProduct(product);
@@ -52,7 +54,7 @@ const ViewProduct = () => {
 
 
 
-    if (isLoading) {
+    if (isLoading || isFetching) {
         return (
             <Box sx={{ width: "80vw", height: "100%", display: "flex", justifyContent: "center", alignItems: "center" }}>
                 <div className="loader"></div>
