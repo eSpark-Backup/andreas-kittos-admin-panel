@@ -3,21 +3,21 @@ import { api } from './rtk';
 export const productApi = api.injectEndpoints({
     endpoints: (builder) => ({
         getProducts: builder.mutation({
-            query: ({ categoryId, page = 1 , productName, take = 7 }) => {
-              const queryString = new URLSearchParams({
-                categoryId,
-                page: page.toString(),
-                take: take.toString(),
-                ...(productName && { productName }),
-              }).toString();
-      
-              return {
-                url: `/product/?${queryString}`,
-                method: 'GET',
-              };
+            query: ({ categoryId, page = 1, productName, take = 7 }) => {
+                const queryString = new URLSearchParams({
+                    categoryId,
+                    page: page.toString(),
+                    take: take.toString(),
+                    ...(productName && { productName }),
+                }).toString();
+
+                return {
+                    url: `/product/?${queryString}`,
+                    method: 'GET',
+                };
             },
             providesTags: ['products'],
-          }),
+        }),
         getProduct: builder.query({
             query: (id) => ({
                 url: `/product/product-detail/${id}`,
@@ -33,13 +33,27 @@ export const productApi = api.injectEndpoints({
         }),
 
         updateProduct: builder.mutation({
-            query: ({ id, ...rest }) => ({
-                url: `/product/${id}`,
-                method: 'PATCH',
-                body: rest
-            }),
+            query: ({ id, categoryIds, description, file, isGeneral, name, price, quantity, tags }) => {
+                const formData = new FormData();
+                formData.append('categoryIds', categoryIds);
+                formData.append('description', description);
+                if (file) {
+                    formData.append('file', file);
+                }
+                formData.append('isGeneral', isGeneral);
+                formData.append('name', name);
+                formData.append('price', price);
+                formData.append('quantity', quantity);
+                formData.append('tags', tags);
+        
+                return {
+                    url: `/product/${id}`,
+                    method: 'PATCH',
+                    body: formData,
+                };
+            },
             invalidatesTags: ['products'],
-        }),
+        }),        
         deleteProduct: builder.mutation({
             query: (id) => ({
                 url: `/product/${id}`,

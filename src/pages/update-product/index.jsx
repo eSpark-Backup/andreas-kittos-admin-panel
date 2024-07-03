@@ -26,7 +26,7 @@ const UpdateProduct = () => {
     const { data, isLoading: isProductLoading } = useGetProductQuery(params.id)
     const navigate = useNavigate()
     const fileInputRef = useRef(null);
-    const [updateProduct, { isLoading, isSuccess, isError }] = useUpdateProductMutation()
+    const [updateProduct, { isLoading, isSuccess, isError, error }] = useUpdateProductMutation()
     const { data: categories, } = useGetCategoriesQuery();
     const [categoriesOptions, setCategoriesOptions] = useState([])
 
@@ -37,7 +37,7 @@ const UpdateProduct = () => {
         price: "",
         tags: [],
         image: null,
-        uploadImage: null,
+        file: null,
         categories: [],
         quantity: 0,
         categoryIds: {
@@ -65,7 +65,6 @@ const UpdateProduct = () => {
 
 
     const handleSubmit = () => {
-        console.log("productData", productData)
         if (isFormEmpty(productData)) {
             toast.error("Please fill in all fields.");
         } else {
@@ -74,10 +73,10 @@ const UpdateProduct = () => {
             const values = {
                 ...productData,
                 tags: productData?.tags?.map(tag => `'${tag}'`).join(','),
-                file: productData.uploadImage ? productData.uploadImage : productData.image,
+                file: productData?.file ? productData?.file : productData?.image,
                 categoryIds: productData.categoryIds.id
             }
-            const { categories, image, ...rest } = values
+            const { categories, image, ...rest } = values;
 
             const formData = new FormData();
             for (const key in rest) {
@@ -135,9 +134,13 @@ const UpdateProduct = () => {
             navigate(-1)
         }
         if (isError) {
-            toast.error("An error occurred. Please try again");
+            toast.error(error?.data?.message.includes("Duplicate entry")?"Duplicate Entry For Key Product Name":"An error occurred. Please try again");
         }
     }, [isSuccess, isError])
+
+
+    useEffect(() => {
+    }, [productData])
 
 
     if (isProductLoading) {
@@ -332,13 +335,13 @@ const UpdateProduct = () => {
                         </Grid>
                         <Grid item xs={12} md={6} xl={5.5} sx={{ marginTop: { xs: "25px", md: "0px" } }}>
                             <Box sx={{ width: { xs: "100%", md: "100%", xl: "80%" }, height: "300px", border: "1px solid #424755", borderRadius: "5px", display: "flex", justifyContent: 'center', alignItems: "center" }}>
-                                <img src={!productData.uploadImage ? productData?.image :
-                                    URL.createObjectURL(productData.uploadImage)
+                                <img src={!productData.file ? productData?.image :
+                                    URL.createObjectURL(productData.file)
                                 } className='product-img' alt="Upload Icon" />
                             </Box>
                             <CustomButton onClick={openFileInput} component="label" variant="contained" sx={{ marginTop: { xs: "25px", md: "15px" }, width: { xs: "100%", xl: "82%" } }}>
                                 Upload product image
-                                <VisuallyHiddenInput ref={fileInputRef} accept='image/*' type="file" onChange={(e) => handleInputsChange("uploadImage", e.target.files[0])} />
+                                <VisuallyHiddenInput ref={fileInputRef} accept='image/*' type="file" onChange={(e) => handleInputsChange("file", e.target.files[0])} />
                             </CustomButton>
                         </Grid>
                     </Grid>

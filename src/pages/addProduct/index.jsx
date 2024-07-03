@@ -17,7 +17,7 @@ import Checkbox from '@mui/material/Checkbox';
 
 const AddProduct = () => {
     const navigate = useNavigate()
-    const [addProduct, { isLoading, isSuccess, isError }] = useAddProductMutation()
+    const [addProduct, { isLoading, isSuccess, isError, error }] = useAddProductMutation()
     const { data: categories } = useGetCategoriesQuery();
 
     const fileInputRef = useRef(null);
@@ -62,7 +62,7 @@ const AddProduct = () => {
             navigate("/products")
         }
         if (isError) {
-            toast.error("An error occurred. Please try again");
+            toast.error(error?.data?.message.includes("Duplicate entry")?"Duplicate Entry For Key Product Name":"An error occurred. Please try again");
         }
     }, [isSuccess, isError])
 
