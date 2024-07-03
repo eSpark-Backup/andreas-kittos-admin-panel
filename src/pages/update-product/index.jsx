@@ -139,9 +139,6 @@ const UpdateProduct = () => {
     }, [isSuccess, isError])
 
 
-    useEffect(() => {
-    }, [productData])
-
 
     if (isProductLoading) {
         return (
