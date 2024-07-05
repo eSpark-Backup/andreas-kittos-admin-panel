@@ -17,7 +17,7 @@ const MenuTab = ({ key, item, onClick, currentTab, categories }) => {
 
 
     const [deleteCategory, { isSuccess: DeleteSuccess, isError: DeleteError, isLoading: DeleteLoading }] = useDeleteCategoryMutation()
-    const [updateCategory, { isSuccess: EditSuccess, isError: EditError, isLoading: EditLoading }] = useUpdateCategoryMutation()
+    const [updateCategory, { isSuccess: EditSuccess, isError: EditError, isLoading: EditLoading, error }] = useUpdateCategoryMutation()
 
 
     const HandleDelete = (id) => {
@@ -61,7 +61,7 @@ const MenuTab = ({ key, item, onClick, currentTab, categories }) => {
         }
         if (EditError) {
             setEditModal(false);
-            toast.error('An error occurred. Please try again', {});
+            toast.error(error?.data?.message.includes("Category already exist") ? error?.data?.message : "An error occurred. Please try again")
             setEditId("");
         }
     }, [EditSuccess, EditError])

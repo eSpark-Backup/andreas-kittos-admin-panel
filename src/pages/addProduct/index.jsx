@@ -9,7 +9,7 @@ import { isFormEmpty } from '../utils/helpers'
 import { toast } from 'react-toastify'
 import { useAddProductMutation } from '../../services/products'
 import { useNavigate } from 'react-router-dom'
-import { useGetCategoriesQuery } from '../../services/categories'
+import { categoryApi, useGetCategoriesQuery } from '../../services/categories'
 import { IoIosArrowDown } from "react-icons/io";
 import Checkbox from '@mui/material/Checkbox';
 
@@ -60,7 +60,7 @@ const AddProduct = () => {
             navigate("/products")
         }
         if (isError) {
-            toast.error(error?.data?.message.includes("Duplicate entry")?"Duplicate Entry For Key Product Name":"An error occurred. Please try again");
+            toast.error(error?.data?.message.includes("Product with same") ? error?.data?.message : "An error occurred. Please try again");
         }
     }, [isSuccess, isError])
 
@@ -230,15 +230,19 @@ const AddProduct = () => {
                                     }}
                                     inputProps={{ 'aria-label': 'Without label' }}
                                 >
-                                    {categoriesOptions?.map((item) => (
-                                        <MenuItem
-                                            key={item.id}
-                                            value={item.label}
-                                            onClick={() => { handleChange(item) }}
-                                        >
-                                            {item.label}
-                                        </MenuItem>
-                                    ))}
+                                    {categoriesOptions
+                                        ?.filter(item => item?.label !== "General")
+                                        .map(item => (
+                                            <MenuItem
+                                                key={item.id}
+                                                value={item.label}
+                                                onClick={() => handleChange(item)}
+                                            >
+                                                {item.label}
+                                            </MenuItem>
+                                        ))
+                                    }
+
                                 </Select>
                             </Stack>
                             <Stack direction={"column"} gap={1.7}>

@@ -32,17 +32,18 @@ const ViewProduct = () => {
     useEffect(() => {
         console.log(data)
         const productData = data?.data[0]
+        const filteredCategories = productData?.categoryProduct.filter(category => category?.category?.name !== "General");
         const product = {
             name: productData?.name,
             description: productData?.description,
             price: productData?.price,
-            // image: productData?.productImage,
             tags: splitTags(productData?.tags),
             image: productData?.productImage ? productData?.productImage : loader,
             quantity: productData?.quantity,
-            category: productData?.categoryProduct[0]?.category.name,
+            category: filteredCategories?.length > 0 ? filteredCategories[filteredCategories.length - 1]?.category?.name : "",
             isGeneral: productData?.isGeneral ? true : false
         };
+        
 
         setProduct(product);
 
