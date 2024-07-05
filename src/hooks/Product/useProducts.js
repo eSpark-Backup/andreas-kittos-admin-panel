@@ -8,7 +8,10 @@ const useProducts = (productName) => {
   const [search, setSearch] = useState("");
   const [totalItems, setTotalItems] = useState(0);
   const [page, setPage] = useState(1);
+  const [mainCat, setMainCat] = useState("")
 
+
+  localStorage.setItem("catID", mainCat);
 
   useEffect(() => {
     const category = productsData?.data?.items[0]?.name || "";
@@ -29,6 +32,7 @@ const useProducts = (productName) => {
   }
 
   const handleTabChange = (id) => {
+    setMainCat(id)
     setPage(1)
     setCurrentTab(id)
   }

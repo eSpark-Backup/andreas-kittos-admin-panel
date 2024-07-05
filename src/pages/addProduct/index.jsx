@@ -19,7 +19,6 @@ const AddProduct = () => {
     const navigate = useNavigate()
     const [addProduct, { isLoading, isSuccess, isError, error }] = useAddProductMutation()
     const { data: categories } = useGetCategoriesQuery();
-
     const fileInputRef = useRef(null);
     const [categoriesOptions, setCategoriesOptions] = useState([])
     const [productData, setProductData] = useState({
@@ -32,7 +31,6 @@ const AddProduct = () => {
         quantity: 0,
         isGeneral: false
     })
-
 
     const openFileInput = () => {
         fileInputRef.current.click();
