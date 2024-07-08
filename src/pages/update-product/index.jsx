@@ -99,7 +99,9 @@ const UpdateProduct = () => {
     };
 
     useEffect(() => {
-        const productData = data?.data[0]
+        const productData = data?.data[0];
+        const filteredCategory = productData?.categoryProduct?.filter((item) => item?.category?.name !== "General") || [];
+        console.log(filteredCategory);
         const product = {
             id: productData?.id,
             name: productData?.name,
@@ -108,12 +110,13 @@ const UpdateProduct = () => {
             quantity: productData?.quantity,
             tags: splitTags(productData?.tags),
             categoryIds: {
-                id: productData?.categoryProduct[0]?.category?.id,
-                label: productData?.categoryProduct[0]?.category?.name,
+                id: filteredCategory.length > 0 ? filteredCategory[filteredCategory.length - 1]?.category?.id : "",
+                label: filteredCategory.length > 0 ? filteredCategory[filteredCategory.length - 1]?.category?.name : "",
             },
             image: productData?.productImage ? productData?.productImage : loader,
             isGeneral: productData?.isGeneral ? true : false
         };
+
 
 
         setProductData(product);
@@ -136,7 +139,7 @@ const UpdateProduct = () => {
             navigate(-1)
         }
         if (isError) {
-            toast.error(error?.data?.message.includes("Duplicate entry")?"Duplicate Entry For Key Product Name":"An error occurred. Please try again");
+            toast.error(error?.data?.message.includes("Product with same") ? error?.data?.message : "An error occurred. Please try again");
         }
     }, [isSuccess, isError])
 
@@ -270,15 +273,18 @@ const UpdateProduct = () => {
                                     }}
                                     inputProps={{ 'aria-label': 'Without label' }}
                                 >
-                                    {categoriesOptions?.map((item) => (
-                                        <MenuItem
-                                            key={item.id}
-                                            value={item.label}
-                                            onClick={() => { handleChange(item) }}
-                                        >
-                                            {item.label}
-                                        </MenuItem>
-                                    ))}
+                                    {categoriesOptions
+                                        ?.filter(item => item?.label !== "General")
+                                        .map(item => (
+                                            <MenuItem
+                                                key={item.id}
+                                                value={item.label}
+                                                onClick={() => handleChange(item)}
+                                            >
+                                                {item.label}
+                                            </MenuItem>
+                                        ))
+                                    }
                                 </Select>
                             </Stack>
                             <Stack direction={"column"} gap={1.7}>

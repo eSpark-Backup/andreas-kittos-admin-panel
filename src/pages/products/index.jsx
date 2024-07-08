@@ -19,7 +19,7 @@ const Products = () => {
     const [deleteProduct, { isSuccess, isError }] = useDeleteProductMutation()
     const [deleteid, setDeleteId] = useState("")
     const [newCategoryName, setNewCategoryName] = useState("")
-    const [addCategory, { isSuccess: AddCategorySuccess, isError: AddCategoryError, isLoading: AddCategoryLoading }] = useAddCategoryMutation()
+    const [addCategory, { isSuccess: AddCategorySuccess, isError: AddCategoryError, isLoading: AddCategoryLoading, error }] = useAddCategoryMutation()
     const [addCategoryModal, setAddCategoryModal] = useState(false)
 
 
@@ -63,7 +63,7 @@ const Products = () => {
         if (AddCategoryError) {
             setNewCategoryName("")
             setAddCategoryModal(false)
-            toast.error("An error occurred. Please try again")
+            toast.error(error?.data?.message.includes("Category already exist") ? error?.data?.message : "An error occurred. Please try again")
         }
     }, [isSuccess, isError, AddCategorySuccess, AddCategoryError])
 
