@@ -2,8 +2,7 @@ import { toast } from "react-toastify"
 
 
 
-export const baseUrl = "https://api.mpougadalaundry.com/"
-// export const baseUrl = "http://localhost:3000"
+export const baseUrl = import.meta.env.VITE_BASE_URL
 
 export const prepareHeaders = (headers) => {
   const token = localStorage.getItem('token')
