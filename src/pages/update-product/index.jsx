@@ -101,7 +101,6 @@ const UpdateProduct = () => {
     useEffect(() => {
         const productData = data?.data[0];
         const filteredCategory = productData?.categoryProduct?.filter((item) => item?.category?.name !== "General") || [];
-        console.log(filteredCategory);
         const product = {
             id: productData?.id,
             name: productData?.name,

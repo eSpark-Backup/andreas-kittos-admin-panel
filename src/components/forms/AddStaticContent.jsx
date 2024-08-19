@@ -33,7 +33,6 @@ const AddStaticContent = () => {
         } else {
             addContent(content);
         }
-        console.log(content)
     };
 
     useEffect(() => {

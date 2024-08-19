@@ -41,11 +41,9 @@ const SignInForm = () => {
     initialValues: initialValues,
     validationSchema: signinSchema,
     onSubmit: async (values) => {
-      console.log({values});
       login(values)
     }
   })
-  console.log(errors)
   return (
     <Box
       sx={{

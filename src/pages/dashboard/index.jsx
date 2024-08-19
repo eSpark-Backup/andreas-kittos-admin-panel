@@ -58,8 +58,6 @@ const Dashboard = () => {
     revenue: Number(item?.total),
     orders: Number(item?.orderCount)
   }));
-  console.log(chartData)
-
 
 
 

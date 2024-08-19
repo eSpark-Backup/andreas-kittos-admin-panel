@@ -1,16 +1,31 @@
 import { toast } from "react-toastify"
-
-
-
+import { jwtDecode } from "jwt-decode";
 export const baseUrl = import.meta.env.VITE_BASE_URL
 
-export const prepareHeaders = (headers) => {
-  const token = localStorage.getItem('token')
-  if (token) {
-    headers.set('Authorization', `Bearer ${token}`)
-  }
-  return headers
+// Function to check token expiration
+function isTokenExpired(token) {
+  if (!token) return true;
+  const decodedToken = jwtDecode(token);
+  const now = Date.now() / 1000;
+  return decodedToken.exp < now;
 }
+
+export const prepareHeaders = (headers) => {
+  const token = localStorage.getItem('token');
+
+  if (token && isTokenExpired(token)) {
+    localStorage.removeItem('token');
+    window.location.reload();
+    toast.error("Session Expired! Please login again")
+    return headers;
+  }
+
+  if (token) {
+    headers.set('Authorization', `Bearer ${token}`);
+  }
+  return headers;
+}
+
 
 export const TokenValidator = () => {
   const token = localStorage.getItem('token')

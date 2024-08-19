@@ -30,7 +30,6 @@ const ViewProduct = () => {
     })
 
     useEffect(() => {
-        console.log(data)
         const productData = data?.data[0]
         const filteredCategories = productData?.categoryProduct.filter(category => category?.category?.name !== "General");
         const product = {

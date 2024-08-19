@@ -12,8 +12,6 @@ import { useGetInfoQuery } from '../../services/personalInfo'
 function Header({ OpenSidebar }) {
   const [showDropDown, setDropDown] = useState(false)
   const {data:infoData,isLoading} = useGetInfoQuery()
-  console.log(infoData)
-
 
   const handleLogout = () => {
     localStorage.removeItem('token')
