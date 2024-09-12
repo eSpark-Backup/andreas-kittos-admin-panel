@@ -90,9 +90,39 @@ const DynamicTable = ({
                     </>
                 )}
             </Stack>
-        ) : (
-            cell
-        );
+        ) :
+            column.key[0] === "action2" ? (
+                <Stack
+                    direction="row"
+                    justifyContent={"flex-start"}
+                    justifyItems="center"
+                    alignItems="center"
+                    spacing={1}
+                >
+                    {column.component ? (
+                        cell
+                    ) : (
+                        <>
+                            {!column.hideDelete && (
+                                <Button
+                                    variant="contained"
+                                    sx={{ minWidth: "initial", p: 1, background: "#263043 !important", borderRadius: "50%" }}
+                                    onClick={(e) => {
+                                        e.stopPropagation();
+                                        handleDelete?.(item);
+                                    }}
+                                >
+                                    <img src={trash} alt="" width="16px" />
+                                </Button>
+                            )}
+                        </>
+                    )}
+                </Stack>
+            )
+                :
+                (
+                    cell
+                );
     };
 
     return (

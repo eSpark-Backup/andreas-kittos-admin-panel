@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { CustomButton, PageHeader, SearchInput, Table } from '../../components'
+import { ConfirmationModal, CustomButton, PageHeader, SearchInput, Table } from '../../components'
 import { Box, Grid, Stack, useMediaQuery } from '@mui/material'
 import { columns } from '../../columns/orders'
 import { ordersTableData, ordersTabs } from '../../constant'
@@ -13,7 +13,8 @@ import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
 import { DateConverter, DateObjectConverter } from '../../utility/DateConverter'
 import useProducts from '../../hooks/Product/useProducts'
 import useOrders from '../../hooks/Order/useOrder'
-import { useGetAllOrdersQuery } from '../../services/orders'
+import { useGetAllOrdersQuery, useUpdateOrderStatusMutation } from '../../services/orders'
+import { toast } from 'react-toastify'
 
 const Orders = () => {
   const [value, setValue] = useState(0);
@@ -22,23 +23,27 @@ const Orders = () => {
   const [debouncedSearch, setDebouncedSearch] = useState("");
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
-  
+  const [deleteModal, setDeleteModal] = useState(false);
+  const [deleteId, setDeleteId] = useState("")
+  const [updateOrderStatus, { isLoading: isOrderStatusLoading, isSuccess, isError, data, error }] = useUpdateOrderStatusMutation()
+
+
   const handleChange = (event, newValue) => {
     setValue(newValue);
     setPage(1)
   };
-  
+
   const statusMap = {
     1: "Pending",
     2: "Processing",
     3: "on-hold",
     4: "Completed",
-    5: "Cancelled",
+    5: "cancelled",
     6: "Refunded",
     7: "Failed"
   };
-  
-  const { data: ordersData, isLoading,isFetching } = useGetAllOrdersQuery({ page, orderState: statusMap[value], OrderNameEmail: debouncedSearch,startDate,endDate });
+
+  const { data: ordersData, isLoading, isFetching } = useGetAllOrdersQuery({ page, orderState: statusMap[value], OrderNameEmail: debouncedSearch, startDate, endDate });
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -63,23 +68,48 @@ const Orders = () => {
       total: item?.total
     };
   });
-  
+
 
   const isSmallScreen = useMediaQuery('(max-width: 360px)');
   const handlePageChange = (newPage) => {
     setPage(newPage);
   };
 
-  const handleDateChange = (date,type) => {
+  const handleDateChange = (date, type) => {
     const formattedDate = DateObjectConverter(date?.$d);
-    if(type === "from"){
+    if (type === "from") {
       setStartDate(formattedDate)
     }
-    else{
+    else {
       setEndDate(formattedDate)
     }
   };
-  
+
+  const HandleDelete = (id) => {
+    setDeleteId(id);
+    setDeleteModal(true)
+  }
+
+  useEffect(() => {
+    if (isSuccess) {
+      toast.success(data?.message)
+      setDeleteModal(false);
+      console.log(data)
+    }
+  }, [isSuccess])
+
+  useEffect(() => {
+    if (isError) {
+      toast.error("Something went wrong");
+      setDeleteModal(false);
+      console.log(error)
+    }
+  }, [isError])
+
+  const HandleConfirm = () => {
+    updateOrderStatus({ id: deleteId, orderState: "cancelled" })
+  }
+
 
   return (
     <main className='main-container'>
@@ -112,8 +142,8 @@ const Orders = () => {
               <Stack direction={
                 isSmallScreen ? "column" : "row"
               } gap={2} sx={{ display: "flex", justifyContent: "flex-end" }}>
-                <DesktopDatePicker label="Search from" sx={{ width: isSmallScreen ? "100%" : "150px" }} onChange={(data)=>handleDateChange(data,'from')} />
-                <DesktopDatePicker label="Search to" sx={{ width: isSmallScreen ? "100%" : "150px" }} onChange={(data)=>handleDateChange(data,'to')} />
+                <DesktopDatePicker label="Search from" sx={{ width: isSmallScreen ? "100%" : "150px" }} onChange={(data) => handleDateChange(data, 'from')} />
+                <DesktopDatePicker label="Search to" sx={{ width: isSmallScreen ? "100%" : "150px" }} onChange={(data) => handleDateChange(data, 'to')} />
               </Stack>
             </LocalizationProvider>
           </Box>
@@ -126,7 +156,17 @@ const Orders = () => {
           isLoading={isLoading || isFetching}
           handlePageChange={handlePageChange}
           page={page}
+          handleDelete={(item) => HandleDelete(item?.id)}
           total={tableData && ordersData?.data?.meta?.totalItems}
+        />
+        <ConfirmationModal
+          open={deleteModal}
+          onClose={() => setDeleteModal(false)}
+          description="This order will be deleted permanently."
+          onConfirm={HandleConfirm}
+          acceptBtnText={"Delete"}
+          cancelBtnText={"Cancel"}
+          isLoading={isOrderStatusLoading}
         />
       </Box>
 

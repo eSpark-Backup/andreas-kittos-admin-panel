@@ -1,6 +1,6 @@
 import { Box, Grid, Typography } from "@mui/material"
 import { useEffect, useState } from "react";
-import { ConfirmationModal, CustomButton, MenuTab, PageHeader, SearchInput, Table } from "../../components";
+import { ConfirmationModal, CustomButton, CustomInput, MenuTab, PageHeader, SearchInput, Table } from "../../components";
 import { columns } from "../../columns/products";
 import { toast } from "react-toastify";
 import { Link, useNavigate } from "react-router-dom";
@@ -14,13 +14,18 @@ const Products = () => {
     const navigate = useNavigate()
     const [searchValue, setSearchValue] = useState("")
     const [openModal, setOpenModal] = useState(false)
+    const [priceValues, setPriceValues] = useState({
+        minPrice: "",
+        maxPrice: ""
+    })
     const { data: categories, isLoading: isCategoryLoading, } = useGetCategoriesQuery();
-    const { products, totalItems, page, setPage, isProductLoading, handleFetch, handleTabChange, currentTab } = useProducts(searchValue);
+    const { products, totalItems, page, setPage, isProductLoading, handleFetch, handleTabChange, currentTab } = useProducts(searchValue, priceValues);
     const [deleteProduct, { isSuccess, isError }] = useDeleteProductMutation()
     const [deleteid, setDeleteId] = useState("")
     const [newCategoryName, setNewCategoryName] = useState("")
     const [addCategory, { isSuccess: AddCategorySuccess, isError: AddCategoryError, isLoading: AddCategoryLoading, error }] = useAddCategoryMutation()
     const [addCategoryModal, setAddCategoryModal] = useState(false)
+
 
 
     const onConfirm = () => {
@@ -78,6 +83,19 @@ const Products = () => {
         , [categories])
 
 
+
+    const HandlePriceChange = (name, value) => {
+        setPriceValues((prevData) => ({
+            ...prevData,
+            [name]: value
+        }))
+    }
+
+    useEffect(() => {
+        console.log(priceValues)
+    }, [priceValues])
+
+
     if (isCategoryLoading) {
         return (
             <Box sx={{ width: "80vw", height: "100%", display: "flex", justifyContent: "center", alignItems: "center" }}>
@@ -94,9 +112,22 @@ const Products = () => {
                 <Box>
                     <PageHeader title="Products" />
                     <br />
-                    <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
+                    {/* <Box sx={{ display: "flex", justifyContent: "flex-end", columnGap: "20px"}}>
+                        <CustomInput sx={{ width: "150px" }} type={"number"} placeholder={"Enter Price"} />
+                        <CustomInput sx={{ width: "150px" }} type={"number"} placeholder={"Enter Price"} />
                         <SearchInput placeholder="Search by name..." sx={{ width: "320px" }} setSearch={(e) => setSearchValue(e)} />
-                    </Box>
+                    </Box> */}
+                    <Grid container sx={{ display: "flex", justifyContent: "flex-end", alignItems: "flex-end", paddingRight: { xs: "0px", md: "10px", xl: "15px" } }} spacing={2}>
+                        <Grid item xs={12} sm={12} md={3} lg={2}>
+                            <CustomInput type={"number"} sx={{ width: "100%" }} placeholder={"Enter Price From"} inputName={"minPrice"} onInputChange={(e) => HandlePriceChange("minPrice", e.target.value)} />
+                        </Grid>
+                        <Grid item xs={12} sm={12} md={3} lg={2}>
+                            <CustomInput type={"number"} sx={{ width: "100%" }} placeholder={"Enter Price To"} inputName={"maxPrice"} onInputChange={(e) => HandlePriceChange("maxPrice", e.target.value)} />
+                        </Grid>
+                        <Grid item xs={12} sm={12} md={5} lg={4}>
+                            <SearchInput placeholder="Search by name..." setSearch={(e) => setSearchValue(e)} />
+                        </Grid>
+                    </Grid>
 
 
 
@@ -112,7 +143,7 @@ const Products = () => {
                                         <MenuTab categories={true} key={index} item={item} currentTab={currentTab} onClick={() => handleTabChange(item.id)} />
                                     ))}
                                 </Box>
-                                <CustomButton onClick={() => setAddCategoryModal(true)} sx={{ width: "100%", marginBottom: { xs: "40px", sm:"10px" } }}>
+                                <CustomButton onClick={() => setAddCategoryModal(true)} sx={{ width: "100%", marginBottom: { xs: "40px", sm: "10px" } }}>
                                     Add Category
                                 </CustomButton>
 
@@ -121,7 +152,7 @@ const Products = () => {
 
                         <Grid item xs={12} lg={8.5} sx={{ border: "1px solid #424755", padding: "10px 10px 0px 10px", borderRadius: "10px", display: "flex", flexDirection: { xs: "column-reverse", sm: "column" } }}>
                             <Box>
-                                <Box sx={{ maxHeight: "100%", overflowY: "scroll" }}>
+                                <Box sx={{ maxHeight: "100%", overflowY: "auto" }}>
                                     <Table
                                         data={products}
                                         columns={columns()}
@@ -159,7 +190,7 @@ const Products = () => {
 
             />
 
-            <StatusModal onInputChange={(e) => setNewCategoryName(e.target.value)} open={addCategoryModal} heading={"Add Category"} label1={"Category Name:"} placeholder={"Enter here..."} cancelBtnText={"Cancel"} acceptBtnText={"Add"} onClose={() => setAddCategoryModal(false)} onConfirm={HandleAddCategory} loading={AddCategoryLoading}  />
+            <StatusModal onInputChange={(e) => setNewCategoryName(e.target.value)} open={addCategoryModal} heading={"Add Category"} label1={"Category Name:"} placeholder={"Enter here..."} cancelBtnText={"Cancel"} acceptBtnText={"Add"} onClose={() => setAddCategoryModal(false)} onConfirm={HandleAddCategory} loading={AddCategoryLoading} />
         </>
     )
 }

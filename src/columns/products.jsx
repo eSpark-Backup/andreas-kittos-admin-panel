@@ -7,13 +7,15 @@ export const columns = () => {
             { name: "Category (main)", key: "category"},
             { name: "Category (sub)", key: "mainCategory"},
             { name: "Total Orders", key: "quantity" },
-            { name: "Price", key: "price" },
+            { name: "Price (From)", key: "price1" },
+            { name: "Price (To)", key: "price2" },
             { name: "", key: "action"},
         ] :  [
             { name: "Product Name", key: "name",left:true },
             { name: "Category", key: "category"},
             { name: "Total Orders", key: "quantity" },
-            { name: "Price", key: "price" },
+            { name: "Price (From)", key: "price1" },
+            { name: "Price (To)", key: "price2" },
             { name: "", key: "action"},
         ]
     )

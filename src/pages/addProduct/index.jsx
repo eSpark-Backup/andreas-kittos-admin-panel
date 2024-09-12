@@ -24,7 +24,8 @@ const AddProduct = () => {
     const [productData, setProductData] = useState({
         name: "",
         description: "",
-        price: "",
+        price1: "",
+        price2: "",
         tags: [],
         categoryIds: [],
         image: null,
@@ -51,7 +52,8 @@ const AddProduct = () => {
             setProductData({
                 name: "",
                 description: "",
-                price: "",
+                price1: "",
+                price2: "",
                 tags: [],
                 categoryIds: [],
                 image: null,
@@ -77,20 +79,28 @@ const AddProduct = () => {
             toast.error("Categories field is required");
             return;
         }
-        if (!productData?.price || productData.price === "") {
+        if (!productData?.price1 || productData.price1 === "") {
             toast.error("Product price is required");
             return;
         }
-        if (Number(productData?.price) <= 0) {
+        if (!productData?.price2 || productData.price2 === "") {
+            toast.error("Product price is required");
+            return;
+        }
+        if (Number(productData?.price1) <= 0 || Number(productData?.price2) <= 0) {
             toast.error("Product price should be greater than 0");
             return;
         }
-        if (isNaN(Number(productData?.price))) {
+        if (isNaN(Number(productData?.price1)) || isNaN(Number(productData?.price2))) {
             toast.error("Invalid Price");
             return;
         }
         if (!productData?.quantity || Number(productData.quantity) <= 0) {
             toast.error("Product quantity is required");
+            return;
+        }
+        if (Number(productData?.price2) < Number(productData?.price1)) {
+            toast.error("Product price range issue");
             return;
         }
         if (isNaN(Number(productData?.quantity))) {
@@ -105,7 +115,7 @@ const AddProduct = () => {
             toast.error("Product image is required");
             return;
         }
-    
+
         // If no errors, proceed with form submission
         const values = {
             ...productData,
@@ -114,16 +124,16 @@ const AddProduct = () => {
             categoryIds: productData.categoryIds.id
         };
         const { categories, image, ...rest } = values;
-    
+
         const formData = new FormData();
         for (const key in rest) {
             formData.append(key, rest[key]);
         }
-    
+
         addProduct(formData);
     };
-    
-    
+
+
 
     const handleChange = (item) => {
         setProductData((prevData) => ({
@@ -247,7 +257,7 @@ const AddProduct = () => {
                             </Stack>
                             <Stack direction={"column"} gap={1.7}>
                                 <>
-                                    <InputLabel sx={{ color: "#FFFFFF", fontSize: { xs: "14px", sm: "16px" }, fontWeight: "500" }}>Price:</InputLabel>
+                                    <InputLabel sx={{ color: "#FFFFFF", fontSize: { xs: "14px", sm: "16px" }, fontWeight: "500" }}>Price (FROM):</InputLabel>
 
                                     <Paper
                                         component="form"
@@ -256,10 +266,32 @@ const AddProduct = () => {
                                         <InputBase
                                             sx={{ ml: 1, flex: 1, py: "5px", pl: "5px" }}
                                             placeholder="Enter here..."
-                                            value={productData.price}
+                                            value={productData.price1}
                                             type='number'
-                                            name='price'
-                                            onChange={(e) => handleInputsChange("price", e.target.value)}
+                                            name='price1'
+                                            onChange={(e) => handleInputsChange("price1", e.target.value)}
+                                        />
+                                        <IconButton color="primary" sx={{ borderLeft: "1px solid #424755", borderRadius: "0px 5px 5px 0px", backgroundColor: "#263043", height: "100%", ":hover": { backgroundColor: "#263043" }, width: "50px" }} aria-label="directions">
+                                            <img src={Euro} alt='Euro' />
+                                        </IconButton>
+                                    </Paper>
+                                </>
+                            </Stack>
+                            <Stack direction={"column"} gap={1.7}>
+                                <>
+                                    <InputLabel sx={{ color: "#FFFFFF", fontSize: { xs: "14px", sm: "16px" }, fontWeight: "500" }}>Price (To):</InputLabel>
+
+                                    <Paper
+                                        component="form"
+                                        sx={{ display: 'flex', alignItems: 'center', border: "1px solid #424755", borderRadius: "5px", background: "transparent", height: "50px" }}
+                                    >
+                                        <InputBase
+                                            sx={{ ml: 1, flex: 1, py: "5px", pl: "5px" }}
+                                            placeholder="Enter here..."
+                                            value={productData.price2}
+                                            type='number'
+                                            name='price2'
+                                            onChange={(e) => handleInputsChange("price2", e.target.value)}
                                         />
                                         <IconButton color="primary" sx={{ borderLeft: "1px solid #424755", borderRadius: "0px 5px 5px 0px", backgroundColor: "#263043", height: "100%", ":hover": { backgroundColor: "#263043" }, width: "50px" }} aria-label="directions">
                                             <img src={Euro} alt='Euro' />
