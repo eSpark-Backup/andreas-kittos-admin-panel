@@ -18,5 +18,6 @@ export const columns = () => {
             )
         }
       },
+      { name: "", key: "action2"}
     ];
 };

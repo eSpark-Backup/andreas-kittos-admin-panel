@@ -36,7 +36,8 @@ const UpdateProduct = () => {
         id: "",
         name: "",
         description: "",
-        price: "",
+        price1: "",
+        price2: "",
         tags: [],
         image: null,
         file: null,
@@ -69,8 +70,12 @@ const UpdateProduct = () => {
     const handleSubmit = () => {
         if (isFormEmpty(productData)) {
             toast.error("Please fill in all fields.");
-        } else {
-            // remove productData.categories
+        }
+        else if (Number(productData?.price2) < Number(productData?.price1)) {
+            toast.error("Product price range issue.");
+
+        }
+        else {
 
             const values = {
                 ...productData,
@@ -84,11 +89,10 @@ const UpdateProduct = () => {
             for (const key in rest) {
                 formData.append(key, rest[key])
             }
-
-
             updateProduct(rest)
 
         }
+        console.log(productData)
     }
 
     const handleChange = (item) => {
@@ -105,7 +109,8 @@ const UpdateProduct = () => {
             id: productData?.id,
             name: productData?.name,
             description: productData?.description,
-            price: productData?.price,
+            price1: productData?.price.slice(0, productData?.price.indexOf("-")),
+            price2: productData?.price.slice(productData?.price.indexOf("-") + 1),
             quantity: productData?.quantity,
             tags: splitTags(productData?.tags),
             categoryIds: {
@@ -288,7 +293,7 @@ const UpdateProduct = () => {
                             </Stack>
                             <Stack direction={"column"} gap={1.7}>
                                 <>
-                                    <InputLabel sx={{ color: "#FFFFFF", fontSize: { xs: "14px", sm: "16px" }, fontWeight: "500" }}>Price:</InputLabel>
+                                    <InputLabel sx={{ color: "#FFFFFF", fontSize: { xs: "14px", sm: "16px" }, fontWeight: "500" }}>Price (FROM):</InputLabel>
 
                                     <Paper
                                         component="form"
@@ -297,9 +302,30 @@ const UpdateProduct = () => {
                                         <InputBase
                                             sx={{ ml: 1, flex: 1, py: "5px", pl: "5px" }}
                                             placeholder="Enter here..."
-                                            value={productData.price}
-                                            name='price'
-                                            onChange={(e) => handleInputsChange("price", e.target.value)}
+                                            value={productData.price1}
+                                            name='price1'
+                                            onChange={(e) => handleInputsChange("price1", e.target.value)}
+                                        />
+                                        <IconButton color="primary" sx={{ borderLeft: "1px solid #424755", borderRadius: "0px 5px 5px 0px", backgroundColor: "#263043", height: "100%", ":hover": { backgroundColor: "#263043" }, width: "50px" }} aria-label="directions">
+                                            <img src={Euro} alt='Euro' />
+                                        </IconButton>
+                                    </Paper>
+                                </>
+                            </Stack>
+                            <Stack direction={"column"} gap={1.7}>
+                                <>
+                                    <InputLabel sx={{ color: "#FFFFFF", fontSize: { xs: "14px", sm: "16px" }, fontWeight: "500" }}>Price (TO):</InputLabel>
+
+                                    <Paper
+                                        component="form"
+                                        sx={{ display: 'flex', alignItems: 'center', border: "1px solid #424755", borderRadius: "5px", background: "transparent", height: "50px" }}
+                                    >
+                                        <InputBase
+                                            sx={{ ml: 1, flex: 1, py: "5px", pl: "5px" }}
+                                            placeholder="Enter here..."
+                                            value={productData.price2}
+                                            name='price2'
+                                            onChange={(e) => handleInputsChange("price2", e.target.value)}
                                         />
                                         <IconButton color="primary" sx={{ borderLeft: "1px solid #424755", borderRadius: "0px 5px 5px 0px", backgroundColor: "#263043", height: "100%", ":hover": { backgroundColor: "#263043" }, width: "50px" }} aria-label="directions">
                                             <img src={Euro} alt='Euro' />
