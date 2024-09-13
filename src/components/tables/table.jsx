@@ -103,7 +103,7 @@ const DynamicTable = ({
                         cell
                     ) : (
                         <>
-                            {!column.hideDelete && (
+                            {!(column.key[0] === "action2" && item?.status === "Cancelled") && (
                                 <Button
                                     variant="contained"
                                     sx={{ minWidth: "initial", p: 1, background: "#263043 !important", borderRadius: "50%" }}

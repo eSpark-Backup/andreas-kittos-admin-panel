@@ -260,7 +260,7 @@ const AddProduct = () => {
                                     <InputLabel sx={{ color: "#FFFFFF", fontSize: { xs: "14px", sm: "16px" }, fontWeight: "500" }}>Price (FROM):</InputLabel>
 
                                     <Paper
-                                        component="form"
+                                        // component="form"
                                         sx={{ display: 'flex', alignItems: 'center', border: "1px solid #424755", borderRadius: "5px", background: "transparent", height: "50px" }}
                                     >
                                         <InputBase
@@ -282,7 +282,7 @@ const AddProduct = () => {
                                     <InputLabel sx={{ color: "#FFFFFF", fontSize: { xs: "14px", sm: "16px" }, fontWeight: "500" }}>Price (To):</InputLabel>
 
                                     <Paper
-                                        component="form"
+                                        // component="form"
                                         sx={{ display: 'flex', alignItems: 'center', border: "1px solid #424755", borderRadius: "5px", background: "transparent", height: "50px" }}
                                     >
                                         <InputBase
