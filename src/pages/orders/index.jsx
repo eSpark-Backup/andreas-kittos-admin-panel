@@ -94,7 +94,6 @@ const Orders = () => {
     if (isSuccess) {
       toast.success(data?.message)
       setDeleteModal(false);
-      console.log(data)
     }
   }, [isSuccess])
 
@@ -102,7 +101,6 @@ const Orders = () => {
     if (isError) {
       toast.error("Something went wrong");
       setDeleteModal(false);
-      console.log(error)
     }
   }, [isError])
 

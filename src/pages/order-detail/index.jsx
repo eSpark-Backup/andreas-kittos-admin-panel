@@ -35,8 +35,8 @@ const OrderDetails = () => {
   const [currentItem, setCurrentItem] = useState({});
   const params = useParams()
   const { data: OdDATA, isLoading } = useGetOrderDetailsQuery(params?.id)
-  const [updateOrderStatus, { isLoading: isOrderStatusLoading, isSuccess, isError }] = useUpdateOrderStatusMutation()
-  const [sr,setSR] = useState("")
+  const [updateOrderStatus, { isLoading: isOrderStatusLoading, isSuccess, isError, error }] = useUpdateOrderStatusMutation()
+  const [sr, setSR] = useState("")
 
 
   const [checkboxData, setCheckboxData] = useState([
@@ -116,6 +116,13 @@ const OrderDetails = () => {
   }, [OdDATA])
 
 
+  useEffect(() => {
+    if (isError && error) {
+      // console.log(error)
+      toast.error(error?.data?.message === "Order already cancelled, you can not update status" ? "Order already cancelled, you can not update status" : "Something went wrong")
+      setOpenModal(false);
+    }
+  }, [isError, error])
 
 
   const orderDetailsData = [
@@ -183,11 +190,11 @@ const OrderDetails = () => {
     )
   }
   const tableData = OdDATA?.data?.orderDetail?.map((item) => ({
-    id:item?.product?.id,
-    order:{name:item?.product?.name, imgName: item?.product?.productImage},
-    quantity:item?.quantity,
-    category:item?.product?.categoryProduct[0]?.category?.name,
-    price:item?.product?.price
+    id: item?.product?.id,
+    order: { name: item?.product?.name, imgName: item?.product?.productImage },
+    quantity: item?.quantity,
+    category: item?.product?.categoryProduct[0]?.category?.name,
+    price: `${item?.product?.price1}${item?.product?.price2 ? ` - ${item?.product?.price2}` : ""}`
   }));
 
 

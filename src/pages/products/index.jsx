@@ -91,9 +91,9 @@ const Products = () => {
         }))
     }
 
-    useEffect(() => {
-        console.log(priceValues)
-    }, [priceValues])
+    // useEffect(() => {
+    //     console.log(priceValues)
+    // }, [priceValues])
 
 
     if (isCategoryLoading) {
