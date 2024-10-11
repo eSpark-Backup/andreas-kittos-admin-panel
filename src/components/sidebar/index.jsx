@@ -20,6 +20,11 @@ function Sidebar({ openSidebarToggle, OpenSidebar }) {
         setting: SettingIcon,
     };
 
+    const HandleClick = () => {
+        window.sessionStorage.setItem("orderPage", 1);
+        window.sessionStorage.setItem("customerPage", 1);
+    }
+
     return (
         <aside id="sidebar" className={openSidebarToggle ? 'sidebar-responsive' : ''}>
             <div className="sidebar-title">
@@ -39,7 +44,7 @@ function Sidebar({ openSidebarToggle, OpenSidebar }) {
                     const IconComponent = iconMap[tab.icons];
 
                     return (
-                        <Link to={tab.href} className="sidebar-list-links" key={index}>
+                        <Link to={tab.href} className="sidebar-list-links" key={index} onClick={HandleClick}>
                             <li className={`sidebar-list-item ${isActive ? 'sidebar-list-item-active' : ''}`}>
                                 {IconComponent && <img src={IconComponent} alt={`${tab.name} icon`} />}
                                 <p>{tab.name}</p>

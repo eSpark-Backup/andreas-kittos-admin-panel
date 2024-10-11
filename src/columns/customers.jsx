@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-export const columns = () => {
+export const columns = (page) => {
     return [
         { name: "Customer name", key: "customerName" },
         { name: "Join Date", key: "joinDate" },
@@ -12,7 +12,11 @@ export const columns = () => {
             return (
                 <Link 
                 style={{ color: "#49ACE1" }}
-                to={`/customer/${item?.id}`}>View</Link>
+                to={`/customer/${item?.id}`}
+                onClick={() => window.sessionStorage.setItem("customerPage", page)}
+                >
+                    View
+                </Link>
             )
         }
       },

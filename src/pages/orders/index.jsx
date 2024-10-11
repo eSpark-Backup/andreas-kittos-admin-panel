@@ -27,6 +27,24 @@ const Orders = () => {
   const [deleteId, setDeleteId] = useState("")
   const [updateOrderStatus, { isLoading: isOrderStatusLoading, isSuccess, isError, data, error }] = useUpdateOrderStatusMutation()
 
+  useEffect(() => {
+    const savedPage = sessionStorage.getItem('orderPage');
+    if (savedPage) {
+      setPage(parseInt(savedPage, 10));
+    }
+  }, []);
+
+  // Update sessionStorage when page changes
+  useEffect(() => {
+    sessionStorage.setItem('orderPage', page);
+  }, [page]);
+
+  useEffect(() => {
+    if (debouncedSearch) {
+      setPage(1);
+    }
+  }, [debouncedSearch])
+
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -150,13 +168,14 @@ const Orders = () => {
       <Box>
         <Table
           data={tableData}
-          columns={columns()}
+          columns={columns(page)}
           isLoading={isLoading || isFetching}
           handlePageChange={handlePageChange}
           page={page}
           handleDelete={(item) => HandleDelete(item?.id)}
           total={tableData && ordersData?.data?.meta?.totalItems}
         />
+
         <ConfirmationModal
           open={deleteModal}
           onClose={() => setDeleteModal(false)}
