@@ -19,31 +19,49 @@ const Customers = () => {
         2: "InActive",
     };
 
+
+    useEffect(() => {
+        const savedPage = sessionStorage.getItem('customerPage');
+        if (savedPage) {
+            setPage(parseInt(savedPage, 10));
+        }
+    }, []);
+
+    useEffect(() => {
+        sessionStorage.setItem('customerPage', page);
+    }, [page]);
+
     useEffect(() => {
         const timer = setTimeout(() => {
-          setDebouncedSearch(search);
+            setDebouncedSearch(search);
         }, 500);
-    
+
         return () => {
-          clearTimeout(timer);
+            clearTimeout(timer);
         };
     }, [search]);
 
-    const {data:customersData,isLoading,isFetching} = useGetAllCustomersQuery({page,userStatus:statusMap[value],customerName:debouncedSearch})
+    useEffect(() => {
+        if (debouncedSearch) {
+            setPage(1);
+        }
+    }, [debouncedSearch])
+
+    const { data: customersData, isLoading, isFetching } = useGetAllCustomersQuery({ page, userStatus: statusMap[value], customerName: debouncedSearch })
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
         setPage(1)
     };
 
-    const data = customersData?.data?.items.map((item)=>{
-        return{
+    const data = customersData?.data?.items.map((item) => {
+        return {
             id: item?.id,
-            customerName: item?.firstName+" "+item?.lastName,
-            joinDate:DateConverter(item?.createdAt),
-            totalOrders:item?.orderCount,
-            earnings:item?.earning,
-            status:item?.userStatus.slice(0,1).toUpperCase()+item?.userStatus.slice(1).toLowerCase()
+            customerName: item?.firstName + " " + item?.lastName,
+            joinDate: DateConverter(item?.createdAt),
+            totalOrders: item?.orderCount,
+            earnings: item?.earning,
+            status: item?.userStatus.slice(0, 1).toUpperCase() + item?.userStatus.slice(1).toLowerCase()
         }
     })
     const handlePageChange = (newPage) => {
@@ -58,12 +76,12 @@ const Customers = () => {
         )
     }
 
-    
+
 
 
     return (
         <main className='main-container'>
-            <Box sx={{height:"80px"}}>
+            <Box sx={{ height: "80px" }}>
                 <PageHeader title="Customers" />
             </Box>
             <Box>
@@ -81,13 +99,13 @@ const Customers = () => {
             </Box>
             <Grid container rowGap={2} sx={{ display: "flex", justifyContent: "space-between", margin: "40px 0px 20px 0px" }}>
                 <Grid item xs={12} lg={4}>
-                    <SearchInput setSearch={setSearch} placeholder="Search by order number or name" />
+                    <SearchInput setSearch={setSearch} placeholder="Search by customer name" />
                 </Grid>
             </Grid>
             <Box>
                 <Table
                     data={data && data}
-                    columns={columns()}
+                    columns={columns(page)}
                     isLoading={isLoading || isFetching}
                     total={data && customersData?.data?.meta?.totalItems}
                     handlePageChange={handlePageChange}
