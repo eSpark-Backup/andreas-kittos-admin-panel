@@ -119,7 +119,7 @@ const OrderDetails = () => {
   useEffect(() => {
     if (isError && error) {
       // console.log(error)
-      toast.error(error?.data?.message === "Order already cancelled, you can not update status" ? "Order already cancelled, you can not update status" : "Something went wrong")
+      toast.error(error?.data?.message?.toLowerCase() === "order already cancelled, you can not update status" ? "Order already cancelled, you can not update status" : "Something went wrong")
       setOpenModal(false);
     }
   }, [isError, error])
