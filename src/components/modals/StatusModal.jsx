@@ -3,19 +3,26 @@ import React, { useState } from 'react'
 import CustomButton from '../buttons/customButton'
 
 const StatusModal = ({ open, onClose, sx, onConfirm, acceptBtnText, cancelBtnText, heading, label1, placeholder, label2, loading, onInputChange, defaultValue, limitWords }) => {
-    const [words, setWords] = useState(0);
     const [inputText, setInputText] = useState(defaultValue || '');
 
     const handleInputChange = (e) => {
         const newText = e.target.value;
-        const wordCount = newText.trim().split(/\s+/).filter(word => word.length > 0).length;
 
-        if (!limitWords || wordCount <= 25) {
+        if (!limitWords || newText?.length <= 125) {
             setInputText(newText);
-            setWords(wordCount);
             onInputChange(e);
         }
     };
+
+    const handleConfirm = () => {
+        setInputText('');
+        onConfirm();
+    };
+
+    const handleClose = ()=>{
+        setInputText('');
+        onClose();
+    }
     return (
         <Modal open={open} onClose={onClose}>
             <Box
@@ -47,14 +54,14 @@ const StatusModal = ({ open, onClose, sx, onConfirm, acceptBtnText, cancelBtnTex
                 >
                     <Typography sx={{ color: "white", fontSize: "20px", fontWeight: "700" }}>{heading}</Typography>
                     <Stack direction={"column"} sx={{ width: "100%" }} rowGap={1}>
-                        <Box sx={{ display: "flex", justifyContent: "space-between", flexWrap:"wrap" }}>
+                        <Box sx={{ display: "flex", justifyContent: "space-between", flexWrap: "wrap" }}>
                             <Box>
                                 <InputLabel sx={{ color: "#FFFFFF" }}>
                                     <span style={{ fontSize: "16px", fontWeight: "700" }}>{label1}</span>
                                     {label2 && <span style={{ fontSize: "14px", fontWeight: "300" }}>{label2}</span>}
                                 </InputLabel>
                             </Box>
-                            {limitWords && <Typography sx={{ color: "#FFFFFF" }}>Words Limit: {words} / 25</Typography>}
+                            {limitWords && <Typography sx={{ color: "#FFFFFF" }}>Char Limit: {inputText?.length} / 125</Typography>}
                         </Box>
                         <TextField
                             value={inputText}
@@ -73,10 +80,10 @@ const StatusModal = ({ open, onClose, sx, onConfirm, acceptBtnText, cancelBtnTex
                             width: "100%"
                         }}
                     >
-                        <CustomButton onClick={onClose} sx={{ width: "100%", backgroundColor: "transparent" }}>
+                        <CustomButton onClick={handleClose} sx={{ width: "100%", backgroundColor: "transparent" }}>
                             {cancelBtnText}
                         </CustomButton>
-                        <CustomButton onClick={onConfirm} sx={{ width: "100%" }} isLoading={loading}>
+                        <CustomButton onClick={handleConfirm} sx={{ width: "100%" }} isLoading={loading}>
                             {acceptBtnText}
                         </CustomButton>
                     </Box>

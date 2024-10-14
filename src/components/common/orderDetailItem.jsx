@@ -24,9 +24,9 @@ const OrderDetailItem = ({ label, value }) => {
                             border: '1px solid #ffffff',
                         })
                     }}
-                    title={label?.toLowerCase() === "customer note: " && value?.length > 65 ? value : ""}
+                    title={label?.toLowerCase() === "customer note: " && value?.length > 65 ? value : label?.toLowerCase() === "reason:" && value?.length > 25 ? value : ""}
                 >
-                    {label?.toLowerCase() === "customer note: " && value?.length > 65 ? `${value.slice(0, 62)}...` : value}
+                    {label?.toLowerCase() === "customer note: " && value?.length > 65 ? `${value.slice(0, 62)}...` : label?.toLowerCase() === "reason:" && value?.length > 25 ? `${value.slice(0, 25)}...` : value}
                 </Typography>
 
             </Grid>
