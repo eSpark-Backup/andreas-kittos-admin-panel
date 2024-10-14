@@ -138,13 +138,14 @@ const OrderDetails = () => {
     { label: 'Customer country:', value: OdDATA?.data?.shippingAddress?.country },
     { label: 'Customer city:', value: OdDATA?.data?.shippingAddress?.city },
     { label: 'Customer address:', value: OdDATA?.data?.shippingAddress?.apartment + " " + OdDATA?.data?.shippingAddress?.block + " " + OdDATA?.data?.shippingAddress?.street + " " + OdDATA?.data?.shippingAddress?.state + " " + OdDATA?.data?.shippingAddress?.country + " " + OdDATA?.data?.shippingAddress?.zipCode },
+    { label: "Customer Note: ", value: OdDATA?.data?.note }
   ];
 
   const orderSummaryData = [
-    { label: 'Sub total:', value: "€"+OdDATA?.data?.subTotal, fontSize: '12px' },
-    { label: 'Pickup & delivery:', value: "€"+OdDATA?.data?.deliveryCharges, fontSize: '12px' },
+    { label: 'Sub total:', value: "€" + OdDATA?.data?.subTotal, fontSize: '12px' },
+    { label: 'Pickup & delivery:', value: "€" + OdDATA?.data?.deliveryCharges, fontSize: '12px' },
     // { label: 'Coupon discount:', value: '10%', fontSize: '12px' },
-    { label: 'Total Amount:', value: "€"+OdDATA?.data?.total, fontSize: '14px', textDecoration: "underline" },
+    { label: 'Total Amount:', value: "€" + OdDATA?.data?.total, fontSize: '14px', textDecoration: "underline" },
   ];
 
 
