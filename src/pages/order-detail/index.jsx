@@ -302,7 +302,7 @@ const OrderDetails = () => {
         </Box>
       </Box>
 
-      <StatusModal onInputChange={(e)=>setReason(e.target.value)} onConfirm={handleSaveStatus} open={openModal} heading={"Update Status"} label1={"Reason: "} label2={"(optional)"} placeholder={"Enter here..."} cancelBtnText={"Cancel"} acceptBtnText={"Set"} onClose={handleModalClose} loading={isOrderStatusLoading} />
+      <StatusModal onInputChange={(e)=>setReason(e.target.value)} onConfirm={handleSaveStatus} open={openModal} heading={"Update Status"} label1={"Reason: "} label2={"(optional)"} placeholder={"Enter here..."} cancelBtnText={"Cancel"} acceptBtnText={"Set"} onClose={handleModalClose} loading={isOrderStatusLoading} limitWords={true} />
 
       <ViewModal data={currentItem} open={openViewModal} onClose={() => setOpenViewModal(false)} />
     </main >
