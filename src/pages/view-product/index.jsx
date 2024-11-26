@@ -35,21 +35,18 @@ const ViewProduct = () => {
         const product = {
             name: productData?.name,
             description: productData?.description,
-            price: productData?.price,
+            price: (productData?.price1 && productData?.price2) ? productData?.price1 + " - " + productData?.price2 : productData?.price1,
             tags: splitTags(productData?.tags),
             image: productData?.productImage ? productData?.productImage : loader,
             quantity: productData?.quantity,
             category: filteredCategories?.length > 0 ? filteredCategories[filteredCategories.length - 1]?.category?.name : "",
             isGeneral: productData?.isGeneral ? true : false
         };
-        
+
 
         setProduct(product);
 
     }, [data])
-
-
-
 
 
 
