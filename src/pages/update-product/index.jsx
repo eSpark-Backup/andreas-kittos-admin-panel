@@ -68,7 +68,6 @@ const UpdateProduct = () => {
 
 
     const handleSubmit = () => {
-        console.log(productData)
         if (isFormEmpty(productData)) {
             toast.error("Please fill in all fields.");
         }
