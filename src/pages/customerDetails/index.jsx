@@ -75,9 +75,14 @@ const CustomerDetails = () => {
                             <img src={CustomerInfoData?.data?.user?.profileImage ? CustomerInfoData?.data?.user?.profileImage : user} alt='User' className='cutomer-detail-icon' />
                             <Box>
                                 {userData.map((eachItem, index) => (
-                                    <Stack columnGap={1} direction={"row"} sx={{ paddingLeft: { md: "25px" }, marginTop: "10px" }} key={index}>
+                                    <Stack columnGap={1} direction={"row"} sx={{ paddingLeft: { md: "15px" }, paddingRight: { md: "15px" }, marginTop: "10px" }} key={index}>
                                         <Typography sx={{ color: "#FFFFFF", fontSize: "14px", fontWeight: "bold" }}>{eachItem.title}: </Typography>
-                                        <Typography sx={{ color: "#FFFFFF", fontSize: "14px" }}>{eachItem.description}</Typography>
+                                        <Typography sx={{
+                                            color: "#FFFFFF",
+                                            fontSize: "14px",
+                                            wordBreak: "break-word",
+                                            overflowWrap: "break-word"
+                                        }}>{eachItem.description}</Typography>
                                     </Stack>
                                 ))}
                             </Box>
@@ -110,9 +115,9 @@ const CustomerDetails = () => {
             <ConfirmationModal
                 open={openModal}
                 onClose={() => setOpenModal(false)}
-                description={`Are you sure you want to ${CustomerInfoData?.data?.user?.userStatus === "active"?"Deactivate":"Activate"} this customer?`}
-                onConfirm={()=>onConfirm(CustomerInfoData?.data?.user?.userStatus === "active"?"inactive":"active")}
-                acceptBtnText={CustomerInfoData?.data?.user?.userStatus === "active"?"Deactivate":"Activate"}
+                description={`Are you sure you want to ${CustomerInfoData?.data?.user?.userStatus === "active" ? "Deactivate" : "Activate"} this customer?`}
+                onConfirm={() => onConfirm(CustomerInfoData?.data?.user?.userStatus === "active" ? "inactive" : "active")}
+                acceptBtnText={CustomerInfoData?.data?.user?.userStatus === "active" ? "Deactivate" : "Activate"}
                 cancelBtnText={"Cancel"}
                 isLoading={statusLoading}
             />
