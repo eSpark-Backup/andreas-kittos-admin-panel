@@ -109,13 +109,13 @@ const UpdateProduct = () => {
             id: productData?.id,
             name: productData?.name,
             description: productData?.description,
-            price1: productData?.price.slice(0, productData?.price.indexOf("-")),
-            price2: productData?.price.slice(productData?.price.indexOf("-") + 1),
+            price1: productData?.price1,
+            price2: productData?.price2 ? productData?.price2 : "-",
             quantity: productData?.quantity,
             tags: splitTags(productData?.tags),
             categoryIds: {
-                id: filteredCategory.length > 0 ? filteredCategory[filteredCategory.length - 1]?.category?.id : "",
-                label: filteredCategory.length > 0 ? filteredCategory[filteredCategory.length - 1]?.category?.name : "",
+                id: filteredCategory?.length > 0 ? filteredCategory[filteredCategory?.length - 1]?.category?.id : "",
+                label: filteredCategory?.length > 0 ? filteredCategory[filteredCategory?.length - 1]?.category?.name : "",
             },
             image: productData?.productImage ? productData?.productImage : loader,
             isGeneral: productData?.isGeneral ? true : false
