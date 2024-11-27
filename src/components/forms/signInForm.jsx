@@ -14,7 +14,7 @@ import { toast } from 'react-toastify';
 const SignInForm = () => {
   const [showPass, setShowPass] = useState(false)
   const navigate = useNavigate()
-  const [login,{data, isLoading, isError, isSuccess}] = useLoginMutation();
+  const [login, { data, isLoading, isError, isSuccess, error }] = useLoginMutation();
 
   const initialValues = {
     userCred: "",
@@ -22,21 +22,29 @@ const SignInForm = () => {
   }
 
   useEffect(() => {
-    if(isSuccess) {
-      if(data?.data?.userObject) {
+    if (isSuccess) {
+      if (!data?.status) {
+        toast.error(data?.message || "Login failed");
+        localStorage.removeItem('token');
+      }
+      else if (data?.status && data?.data?.userObject?.token) {
         toast.success("Login has been Successful");
-        localStorage.setItem('token', data?.data?.userObject?.token)
-        navigate("/dashboard")
+        localStorage.setItem('token', data?.data?.userObject?.token);
+        navigate("/dashboard");
       }
       else {
         toast.error("Email or password is Incorrect");
       }
     }
-    if(isError) {
-      toast.error("Internal Server Error, Please try again later");
-    }
-  }, [isSuccess, isError])
   
+    if (isError) {
+      toast.error("Internal Server Error, Please try again later");
+      console.error(error);
+    }
+  }, [isSuccess, isError]);
+  
+  
+
   const { values, errors, handleBlur, handleChange, handleSubmit, touched } = useFormik({
     initialValues: initialValues,
     validationSchema: signinSchema,
