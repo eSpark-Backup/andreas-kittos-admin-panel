@@ -23,11 +23,11 @@ const SignInForm = () => {
 
   useEffect(() => {
     if (isSuccess) {
-      if (data?.status === false) {
+      if (!data?.status) {
         toast.error(data?.message || "Login failed");
         localStorage.removeItem('token');
       }
-      else if (data?.status === true && data?.data?.userObject?.token) {
+      else if (data?.status && data?.data?.userObject?.token) {
         toast.success("Login has been Successful");
         localStorage.setItem('token', data?.data?.userObject?.token);
         navigate("/dashboard");
