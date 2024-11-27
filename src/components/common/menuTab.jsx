@@ -97,7 +97,7 @@ const MenuTab = ({ key, item, onClick, currentTab, categories }) => {
             }}
         >
             <Typography sx={{ color: "white", fontSize: "16px", width: "70%", overflowX: "auto" }} onClick={onClick}>{item?.name}</Typography>
-            {categories && (
+            {(categories && item?.name?.toLowerCase() !== "general") && (
                 <Box sx={{ display: 'flex', gap: '10px', width: "30%", justifyContent: "flex-end" }}>
                     <EditIcon sx={{ color: 'white', cursor: 'pointer' }} onClick={() => HandleEdit(item)} />
                     <DeleteIcon sx={{ color: 'white', cursor: 'pointer' }} onClick={() => HandleDelete(item?.id)} />

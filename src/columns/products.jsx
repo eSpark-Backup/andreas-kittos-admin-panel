@@ -2,7 +2,7 @@
 export const columns = () => {
     const mainCatID = localStorage.getItem("catID")
     return(
-        mainCatID == "90b0fc89-fa9b-4454-b739-373d4da1e57a" ?  [
+        mainCatID == "d523cb0d-f7b7-47df-8ed9-5b5d79dd1c7c" ?  [
             { name: "Product Name", key: "name",left:true },
             { name: "Category (main)", key: "category"},
             { name: "Category (sub)", key: "mainCategory"},
