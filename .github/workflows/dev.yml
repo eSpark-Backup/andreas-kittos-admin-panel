@@ -1,4 +1,4 @@
-name: MLS Admin-Panel Prod CICD
+name: MLS Admin-Panel Development CICD
 
 on:
   push:
